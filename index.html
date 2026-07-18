@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isogun Labs — Small, focused apps for the tools you already use</title>
+<meta name="description" content="Isogun Labs builds small, focused apps for Atlassian and the tools teams already use. Maker of Recap, monthly status reports for Jira.">
+<style>
+  :root {
+    --amber: #B45309;
+    --amber-light: #D97706;
+    --ink: #1F2937;
+    --muted: #6B7280;
+    --line: #E5E7EB;
+    --bg: #FFFFFF;
+    --panel: #FBF7F2;
+    --green: #15803D;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+  header {
+    background: linear-gradient(135deg, var(--amber-light), #92400E);
+    color: #fff;
+    padding: 64px 0 56px;
+  }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .brand svg { width: 56px; height: 56px; border-radius: 14px; flex: none; }
+  .brand h1 { font-size: 1.35rem; margin: 0; font-weight: 700; }
+  .brand p { margin: 2px 0 0; opacity: 0.9; font-size: 0.9rem; }
+  .tagline { font-size: 1.6rem; font-weight: 700; margin: 30px 0 0; max-width: 640px; }
+  .sub { margin: 14px 0 0; max-width: 600px; opacity: 0.95; font-size: 1.05rem; }
+  main { padding: 52px 0 24px; }
+  h2 { font-size: 1.25rem; margin: 0 0 16px; }
+  section { margin-top: 12px; }
+  .products { list-style: none; padding: 0; margin: 0; }
+  .product {
+    display: flex; gap: 18px; align-items: flex-start;
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 22px 24px; background: var(--panel);
+  }
+  .product svg { width: 46px; height: 46px; border-radius: 12px; flex: none; }
+  .product h3 { margin: 0 0 4px; font-size: 1.1rem; }
+  .product p { margin: 0 0 10px; color: var(--ink); }
+  .product .links a {
+    color: var(--amber); font-weight: 600; text-decoration: none;
+    margin-right: 16px; font-size: 0.92rem;
+  }
+  .product .links a:hover { text-decoration: underline; }
+  .pill {
+    display: inline-block; font-size: 0.75rem; font-weight: 600;
+    color: var(--green); background: #E7F4EC; border-radius: 999px;
+    padding: 2px 10px; margin-left: 8px; vertical-align: middle;
+  }
+  .about { border-top: 1px solid var(--line); margin-top: 44px; padding-top: 32px; }
+  .about p { color: var(--ink); }
+  .contact a { color: var(--amber); font-weight: 600; text-decoration: none; }
+  .contact a:hover { text-decoration: underline; }
+  footer {
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 28px 0 48px;
+    margin-top: 44px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="512" height="512" rx="96" fill="#FFFFFF"/>
+        <text x="256" y="336" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="300" font-weight="700" fill="#B45309">iL</text>
+      </svg>
+      <div>
+        <h1>Isogun Labs</h1>
+        <p>Small, focused apps</p>
+      </div>
+    </div>
+    <p class="tagline">Small, focused apps for the tools your team already uses.</p>
+    <p class="sub">One job, done well, and nothing you have to configure. Built on trusted platforms, so your data stays where it already lives.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>Products</h2>
+    <ul class="products">
+      <li class="product">
+        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="512" height="512" rx="96" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="6"/>
+          <path d="M146,96 H330 L366,132 V396 H146 Z" fill="#B45309"/>
+          <path d="M330,96 L366,132 H330 Z" fill="#7C3A08"/>
+          <rect x="174" y="186" width="164" height="18" rx="9" fill="#FDE7C7"/>
+          <rect x="174" y="228" width="164" height="18" rx="9" fill="#E8C39E"/>
+          <rect x="174" y="270" width="100" height="18" rx="9" fill="#E8C39E"/>
+          <circle cx="360" cy="390" r="52" fill="#15803D" stroke="#FFFFFF" stroke-width="10"/>
+          <polyline points="336,392 354,410 388,368" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <h3>Recap <span class="pill">Jira Cloud</span></h3>
+          <p>
+            One click turns your completed Jira work from the last 30 days into a written
+            monthly status report — grouped by epic, ready to paste into a status update or
+            performance review. No chasing, no blank page.
+          </p>
+          <div class="links">
+            <a href="https://recap.isogunlabs.com/">Documentation &amp; support</a>
+            <a href="https://recap.isogunlabs.com/privacy.html">Privacy</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="about">
+    <h2>About</h2>
+    <p>
+      Isogun Labs is an independent software studio. We build small, single-purpose apps that
+      do one useful thing without asking you to set anything up — and that run on the platforms
+      you already trust, so nothing has to leave them.
+    </p>
+    <p class="contact">
+      Get in touch: <a href="mailto:support@isogunlabs.com">support@isogunlabs.com</a>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Isogun Labs. Independent Atlassian Marketplace developer — not affiliated with or endorsed by Atlassian.
+  </div>
+</footer>
+
+</body>
+</html>
