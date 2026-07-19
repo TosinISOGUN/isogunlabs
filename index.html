@@ -3,393 +3,378 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Isogun Labs — Small, focused apps for the tools you already use</title>
-<meta name="description" content="Isogun Labs is an independent software studio building small, focused apps for the tools teams already use. Maker of Recap — monthly status reports for Jira.">
-<meta name="theme-color" content="#C2610C">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23C2610C'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='58' font-weight='700' text-anchor='middle' fill='%23FFF5E8'%3EiL%3C/text%3E%3C/svg%3E">
-<style>
-  :root {
-    --amber: #C2610C;
-    --amber-bright: #E08312;
-    --amber-deep: #8A4408;
-    --green: #15803D;
-    --bg: #FDFBF8;
-    --surface: #FFFFFF;
-    --panel: #FBF5EC;
-    --ink: #241811;
-    --ink-soft: #4A3A2E;
-    --muted: #857263;
-    --line: #EEE4D6;
-    --ring: rgba(194, 97, 12, 0.14);
-    --shadow: 0 1px 2px rgba(36,24,17,.04), 0 8px 24px rgba(36,24,17,.06);
-    --shadow-lg: 0 2px 4px rgba(36,24,17,.05), 0 24px 60px rgba(36,24,17,.12);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --amber: #F0A64E;
-      --amber-bright: #F7BE6E;
-      --amber-deep: #E08312;
-      --green: #4ADE80;
-      --bg: #17110C;
-      --surface: #201811;
-      --panel: #241B13;
-      --ink: #F6EFE4;
-      --ink-soft: #D9CBBB;
-      --muted: #A9917C;
-      --line: #362A20;
-      --ring: rgba(240, 166, 78, 0.16);
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
-      --shadow-lg: 0 2px 4px rgba(0,0,0,.35), 0 24px 60px rgba(0,0,0,.5);
+<meta name="color-scheme" content="light">
+
+<!-- ============================ SEO: core ============================ -->
+<title>Isogun Labs — Focused Apps for Atlassian & Jira</title>
+<meta name="description" content="Isogun Labs is an independent software studio building small, focused apps for Atlassian and Jira. Maker of Recap — one-click monthly status reports from your completed Jira work. Runs on Atlassian, stores nothing.">
+<link rel="canonical" href="https://isogunlabs.com/">
+<meta name="author" content="Isogun Labs">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0A1A3C">
+<meta name="keywords" content="Isogun Labs, software studio, Atlassian apps, Jira apps, Atlassian Forge, Recap, Jira status reports, Atlassian Marketplace">
+
+<!-- Google Search Console: replace CONTENT with your verification token, or verify via DNS TXT at Porkbun. -->
+<!-- <meta name="google-site-verification" content="PASTE_YOUR_TOKEN_HERE"> -->
+
+<!-- ============================ SEO: social ============================ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Isogun Labs">
+<meta property="og:title" content="Isogun Labs — Focused Apps for Atlassian & Jira">
+<meta property="og:description" content="An independent software studio building small, focused apps for Atlassian and Jira. Maker of Recap — one-click monthly status reports.">
+<meta property="og:url" content="https://isogunlabs.com/">
+<meta property="og:image" content="https://isogunlabs.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Isogun Labs — small, focused apps for the tools you already use">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@isogunlabs">
+<meta name="twitter:title" content="Isogun Labs — Focused Apps for Atlassian & Jira">
+<meta name="twitter:description" content="An independent software studio building small, focused apps for Atlassian and Jira. Maker of Recap.">
+<meta name="twitter:image" content="https://isogunlabs.com/assets/og-image.png">
+<meta name="twitter:image:alt" content="Isogun Labs — small, focused apps for the tools you already use">
+
+<!-- ============================ Icons / PWA ============================ -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- ============================ Structured data ============================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://isogunlabs.com/#org",
+      "name": "Isogun Labs",
+      "alternateName": "Isogun Labs Studio",
+      "url": "https://isogunlabs.com/",
+      "logo": "https://isogunlabs.com/assets/icons/icon-512.png",
+      "image": "https://isogunlabs.com/assets/og-image.png",
+      "description": "Independent software studio building small, focused apps for Atlassian and Jira.",
+      "email": "support@isogunlabs.com",
+      "slogan": "Small, focused apps for the tools you already use.",
+      "knowsAbout": ["Atlassian Forge", "Jira apps", "Atlassian Marketplace", "status reporting", "Atlassian Cloud apps"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@isogunlabs.com",
+        "contactType": "customer support"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/groups/32670171",
+        "https://x.com/isogunlabs",
+        "https://www.instagram.com/isogunlabs/",
+        "https://www.youtube.com/@isogunlabs"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://isogunlabs.com/#website",
+      "url": "https://isogunlabs.com/",
+      "name": "Isogun Labs",
+      "description": "Independent software studio building small, focused apps for Atlassian and Jira.",
+      "publisher": { "@id": "https://isogunlabs.com/#org" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Recap — Monthly Status Reports for Jira",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Atlassian Jira Cloud",
+      "url": "https://recap.isogunlabs.com/",
+      "description": "Recap turns your completed Jira work from the last 30 days into a written monthly status report in one click — grouped by epic, ready to paste into a status update or performance review. Runs entirely on Atlassian and stores nothing.",
+      "publisher": { "@id": "https://isogunlabs.com/#org" }
     }
-  }
-  :root[data-theme="light"] {
-    --amber: #C2610C; --amber-bright: #E08312; --amber-deep: #8A4408; --green: #15803D;
-    --bg: #FDFBF8; --surface: #FFFFFF; --panel: #FBF5EC; --ink: #241811; --ink-soft: #4A3A2E;
-    --muted: #857263; --line: #EEE4D6; --ring: rgba(194,97,12,.14);
-    --shadow: 0 1px 2px rgba(36,24,17,.04), 0 8px 24px rgba(36,24,17,.06);
-    --shadow-lg: 0 2px 4px rgba(36,24,17,.05), 0 24px 60px rgba(36,24,17,.12);
-  }
-  :root[data-theme="dark"] {
-    --amber: #F0A64E; --amber-bright: #F7BE6E; --amber-deep: #E08312; --green: #4ADE80;
-    --bg: #17110C; --surface: #201811; --panel: #241B13; --ink: #F6EFE4; --ink-soft: #D9CBBB;
-    --muted: #A9917C; --line: #362A20; --ring: rgba(240,166,78,.16);
-    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
-    --shadow-lg: 0 2px 4px rgba(0,0,0,.35), 0 24px 60px rgba(0,0,0,.5);
-  }
+  ]
+}
+</script>
 
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: var(--ink);
-    background: var(--bg);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-  }
-  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 24px; }
-  a { color: inherit; }
+<!-- ============================ Google Analytics 4 ============================ -->
+<!-- Replace G-XXXXXXXXXX with your GA4 Measurement ID (Admin -> Data Streams -> Web). -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 
-  /* ---- top accent + nav ---- */
-  .topbar { height: 4px; background: linear-gradient(90deg, var(--amber-deep), var(--amber-bright), var(--green)); }
-  .nav {
-    position: sticky; top: 0; z-index: 50;
-    background: color-mix(in srgb, var(--bg) 82%, transparent);
-    backdrop-filter: saturate(180%) blur(14px);
-    -webkit-backdrop-filter: saturate(180%) blur(14px);
-    border-bottom: 1px solid transparent;
-    transition: border-color .3s ease;
-  }
-  .nav.scrolled { border-bottom-color: var(--line); }
-  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 66px; }
-  .logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
-  .mark {
-    width: 40px; height: 40px; border-radius: 12px; flex: none;
-    background: linear-gradient(140deg, var(--amber-bright), var(--amber-deep));
-    color: #FFF6EA; display: grid; place-items: center;
-    font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 20px;
-    letter-spacing: -0.5px; box-shadow: 0 4px 12px var(--ring);
-  }
-  .logo b { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.2px; }
-  .nav-links { display: flex; align-items: center; gap: 26px; font-size: 0.92rem; font-weight: 500; }
-  .nav-links a { color: var(--muted); text-decoration: none; transition: color .2s; }
-  .nav-links a:hover { color: var(--ink); }
-  .nav-cta {
-    color: var(--amber) !important; font-weight: 600;
-    display: inline-flex; align-items: center; gap: 5px;
-  }
-  .nav-cta svg { width: 14px; height: 14px; transition: transform .2s; }
-  .nav-cta:hover svg { transform: translateX(3px); }
-
-  /* ---- hero ---- */
-  .hero { position: relative; padding: 96px 0 84px; overflow: hidden; }
-  .hero::before, .hero::after {
-    content: ""; position: absolute; border-radius: 50%; filter: blur(70px);
-    opacity: .55; z-index: 0; pointer-events: none;
-  }
-  .hero::before {
-    width: 620px; height: 620px; top: -280px; right: -180px;
-    background: radial-gradient(circle at 30% 30%, var(--amber-bright), transparent 66%);
-    animation: float1 16s ease-in-out infinite;
-  }
-  .hero::after {
-    width: 460px; height: 460px; bottom: -240px; left: -160px;
-    background: radial-gradient(circle at 50% 50%, var(--green), transparent 68%);
-    opacity: .28; animation: float2 20s ease-in-out infinite;
-  }
-  @keyframes float1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-34px,26px) scale(1.06); } }
-  @keyframes float2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-22px) scale(1.08); } }
-  .hero .wrap { position: relative; z-index: 1; }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.76rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--amber-deep); background: var(--panel);
-    border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px;
-  }
-  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px color-mix(in srgb, var(--green) 22%, transparent); }
-  h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;
-    font-weight: 800; margin: 26px 0 0; max-width: 15ch;
-  }
-  h1 .grad {
-    background: linear-gradient(115deg, var(--amber-deep), var(--amber-bright) 55%, var(--green));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .lead { font-size: clamp(1.08rem, 2vw, 1.28rem); color: var(--ink-soft); max-width: 44ch; margin: 26px 0 0; }
-  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 38px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 9px;
-    font-size: 1rem; font-weight: 600; text-decoration: none;
-    padding: 13px 24px; border-radius: 12px; transition: transform .18s ease, box-shadow .25s ease, background .2s;
-  }
-  .btn-primary {
-    color: #FFF6EA; background: linear-gradient(135deg, var(--amber-bright), var(--amber-deep));
-    box-shadow: 0 6px 20px var(--ring);
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px var(--ring); }
-  .btn-primary svg { width: 16px; height: 16px; transition: transform .2s; }
-  .btn-primary:hover svg { transform: translateX(4px); }
-  .trust { display: inline-flex; align-items: center; gap: 9px; font-size: 0.9rem; color: var(--muted); font-weight: 500; }
-  .trust svg { width: 18px; height: 18px; color: var(--green); flex: none; }
-
-  /* ---- section scaffolding ---- */
-  section.block { padding: 30px 0; }
-  .section-head { margin-bottom: 30px; }
-  .kicker { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); }
-  .section-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em; margin: 10px 0 0; font-weight: 800; }
-
-  /* ---- values ---- */
-  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .value {
-    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
-    padding: 26px 24px; box-shadow: var(--shadow);
-  }
-  .value .ic {
-    width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
-    background: var(--panel); color: var(--amber); margin-bottom: 16px;
-  }
-  .value .ic svg { width: 22px; height: 22px; }
-  .value h3 { margin: 0 0 6px; font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
-  .value p { margin: 0; color: var(--muted); font-size: 0.96rem; }
-
-  /* ---- product card ---- */
-  .product {
-    position: relative; display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center;
-    background: var(--surface); border: 1px solid var(--line); border-radius: 22px;
-    padding: 40px; box-shadow: var(--shadow); overflow: hidden;
-    transition: transform .25s ease, box-shadow .3s ease, border-color .3s;
-  }
-  .product::before {
-    content: ""; position: absolute; inset: 0; border-radius: 22px; padding: 1px;
-    background: linear-gradient(135deg, var(--amber-bright), transparent 40%, transparent 60%, var(--green));
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude;
-    opacity: 0; transition: opacity .3s ease; pointer-events: none;
-  }
-  .product:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .product:hover::before { opacity: 1; }
-  .product-logo {
-    width: 96px; height: 96px; border-radius: 22px; flex: none;
-    background: var(--panel); display: grid; place-items: center; box-shadow: var(--shadow);
-  }
-  .product-logo svg { width: 66px; height: 66px; }
-  .product h3 { margin: 0; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; gap: 12px; }
-  .tag {
-    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-    color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent);
-    border-radius: 999px; padding: 4px 11px;
-  }
-  .product p { color: var(--ink-soft); margin: 12px 0 22px; max-width: 52ch; }
-  .product-links { display: flex; flex-wrap: wrap; gap: 12px; }
-  .chip {
-    display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
-    font-size: 0.92rem; font-weight: 600; color: var(--ink);
-    background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 9px 16px;
-    transition: border-color .2s, transform .15s, color .2s;
-  }
-  .chip:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-1px); }
-  .chip svg { width: 15px; height: 15px; }
-
-  /* ---- about ---- */
-  .about-card {
-    background: linear-gradient(135deg, var(--panel), color-mix(in srgb, var(--panel) 60%, var(--surface)));
-    border: 1px solid var(--line); border-radius: 22px; padding: 44px;
-    display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center;
-  }
-  .about-card p { margin: 0 0 14px; color: var(--ink-soft); font-size: 1.05rem; }
-  .about-card p:last-child { margin-bottom: 0; }
-  .contact-box { border-left: 2px solid var(--amber); padding-left: 22px; }
-  .contact-box .label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-  .contact-box a { display: inline-block; margin-top: 8px; font-size: 1.12rem; font-weight: 700; color: var(--amber); text-decoration: none; letter-spacing: -0.01em; }
-  .contact-box a:hover { text-decoration: underline; }
-
-  /* ---- footer ---- */
-  footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 34px 0 56px; }
-  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; align-items: center; }
-  footer .fbrand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; }
-  footer .fbrand .mark { width: 30px; height: 30px; border-radius: 9px; font-size: 15px; }
-  footer .disc { color: var(--muted); font-size: 0.83rem; max-width: 46ch; text-align: right; }
-
-  /* ---- entrance animation ---- */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.in { opacity: 1; transform: none; }
-
-  @media (max-width: 820px) {
-    .values { grid-template-columns: 1fr; }
-    .product { grid-template-columns: 1fr; text-align: left; padding: 30px; }
-    .about-card { grid-template-columns: 1fr; padding: 32px; }
-    .contact-box { border-left: 0; border-top: 2px solid var(--amber); padding-left: 0; padding-top: 20px; }
-    .nav-links a:not(.nav-cta) { display: none; }
-    .hero { padding: 72px 0 60px; }
-    footer .disc { text-align: left; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; transition: none; }
-  }
-</style>
+<link rel="stylesheet" href="/assets/css/site.css">
 </head>
 <body>
 
-<div class="topbar"></div>
+<a class="skip" href="#main">Skip to content</a>
 
-<nav class="nav" id="nav">
+<!-- utility bar -->
+<div class="util">
   <div class="wrap">
-    <a class="logo" href="/">
-      <span class="mark">iL</span>
+    <div class="u-left"><a href="mailto:support@isogunlabs.com">support@isogunlabs.com</a></div>
+    <div class="socials" aria-label="Isogun Labs on social media">
+      <a href="https://www.linkedin.com/groups/32670171" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21h-4V9Z"/></svg></a>
+      <a href="https://x.com/isogunlabs" aria-label="X (Twitter)" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.96 6.82H1.68l7.73-8.84L1.25 2.25h6.82l4.71 6.23 5.46-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64Z"/></svg></a>
+      <a href="https://www.instagram.com/isogunlabs/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.youtube.com/@isogunlabs" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.32 5.1 12 5.1 12 5.1s-7.32 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.68 18.9 12 18.9 12 18.9s7.32 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Isogun Labs home">
+      <img class="mark" src="/assets/icons/mark.png" alt="" aria-hidden="true">
       <b>Isogun Labs</b>
     </a>
-    <div class="nav-links">
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
-      <a class="nav-cta" href="https://recap.isogunlabs.com/">Recap
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+    <div class="nav-mid">
+      <a href="/#approach">What we do</a>
+      <a href="/#products">Products</a>
+      <a href="/documentation/">Documentation</a>
+      <a href="/#about">About</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-blue btn-sm" href="/get-started/">Get Started</a>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
 
+<div class="drawer-overlay"></div>
+<aside class="drawer" id="mobile-drawer">
+  <div class="d-head">
+    <a class="logo" href="/"><img class="mark" src="/assets/icons/mark.png" alt="" aria-hidden="true"><b>Isogun Labs</b></a>
+    <button class="d-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a class="d-link" href="/#approach">What we do</a>
+    <a class="d-link" href="/#products">Products</a>
+    <a class="d-link" href="/documentation/">Documentation</a>
+    <a class="d-link" href="/#about">About</a>
+  </nav>
+  <a class="btn btn-orange" href="/get-started/">Get Started
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+  <div class="d-socials" aria-label="Isogun Labs on social media">
+    <a href="https://www.linkedin.com/groups/32670171" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21h-4V9Z"/></svg></a>
+    <a href="https://x.com/isogunlabs" aria-label="X (Twitter)" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.96 6.82H1.68l7.73-8.84L1.25 2.25h6.82l4.71 6.23 5.46-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64Z"/></svg></a>
+    <a href="https://www.instagram.com/isogunlabs/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://www.youtube.com/@isogunlabs" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.32 5.1 12 5.1 12 5.1s-7.32 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.68 18.9 12 18.9 12 18.9s7.32 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg></a>
+  </div>
+</aside>
+
+<main id="main">
+
+<!-- hero -->
 <header class="hero">
+  <div class="facets" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span> Independent software studio</span>
-    <h1>Small, focused apps for the tools you <span class="grad">already use</span>.</h1>
-    <p class="lead">One job, done well — and nothing to configure. Built on platforms you already trust, so your data never has to leave them.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="https://recap.isogunlabs.com/">
-        Explore Recap
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span> Independent software studio</span>
+      <h1 id="hero-h1">We build <span class="amber">focused apps</span> for the tools your team already uses.</h1>
+      <p class="lead">Isogun Labs crafts small, single-purpose apps for Atlassian — Jira and beyond. One job, done well. Nothing to configure, and nothing that leaves the platform you already trust.</p>
+      <div class="hero-actions">
+        <a class="btn btn-orange" href="/get-started/">Get Started
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn-text" href="mailto:support@isogunlabs.com">Talk with us
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-glow"></div>
+      <img class="hero-logo" src="/assets/icons/mark.png" alt="" width="600" height="484">
+    </div>
+  </div>
+  <div class="prod-strip">
+    <div class="wrap">
+      <span class="lbl">Our apps</span>
+      <a class="pill" href="https://recap.isogunlabs.com/">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M146,96 H330 L366,132 V396 H146 Z" fill="#C2610C"/><path d="M330,96 L366,132 H330 Z" fill="#7C3A08"/><rect x="174" y="186" width="164" height="18" rx="9" fill="#FDE7C7"/><rect x="174" y="228" width="164" height="18" rx="9" fill="#E8C39E"/><rect x="174" y="270" width="100" height="18" rx="9" fill="#E8C39E"/><circle cx="360" cy="390" r="52" fill="#15803D" stroke="#FFF" stroke-width="10"/><polyline points="336,392 354,410 388,368" fill="none" stroke="#FFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        Recap
       </a>
-      <span class="trust">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
-        Runs on trusted platforms
-      </span>
+      <span class="soon">More focused apps on the way</span>
     </div>
   </div>
 </header>
 
-<main class="wrap">
-
-  <section class="block reveal" id="why">
-    <div class="values">
-      <div class="value">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></div>
+<!-- approach -->
+<section class="block reveal" id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Our approach</div>
+      <h2>Software that does <span class="amber">one thing</span>, and gets out of the way</h2>
+      <p>No sprawling suites. No setup wizards. Just small, sharp tools that respect your time and your data.</p>
+    </div>
+    <div class="principles">
+      <div class="principle">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
         <h3>One job, done well</h3>
-        <p>Single-purpose apps that do the one useful thing and get out of your way — no bloat, no feature creep.</p>
+        <p>Each app solves a single real problem end to end — no bloat, no feature creep, no dashboards to babysit.</p>
       </div>
-      <div class="value">
+      <div class="principle">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div>
         <h3>Nothing to configure</h3>
-        <p>Install it and it works. No setup wizards, no settings to tune, no dashboards to babysit.</p>
+        <p>Install it and it works. No settings to tune, no onboarding maze — value on the very first click.</p>
       </div>
-      <div class="value">
+      <div class="principle">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/></svg></div>
-        <h3>Runs where you work</h3>
-        <p>Built on platforms you already trust, like Atlassian Forge. Your data stays inside them — we store nothing.</p>
+        <h3>Private by design</h3>
+        <p>Minimal permissions, no third-party servers, and we store nothing. Your data never leaves the platform it lives on.</p>
+      </div>
+      <div class="principle">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
+        <h3>Crafted, not shipped</h3>
+        <p>We sweat the copy, the empty states, and the details most tools skip. It should feel considered, because it is.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="block reveal" id="products">
+<!-- trust band -->
+<div class="trust">
+  <div class="wrap">
+    <span>Built on <b>Atlassian Forge</b></span><span class="sep"></span>
+    <span><b>Runs entirely on Atlassian</b></span><span class="sep"></span>
+    <span>Private by design — <b>stores nothing</b></span>
+  </div>
+</div>
+
+<!-- stats band -->
+<section class="stats reveal">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Built the right way</div>
+      <h2>Focused, private, and honest by default</h2>
+      <p>Every app we ship holds to the same line — minimal access, zero storage, real output.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="n">1</div><div class="l">job per app — solved end to end, not half-built</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">customer data stored, ever</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">third-party servers or external services</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">runs on Atlassian — nothing leaves the platform</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- product showcase -->
+<section class="block reveal" id="products" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
     <div class="section-head">
       <div class="kicker">Products</div>
-      <h2>What we make</h2>
+      <h2>Meet <span class="amber">Recap</span></h2>
+      <p>Our first app — monthly status reports for Jira, written from the work you actually completed.</p>
     </div>
-    <div class="product">
-      <div class="product-logo">
-        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M146,96 H330 L366,132 V396 H146 Z" fill="#C2610C"/>
-          <path d="M330,96 L366,132 H330 Z" fill="#7C3A08"/>
-          <rect x="174" y="186" width="164" height="18" rx="9" fill="#FDE7C7"/>
-          <rect x="174" y="228" width="164" height="18" rx="9" fill="#E8C39E"/>
-          <rect x="174" y="270" width="100" height="18" rx="9" fill="#E8C39E"/>
-          <circle cx="360" cy="390" r="52" fill="#15803D" stroke="#FFFFFF" stroke-width="10"/>
-          <polyline points="336,392 354,410 388,368" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+    <div class="showcase">
+      <div class="copy">
+        <h3>
+          <span class="prod-logo" aria-hidden="true">
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M146,96 H330 L366,132 V396 H146 Z" fill="#C2610C"/><path d="M330,96 L366,132 H330 Z" fill="#7C3A08"/><rect x="174" y="186" width="164" height="18" rx="9" fill="#FDE7C7"/><rect x="174" y="228" width="164" height="18" rx="9" fill="#E8C39E"/><rect x="174" y="270" width="100" height="18" rx="9" fill="#E8C39E"/><circle cx="360" cy="390" r="52" fill="#15803D" stroke="#FFF" stroke-width="10"/><polyline points="336,392 354,410 388,368" fill="none" stroke="#FFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Recap <span class="tag">For Jira Cloud</span>
+        </h3>
+        <p class="desc">One click turns your completed Jira work from the last 30 days into a written monthly status report — grouped by epic, in plain past tense, ready to paste into a status update, a 1:1, or a performance review.</p>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> No blank page — the report writes itself from real work.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> No invented metrics — only what actually shipped.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Runs entirely on Atlassian — one read-only permission, stores nothing.</li>
+        </ul>
+        <div class="prod-links">
+          <a class="btn btn-orange btn-sm" href="https://recap.isogunlabs.com/">Documentation &amp; support
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost btn-sm" href="https://recap.isogunlabs.com/privacy.html">Privacy</a>
+        </div>
       </div>
-      <div>
-        <h3>Recap <span class="tag">For Jira Cloud</span></h3>
-        <p>One click turns your completed Jira work from the last 30 days into a written monthly status report — grouped by epic, ready to paste into a status update or performance review. No chasing, no blank page.</p>
-        <div class="product-links">
-          <a class="chip" href="https://recap.isogunlabs.com/">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
-            Documentation &amp; support
-          </a>
-          <a class="chip" href="https://recap.isogunlabs.com/privacy.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/></svg>
-            Privacy
-          </a>
+      <div class="mock-glow">
+        <div class="mock">
+          <div class="bar" aria-hidden="true"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">recap · Jira</span></div>
+          <img src="/assets/recap-report.png" width="1522" height="907" loading="lazy" decoding="async" alt="Recap in Jira showing a generated monthly status report grouped by epic, ready to copy and paste.">
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="block reveal" id="about">
-    <div class="section-head">
-      <div class="kicker">About</div>
-      <h2>The studio</h2>
+<!-- about -->
+<section class="about reveal" id="about">
+  <div class="wrap">
+    <div>
+      <div class="kicker">The studio</div>
+      <h2>Small studio. High standards.</h2>
+      <p>Isogun Labs is an independent software studio. We build small, single-purpose apps that do one useful thing without asking you to set anything up — and that run on the platforms you already trust, so nothing has to leave them.</p>
+      <p>We start where the work already lives. Recap is the first of what we intend to be a small family of focused apps, each earning its place by doing one job exceptionally well.</p>
     </div>
-    <div class="about-card">
-      <div>
-        <p>Isogun Labs is an independent software studio. We build small, single-purpose apps that do one useful thing without asking you to set anything up.</p>
-        <p>Everything we ship runs on the platforms you already trust — so nothing has to leave them, and there's nothing new to secure.</p>
-      </div>
-      <div class="contact-box">
-        <div class="label">Get in touch</div>
-        <a href="mailto:support@isogunlabs.com">support@isogunlabs.com</a>
-      </div>
+    <div class="contact">
+      <div class="label">Get in touch</div>
+      <a href="mailto:support@isogunlabs.com">support@isogunlabs.com</a>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- CTA (general, studio-level) -->
+<section class="cta reveal">
+  <div class="wrap">
+    <h2>Focused apps for the way you already work</h2>
+    <p>We build small, sharp tools that do one job exceptionally well — starting with Recap for Jira, and more on the way. Take a look at what we're building.</p>
+    <div class="cta-actions">
+      <a class="btn btn-orange" href="/get-started/">Get Started
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost-light" href="mailto:support@isogunlabs.com">Talk with us</a>
+    </div>
+  </div>
+</section>
 
 </main>
 
 <footer>
   <div class="wrap">
-    <span class="fbrand"><span class="mark">iL</span> Isogun Labs</span>
-    <span class="disc">© 2026 Isogun Labs. Independent Atlassian Marketplace developer — not affiliated with or endorsed by Atlassian.</span>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="/"><img class="mark" src="/assets/icons/mark.png" alt="" aria-hidden="true"><b>Isogun Labs</b></a>
+        <p>An independent software studio building small, focused apps for Atlassian and Jira.</p>
+        <div class="socials" aria-label="Isogun Labs on social media">
+          <a href="https://www.linkedin.com/groups/32670171" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21h-4V9Z"/></svg></a>
+          <a href="https://x.com/isogunlabs" aria-label="X (Twitter)" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.96 6.82H1.68l7.73-8.84L1.25 2.25h6.82l4.71 6.23 5.46-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64Z"/></svg></a>
+          <a href="https://www.instagram.com/isogunlabs/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.youtube.com/@isogunlabs" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.32 5.1 12 5.1 12 5.1s-7.32 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.68 18.9 12 18.9 12 18.9s7.32 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Products</h4>
+        <a href="https://recap.isogunlabs.com/">Recap for Jira</a>
+        <a href="/get-started/">Get Started</a>
+        <a href="/documentation/">Documentation</a>
+      </div>
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <a href="/#approach">What we do</a>
+        <a href="/#about">About</a>
+        <a href="mailto:support@isogunlabs.com">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <a href="https://www.linkedin.com/groups/32670171" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/isogunlabs" target="_blank" rel="noopener">X (Twitter)</a>
+        <a href="https://www.instagram.com/isogunlabs/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@isogunlabs" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="disc">© 2026 Isogun Labs. All rights reserved.</span>
+    </div>
   </div>
 </footer>
 
-<script>
-  // subtle nav border on scroll
-  var nav = document.getElementById('nav');
-  var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 8); };
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-
-  // reveal-on-scroll
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
-  } else if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
-  }
-</script>
-
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>
