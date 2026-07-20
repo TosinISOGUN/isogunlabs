@@ -1,0 +1,72 @@
+---
+import Seo from '../components/Seo.astro';
+import Nav from '../components/Nav.astro';
+import Drawer from '../components/Drawer.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  jsonLd?: object;
+  preloadImage?: string;
+}
+
+const { title, description, path, ogTitle, ogDescription, jsonLd, preloadImage } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="author" content="Isogun Labs">
+<meta name="keywords" content="Isogun Labs, software studio, Atlassian apps, Jira apps, Atlassian Forge, Recap, Jira status reports, Atlassian Marketplace">
+<meta name="theme-color" content="#0A1A3C">
+
+<Seo title={title} description={description} path={path} ogTitle={ogTitle} ogDescription={ogDescription} jsonLd={jsonLd} />
+
+<!-- Google Search Console: verified via DNS TXT record at Porkbun (no meta tag needed). -->
+<!-- Bing Webmaster Tools: verified via HTML meta tag. -->
+<meta name="msvalidate.01" content="B763854E989D3089E737F531F7833BE5" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap">
+
+{preloadImage && <link rel="preload" as="image" fetchpriority="high" href={preloadImage}>}
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P9H728QMW5"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P9H728QMW5');
+</script>
+
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<Nav />
+<Drawer />
+
+<main id="main">
+  <slot />
+</main>
+
+<Footer />
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://isogunlabs.com/#org',
+      name: 'Isogun Labs',
+      alternateName: 'Isogun Labs Studio',
+      url: 'https://isogunlabs.com/',
+      logo: 'https://isogunlabs.com/assets/icons/icon-512.png',
+      image: 'https://isogunlabs.com/assets/og-image.png',
+      description: 'Independent software studio building small, focused apps for Atlassian and Jira.',
+      email: 'support@isogunlabs.com',
+      slogan: 'Small, focused apps for the tools you already use.',
+      knowsAbout: ['Atlassian Forge', 'Jira apps', 'Atlassian Marketplace', 'status reporting', 'Atlassian Cloud apps'],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'support@isogunlabs.com',
+        contactType: 'customer support',
+      },
+      sameAs: [
+        'https://www.linkedin.com/groups/32670171',
+        'https://x.com/isogunlabs',
+        'https://www.instagram.com/isogunlabs/',
+        'https://www.youtube.com/@isogunlabs',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://isogunlabs.com/#website',
+      url: 'https://isogunlabs.com/',
+      name: 'Isogun Labs',
+      description: 'Independent software studio building small, focused apps for Atlassian and Jira.',
+      publisher: { '@id': 'https://isogunlabs.com/#org' },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Recap — Monthly Status Reports for Jira',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Atlassian Jira Cloud',
+      url: 'https://recap.isogunlabs.com/',
+      description: 'Recap turns your completed Jira work from the last 30 days into a written monthly status report in one click — grouped by epic, ready to paste into a status update or performance review. Runs entirely on Atlassian and stores nothing.',
+      publisher: { '@id': 'https://isogunlabs.com/#org' },
+    },
+  ],
+};
+---
+<BaseLayout
+  title="Isogun Labs — Focused Apps for Atlassian & Jira"
+  description="Isogun Labs is an independent software studio building small, focused apps for Atlassian and Jira. Maker of Recap — one-click monthly status reports from your completed Jira work. Runs on Atlassian, stores nothing."
+  path="/"
+  ogDescription="An independent software studio building small, focused apps for Atlassian and Jira. Maker of Recap — one-click monthly status reports."
+  jsonLd={jsonLd}
+  preloadImage="/assets/hero-3.webp"
+>
+
+<header class="hero">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span> Independent software studio</span>
+      <h1 id="hero-h1">We build <span class="amber">focused apps</span> for the tools your team already uses.</h1>
+      <p class="lead">Isogun Labs crafts small, single-purpose apps for Atlassian — Jira and beyond. One job, done well. Nothing to configure, and nothing that leaves the platform you already trust.</p>
+      <div class="hero-actions">
+        <a class="btn btn-orange" href="/get-started/">Get Started
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn-text" href="mailto:support@isogunlabs.com">Talk with us
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="prod-strip">
+    <div class="wrap">
+      <span class="lbl">Our apps</span>
+      <a class="pill" href="https://recap.isogunlabs.com/">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M146,96 H330 L366,132 V396 H146 Z" fill="#C2610C"/><path d="M330,96 L366,132 H330 Z" fill="#7C3A08"/><rect x="174" y="186" width="164" height="18" rx="9" fill="#FDE7C7"/><rect x="174" y="228" width="164" height="18" rx="9" fill="#E8C39E"/><rect x="174" y="270" width="100" height="18" rx="9" fill="#E8C39E"/><circle cx="360" cy="390" r="52" fill="#15803D" stroke="#FFF" stroke-width="10"/><polyline points="336,392 354,410 388,368" fill="none" stroke="#FFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        Recap
+      </a>
+      <span class="soon">More focused apps on the way</span>
+    </div>
+  </div>
+</header>
+
+<section class="block reveal" id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Our approach</div>
+      <h2>Software that does <span class="amber">one thing</span>, and gets out of the way</h2>
+      <p>No sprawling suites. No setup wizards. Just small, sharp tools that respect your time and your data.</p>
+    </div>
+    <div class="principles">
+      <div class="principle">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+        <h3>One job, done well</h3>
+        <p>Each app solves a single real problem end to end — no bloat, no feature creep, no dashboards to babysit.</p>
+      </div>
+      <div class="principle">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div>
+        <h3>Nothing to configure</h3>
+        <p>Install it and it works. No settings to tune, no onboarding maze — value on the very first click.</p>
+      </div>
+      <div class="principle">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/></svg></div>
+        <h3>Private by design</h3>
+        <p>Minimal permissions, no third-party servers, and we store nothing. Your data never leaves the platform it lives on.</p>
+      </div>
+      <div class="principle">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
+        <h3>Crafted, not shipped</h3>
+        <p>We sweat the copy, the empty states, and the details most tools skip. It should feel considered, because it is.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <span>Built on <b>Atlassian Forge</b></span><span class="sep"></span>
+    <span><b>Runs entirely on Atlassian</b></span><span class="sep"></span>
+    <span>Private by design — <b>stores nothing</b></span>
+  </div>
+</div>
+
+<section class="stats reveal">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Built the right way</div>
+      <h2>Focused, private, and honest by default</h2>
+      <p>Every app we ship holds to the same line — minimal access, zero storage, real output.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="n">1</div><div class="l">job per app — solved end to end, not half-built</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">customer data stored, ever</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">third-party servers or external services</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">runs on Atlassian — nothing leaves the platform</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal" id="products" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Products</div>
+      <h2>Meet <span class="amber">Recap</span></h2>
+      <p>Our first app — monthly status reports for Jira, written from the work you actually completed.</p>
+    </div>
+    <div class="showcase">
+      <div class="copy">
+        <h3>
+          <span class="prod-logo" aria-hidden="true">
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M146,96 H330 L366,132 V396 H146 Z" fill="#C2610C"/><path d="M330,96 L366,132 H330 Z" fill="#7C3A08"/><rect x="174" y="186" width="164" height="18" rx="9" fill="#FDE7C7"/><rect x="174" y="228" width="164" height="18" rx="9" fill="#E8C39E"/><rect x="174" y="270" width="100" height="18" rx="9" fill="#E8C39E"/><circle cx="360" cy="390" r="52" fill="#15803D" stroke="#FFF" stroke-width="10"/><polyline points="336,392 354,410 388,368" fill="none" stroke="#FFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Recap <span class="tag">For Jira Cloud</span>
+        </h3>
+        <p class="desc">One click turns your completed Jira work from the last 30 days into a written monthly status report — grouped by epic, in plain past tense, ready to paste into a status update, a 1:1, or a performance review.</p>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> No blank page — the report writes itself from real work.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> No invented metrics — only what actually shipped.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Runs entirely on Atlassian — one read-only permission, stores nothing.</li>
+        </ul>
+        <div class="prod-links">
+          <a class="btn btn-orange btn-sm" href="https://recap.isogunlabs.com/">Documentation &amp; support
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost btn-sm" href="https://recap.isogunlabs.com/privacy.html">Privacy</a>
+        </div>
+      </div>
+      <div class="mock-glow">
+        <div class="mock">
+          <div class="bar" aria-hidden="true"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">recap · Jira</span></div>
+          <img src="/assets/recap-report.png" width="1522" height="907" loading="lazy" decoding="async" alt="Recap in Jira showing a generated monthly status report grouped by epic, ready to copy and paste.">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about reveal" id="about">
+  <div class="wrap">
+    <div>
+      <div class="kicker">The studio</div>
+      <h2>Small studio. High standards.</h2>
+      <p>Isogun Labs is an independent software studio. We build small, single-purpose apps that do one useful thing without asking you to set anything up — and that run on the platforms you already trust, so nothing has to leave them.</p>
+      <p>We start where the work already lives. Recap is the first of what we intend to be a small family of focused apps, each earning its place by doing one job exceptionally well.</p>
+    </div>
+    <div class="contact">
+      <div class="label">Get in touch</div>
+      <a href="mailto:support@isogunlabs.com">support@isogunlabs.com</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta reveal">
+  <div class="wrap">
+    <h2>Focused apps for the way you already work</h2>
+    <p>We build small, sharp tools that do one job exceptionally well — starting with Recap for Jira, and more on the way. Take a look at what we're building.</p>
+    <div class="cta-actions">
+      <a class="btn btn-orange" href="/get-started/">Get Started
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost-light" href="mailto:support@isogunlabs.com">Talk with us</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

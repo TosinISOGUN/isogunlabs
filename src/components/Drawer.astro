@@ -1,0 +1,25 @@
+---
+import { navLinks } from '../data/nav';
+import SocialLinks from './SocialLinks.astro';
+---
+<div class="drawer-overlay"></div>
+<aside class="drawer" id="mobile-drawer">
+  <div class="d-head">
+    <a class="logo" href="/">
+      <img class="mark" src="/assets/icons/mark.png" alt="" aria-hidden="true">
+      <b>Isogun Labs</b>
+    </a>
+    <button class="d-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <nav>
+    {navLinks.map((l) => (
+      <a class="d-link" href={l.href}>{l.label}</a>
+    ))}
+  </nav>
+  <a class="btn btn-orange" href="/get-started/">Get Started
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+  <SocialLinks class="d-socials" />
+</aside>
