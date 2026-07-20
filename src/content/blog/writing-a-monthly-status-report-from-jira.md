@@ -1,5 +1,5 @@
 ---
-title: "How to Write a Monthly Status Report From Your Jira Work"
+title: "Writing a Monthly Status Report From Jira"
 description: "A practical approach to turning completed Jira issues into a status report a manager actually wants to read — without an hour of copy-pasting from the board."
 pubDate: 2026-07-20
 ---

@@ -15,23 +15,43 @@ const { Content } = await render(post);
 
 const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
+const publishedTime = post.data.pubDate.toISOString();
+const modifiedTime = (post.data.updatedDate ?? post.data.pubDate).toISOString();
+
+const publisher = {
+  '@type': 'Organization',
+  name: 'Isogun Labs',
+  url: 'https://isogunlabs.com/',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://isogunlabs.com/assets/icons/icon-512.png',
+  },
+};
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: post.data.title,
   description: post.data.description,
-  datePublished: post.data.pubDate.toISOString(),
-  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
-  author: { '@type': 'Organization', name: 'Isogun Labs', '@id': 'https://isogunlabs.com/#org' },
-  publisher: { '@id': 'https://isogunlabs.com/#org' },
-  mainEntityOfPage: `https://isogunlabs.com/blog/${post.id}/`,
+  image: 'https://isogunlabs.com/assets/og-image.png',
+  datePublished: publishedTime,
+  dateModified: modifiedTime,
+  author: publisher,
+  publisher,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `https://isogunlabs.com/blog/${post.id}/`,
+  },
 };
 ---
 <BaseLayout
-  title={`${post.data.title} — Isogun Labs Blog`}
+  title={`${post.data.title} — Isogun Labs`}
   description={post.data.description}
   path={`/blog/${post.id}/`}
   jsonLd={jsonLd}
+  type="article"
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
 >
 
 <header class="page-hero">
