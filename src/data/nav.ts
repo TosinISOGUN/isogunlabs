@@ -6,7 +6,7 @@ export const navLinks = [
 ];
 
 export const socialLinks = [
-  { href: 'https://www.linkedin.com/groups/32670171', label: 'LinkedIn' },
+  { href: 'https://www.linkedin.com/company/isogun-labs', label: 'LinkedIn' },
   { href: 'https://x.com/isogunlabs', label: 'X (Twitter)' },
   { href: 'https://www.instagram.com/isogunlabs/', label: 'Instagram' },
   { href: 'https://www.youtube.com/@isogunlabs', label: 'YouTube' },
