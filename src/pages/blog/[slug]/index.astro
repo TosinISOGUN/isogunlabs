@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  author: { '@type': 'Organization', name: 'Isogun Labs', '@id': 'https://isogunlabs.com/#org' },
+  publisher: { '@id': 'https://isogunlabs.com/#org' },
+  mainEntityOfPage: `https://isogunlabs.com/blog/${post.id}/`,
+};
+---
+<BaseLayout
+  title={`${post.data.title} — Isogun Labs Blog`}
+  description={post.data.description}
+  path={`/blog/${post.id}/`}
+  jsonLd={jsonLd}
+>
+
+<header class="page-hero">
+  <div class="facets" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="kicker"><a href="/blog/" style="color:inherit;">Blog</a></div>
+    <h1>{post.data.title}</h1>
+    <p class="post-date">
+      <time datetime={post.data.pubDate.toISOString()}>{dateFmt.format(post.data.pubDate)}</time>
+    </p>
+  </div>
+</header>
+
+<section class="block reveal">
+  <div class="wrap">
+    <article class="prose">
+      <Content />
+    </article>
+  </div>
+</section>
+
+</BaseLayout>
