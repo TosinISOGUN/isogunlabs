@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout
+  title="Blog — Isogun Labs"
+  description="Notes on Jira, status reporting, and building small, focused apps for Atlassian."
+  path="/blog/"
+>
+
+<header class="page-hero">
+  <div class="facets" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="kicker">Blog</div>
+    <h1>Notes on <span class="amber">Jira</span> and building focused apps</h1>
+    <p>Practical writing on status reporting, Atlassian, and how we build Isogun Labs apps.</p>
+  </div>
+</header>
+
+<section class="block reveal">
+  <div class="wrap">
+    <div class="blog-grid">
+      {posts.map((post) => (
+        <a class="blog-card" href={`/blog/${post.id}/`}>
+          <div class="meta">
+            <time datetime={post.data.pubDate.toISOString()}>{dateFmt.format(post.data.pubDate)}</time>
+          </div>
+          <h2>{post.data.title}</h2>
+          <p>{post.data.description}</p>
+          <span class="read-more">Read post
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
