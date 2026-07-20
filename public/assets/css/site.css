@@ -199,9 +199,6 @@ section.block { padding:88px 0; }
 .page-hero h1 .amber { color:var(--orange); }
 .page-hero p { color:#C7D5EC; font-size:1.14rem; max-width:60ch; margin:0 auto; }
 .page-hero .kicker { color:var(--orange); }
-.doc-hero { background:url('/assets/hero-6.webp') center/cover no-repeat; }
-.doc-scrim { position:absolute; inset:0; background:radial-gradient(ellipse 80% 90% at 50% 30%,rgba(6,14,32,.62) 0%,rgba(6,14,32,.88) 100%); }
-.doc-scrim::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 50% 40% at 50% 0%,rgba(245,130,31,.22),transparent 70%); }
 
 /* ===== product catalog (get-started) ===== */
 .catalog { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
