@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Get Started — Isogun Labs Apps for Atlassian & Jira"
+  description="Browse Isogun Labs apps for Atlassian. Start with Recap — one-click monthly status reports for Jira. More focused apps on the way."
+  path="/get-started/"
+>
+
+<header class="page-hero">
+  <div class="facets" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="kicker">Get Started</div>
+    <h1>Find the right app for <span class="amber">your team</span></h1>
+    <p>Small, focused apps that install in a click and start working immediately — no setup, no configuration. Pick one and go.</p>
+  </div>
+</header>
+
+<section class="block reveal">
+  <div class="wrap">
+    <div class="catalog">
+
+      <article class="cat-card">
+        <div class="top">
+          <span class="ic" aria-hidden="true">
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M146,96 H330 L366,132 V396 H146 Z" fill="#C2610C"/><path d="M330,96 L366,132 H330 Z" fill="#7C3A08"/><rect x="174" y="186" width="164" height="18" rx="9" fill="#FDE7C7"/><rect x="174" y="228" width="164" height="18" rx="9" fill="#E8C39E"/><rect x="174" y="270" width="100" height="18" rx="9" fill="#E8C39E"/><circle cx="360" cy="390" r="52" fill="#15803D" stroke="#FFF" stroke-width="10"/><polyline points="336,392 354,410 388,368" fill="none" stroke="#FFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <div>
+            <div class="sub">For Jira Cloud</div>
+            <h3>Recap</h3>
+          </div>
+        </div>
+        <p>One click turns your completed Jira work from the last 30 days into a written monthly status report — grouped by epic, ready to paste into a status update or performance review.</p>
+        <div class="foot">
+          <a class="btn-text" href="https://recap.isogunlabs.com/">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn-text" href="https://recap.isogunlabs.com/docs.html">Docs</a>
+        </div>
+      </article>
+
+      <article class="cat-card soon">
+        <span class="badge-soon">Coming soon</span>
+        <div class="top" style="margin-top:14px;">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+          <div><h3>More focused apps</h3></div>
+        </div>
+        <p>We're building a small family of single-purpose apps for the tools teams already use. New releases will appear here first.</p>
+      </article>
+
+      <article class="cat-card soon">
+        <span class="badge-soon">In the workshop</span>
+        <div class="top" style="margin-top:14px;">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></span>
+          <div><h3>Have an idea?</h3></div>
+        </div>
+        <p>If there's a small, painful task in your Atlassian workflow you wish a tool would just handle, we'd love to hear it.</p>
+        <div class="foot"><a class="btn-text" href="mailto:support@isogunlabs.com">Tell us
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta reveal">
+  <div class="wrap">
+    <h2>Not sure where to start?</h2>
+    <p>Recap is the fastest way to see how we build — watch a month of Jira work turn into a written status report in one click.</p>
+    <div class="cta-actions">
+      <a class="btn btn-orange" href="https://recap.isogunlabs.com/">Explore Recap
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost-light" href="mailto:support@isogunlabs.com">Talk with us</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

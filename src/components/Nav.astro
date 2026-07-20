@@ -1,0 +1,32 @@
+---
+import { navLinks } from '../data/nav';
+import SocialLinks from './SocialLinks.astro';
+
+const path = Astro.url.pathname;
+---
+<div class="util">
+  <div class="wrap">
+    <div class="u-left"><a href="mailto:support@isogunlabs.com">support@isogunlabs.com</a></div>
+    <SocialLinks />
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Isogun Labs home">
+      <img class="mark" src="/assets/icons/mark.png" alt="" aria-hidden="true">
+      <b>Isogun Labs</b>
+    </a>
+    <div class="nav-mid">
+      {navLinks.map((l) => (
+        <a href={l.href} class={path === l.href ? 'active' : undefined}>{l.label}</a>
+      ))}
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-blue btn-sm" href="/get-started/">Get Started</a>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
