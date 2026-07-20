@@ -12,9 +12,12 @@ interface Props {
   ogDescription?: string;
   jsonLd?: object;
   preloadImage?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
-const { title, description, path, ogTitle, ogDescription, jsonLd, preloadImage } = Astro.props;
+const { title, description, path, ogTitle, ogDescription, jsonLd, preloadImage, type, publishedTime, modifiedTime } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -25,7 +28,9 @@ const { title, description, path, ogTitle, ogDescription, jsonLd, preloadImage }
 <meta name="author" content="Isogun Labs">
 <meta name="theme-color" content="#0A1A3C">
 
-<Seo title={title} description={description} path={path} ogTitle={ogTitle} ogDescription={ogDescription} jsonLd={jsonLd} />
+<Seo title={title} description={description} path={path} ogTitle={ogTitle} ogDescription={ogDescription} jsonLd={jsonLd} type={type} publishedTime={publishedTime} modifiedTime={modifiedTime} />
+
+<link rel="alternate" type="application/rss+xml" title="Isogun Labs Blog" href="/rss.xml">
 
 <!-- Google Search Console: verified via DNS TXT record at Porkbun (no meta tag needed). -->
 <!-- Bing Webmaster Tools: verified via HTML meta tag. -->

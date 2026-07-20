@@ -7,6 +7,9 @@ interface Props {
   ogDescription?: string;
   robots?: string;
   jsonLd?: object;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 const {
@@ -17,6 +20,9 @@ const {
   ogDescription = description,
   robots = 'index, follow, max-image-preview:large',
   jsonLd,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
 } = Astro.props;
 
 const canonical = new URL(path, Astro.site).toString();
@@ -27,7 +33,7 @@ const ogImage = new URL('/assets/og-image.png', Astro.site).toString();
 <link rel="canonical" href={canonical}>
 <meta name="robots" content={robots}>
 
-<meta property="og:type" content="website">
+<meta property="og:type" content={type}>
 <meta property="og:site_name" content="Isogun Labs">
 <meta property="og:title" content={ogTitle}>
 <meta property="og:description" content={ogDescription}>
@@ -37,6 +43,9 @@ const ogImage = new URL('/assets/og-image.png', Astro.site).toString();
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Isogun Labs — small, focused apps for the tools you already use">
 <meta property="og:locale" content="en_US">
+{type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime}>}
+{type === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime}>}
+{type === 'article' && <meta property="article:publisher" content="https://isogunlabs.com/">}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@isogunlabs">
 <meta name="twitter:title" content={ogTitle}>
