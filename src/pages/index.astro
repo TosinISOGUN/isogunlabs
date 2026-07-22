@@ -1,5 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCover from '../components/BlogCover.astro';
+import { getCollection } from 'astro:content';
+
+const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+const postDateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -197,6 +204,40 @@ const jsonLd = {
     </div>
   </div>
 </section>
+
+{latestPosts.length > 0 && (
+  <section class="block reveal" id="writing" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">From the blog</div>
+        <h2>Notes on <span class="amber">Jira</span> and building focused apps</h2>
+        <p>Practical writing on status reporting, custom field hygiene, and how we build.</p>
+      </div>
+      <div class="blog-grid">
+        {latestPosts.map((post) => (
+          <a class="blog-card" href={`/blog/${post.id}/`}>
+            <BlogCover variant={post.data.cover} size="sm" />
+            <div class="blog-card-body">
+              <div class="meta">
+                <time datetime={post.data.pubDate.toISOString()}>{postDateFmt.format(post.data.pubDate)}</time>
+              </div>
+              <h2>{post.data.title}</h2>
+              <p>{post.data.description}</p>
+              <span class="read-more">Read post
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div style="text-align:center; margin-top:36px;">
+        <a class="btn btn-orange" href="/blog/">Read the blog
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+)}
 
 <section class="cta reveal">
   <div class="wrap">

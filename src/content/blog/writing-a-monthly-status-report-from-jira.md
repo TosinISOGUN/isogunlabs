@@ -2,6 +2,7 @@
 title: "Writing a Monthly Status Report From Jira"
 description: "A practical approach to turning completed Jira issues into a status report a manager actually wants to read — without an hour of copy-pasting from the board."
 pubDate: 2026-07-20
+cover: "report"
 ---
 
 Most monthly status reports get written the same way: the deadline shows up, you open Jira,
