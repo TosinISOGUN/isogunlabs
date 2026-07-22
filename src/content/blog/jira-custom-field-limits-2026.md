@@ -2,6 +2,7 @@
 title: "Jira Custom Field Limits: What Changes in 2026"
 description: "Atlassian is capping Jira to 700 fields per configuration starting March 2026. What the limit really means, who hits it first, and how to audit your fields now."
 pubDate: 2026-07-22
+cover: "fields"
 ---
 
 Open your Jira instance's field configuration page right now and count. Not the fields you
@@ -11,6 +12,12 @@ sprint at a time, one integration at a time, one "can we just add a quick field 
 Slack message at a time. Nobody sits down and plans 400 custom fields. They just... arrive.
 
 That used to be a tidiness problem. Starting March 2026, it's a hard wall.
+
+<div class="fact-grid">
+  <div class="fact"><div class="n">700</div><div class="l">fields per field configuration scheme</div></div>
+  <div class="fact"><div class="n">150</div><div class="l">work types per space, same deadline</div></div>
+  <div class="fact"><div class="n">Mar 2026</div><div class="l">enforcement begins — Sept 2026 for the second wave</div></div>
+</div>
 
 ## The actual number, and what it applies to
 
