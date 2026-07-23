@@ -48,3 +48,29 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Notify IndexNow (Bing, Yandex, Seznam, etc. — not Google) that the live
+  # URLs changed, so they crawl the fresh content instead of waiting for their
+  # own schedule. Reads the URL list from the committed sitemap (source of
+  # truth, avoids CDN cache). The key is public by design — it's also hosted at
+  # /<key>.txt so IndexNow can verify domain ownership.
+  notify-indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Submit URLs to IndexNow
+        env:
+          INDEXNOW_KEY: 1bbf2e5e0d685dba80249c4089786d1e
+        run: |
+          urls=$(grep -oP '(?<=<loc>)[^<]+' public/sitemap.xml)
+          echo "Submitting $(echo "$urls" | wc -l) URLs to IndexNow:"
+          echo "$urls"
+          payload=$(printf '%s\n' "$urls" | jq -R . | jq -s \
+            --arg key "$INDEXNOW_KEY" \
+            '{host:"isogunlabs.com", key:$key, keyLocation:("https://isogunlabs.com/"+$key+".txt"), urlList:.}')
+          curl -sS -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$payload" -w "\nIndexNow HTTP status: %{http_code}\n"
