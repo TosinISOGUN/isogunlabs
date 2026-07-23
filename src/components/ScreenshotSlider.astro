@@ -1,0 +1,56 @@
+---
+// Reusable auto-transitioning product screenshot slider, used inside a
+// ".mock-glow" wrapper on product showcase sections. Cross-fades through
+// `shots` on an interval, with click-to-jump dots and a subtle link back
+// to the live product. Built once for Recap, meant to be reused as-is for
+// every future app's showcase section.
+interface Shot {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+interface Props {
+  shots: Shot[];
+  barLabel: string;
+  productUrl: string;
+  productLabel?: string;
+  intervalMs?: number;
+}
+
+const { shots, barLabel, productUrl, productLabel = 'Open live', intervalMs = 2400 } = Astro.props;
+---
+<div class="mock shot-slider" data-interval={intervalMs}>
+  <div class="bar" aria-hidden="true"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">{barLabel}</span></div>
+  <div class="shot-frame">
+    {shots.map((s, i) => (
+      <img
+        class={`shot${i === 0 ? ' active' : ''}`}
+        src={s.src}
+        width={s.width}
+        height={s.height}
+        loading={i === 0 ? 'eager' : 'lazy'}
+        decoding="async"
+        alt={s.alt}
+      />
+    ))}
+    <a class="shot-link" href={productUrl}>
+      {productLabel}
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+    {shots.length > 1 && (
+      <div class="shot-dots" role="tablist" aria-label="Screenshots">
+        {shots.map((_, i) => (
+          <button
+            type="button"
+            class={`dot${i === 0 ? ' active' : ''}`}
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-label={`Show screenshot ${i + 1} of ${shots.length}`}
+          ></button>
+        ))}
+      </div>
+    )}
+  </div>
+</div>

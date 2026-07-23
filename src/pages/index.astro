@@ -1,11 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogCard from '../components/BlogCard.astro';
+import ScreenshotSlider from '../components/ScreenshotSlider.astro';
 import { getCollection } from 'astro:content';
 
 const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
+
+const recapShots = [
+  { src: '/assets/recap-01-idle.png', width: 1523, height: 943, alt: 'Recap panel in Jira before generating a report, showing the one-click Generate report button.' },
+  { src: '/assets/context-done.png', width: 1521, height: 907, alt: 'Recap in Jira finishing report generation, pulling in the last 30 days of completed work.' },
+  { src: '/assets/recap-report.png', width: 1522, height: 907, alt: 'Recap in Jira showing a generated monthly status report grouped by epic, ready to copy and paste.' },
+  { src: '/assets/recap-03-empty.png', width: 1519, height: 881, alt: 'Recap in Jira showing the empty state when there is no completed work in the selected period.' },
+];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -95,31 +103,57 @@ const jsonLd = {
   </div>
 </header>
 
-<section class="block reveal" id="approach">
+<section class="block reveal approach" id="approach">
   <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Our approach</div>
-      <h2>Software that does <span class="amber">one thing</span>, and gets out of the way</h2>
-      <p>No sprawling suites. No setup wizards. Just small, sharp tools that respect your time and your data.</p>
+    <div class="approach-hero">
+      <div class="hive hive-l" aria-hidden="true">
+        <div class="hex-col">
+          <span class="hex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span>
+          <span class="hex ghost"></span>
+          <span class="hex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/></svg></span>
+        </div>
+        <div class="hex-col down">
+          <span class="hex ghost"></span>
+          <span class="hex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="approach-copy">
+        <div class="kicker">Our approach</div>
+        <h2>Software that does <span class="amber">one thing</span>, and gets out of the way</h2>
+        <p>No sprawling suites. No setup wizards. Just small, sharp tools that respect your time and your data — built to disappear into the work you already do.</p>
+      </div>
+
+      <div class="hive hive-r" aria-hidden="true">
+        <div class="hex-col down">
+          <span class="hex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
+          <span class="hex ghost"></span>
+        </div>
+        <div class="hex-col">
+          <span class="hex ghost"></span>
+          <span class="hex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+        </div>
+      </div>
     </div>
-    <div class="principles">
-      <div class="principle">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+
+    <div class="approach-grid">
+      <div class="appr-item">
+        <span class="appr-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span>
         <h3>One job, done well</h3>
         <p>Each app solves a single real problem end to end — no bloat, no feature creep, no dashboards to babysit.</p>
       </div>
-      <div class="principle">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div>
+      <div class="appr-item">
+        <span class="appr-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></span>
         <h3>Nothing to configure</h3>
         <p>Install it and it works. No settings to tune, no onboarding maze — value on the very first click.</p>
       </div>
-      <div class="principle">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/></svg></div>
+      <div class="appr-item">
+        <span class="appr-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/></svg></span>
         <h3>Private by design</h3>
         <p>Minimal permissions, no third-party servers, and we store nothing. Your data never leaves the platform it lives on.</p>
       </div>
-      <div class="principle">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
+      <div class="appr-item">
+        <span class="appr-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
         <h3>Crafted, not shipped</h3>
         <p>We sweat the copy, the empty states, and the details most tools skip. It should feel considered, because it is.</p>
       </div>
@@ -127,7 +161,23 @@ const jsonLd = {
   </div>
 </section>
 
-<div class="trust">
+<section class="integrations reveal contain-band light">
+  <div class="wrap integrations-inner">
+    <div class="kicker">Works where you already work</div>
+    <h2>Plug it in. <span class="amber">Start working.</span></h2>
+    <p>From Jira and Confluence to the wider Atlassian stack, our apps drop straight into the tools your team already runs on — no connectors, no migration, no data leaving the platform. Install, and you're already using it.</p>
+    <ul class="stack-row" aria-label="Atlassian tools our apps work with">
+      <li><span class="stack-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 12l9 9 9-9-9-9Z"/><path d="M12 8.5 15.5 12 12 15.5 8.5 12 12 8.5Z"/></svg></span>Jira</li>
+      <li><span class="stack-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15c4-6 8 6 16-2M4 9c4 6 8-6 16 2"/></svg></span>Confluence</li>
+      <li><span class="stack-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16l-3 16H7L4 4Z"/><path d="M9.5 12h5l-.7 4h-3.6l-.7-4Z"/></svg></span>Bitbucket</li>
+      <li><span class="stack-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><rect x="6.5" y="6.5" width="4" height="8" rx="1"/><rect x="13.5" y="6.5" width="4" height="4.5" rx="1"/></svg></span>Trello</li>
+      <li><span class="stack-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></svg></span>Forge</li>
+      <li><span class="stack-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17a4 4 0 0 1 0-8 6 6 0 0 1 11.5-1.5A3.5 3.5 0 0 1 18 17H6Z"/></svg></span>Atlassian Cloud</li>
+    </ul>
+  </div>
+</section>
+
+<div class="trust reveal contain-band">
   <div class="wrap">
     <span>Built on <b>Atlassian Forge</b></span><span class="sep"></span>
     <span><b>Runs entirely on Atlassian</b></span><span class="sep"></span>
@@ -135,7 +185,7 @@ const jsonLd = {
   </div>
 </div>
 
-<section class="stats reveal">
+<section class="stats reveal contain-band">
   <div class="wrap">
     <div class="head">
       <div class="kicker">Built the right way</div>
@@ -151,7 +201,7 @@ const jsonLd = {
   </div>
 </section>
 
-<section class="block reveal" id="products" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+<section class="block reveal contain-band light" id="products">
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">Products</div>
@@ -180,16 +230,50 @@ const jsonLd = {
         </div>
       </div>
       <div class="mock-glow">
-        <div class="mock">
-          <div class="bar" aria-hidden="true"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">recap · Jira</span></div>
-          <img src="/assets/recap-report.png" width="1522" height="907" loading="lazy" decoding="async" alt="Recap in Jira showing a generated monthly status report grouped by epic, ready to copy and paste.">
+        <ScreenshotSlider
+          shots={recapShots}
+          barLabel="recap · Jira"
+          productUrl="https://recap.isogunlabs.com/"
+          productLabel="Open Recap"
+        />
+        <div class="mock-stat">
+          <div class="n" data-count>30</div>
+          <div class="l">days of completed work turned into a ready-to-send report, in a single click</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="about reveal" id="about">
+<section class="block reveal split" id="why">
+  <div class="wrap split-grid">
+    <div class="split-copy">
+      <div class="kicker">Why it matters</div>
+      <h2>AI is speeding software up. <span class="amber">Trust keeps it moving.</span></h2>
+      <p>As teams ship faster than ever, the tools around the work should stay quiet, private, and dependable — not one more thing to manage. We store nothing, run on no third-party servers, and ask for the least access possible. That's the only kind of software we build.</p>
+      <div class="split-actions">
+        <a class="btn btn-blue" href="/get-started/">Explore our apps
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn-text" href="/blog/">Read the blog
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="split-stats">
+      <div class="split-stat">
+        <div class="n" data-count>100%</div>
+        <div class="l">of the work runs on Atlassian — nothing leaves the platform you already trust</div>
+      </div>
+      <div class="split-stat">
+        <div class="n" data-count>0</div>
+        <div class="l">third-party servers behind any app we ship — your data has one home, not two</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about reveal contain-band" id="about">
   <div class="wrap">
     <div>
       <div class="kicker">The studio</div>
@@ -205,7 +289,7 @@ const jsonLd = {
 </section>
 
 {latestPosts.length > 0 && (
-  <section class="block reveal" id="writing" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <section class="block reveal contain-band bare" id="writing">
     <div class="wrap">
       <div class="section-head">
         <div class="kicker">From the blog</div>
@@ -225,11 +309,14 @@ const jsonLd = {
 )}
 
 <section class="cta reveal">
-  <div class="wrap">
-    <h2>Focused apps for the way you already work</h2>
-    <p>We build small, sharp tools that do one job exceptionally well — starting with Recap for Jira, and more on the way. Take a look at what we're building.</p>
+  <div class="cta-facets" aria-hidden="true"></div>
+  <div class="wrap cta-split">
+    <div class="cta-copy">
+      <h2>Ready to work with less friction?</h2>
+      <p>Join the teams putting small, private tools to work right inside Atlassian. Start with Recap for Jira — and see what focused software can do for the way you already work.</p>
+    </div>
     <div class="cta-actions">
-      <a class="btn btn-orange" href="/get-started/">Get Started
+      <a class="btn btn-orange" href="/get-started/">Explore our apps
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <a class="btn btn-ghost-light" href="mailto:support@isogunlabs.com">Talk with us</a>

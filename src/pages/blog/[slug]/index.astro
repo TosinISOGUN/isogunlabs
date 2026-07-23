@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import BlogCover from '../../../components/BlogCover.astro';
 import BlogCard from '../../../components/BlogCard.astro';
+import ShareBar from '../../../components/ShareBar.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -79,6 +80,7 @@ const jsonLd = {
   <div class="wrap">
     <div style="max-width:70ch; margin:0 auto;">
       <BlogCover variant={post.data.cover} size="lg" />
+      <ShareBar url={`https://isogunlabs.com/blog/${post.id}/`} title={post.data.title} />
     </div>
     <article class="prose">
       <Content />
