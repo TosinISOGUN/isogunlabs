@@ -62,9 +62,14 @@
   if (reduce || !('IntersectionObserver' in window)) {
     reveals.forEach(function (el) { el.classList.add('in'); });
   } else {
+    // threshold:0 (fire on any intersection) rather than a fixed area %:
+    // a fixed 0.1 never fires for elements taller than ~10x the viewport
+    // (a long post on a narrow mobile column), leaving them stuck at
+    // opacity:0. rootMargin trims the viewport bottom so the reveal still
+    // triggers a moment after the element enters, for all element sizes.
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
     reveals.forEach(function (el) { io.observe(el); });
   }
 })();
