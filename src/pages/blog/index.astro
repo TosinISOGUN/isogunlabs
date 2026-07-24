@@ -7,8 +7,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 <BaseLayout
-  title="Blog — Isogun Labs"
-  description="Notes on Jira, status reporting, and building small, focused apps for Atlassian."
+  title="Blog — Jira & Atlassian Notes | Isogun Labs"
+  description="Practical guides on Jira status reporting, admin housekeeping, and the Atlassian Marketplace, from the team building Recap and other focused Atlassian apps."
   path="/blog/"
 >
 
@@ -16,8 +16,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   <div class="facets" aria-hidden="true"></div>
   <div class="wrap">
     <div class="kicker">Blog</div>
-    <h1>Notes on <span class="amber">Jira</span> and building focused apps</h1>
-    <p>Practical writing on status reporting, Atlassian, and how we build Isogun Labs apps.</p>
+    <h1>Notes on <span class="amber">Jira status reporting</span> and the Atlassian Marketplace</h1>
+    <p>Practical writing on Jira admin, status reporting, and how we build focused Atlassian apps.</p>
   </div>
 </header>
 
