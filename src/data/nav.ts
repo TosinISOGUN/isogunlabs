@@ -10,5 +10,5 @@ export const socialLinks = [
   { href: 'https://www.linkedin.com/company/isogun-labs', label: 'LinkedIn' },
   { href: 'https://x.com/isogunlabs', label: 'X (Twitter)' },
   { href: 'https://www.instagram.com/isogunlabs/', label: 'Instagram' },
-  { href: 'https://www.youtube.com/@isogunlabs', label: 'YouTube' },
+  { href: 'https://www.youtube.com/@isogun_labs', label: 'YouTube' },
 ];
