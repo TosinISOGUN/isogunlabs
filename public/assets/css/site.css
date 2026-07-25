@@ -337,6 +337,10 @@ footer .wrap { padding:60px 24px 34px; }
 .foot-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:32px; margin-bottom:44px; }
 .foot-brand .logo { margin-bottom:16px; }
 .foot-brand p { color:#8FA0BE; font-size:.94rem; max-width:32ch; margin:0 0 18px; }
+.partner-row { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+.partner-mark { width:24px; height:24px; object-fit:contain; opacity:.85; }
+.partner-divider { width:1px; height:22px; background:rgba(255,255,255,.16); }
+.partner-badge { height:24px; width:auto; opacity:.9; }
 .foot-col h4 { font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:#7C8FB0; margin:4px 0 16px; }
 .foot-col a { display:block; color:#C0CCE0; text-decoration:none; font-size:.95rem; margin-bottom:11px; transition:color .2s; }
 .foot-col a:hover { color:var(--orange); }
