@@ -330,6 +330,8 @@ section.block { padding:76px 0; }
 .prose a { color:var(--orange-600); font-weight:700; text-decoration:underline; }
 .prose strong { color:var(--ink); }
 .prose code { background:var(--panel); border-radius:4px; padding:.1em .4em; font-size:.92em; }
+.video-embed { position:relative; width:100%; aspect-ratio:16/9; margin:28px 0 36px; border-radius:12px; overflow:hidden; box-shadow:var(--shadow-lg); background:var(--panel); }
+.video-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
 
 /* footer */
 footer { background:var(--navy-950); color:#AEBBD2; }
