@@ -1,11 +1,17 @@
 ---
+import { categoryFor, type BlogCoverVariant } from '../lib/blogCategory';
+
 interface Props {
-  variant: 'fields' | 'report' | 'market' | 'trust';
+  variant: BlogCoverVariant;
   size?: 'sm' | 'lg';
 }
 const { variant, size = 'sm' } = Astro.props;
+const category = categoryFor(variant);
+// Category color only applies to the small (listing-card) cover. The large
+// post-page banner keeps its original single orange gradient, unchanged —
+// see prompts/blog-page-revamp.md's "individual post pages unaffected" rule.
 ---
-<div class:list={['blog-cover', `blog-cover-${size}`]} aria-hidden="true">
+<div class:list={['blog-cover', `blog-cover-${size}`, size === 'sm' && `blog-cover-${category.color}`]} aria-hidden="true">
   <div class="blog-cover-grid"></div>
   {variant === 'fields' && (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
