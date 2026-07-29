@@ -1,10 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
+import BlogCover from '../../components/BlogCover.astro';
+import BlogSidebar from '../../components/BlogSidebar.astro';
 import { getCollection } from 'astro:content';
+import { categoryFor } from '../../lib/blogCategory';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const [featured, ...rest] = posts;
+const featuredCategory = featured ? categoryFor(featured.data.cover) : null;
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const readingTime = (post: (typeof posts)[number]) =>
+  Math.max(1, Math.round((post.body ?? '').trim().split(/\s+/).length / 200));
+
+// Only tabs for categories actually present in the (non-featured) grid —
+// with 5 posts total there's no reason to show an empty tab.
+const categoriesInGrid = [...new Set(rest.map((post) => categoryFor(post.data.cover).label))];
 ---
 <BaseLayout
   title="Blog — Jira & Atlassian Notes | Isogun Labs"
@@ -23,9 +36,43 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
 <section class="block">
   <div class="wrap">
-    <div class="blog-grid">
-      {posts.map((post) => <BlogCard post={post} />)}
+
+    {featured && featuredCategory && (
+      <a class="blog-featured" href={`/blog/${featured.id}/`}>
+        <BlogCover variant={featured.data.cover} size="sm" />
+        <div class="blog-featured-body">
+          <h2>{featured.data.title}</h2>
+          <p>{featured.data.description}</p>
+          <div class="blog-card-meta">
+            <span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 10h18M8 2v4M16 2v4"></path></svg>
+              <time datetime={featured.data.pubDate.toISOString()}>{dateFmt.format(featured.data.pubDate)}</time>
+            </span>
+            <span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+              {readingTime(featured)} min read
+            </span>
+          </div>
+        </div>
+      </a>
+    )}
+
+    {categoriesInGrid.length > 1 && (
+      <div class="blog-filters" role="tablist" aria-label="Filter posts by category">
+        <button type="button" class="blog-filter active" data-filter="all">All</button>
+        {categoriesInGrid.map((label) => (
+          <button type="button" class="blog-filter" data-filter={label}>{label}</button>
+        ))}
+      </div>
+    )}
+
+    <div class="blog-layout">
+      <div class="blog-grid">
+        {rest.map((post) => <BlogCard post={post} />)}
+      </div>
+      <BlogSidebar />
     </div>
+
   </div>
 </section>
 

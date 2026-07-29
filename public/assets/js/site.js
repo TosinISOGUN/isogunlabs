@@ -143,6 +143,25 @@
     start();
   });
 
+  // Blog category filter tabs (blog/index.astro). Client-side only — shows
+  // or hides .blog-card elements in the grid by their data-category
+  // attribute. The featured post above the grid is never filtered.
+  var blogFilters = document.querySelector('.blog-filters');
+  if (blogFilters) {
+    var filterButtons = Array.prototype.slice.call(blogFilters.querySelectorAll('.blog-filter'));
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.blog-grid .blog-card'));
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterButtons.forEach(function (b) { b.classList.toggle('active', b === btn); });
+        var filter = btn.getAttribute('data-filter');
+        cards.forEach(function (card) {
+          var show = filter === 'all' || card.getAttribute('data-category') === filter;
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  }
+
   // Share bar (ShareBar.astro). X/LinkedIn are plain links; Instagram has no
   // URL-based share intent and the plain "copy link" button both just copy
   // the post URL and show a short confirmation in place.
