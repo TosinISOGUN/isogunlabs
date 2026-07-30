@@ -293,7 +293,8 @@ section.block { padding:76px 0; }
 .blog-card-cover { position:relative; }
 .blog-card .blog-cover { aspect-ratio:16/10; }
 .blog-card-category { position:absolute; z-index:3; top:14px; left:14px; font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--white); background:rgba(8,18,38,.35); backdrop-filter:blur(2px); border-radius:5px; padding:5px 10px; }
-.blog-card-title-overlay { position:absolute; z-index:3; left:0; right:0; bottom:0; margin:0; padding:36px 16px 14px; font-size:1.06rem; font-weight:800; color:var(--white); line-height:1.3; letter-spacing:-.01em; background:linear-gradient(to top,rgba(4,9,20,.72),rgba(4,9,20,0)); }
+.blog-card-title-overlay,
+.prose .blog-card-title-overlay { position:absolute; z-index:3; left:0; right:0; bottom:0; margin:0; padding:36px 16px 14px; font-size:1.06rem; font-weight:800; color:var(--white); line-height:1.3; letter-spacing:-.01em; background:linear-gradient(to top,rgba(4,9,20,.72),rgba(4,9,20,0)); }
 .blog-card-footer { display:flex; flex-direction:column; flex:1; padding:16px 18px 18px; gap:10px; }
 .blog-card-meta { display:flex; gap:14px; align-items:center; font-size:.76rem; color:var(--body); }
 .blog-card-meta span { display:inline-flex; align-items:center; gap:6px; }
