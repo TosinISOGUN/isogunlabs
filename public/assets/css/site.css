@@ -414,6 +414,8 @@ footer .wrap { padding:60px 24px 34px; }
   .cta .wrap{ padding:48px 22px; }
   .util{ font-size:.78rem; }
   .prod-strip .wrap{ gap:10px 18px; }
+  .trust .wrap{ flex-direction:column; gap:10px; text-align:center; }
+  .trust .sep{ display:none; }
   /* blog: compact cards + smaller type on phones */
   .blog-grid{ gap:16px; }
   .blog-card-body{ padding:16px 18px 0; }
