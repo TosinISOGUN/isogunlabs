@@ -117,17 +117,20 @@ h1,h2,h3 { letter-spacing:-.02em; }
 body.drawer-open { overflow:hidden; }
 @media (max-width:860px){ .nav-mid{ display:none; } .util .u-left{ display:none; } .hamburger{ display:block; } .nav-right .btn-blue{ display:none; } }
 
-/* hero */
-.hero { position:relative; margin-top:-70px; padding-top:70px; background:url('/assets/hero-3.webp') center/cover no-repeat; color:#fff; overflow:hidden; }
-.hero-scrim { position:absolute; inset:0; background:linear-gradient(100deg,rgba(6,14,32,.94) 0%,rgba(6,14,32,.82) 32%,rgba(6,14,32,.5) 60%,rgba(6,14,32,.32) 100%), linear-gradient(0deg,rgba(6,14,32,.35),transparent 45%); z-index:0; }
+/* hero — near-black "SaaS" treatment: flat dark ground, faint grid, soft
+   brand-color glow, no photo. Replaces the old navy-scrim/photo hero. */
+.hero { position:relative; margin-top:-70px; padding-top:70px; background:#0B0B0E; color:#fff; overflow:hidden; }
+.hero-grid { position:absolute; inset:0; z-index:0; opacity:.55; background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px); background-size:46px 46px; -webkit-mask-image:radial-gradient(ellipse 85% 60% at 50% 0%,#000 30%,transparent 100%); mask-image:radial-gradient(ellipse 85% 60% at 50% 0%,#000 30%,transparent 100%); }
+.hero-glow { position:absolute; inset:0; z-index:0; background:radial-gradient(560px 460px at 86% -10%,rgba(245,130,31,.24),transparent 62%),radial-gradient(520px 440px at 2% 108%,rgba(35,114,224,.26),transparent 62%); }
+.hero-scrim { position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(11,11,14,.05) 0%,rgba(11,11,14,.35) 55%,rgba(11,11,14,.92) 100%); }
 .hero .wrap { position:relative; z-index:1; padding-top:72px; padding-bottom:72px; }
 .hero .hero-copy { max-width:640px; }
-.eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:.76rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#BFD0EA; }
+.eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:.76rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#A7ACC0; }
 .eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--orange); box-shadow:0 0 0 4px rgba(245,130,31,.22); }
 .hero h1 { font-size:clamp(2.05rem,6.4vw,4rem); line-height:1.05; font-weight:800; margin:20px 0 0; letter-spacing:-.03em; }
 .hero h1.typing::after { content:''; display:inline-block; width:.055em; height:1.05em; background:var(--orange); margin-left:.06em; vertical-align:-.12em; animation:caret 1s step-end infinite; }
 @keyframes caret { 50% { opacity:0; } }
-.hero .lead { font-size:clamp(1.05rem,1.7vw,1.24rem); color:#C7D5EC; max-width:46ch; margin:22px 0 0; }
+.hero .lead { font-size:clamp(1.05rem,1.7vw,1.24rem); color:#B4B8C8; max-width:46ch; margin:22px 0 0; }
 .hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-top:34px; }
 .hero-actions .btn-text { color:#fff; }
 
