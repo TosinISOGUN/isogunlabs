@@ -44,10 +44,10 @@ h1,h2,h3 { letter-spacing:-.02em; }
 .btn-orange { color:#fff; background:var(--black); }
 .btn-orange:hover { background:#2A2A2A; transform:translateY(-2px); }
 .btn-orange:hover svg { transform:translateX(4px); }
-.hero .btn-orange, .cta .btn-orange, .page-hero .btn-orange, .about .btn-orange, .stats .btn-orange, footer .btn-orange {
+.hero .btn-orange, .cta .btn-orange, .page-hero .btn-orange, .about .btn-orange, .stats .btn-orange, footer .btn-orange, .drawer .btn-orange {
   background:var(--white); color:#000;
 }
-.hero .btn-orange:hover, .cta .btn-orange:hover, .page-hero .btn-orange:hover, .about .btn-orange:hover, .stats .btn-orange:hover, footer .btn-orange:hover {
+.hero .btn-orange:hover, .cta .btn-orange:hover, .page-hero .btn-orange:hover, .about .btn-orange:hover, .stats .btn-orange:hover, footer .btn-orange:hover, .drawer .btn-orange:hover {
   background:#E5E5E5;
 }
 /* secondary — outline, adapts to surrounding text color automatically */
@@ -84,7 +84,7 @@ h1,h2,h3 { letter-spacing:-.02em; }
 .nav-mid { display:flex; align-items:center; gap:30px; }
 .nav-mid a { color:#E6E6E6; text-decoration:none; font-weight:600; font-size:.98rem; padding:6px 0; border-bottom:2px solid transparent; transition:border-color .2s,color .2s; }
 .nav-mid a:hover, .nav-mid a.active { border-color:#fff; }
-.nav-right { display:flex; align-items:center; gap:14px; }
+.nav-right { display:flex; align-items:center; gap:14px; color:#fff; }
 /* mobile hamburger + slide-in drawer */
 .hamburger { display:none; background:none; border:0; cursor:pointer; padding:8px; margin-left:2px; }
 .hamburger span { display:block; width:24px; height:2px; background:#fff; margin:5px 0; transition:transform .3s ease, opacity .2s ease; }
@@ -274,6 +274,10 @@ section.block { padding:76px 0; }
 /* Two-column body: card grid + sidebar */
 .blog-layout { display:grid; grid-template-columns:1fr 300px; gap:32px; align-items:start; }
 .blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:22px; }
+/* homepage "From the blog" preview — always a handful of posts, so use
+   auto-fit (not auto-fill) to collapse empty tracks and center/fill the
+   row instead of leaving a phantom empty column pushing cards left */
+#writing .blog-grid { grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); max-width:900px; margin:0 auto; }
 
 .blog-card { position:relative; display:flex; flex-direction:column; background:var(--white); border:1px solid var(--line); overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 10px 26px rgba(0,0,0,.09); text-decoration:none; transition:transform .22s ease, box-shadow .28s ease, border-color .2s; }
 .blog-card:hover { transform:translateY(-4px); box-shadow:0 3px 8px rgba(0,0,0,.07), 0 24px 48px rgba(0,0,0,.15); border-color:var(--black); }
