@@ -368,6 +368,9 @@ footer .wrap { padding:60px 24px 34px; }
 .partner-mark { width:24px; height:24px; object-fit:contain; opacity:.85; }
 .partner-divider { width:1px; height:22px; background:rgba(255,255,255,.16); }
 .partner-badge { height:24px; width:auto; opacity:.9; }
+.badge-chip { display:inline-flex; align-items:center; background:var(--white); padding:3px 6px; line-height:0; opacity:.95; transition:opacity .2s; }
+.badge-chip:hover { opacity:1; }
+.badge-chip img { display:block; height:24px; width:auto; }
 .foot-col h4 { font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:#8A8A8A; margin:4px 0 16px; }
 .foot-col a { display:block; color:#C2C2C2; text-decoration:none; font-size:.95rem; margin-bottom:11px; transition:color .2s; }
 .foot-col a:hover { color:#fff; }
