@@ -28,9 +28,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
 
     <h2>Hours of operation</h2>
+    <div class="week-strip" role="img" aria-label="Available Monday through Friday, closed Saturday and Sunday">
+      <span class="day off">S</span>
+      <span class="day on">M</span>
+      <span class="day on">T</span>
+      <span class="day on">W</span>
+      <span class="day on">T</span>
+      <span class="day on">F</span>
+      <span class="day off">S</span>
+    </div>
     <p>
-      Support is available Monday through Friday, during standard business hours. We do not
-      currently offer weekend or holiday coverage.
+      Support is available <strong class="amber">Monday through Friday</strong>, during standard
+      business hours. We do not currently offer weekend or holiday coverage.
     </p>
 
     <h2>Response-time commitment</h2>
@@ -49,13 +58,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       infrastructure of their own to offer an independent uptime guarantee for.
     </p>
 
-    <p style="margin-top:32px;">
-      Product-specific security and privacy details live on each app's own site — see
-      <a href="https://field-hygiene.isogunlabs.com/security.html">Field Hygiene's Security Policy</a>
-      or <a href="https://recap.isogunlabs.com/">Recap</a> for the app you're evaluating.
-    </p>
+    <p style="margin-top:32px;">Product-specific security and privacy details live on each app's own site &mdash; see <a href="https://field-hygiene.isogunlabs.com/security.html">Field&nbsp;Hygiene's&nbsp;Security&nbsp;Policy</a> or <a href="https://recap.isogunlabs.com/">Recap</a> for the app you're evaluating.</p>
 
   </div>
 </section>
 
 </BaseLayout>
+
+<style>
+  .week-strip { display: flex; gap: 8px; margin: 18px 0 14px; }
+  .week-strip .day {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    font-size: .82rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+  }
+  .week-strip .day.on {
+    background: var(--black);
+    color: var(--white);
+  }
+  .week-strip .day.off {
+    background: var(--panel);
+    color: var(--body);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 480px) {
+    .week-strip .day { width: 36px; height: 36px; font-size: .76rem; }
+  }
+</style>
