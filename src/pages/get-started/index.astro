@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="Get Started — Isogun Labs Apps for Atlassian & Jira"
-  description="Browse Isogun Labs apps for Atlassian. Start with Recap — one-click monthly status reports for Jira. More focused apps on the way."
+  description="Browse Isogun Labs apps for Atlassian. Recap for one-click monthly status reports and Field Hygiene for custom field cleanup, both live on the Atlassian Marketplace."
   path="/get-started/"
 >
 
@@ -41,9 +41,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
       </article>
 
-      <article class="cat-card soon">
-        <span class="badge-soon">Coming soon</span>
-        <div class="top" style="margin-top:14px;">
+      <article class="cat-card">
+        <div class="top">
           <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="13" height="17" rx="2"/><rect x="8" y="2" width="13" height="17" rx="2"/><path d="m11.5 10 2 2 4-4"/></svg></span>
           <div>
             <div class="sub">For Jira Cloud</div>
@@ -51,6 +50,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </div>
         <p>Finds duplicate and near-duplicate custom fields, ones nobody uses anymore, and fields with no description, plus a live read on how close your site is to Atlassian's field-count limits. One page, no setup.</p>
+        <div class="foot" style="flex-direction:column; align-items:stretch; gap:12px;">
+          <a class="btn btn-blue btn-sm" href="https://marketplace.atlassian.com/apps/2905942594" target="_blank" rel="noopener" style="justify-content:center;">Get it on Marketplace
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <a class="btn-text" href="https://field-hygiene.isogunlabs.com/">Learn more</a>
+            <a class="btn-text" href="https://field-hygiene.isogunlabs.com/docs.html">Docs</a>
+          </div>
+        </div>
       </article>
 
       <article class="cat-card soon">
