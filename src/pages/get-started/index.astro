@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="Get Started — Isogun Labs Apps for Atlassian & Jira"
-  description="Browse Isogun Labs apps for Atlassian. Recap for one-click monthly status reports and Field Hygiene for custom field cleanup, both live on the Atlassian Marketplace."
+  description="Browse Isogun Labs apps for Atlassian. Recap for one-click monthly status reports, Field Hygiene for custom field cleanup, and Passdown for automated shift handoffs in JSM."
   path="/get-started/"
 >
 
@@ -11,7 +11,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <div class="wrap">
     <div class="kicker">Get Started</div>
     <h1>Find the right app for <span class="amber">your team</span></h1>
-    <p>Small, focused apps that install in a click and start working immediately — no setup, no configuration. Pick one and go.</p>
+    <p>Small, focused apps that install in a click and start working immediately — no setup, no configuration. Two are live on the Marketplace now, with Passdown in review. Pick one and go.</p>
   </div>
 </header>
 
@@ -43,7 +43,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
       <article class="cat-card">
         <div class="top">
-          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="13" height="17" rx="2"/><rect x="8" y="2" width="13" height="17" rx="2"/><path d="m11.5 10 2 2 4-4"/></svg></span>
+          <span class="ic" aria-hidden="true"><img src="/assets/field-hygiene-logo-144.png" alt="" /></span>
           <div>
             <div class="sub">For Jira Cloud</div>
             <h3>Field Hygiene for Jira</h3>
@@ -57,6 +57,27 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <a class="btn-text" href="https://field-hygiene.isogunlabs.com/">Learn more</a>
             <a class="btn-text" href="https://field-hygiene.isogunlabs.com/docs.html">Docs</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="cat-card soon">
+        <span class="badge-soon">In Marketplace review</span>
+        <div class="top" style="margin-top:14px;">
+          <span class="ic" aria-hidden="true"><img src="/assets/passdown-logo-144.png" alt="" /></span>
+          <div>
+            <div class="sub">For Jira Service Management</div>
+            <h3>Passdown</h3>
+          </div>
+        </div>
+        <p>Automated shift-handoff briefs for JSM. Reads the on-call schedule you already maintain, detects shift boundaries, and writes a plain-language handoff brief for every open ticket — posted, mentioned, and reassigned automatically.</p>
+        <div class="foot" style="flex-direction:column; align-items:stretch; gap:12px;">
+          <a class="btn btn-orange btn-sm" href="https://passdown.isogunlabs.com/" target="_blank" rel="noopener" style="justify-content:center;">Learn more
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <a class="btn-text" href="https://passdown.isogunlabs.com/docs.html">Docs</a>
+            <a class="btn-text" href="https://passdown.isogunlabs.com/security.html">Security</a>
           </div>
         </div>
       </article>
@@ -80,7 +101,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <section class="cta reveal">
   <div class="wrap">
     <h2>Not sure where to start?</h2>
-    <p>Recap is the fastest way to see how we build — watch a month of Jira work turn into a written status report in one click.</p>
+    <p>Recap is the fastest way to see how we build — watch a month of Jira work turn into a written status report in one click. Or try Field Hygiene for a one-page read on your site's custom field health.</p>
     <div class="cta-actions">
       <a class="btn btn-orange" href="https://recap.isogunlabs.com/">Explore Recap
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
