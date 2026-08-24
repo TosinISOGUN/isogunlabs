@@ -21,6 +21,13 @@ const fieldHygieneShots = [
   { src: '/assets/field-hygiene-03-trends.png', width: 1104, height: 540, alt: 'Field Hygiene showing daily trend history of field sprawl over time.' },
 ];
 
+const passdownShots = [
+  { src: '/assets/passdown-01-summarize.png', width: 1911, height: 940, alt: 'Passdown issue panel in Jira showing the Summarize this ticket button before generating a summary.' },
+  { src: '/assets/passdown-02-result.png', width: 1559, height: 793, alt: 'Passdown in Jira showing a generated plain-language ticket summary in the issue panel.' },
+  { src: '/assets/passdown-03-handoff.png', width: 915, height: 516, alt: 'Passdown in Jira showing an automated shift-handoff brief posted as a native comment with the incoming person mentioned.' },
+  { src: '/assets/passdown-04-schedule.png', width: 1262, height: 790, alt: 'Jira Service Management on-call schedule that Passdown reads to detect shift boundaries.' },
+];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -79,14 +86,23 @@ const jsonLd = {
       description: 'Field Hygiene finds duplicate and near-duplicate custom fields, unused fields, and missing descriptions, plus a live read on how close a Jira site is to Atlassian’s field-count limits — all on one page, with zero setup.',
       publisher: { '@id': 'https://isogunlabs.com/#org' },
     },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Passdown — Automated Shift Handoffs for JSM',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Atlassian Jira Service Management Cloud',
+      url: 'https://passdown.isogunlabs.com/',
+      description: 'Passdown reads what happened during a support shift and writes a plain-language handoff brief automatically at the shift boundary — posted as a comment, the incoming person mentioned and assigned. Also summarizes any single ticket on demand.',
+      publisher: { '@id': 'https://isogunlabs.com/#org' },
+    },
   ],
 };
 ---
 <BaseLayout
   title="Isogun Labs — Focused Apps for the Platforms Teams Build On"
-  description="Isogun Labs builds small, focused apps for the platforms teams already use — Recap for monthly status reports and Field Hygiene for custom field cleanup, both live on the Atlassian Marketplace."
+  description="Isogun Labs builds small, focused apps for the platforms teams already use — Recap for monthly status reports, Field Hygiene for custom field cleanup, and Passdown for automated shift handoffs in JSM."
   path="/"
-  ogDescription="An independent software studio building small, focused apps for the platforms teams already use. Maker of Recap, one-click monthly status reports for Jira, and Field Hygiene, duplicate and unused custom field cleanup for Jira."
+  ogDescription="An independent software studio building small, focused apps for the platforms teams already use. Maker of Recap, one-click monthly status reports for Jira; Field Hygiene, duplicate and unused custom field cleanup; and Passdown, automated shift handoffs for Jira Service Management."
   jsonLd={jsonLd}
 >
 
@@ -115,7 +131,18 @@ const jsonLd = {
         </span>
         Recap
       </a>
-      <span class="soon">More focused apps on the way</span>
+      <a class="pill" href="https://field-hygiene.isogunlabs.com/">
+        <span class="ic" aria-hidden="true">
+          <img src="/assets/field-hygiene-logo-144.png" alt="" />
+        </span>
+        Field Hygiene
+      </a>
+      <a class="pill" href="https://passdown.isogunlabs.com/">
+        <span class="ic" aria-hidden="true">
+          <img src="/assets/passdown-logo-144.png" alt="" />
+        </span>
+        Passdown
+      </a>
     </div>
   </div>
 </header>
@@ -197,8 +224,8 @@ const jsonLd = {
 <div class="trust reveal contain-band">
   <div class="wrap">
     <span>Built for <b>the platform, not around it</b></span><span class="sep"></span>
-    <span><b>No third-party servers, ever</b></span><span class="sep"></span>
-    <span>Private by design, <b>nothing leaves the platform you already trust</b></span>
+    <span><b>No third-party servers by default</b></span><span class="sep"></span>
+    <span>Private by design, <b>every exception disclosed</b></span>
   </div>
 </div>
 
@@ -212,7 +239,7 @@ const jsonLd = {
     <div class="stat-grid">
       <div class="stat"><div class="n">1</div><div class="l">job per app — solved end to end, not half-built</div></div>
       <div class="stat"><div class="n">0</div><div class="l">unnecessary permissions requested, ever</div></div>
-      <div class="stat"><div class="n">0</div><div class="l">third-party servers or external services</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">third-party servers by default — exceptions disclosed</div></div>
       <div class="stat"><div class="n">100%</div><div class="l">runs on the platform you install it on</div></div>
     </div>
   </div>
@@ -222,8 +249,8 @@ const jsonLd = {
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">Products</div>
-      <h2>Meet <span class="amber">Recap</span></h2>
-      <p>Our first app — monthly status reports for Jira, written from the work you actually completed.</p>
+      <h2>Meet the <span class="amber">family</span></h2>
+      <p>Three focused apps for Jira and JSM — each doing one job well, with nothing to configure.</p>
     </div>
     <div class="showcase">
       <div class="copy">
@@ -266,7 +293,7 @@ const jsonLd = {
       <div class="copy">
         <h3>
           <span class="prod-logo" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><defs><linearGradient id="fh-bg" x1="0" y1="0" x2="144" y2="144" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#16463F"/><stop offset="1" stop-color="#0D2E29"/></linearGradient></defs><rect x="0" y="0" width="144" height="144" rx="32" fill="url(#fh-bg)"/><g transform="rotate(-12 56 64)"><rect x="17" y="48" width="78" height="32" rx="16" fill="#EDE6D3" opacity="0.42"/></g><g transform="rotate(-12 88 82)"><rect x="49" y="66" width="78" height="32" rx="16" fill="#F7F3E6"/><rect x="70" y="76" width="4" height="12" rx="2" fill="#123C39"/><rect x="80" y="76" width="4" height="12" rx="2" fill="#123C39"/><rect x="90" y="76" width="4" height="12" rx="2" fill="#123C39"/></g><circle cx="108" cy="50" r="15" fill="#0D2E29"/><circle cx="108" cy="50" r="12.5" fill="#E8A33D"/><rect x="106" y="43" width="4" height="8" rx="2" fill="#123C39"/><circle cx="108" cy="56" r="2" fill="#123C39"/></svg>
+            <img src="/assets/field-hygiene-logo-512.png" alt="" />
           </span>
           Field Hygiene <span class="tag">For Jira Cloud</span>
         </h3>
@@ -299,6 +326,41 @@ const jsonLd = {
         </div>
       </div>
     </div>
+    <div class="showcase" style="margin-top:64px;">
+      <div class="copy">
+        <h3>
+          <span class="prod-logo" aria-hidden="true">
+            <img src="/assets/passdown-logo-512.png" alt="" />
+          </span>
+          Passdown <span class="tag">For Jira Service Management</span>
+        </h3>
+        <p class="desc">Every shift-based support team loses the first stretch of every shift reconstructing what the previous person already knew. Passdown reads the on-call schedule you already maintain in JSM, detects the moment one person's shift ends and the next one's begins, and writes a plain-language handoff brief for every open ticket — posted as a native comment, the incoming person mentioned and reassigned. Nobody has to remember to write anything.</p>
+        <ul class="feat">
+          <li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Automated shift-handoff briefs at every on-call boundary — no manual step.</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> On-demand plain-language summary for any single ticket, any time.</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> No invented details — describes what the ticket data actually says happened.</li>
+        </ul>
+        <div class="prod-links">
+          <a class="btn btn-orange btn-sm" href="https://passdown.isogunlabs.com/">Learn more
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost btn-sm" href="https://passdown.isogunlabs.com/security.html">Security</a>
+          <a class="btn btn-ghost btn-sm" href="https://passdown.isogunlabs.com/privacy.html">Privacy</a>
+        </div>
+      </div>
+      <div class="mock-glow">
+        <ScreenshotSlider
+          shots={passdownShots}
+          barLabel="passdown · JSM"
+          productUrl="https://passdown.isogunlabs.com/"
+          productLabel="Open Passdown"
+        />
+        <div class="mock-stat">
+          <div class="n" data-count>0</div>
+          <div class="l">minutes spent writing a handoff brief — Passdown writes it the moment the on-call schedule changes</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -320,11 +382,11 @@ const jsonLd = {
     <div class="split-stats">
       <div class="split-stat">
         <div class="n" data-count>100%</div>
-        <div class="l">of the work stays on the platform you already trust — nothing leaves it</div>
+        <div class="l">of the work stays on the platform you already trust — nothing leaves it by default</div>
       </div>
       <div class="split-stat">
         <div class="n" data-count>0</div>
-        <div class="l">third-party servers behind any app we ship — your data has one home, not two</div>
+        <div class="l">third-party servers behind any app we ship by default — every exception disclosed</div>
       </div>
     </div>
   </div>
@@ -336,7 +398,7 @@ const jsonLd = {
       <div class="kicker">The studio</div>
       <h2>Small studio. High standards.</h2>
       <p>Isogun Labs is an independent software studio. We build small, single-purpose apps that do one useful thing without asking you to set anything up — and that run on the platforms you already trust, so nothing has to leave them.</p>
-      <p>We start where the work already lives. Recap and Field Hygiene for Jira are the first two of what we intend to be a small family of focused apps, each earning its place by doing one job exceptionally well.</p>
+      <p>We start where the work already lives. Recap and Field Hygiene for Jira are live on the Marketplace now, and Passdown for Jira Service Management is in Marketplace review — three focused apps, each earning its place by doing one job exceptionally well.</p>
     </div>
     <div class="contact">
       <div class="label">Get in touch</div>
@@ -369,7 +431,7 @@ const jsonLd = {
   <div class="wrap cta-split">
     <div class="cta-copy">
       <h2>Ready to work with less friction?</h2>
-      <p>Join the teams putting small, private tools to work right inside the platforms they already use. Start with Recap for Jira — and see what focused software can do for the way you already work.</p>
+      <p>Join the teams putting small, private tools to work right inside the platforms they already use. Start with Recap for Jira, try Field Hygiene for custom field cleanup, or watch for Passdown on the Marketplace — and see what focused software can do for the way you already work.</p>
     </div>
     <div class="cta-actions">
       <a class="btn btn-orange" href="/get-started/">Explore our apps
