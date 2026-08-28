@@ -25,8 +25,8 @@ GitHub Pages at the custom domain `isogunlabs.com`.
   - `blog/index.astro` → `/blog/` (post list)
   - `blog/[slug]/index.astro` → `/blog/<slug>/` (post detail, statically generated per post)
   - `404.astro` → `/404.html` (GitHub Pages' custom error page)
-- `public/` — static files copied verbatim to the site root: CSS, JS, self-hosted DM Sans +
-  Lobster Two fonts, icons, `robots.txt`, `sitemap.xml`, `site.webmanifest`, `CNAME`,
+- `public/` — static files copied verbatim to the site root: CSS, JS, self-hosted Geist
+  variable font, icons, `robots.txt`, `sitemap.xml`, `site.webmanifest`, `CNAME`,
   `BingSiteAuth.xml`, and the IndexNow key-verification `.txt` file.
 
 Adding a new page: create `src/pages/<name>/index.astro`, wrap it in `<BaseLayout ...>`, add
