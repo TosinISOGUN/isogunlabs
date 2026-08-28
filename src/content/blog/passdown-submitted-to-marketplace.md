@@ -9,7 +9,7 @@ Passdown is built, deployed, working end-to-end against a real on-call schedule,
 
 ## What happens now
 
-Atlassian's own guidance puts a standard app review at 10 to 15 business days, with an initial response typically inside the first 5 to 10. That's function testing, a security pass, and the additional security workflow that now applies to both new apps and new versions of existing ones. We've been through this twice before, so the wait isn't a surprise — but it does mean Passdown won't be installable from the Marketplace for at least a couple of weeks. The [Passdown site](https://passdown.isogunlabs.com/) has full documentation, the security page, and a way to get notified the moment it's live.
+Atlassian's own guidance puts a standard app review at 10 to 15 business days, with an initial response typically inside the first 5 to 10. That's function testing, a security pass, and the additional security workflow that now applies to both new apps and new versions of existing ones. We've been through this twice before, so the wait isn't a surprise — but it does mean Passdown won't be installable from the Marketplace for at least a couple of weeks. The Privacy & Security tab responses were submitted on August 11 and approved shortly after, and as of late August the review ticket has moved to "In Progress." The [Passdown site](https://passdown.isogunlabs.com/) has full documentation, the security page, and a way to get notified the moment it's live.
 
 ## The security questionnaire — what it actually asks
 
