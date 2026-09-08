@@ -5,7 +5,7 @@ pubDate: 2026-09-08
 cover: "trust"
 ---
 
-Passdown is approved and live on the [Atlassian Marketplace](https://marketplace.atlassian.com/apps/2948459916). That makes three — Recap, Field Hygiene, and now Passdown — all shipped by a team of one, all running on Atlassian Forge, all live and installable by anyone.
+Passdown is approved and live on the [Atlassian Marketplace](https://marketplace.atlassian.com/apps/3571155481). That makes three — Recap, Field Hygiene, and now Passdown — all shipped by a team of one, all running on Atlassian Forge, all live and installable by anyone.
 
 The [previous post](/blog/two-apps-live-lessons-learned/) covered what surprised us getting the first two through review. This one is shorter, because the third time through the process was genuinely easier — but not for the reasons you might expect, and not without one last thing that caught us off guard.
 
@@ -44,4 +44,4 @@ If you want to try any of the apps, they're all on the Marketplace now:
 
 - [Recap](https://marketplace.atlassian.com/2146687861) — one-click monthly status reports for Jira
 - [Field Hygiene](https://marketplace.atlassian.com/apps/2905942594) — custom-field hygiene scanner for Jira admins
-- [Passdown](https://marketplace.atlassian.com/apps/2948459916) — automated shift handoffs for Jira Service Management
+- [Passdown](https://marketplace.atlassian.com/apps/3571155481) — automated shift handoffs for Jira Service Management
