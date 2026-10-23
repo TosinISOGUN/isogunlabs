@@ -20,9 +20,27 @@
   </url>
   <url>
     <loc>https://isogunlabs.com/blog/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://isogunlabs.com/blog/find-and-clean-up-duplicate-jira-custom-fields/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://isogunlabs.com/blog/founders-guide-shipping-first-atlassian-app/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://isogunlabs.com/blog/hidden-cost-of-cheap-websites/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://isogunlabs.com/blog/three-apps-live-on-marketplace/</loc>
