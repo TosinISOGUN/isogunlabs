@@ -10,3 +10,6 @@ node_modules/
 # OS/editor cruft
 .DS_Store
 Thumbs.db
+
+# Working prompts: kept locally, never published
+prompts/
