@@ -1,8 +1,8 @@
 /* ============================================================
-   Isogun Labs — shared site styles
+   Isogun Labs - shared site styles
    Black & white only, one typeface, zero border-radius.
    ============================================================ */
-/* Geist — self-hosted variable font (one file covers all weights). SIL OFL. */
+/* Geist - self-hosted variable font (one file covers all weights). SIL OFL. */
 @font-face {
   font-family: 'Geist';
   font-style: normal;
@@ -37,10 +37,10 @@ img { max-width:100%; display:block; }
 h1,h2,h3 { letter-spacing:-.02em; }
 .amber { text-decoration:underline; text-decoration-thickness:.07em; text-underline-offset:.14em; }
 
-/* buttons — boxy (0 radius), black/white/gray only */
+/* buttons - boxy (0 radius), black/white/gray only */
 .btn { display:inline-flex; align-items:center; gap:9px; font-size:1rem; font-weight:700; text-decoration:none; padding:13px 24px; transition:transform .16s, box-shadow .25s, background .2s, color .2s; cursor:pointer; border:2px solid transparent; }
 .btn svg { width:16px; height:16px; transition:transform .2s; }
-/* primary — solid; inverts to white-on-black inside dark sections */
+/* primary - solid; inverts to white-on-black inside dark sections */
 .btn-orange { color:#fff; background:var(--black); }
 .btn-orange:hover { background:#2A2A2A; transform:translateY(-2px); }
 .btn-orange:hover svg { transform:translateX(4px); }
@@ -50,7 +50,7 @@ h1,h2,h3 { letter-spacing:-.02em; }
 .hero .btn-orange:hover, .cta .btn-orange:hover, .page-hero .btn-orange:hover, .about .btn-orange:hover, .stats .btn-orange:hover, footer .btn-orange:hover, .drawer .btn-orange:hover {
   background:#E5E5E5;
 }
-/* secondary — outline, adapts to surrounding text color automatically */
+/* secondary - outline, adapts to surrounding text color automatically */
 .btn-blue { color:inherit; background:transparent; border:2px solid currentColor; }
 .btn-blue:hover { background:var(--hover-tint); transform:translateY(-2px); }
 .btn-blue:hover svg { transform:translateX(4px); }
@@ -109,7 +109,7 @@ h1,h2,h3 { letter-spacing:-.02em; }
 body.drawer-open { overflow:hidden; }
 @media (max-width:860px){ .nav-mid{ display:none; } .util .u-left{ display:none; } .hamburger{ display:block; } .nav-right .btn-blue{ display:none; } }
 
-/* hero — pure black, no gradient, no texture, no photo */
+/* hero - pure black, no gradient, no texture, no photo */
 .hero { position:relative; margin-top:-70px; padding-top:70px; background:var(--black); color:#fff; overflow:hidden; }
 .hero .wrap { position:relative; z-index:1; padding-top:72px; padding-bottom:72px; }
 .hero .hero-copy { max-width:640px; }
@@ -149,7 +149,7 @@ section.block { padding:76px 0; }
 .principle h3 { margin:0 0 8px; font-size:1.08rem; font-weight:800; color:var(--ink); }
 .principle p { margin:0; color:var(--body); font-size:.95rem; }
 
-/* trust band — pure white so it reads as part of the page, not a panel */
+/* trust band - pure white so it reads as part of the page, not a panel */
 .trust.contain-band { background:transparent; }
 .trust .wrap { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px 34px; padding:22px 24px; font-size:.95rem; color:var(--body); font-weight:600; }
 .trust b { color:var(--ink); }
@@ -187,7 +187,7 @@ section.block { padding:76px 0; }
 .mock img { width:100%; height:auto; display:block; }
 .mock-glow { position:relative; margin-bottom:34px; }
 
-/* product showcase — auto-transitioning screenshot slider */
+/* product showcase - auto-transitioning screenshot slider */
 .shot-frame { position:relative; aspect-ratio:1522/907; background:var(--white); }
 .shot { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; transition:opacity .45s ease; }
 .shot.active { opacity:1; }
@@ -269,7 +269,7 @@ section.block { padding:76px 0; }
 .blog-filter:hover { border-color:var(--black); }
 .blog-filter.active { background:var(--ink); border-color:var(--ink); color:var(--white); }
 
-/* Featured post — the latest entry, shown large above the grid+sidebar layout */
+/* Featured post - the latest entry, shown large above the grid+sidebar layout */
 .blog-featured { display:block; text-decoration:none; margin-bottom:36px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 10px 26px rgba(0,0,0,.09); transition:box-shadow .28s ease, transform .22s ease; }
 .blog-featured:hover { transform:translateY(-3px); box-shadow:0 3px 8px rgba(0,0,0,.07), 0 24px 48px rgba(0,0,0,.15); }
 .blog-featured .blog-cover { aspect-ratio:16/7; }
@@ -280,7 +280,7 @@ section.block { padding:76px 0; }
 /* Two-column body: card grid + sidebar */
 .blog-layout { display:grid; grid-template-columns:1fr 300px; gap:32px; align-items:start; }
 .blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:22px; }
-/* homepage "From the blog" preview — always a handful of posts, so use
+/* homepage "From the blog" preview - always a handful of posts, so use
    auto-fit (not auto-fill) to collapse empty tracks and center/fill the
    row instead of leaving a phantom empty column pushing cards left */
 #writing .blog-grid { grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); max-width:900px; margin:0 auto; }
@@ -302,14 +302,14 @@ section.block { padding:76px 0; }
 .post-meta { display:flex; gap:10px; align-items:center; color:#C2C2C2; font-size:.95rem; }
 .post-meta .dot { width:3px; height:3px; background:#C2C2C2; opacity:.6; }
 
-/* Sidebar — mailto contact card + short static blurb, next to the grid */
+/* Sidebar - mailto contact card + short static blurb, next to the grid */
 .blog-sidebar { display:flex; flex-direction:column; gap:20px; }
 .blog-sidebar-card { background:var(--panel); border:1px solid var(--line); padding:22px; }
 .blog-sidebar-card h3 { margin:0 0 8px; font-size:1rem; font-weight:800; color:var(--ink); }
 .blog-sidebar-card p { margin:0; font-size:.88rem; line-height:1.6; color:var(--body); }
 .blog-sidebar-card .btn-text { margin-top:14px; }
 
-/* decorative cover panel for blog cards / post banners — solid black,
+/* decorative cover panel for blog cards / post banners - solid black,
    no per-category hue (monochrome system); category still shown via the
    text badge in the corner. */
 .blog-cover { position:relative; overflow:hidden; display:grid; place-items:center; background:var(--black); color:rgba(255,255,255,.85); }
@@ -440,7 +440,7 @@ footer .wrap { padding:60px 24px 34px; }
 @media (prefers-reduced-motion: reduce){ *{animation:none!important; scroll-behavior:auto;} .reveal{opacity:1; transform:none; transition:none;} .hero h1.typing::after{display:none;} }
 
 /* ============================================================
-   Homepage 2026 refresh — contained panels, honeycomb approach,
+   Homepage 2026 refresh - contained panels, honeycomb approach,
    integrations band, count-up split, split CTA
    ============================================================ */
 
@@ -449,7 +449,7 @@ footer .wrap { padding:60px 24px 34px; }
 .contain-band.light { background:var(--panel); border:1px solid var(--line); }
 .contain-band.bare { background:transparent; border:0; }
 
-/* approach — honeycomb-flanked headline */
+/* approach - honeycomb-flanked headline */
 .approach-hero { display:grid; grid-template-columns:1fr minmax(auto,560px) 1fr; align-items:center; gap:16px; margin-bottom:52px; }
 .approach-copy { text-align:center; }
 .approach-copy .kicker { display:block; margin-bottom:12px; }
@@ -465,7 +465,7 @@ footer .wrap { padding:60px 24px 34px; }
 .hex svg { width:30px; height:30px; color:var(--ink); }
 .hex.ghost { background:var(--panel); border-color:var(--panel); filter:none; }
 
-/* approach — principles as borderless columns (no cards) */
+/* approach - principles as borderless columns (no cards) */
 .approach-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px 30px; max-width:980px; margin:0 auto; }
 .appr-item { text-align:center; }
 .appr-ic { width:54px; height:54px; display:inline-grid; place-items:center; background:var(--panel); color:var(--ink); margin-bottom:16px; }
@@ -494,7 +494,7 @@ footer .wrap { padding:60px 24px 34px; }
 .split-stat .n { font-size:clamp(2.6rem,5vw,3.7rem); font-weight:800; color:var(--ink); letter-spacing:-.03em; line-height:1; flex:none; min-width:2.6ch; font-variant-numeric:tabular-nums; }
 .split-stat .l { color:var(--body); font-size:1rem; line-height:1.5; }
 
-/* homepage refresh — responsive */
+/* homepage refresh - responsive */
 @media (max-width:900px){
   .hive { display:none; }
   .approach-hero { grid-template-columns:1fr; margin-bottom:40px; }
@@ -510,4 +510,40 @@ footer .wrap { padding:60px 24px 34px; }
   .approach-grid { grid-template-columns:1fr; }
   .split-stat { padding:24px; gap:18px; }
   .stack-row li { font-size:.9rem; padding:9px 16px; }
+}
+
+/* competitive startup pass */
+.proof-strip { background:var(--white); border-bottom:1px solid var(--line); }
+.proof-strip .wrap { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; padding:0 24px; }
+.proof-strip .wrap > div { padding:22px 24px; border-left:1px solid var(--line); min-height:112px; display:flex; flex-direction:column; justify-content:center; }
+.proof-strip .wrap > div:last-child { border-right:1px solid var(--line); }
+.proof-strip strong { display:block; color:var(--ink); font-size:.98rem; line-height:1.25; }
+.proof-strip span { color:var(--body); font-size:.88rem; line-height:1.45; margin-top:6px; }
+.chooser-hero h1 { max-width:780px; margin-inline:auto; }
+.chooser-block { background:var(--panel); }
+.chooser-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.chooser-card { position:relative; display:flex; flex-direction:column; background:var(--white); border:1px solid var(--line); padding:28px; box-shadow:var(--shadow); min-height:100%; transition:transform .2s ease, box-shadow .25s ease, border-color .2s ease; }
+.chooser-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:var(--black); }
+.chooser-label { display:inline-flex; align-self:flex-start; margin-bottom:18px; padding:6px 10px; background:var(--black); color:var(--white); font-size:.72rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+.chooser-card .top { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.chooser-card .ic { width:50px; height:50px; flex:none; display:grid; place-items:center; background:var(--panel); overflow:hidden; }
+.chooser-card .ic svg { width:36px; height:36px; }
+.chooser-card .ic img { width:50px; height:50px; object-fit:cover; }
+.chooser-card .sub { font-size:.74rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--body); }
+.chooser-card h3 { margin:3px 0 0; font-size:1.28rem; line-height:1.2; font-weight:800; color:var(--ink); }
+.chooser-card p { margin:0 0 18px; color:var(--body); font-size:.98rem; }
+.chooser-list { list-style:none; margin:0 0 24px; padding:18px 0 0; border-top:1px solid var(--line); display:grid; gap:10px; flex:1; }
+.chooser-list li { position:relative; padding-left:18px; color:var(--ink); font-size:.94rem; line-height:1.45; }
+.chooser-list li::before { content:''; position:absolute; left:0; top:.62em; width:6px; height:6px; background:var(--ink); }
+.chooser-actions { display:flex; flex-wrap:wrap; align-items:center; gap:14px; padding-top:18px; border-top:1px solid var(--line); }
+.chooser-actions .btn-text { color:var(--ink); }
+
+@media (max-width:940px){
+  .proof-strip .wrap, .chooser-grid { grid-template-columns:1fr 1fr; }
+  .proof-strip .wrap > div:nth-child(2n) { border-right:1px solid var(--line); }
+}
+@media (max-width:620px){
+  .proof-strip .wrap, .chooser-grid { grid-template-columns:1fr; }
+  .proof-strip .wrap > div { border-right:1px solid var(--line); min-height:auto; padding:18px 20px; }
+  .chooser-card { padding:24px; }
 }
