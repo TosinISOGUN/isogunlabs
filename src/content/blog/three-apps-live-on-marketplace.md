@@ -29,7 +29,7 @@ The other thing that surprised us was something we didn't have to do. The "Submi
 
 All three apps share the same architecture and the same principles:
 
-- **Runs on Atlassian Forge** — no external servers, no data leaving Atlassian's infrastructure by default.
+- **Built on Atlassian Forge.** Recap and Field Hygiene have no external servers, and nothing leaves Atlassian's infrastructure. Passdown uses one small hosted relay to read JSM on-call schedules, which is [documented on its security page](https://passdown.isogunlabs.com/security.html).
 - **Minimal permissions** — each app requests only what it needs to do its one job.
 - **Bounded storage** — each app stores the smallest possible amount of data, and it's all inside Atlassian's own KVS.
 - **The same LLM module** — Forge's built-in Claude Haiku, chosen for cost and capability, with the same prompt fencing pattern across all three apps.

@@ -2,110 +2,99 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 <BaseLayout
-  title="Get Started — Isogun Labs Apps for Atlassian & Jira"
-  description="Browse Isogun Labs apps for Atlassian. Recap for one-click monthly status reports, Field Hygiene for custom field cleanup, and Passdown for automated shift handoffs in JSM."
+  title="Get Started - Choose the Right Isogun Labs Atlassian App"
+  description="Choose the Isogun Labs Atlassian app that fits your workflow: Recap for Jira reporting, Field Hygiene for custom field cleanup, or Passdown for JSM handoffs."
   path="/get-started/"
 >
 
-<header class="page-hero">
+<header class="page-hero chooser-hero">
   <div class="wrap">
-    <div class="kicker">Get Started</div>
-    <h1>Find the right app for <span class="amber">your team</span></h1>
-    <p>Small, focused apps that install in a click and start working immediately — no setup, no configuration. Three are live on the Marketplace now. Pick one and go.</p>
+    <div class="kicker">Product chooser</div>
+    <h1>Start with the workflow that is slowing your team down.</h1>
+    <p>Three small Atlassian apps, each built for one clear job. Pick the problem you recognize and go straight to the app, docs, or Marketplace listing.</p>
   </div>
 </header>
 
-<section class="block reveal">
+<section class="block reveal chooser-block">
   <div class="wrap">
-    <div class="catalog">
-
-      <article class="cat-card">
+    <div class="chooser-grid">
+      <article class="chooser-card">
+        <div class="chooser-label">I need better status updates</div>
         <div class="top">
           <span class="ic" aria-hidden="true">
             <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M146,96 H330 L366,132 V396 H146 Z" fill="#C2610C"/><path d="M330,96 L366,132 H330 Z" fill="#7C3A08"/><rect x="174" y="186" width="164" height="18" rx="9" fill="#FDE7C7"/><rect x="174" y="228" width="164" height="18" rx="9" fill="#E8C39E"/><rect x="174" y="270" width="100" height="18" rx="9" fill="#E8C39E"/><circle cx="360" cy="390" r="52" fill="#15803D" stroke="#FFF" stroke-width="10"/><polyline points="336,392 354,410 388,368" fill="none" stroke="#FFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
           <div>
-            <div class="sub">For Jira Cloud</div>
-            <h3>Recap</h3>
+            <div class="sub">Recap for Jira Cloud</div>
+            <h3>Turn completed work into a monthly report.</h3>
           </div>
         </div>
-        <p>One click turns your completed Jira work from the last 30 days into a written monthly status report — grouped by epic, ready to paste into a status update or performance review.</p>
-        <div class="foot" style="flex-direction:column; align-items:stretch; gap:12px;">
-          <a class="btn btn-blue btn-sm" href="https://marketplace.atlassian.com/2146687861" target="_blank" rel="noopener" style="justify-content:center;">Get it on Marketplace
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <a class="btn-text" href="https://recap.isogunlabs.com/">Learn more</a>
-            <a class="btn-text" href="https://recap.isogunlabs.com/docs.html">Docs</a>
-          </div>
+        <p>Best for engineers, product leads, and managers who need a clean written summary of what shipped without digging through Jira tickets manually.</p>
+        <ul class="chooser-list">
+          <li>One-click monthly reports from completed issues.</li>
+          <li>Grouped by epic and written in plain past tense.</li>
+          <li>Runs entirely on Atlassian and stores nothing.</li>
+        </ul>
+        <div class="chooser-actions">
+          <a class="btn btn-blue btn-sm" href="https://marketplace.atlassian.com/2146687861" target="_blank" rel="noopener">Marketplace</a>
+          <a class="btn-text" href="https://recap.isogunlabs.com/">Product page</a>
         </div>
       </article>
 
-      <article class="cat-card">
+      <article class="chooser-card">
+        <div class="chooser-label">I need Jira admin cleanup</div>
         <div class="top">
           <span class="ic" aria-hidden="true"><img src="/assets/field-hygiene-logo-144.png" alt="" /></span>
           <div>
-            <div class="sub">For Jira Cloud</div>
-            <h3>Field Hygiene for Jira</h3>
+            <div class="sub">Field Hygiene for Jira Cloud</div>
+            <h3>Find custom field sprawl before it becomes debt.</h3>
           </div>
         </div>
-        <p>Finds duplicate and near-duplicate custom fields, ones nobody uses anymore, and fields with no description, plus a live read on how close your site is to Atlassian's field-count limits. One page, no setup.</p>
-        <div class="foot" style="flex-direction:column; align-items:stretch; gap:12px;">
-          <a class="btn btn-blue btn-sm" href="https://marketplace.atlassian.com/apps/2905942594" target="_blank" rel="noopener" style="justify-content:center;">Get it on Marketplace
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <a class="btn-text" href="https://field-hygiene.isogunlabs.com/">Learn more</a>
-            <a class="btn-text" href="https://field-hygiene.isogunlabs.com/docs.html">Docs</a>
-          </div>
+        <p>Best for Jira admins who need a fast read on duplicate fields, near-duplicates, unused fields, missing descriptions, and field-count pressure.</p>
+        <ul class="chooser-list">
+          <li>Duplicate and near-duplicate field detection.</li>
+          <li>Warnings for type mismatches and missing descriptions.</li>
+          <li>Read-only by design, with no setup flow.</li>
+        </ul>
+        <div class="chooser-actions">
+          <a class="btn btn-blue btn-sm" href="https://marketplace.atlassian.com/apps/2905942594" target="_blank" rel="noopener">Marketplace</a>
+          <a class="btn-text" href="https://field-hygiene.isogunlabs.com/">Product page</a>
         </div>
       </article>
 
-      <article class="cat-card">
+      <article class="chooser-card">
+        <div class="chooser-label">I need cleaner support handoffs</div>
         <div class="top">
           <span class="ic" aria-hidden="true"><img src="/assets/passdown-logo-144.png" alt="" /></span>
           <div>
-            <div class="sub">For Jira Service Management</div>
-            <h3>Passdown</h3>
+            <div class="sub">Passdown for JSM</div>
+            <h3>Write shift handoffs automatically.</h3>
           </div>
         </div>
-        <p>Automated shift-handoff briefs for JSM. Reads the on-call schedule you already maintain, detects shift boundaries, and writes a plain-language handoff brief for every open ticket — posted, mentioned, and reassigned automatically.</p>
-        <div class="foot" style="flex-direction:column; align-items:stretch; gap:12px;">
-          <a class="btn btn-blue btn-sm" href="https://marketplace.atlassian.com/apps/3571155481" target="_blank" rel="noopener" style="justify-content:center;">Get it on Marketplace
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <a class="btn-text" href="https://passdown.isogunlabs.com/">Learn more</a>
-            <a class="btn-text" href="https://passdown.isogunlabs.com/docs.html">Docs</a>
-          </div>
+        <p>Best for support teams using Jira Service Management schedules who want incoming agents to start with context, not detective work.</p>
+        <ul class="chooser-list">
+          <li>Detects shift boundaries from your JSM schedule.</li>
+          <li>Posts a native comment with a plain-language brief.</li>
+          <li>Mentions and assigns the incoming person automatically.</li>
+        </ul>
+        <div class="chooser-actions">
+          <a class="btn btn-blue btn-sm" href="https://marketplace.atlassian.com/apps/3571155481" target="_blank" rel="noopener">Marketplace</a>
+          <a class="btn-text" href="https://passdown.isogunlabs.com/">Product page</a>
         </div>
       </article>
-
-      <article class="cat-card soon">
-        <span class="badge-soon">In the workshop</span>
-        <div class="top" style="margin-top:14px;">
-          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></span>
-          <div><h3>Have an idea?</h3></div>
-        </div>
-        <p>If there's a small, painful task in your Atlassian workflow you wish a tool would just handle, we'd love to hear it.</p>
-        <div class="foot"><a class="btn-text" href="mailto:support@isogunlabs.com">Tell us
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-
     </div>
   </div>
 </section>
 
 <section class="cta reveal">
-  <div class="wrap">
-    <h2>Not sure where to start?</h2>
-    <p>Recap is the fastest way to see how we build — watch a month of Jira work turn into a written status report in one click. Try Field Hygiene for a one-page read on your site's custom field health, or install Passdown and let your shift handoffs write themselves.</p>
+  <div class="wrap cta-split">
+    <div class="cta-copy">
+      <h2>Not sure which one fits?</h2>
+      <p>Send us the workflow that feels slow, repetitive, or risky. We will point you to the right app if it already exists, or tell you plainly if it does not.</p>
+    </div>
     <div class="cta-actions">
-      <a class="btn btn-orange" href="https://recap.isogunlabs.com/">Explore Recap
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a class="btn btn-ghost-light" href="mailto:support@isogunlabs.com">Talk with us</a>
+      <a class="btn btn-orange" href="mailto:support@isogunlabs.com">Talk with us</a>
+      <a class="btn btn-ghost-light" href="/documentation/">Read the docs</a>
     </div>
   </div>
 </section>
