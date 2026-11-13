@@ -15,6 +15,27 @@
     }).observe(sentinel);
   }
 
+  // A soft highlight follows the pointer or keyboard focus across the nav links and rests on the current page.
+  var links = document.querySelector('.nav-links');
+  var blob = links && links.querySelector('.nav-blob');
+  if (links && blob) {
+    var current = links.querySelector('[aria-current="page"]');
+    var moveTo = function (el) {
+      if (!el) { blob.classList.remove('on'); return; }
+      blob.style.setProperty('--x', el.offsetLeft + 'px');
+      blob.style.setProperty('--w', el.offsetWidth + 'px');
+      blob.classList.add('on');
+    };
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('mouseenter', function () { moveTo(a); });
+      a.addEventListener('focus', function () { moveTo(a); });
+    });
+    links.addEventListener('mouseleave', function () { moveTo(current); });
+    links.addEventListener('focusout', function () { moveTo(current); });
+    moveTo(current);
+    window.addEventListener('resize', function () { moveTo(current); });
+  }
+
   // Full-screen menu on small screens
   var openBtn = document.querySelector('.menu-btn');
   var sheet = document.getElementById('menu-sheet');

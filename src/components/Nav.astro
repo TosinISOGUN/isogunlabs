@@ -7,11 +7,12 @@ const path = Astro.url.pathname;
 const isActive = (href: string) => !href.includes('#') && (path === href || (href !== '/' && path.startsWith(href)));
 ---
 <header class="site-header">
-  <div class="wrap nav-in">
+  <div class="island">
     <a class="logo" href="/" aria-label="Isogun Labs, home">
-      <img src="/assets/logo-wordmark.webp" width="176" height="40" alt="Isogun Labs" />
+      <img src="/assets/logo-wordmark.webp" width="150" height="34" alt="Isogun Labs" />
     </a>
     <nav class="nav-links" aria-label="Main">
+      <span class="nav-blob" aria-hidden="true"></span>
       {navLinks.map((l) => (
         <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
       ))}
