@@ -1,6 +1,6 @@
 # isogunlabs.com
 
-The Isogun Labs studio website — built with [Astro](https://astro.build), deployed to
+The Isogun Labs studio website (a tech studio for websites, web apps and Atlassian Marketplace apps) — built with [Astro](https://astro.build), deployed to
 GitHub Pages at the custom domain `isogunlabs.com`.
 
 ## Structure
@@ -18,13 +18,13 @@ GitHub Pages at the custom domain `isogunlabs.com`.
   is a Markdown file with `title`/`description`/`pubDate`/`cover` frontmatter; `cover` picks a
   `BlogCover` variant (`fields` | `report` | `market` | `trust` — add a new one in
   `BlogCover.astro` before using a new value here).
-- `src/pages/` — one file per route:
-  - `index.astro` → `/`
-  - `get-started/index.astro` → `/get-started/`
-  - `documentation/index.astro` → `/documentation/`
-  - `blog/index.astro` → `/blog/` (post list)
-  - `blog/[slug]/index.astro` → `/blog/<slug>/` (post detail, statically generated per post)
-  - `404.astro` → `/404.html` (GitHub Pages' custom error page)
+- `src/pages/`: one file per route:
+  - `index.astro` -> `/` (home: hero, services, work, Atlassian apps, process, about, blog, call to action)
+  - `services/index.astro` -> `/services/`
+  - `work/index.astro` -> `/work/` (screenshots come from the case studies on portfolio.isogunlabs.com)
+  - `contact/index.astro` -> `/contact/` (the one "Start a project" destination)
+  - `get-started/index.astro` -> `/get-started/` (the Atlassian apps chooser; the slug is kept for SEO)
+  - `documentation/index.astro`, `support.astro`, `blog/`, `404.astro`
 - `public/` — static files copied verbatim to the site root: CSS, JS, self-hosted Geist
   variable font, icons, `robots.txt`, `sitemap.xml`, `site.webmanifest`, `CNAME`,
   `BingSiteAuth.xml`, and the IndexNow key-verification `.txt` file.
@@ -65,3 +65,7 @@ deploy — keep it in sync with `src/pages/` and `src/content/blog/`.
 - Analytics (GA4), the Bing verification meta tag, and the JSON-LD structured data
   (`Organization`/`WebSite`/`SoftwareApplication`) are wired centrally so every page stays in
   sync automatically — no more hand-copying tags across files.
+
+## Design system (v3, rebrand)
+
+One stylesheet, `public/assets/css/site.css`: lime accent taken from the logo, neutral green-greys, Bricolage Grotesque for display and Geist for text, light and dark schemes from `prefers-color-scheme`. The header, footer and Atlassian band stay on the logo's own black (`--black`) because the logo file is a wordmark on black. Icons are Phosphor glyphs in `public/assets/icons/ui/`, drawn with a CSS mask through `src/components/Icon.astro`. Technology logos in `public/assets/tech/` come from Simple Icons. Stock photos in `public/assets/photos/` are from Pexels (free licence); work screenshots in `public/assets/work/` come from the portfolio case studies. The call-to-action label and links live in `src/data/nav.ts`.

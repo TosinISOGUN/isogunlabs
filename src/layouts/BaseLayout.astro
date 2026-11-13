@@ -1,7 +1,6 @@
 ---
 import Seo from '../components/Seo.astro';
 import Nav from '../components/Nav.astro';
-import Drawer from '../components/Drawer.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
@@ -10,6 +9,7 @@ interface Props {
   path: string;
   ogTitle?: string;
   ogDescription?: string;
+  robots?: string;
   jsonLd?: object;
   preloadImage?: string;
   type?: 'website' | 'article';
@@ -17,18 +17,18 @@ interface Props {
   modifiedTime?: string;
 }
 
-const { title, description, path, ogTitle, ogDescription, jsonLd, preloadImage, type, publishedTime, modifiedTime } = Astro.props;
+const { title, description, path, robots, ogTitle, ogDescription, jsonLd, preloadImage, type, publishedTime, modifiedTime } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <meta name="author" content="Isogun Labs">
 <meta name="theme-color" content="#000000">
 
-<Seo title={title} description={description} path={path} ogTitle={ogTitle} ogDescription={ogDescription} jsonLd={jsonLd} type={type} publishedTime={publishedTime} modifiedTime={modifiedTime} />
+<Seo robots={robots} title={title} description={description} path={path} ogTitle={ogTitle} ogDescription={ogDescription} jsonLd={jsonLd} type={type} publishedTime={publishedTime} modifiedTime={modifiedTime} />
 
 <link rel="alternate" type="application/rss+xml" title="Isogun Labs Blog" href="/rss.xml">
 
@@ -57,14 +57,15 @@ const { title, description, path, ogTitle, ogDescription, jsonLd, preloadImage, 
   gtag('config', 'G-P9H728QMW5');
 </script>
 
-<link rel="stylesheet" href="/assets/css/site.css?v=2">
+<script is:inline>document.documentElement.classList.add('js');</script>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=3">
 </head>
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
 
 <Nav />
-<Drawer />
 
 <main id="main">
   <slot />
@@ -72,6 +73,6 @@ const { title, description, path, ogTitle, ogDescription, jsonLd, preloadImage, 
 
 <Footer />
 
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.js?v=3" defer></script>
 </body>
 </html>

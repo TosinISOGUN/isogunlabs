@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { ctaLabel, ctaHref, contact } from '../../data/nav';
+
+const services = [
+  {
+    id: 'websites',
+    name: 'Websites',
+    title: 'Websites for businesses and brands',
+    lead: 'A website should explain what you do in seconds and make the next step obvious. We design and build sites that load fast, read well on a phone and bring in enquiries.',
+    image: '/assets/photos/desk-sketch.webp',
+    alt: 'A desk with sketches and laptops, where a website layout is being planned.',
+    items: [
+      'Pages planned around what your visitors need to decide',
+      'Contact, enquiry and booking forms',
+      'Mobile-first layouts that work on every screen',
+      'Basic search engine setup and fast load times',
+      'Content you can read and edit later',
+      'Domain, hosting and handover',
+    ],
+  },
+  {
+    id: 'web-apps',
+    name: 'Web apps and MVPs',
+    title: 'Web apps and MVPs for startups',
+    lead: 'When the product is the website: sign-up, accounts, dashboards, internal tools. We build the first version quickly in React and TypeScript, on a codebase that can keep growing.',
+    image: '/assets/photos/code-typing.webp',
+    alt: 'Hands typing code on a laptop beside a second screen.',
+    items: [
+      'Accounts, sign-in and role-based access',
+      'Dashboards and admin screens',
+      'API and database integration',
+      'Marketplaces, platforms and booking systems',
+      'Clean, documented code that your next developer can pick up',
+      'Deployment and a clear launch plan',
+    ],
+  },
+  {
+    id: 'stores-booking',
+    name: 'Stores and booking',
+    title: 'Online stores and booking',
+    lead: 'Selling products or taking reservations online works when the path is short. We build storefronts and booking flows that keep the visitor moving from first look to confirmed order.',
+    image: '/assets/photos/shop-laptop.webp',
+    alt: 'A laptop with a toy shopping cart on the keyboard, next to a notebook.',
+    items: [
+      'Product pages, collections and a shopping bag',
+      'Checkout and order summary flows',
+      'Booking and reservation forms for service businesses',
+      'Pickup and ordering flows for restaurants and shops',
+      'Mobile-friendly, fast pages',
+      'Clear confirmation and follow-up screens',
+    ],
+  },
+  {
+    id: 'marketplace-apps',
+    name: 'Marketplace apps',
+    title: 'Atlassian Marketplace apps',
+    lead: 'We have taken three apps from idea to approved Marketplace listing, so we know the platform, the review process and the details that get an app approved. We can build yours, or help you ship it.',
+    image: '/assets/photos/devs-pair.webp',
+    alt: 'Two developers working side by side at laptops.',
+    items: [
+      'Apps for Jira and Jira Service Management on Atlassian Forge',
+      'Minimal permissions and clear data handling',
+      'Listing copy, screenshots and documentation',
+      'Product pages, privacy and support pages',
+      'Preparation for Marketplace review',
+      'See our own apps on the Atlassian apps page',
+    ],
+  },
+];
+---
+<BaseLayout
+  title="Services | Isogun Labs"
+  description="Website design and development, web apps and MVPs, online stores and booking, and Atlassian Marketplace apps from Isogun Labs, a tech studio for startups, businesses and brands."
+  path="/services/"
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>Websites and software, built end to end</h1>
+    <p class="lead">Design, code and launch from one studio, for startups, businesses and brands. Here is what we build.</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap svc-layout">
+    <nav class="svc-index" aria-label="Services">
+      {services.map((s) => <a href={`#${s.id}`}>{s.name}</a>)}
+    </nav>
+    <div>
+      {services.map((s) => (
+        <section class="svc-block reveal" id={s.id}>
+          <h2>{s.title}</h2>
+          <p class="lead">{s.lead}</p>
+          <div class="svc-media"><img src={s.image} alt={s.alt} width="1600" height="1066" loading="lazy" decoding="async" /></div>
+          <ul class="ticks">
+            {s.items.map((t) => <li><Icon name="check" /><span>{t}</span></li>)}
+          </ul>
+        </section>
+      ))}
+
+      <section class="svc-block reveal" id="who">
+        <h2>Who we work with</h2>
+        <div class="who">
+          <div><h3>Startups</h3><p>A first version that is ready to show investors and users, and a codebase that does not need a rewrite after launch.</p></div>
+          <div><h3>Businesses</h3><p>A site that presents the business clearly and makes it easy for customers to contact, book or buy.</p></div>
+          <div><h3>Brands</h3><p>Design-led sites and stores where the look and feel matter as much as the function.</p></div>
+          <div><h3>Atlassian teams and vendors</h3><p>Apps and integrations for Jira and Jira Service Management, from the first prototype to the Marketplace listing.</p></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>Tell us what you need built</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
