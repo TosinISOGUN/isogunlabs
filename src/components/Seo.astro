@@ -1,4 +1,5 @@
 ---
+interface Crumb { name: string; path: string }
 interface Props {
   title: string;
   description: string;
@@ -7,6 +8,7 @@ interface Props {
   ogDescription?: string;
   robots?: string;
   jsonLd?: object;
+  breadcrumbs?: Crumb[];
   type?: 'website' | 'article';
   publishedTime?: string;
   modifiedTime?: string;
@@ -17,31 +19,69 @@ const {
   description,
   path,
   ogTitle = title,
-  ogDescription = description,
+  ogDescription,
   robots = 'index, follow, max-image-preview:large',
   jsonLd,
+  breadcrumbs,
   type = 'website',
   publishedTime,
   modifiedTime,
 } = Astro.props;
 
+// Search results show about 155 characters. Longer descriptions (some blog excerpts) are cut at a
+// sentence or word boundary so the snippet never ends mid-word.
+function snippet(text: string, max = 158) {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max);
+  const sentence = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('? '), cut.lastIndexOf('! '));
+  if (sentence > 110) return cut.slice(0, sentence + 1);
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,:;\s]+$/, '') + '...';
+}
+
+const metaDescription = snippet(description);
+const socialDescription = snippet(ogDescription ?? description, 200);
+const origin = 'https://isogunlabs.com';
 const canonical = new URL(path, Astro.site).toString();
 const ogImage = new URL('/assets/og-image.png', Astro.site).toString();
+const imageAlt = 'Isogun Labs, a tech studio for websites, web apps and Atlassian Marketplace apps';
+
+// Structured data: whatever the page passes in, plus a breadcrumb trail for inner pages.
+const nodes: object[] = [];
+if (jsonLd) {
+  const g = (jsonLd as { '@graph'?: object[] })['@graph'];
+  if (g) nodes.push(...g);
+  else nodes.push(jsonLd);
+}
+if (breadcrumbs && breadcrumbs.length) {
+  nodes.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [{ name: 'Home', path: '/' }, ...breadcrumbs].map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      item: origin + c.path,
+    })),
+  });
+}
+const graph = nodes.length
+  ? { '@context': 'https://schema.org', '@graph': nodes.map((n) => { const { '@context': _c, ...rest } = n as Record<string, unknown>; return rest; }) }
+  : null;
 ---
 <title>{title}</title>
-<meta name="description" content={description}>
+<meta name="description" content={metaDescription}>
 <link rel="canonical" href={canonical}>
 <meta name="robots" content={robots}>
 
 <meta property="og:type" content={type}>
 <meta property="og:site_name" content="Isogun Labs">
 <meta property="og:title" content={ogTitle}>
-<meta property="og:description" content={ogDescription}>
+<meta property="og:description" content={socialDescription}>
 <meta property="og:url" content={canonical}>
 <meta property="og:image" content={ogImage}>
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Isogun Labs — small, focused apps for the tools you already use">
+<meta property="og:image:alt" content={imageAlt}>
 <meta property="og:locale" content="en_US">
 {type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime}>}
 {type === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime}>}
@@ -49,10 +89,10 @@ const ogImage = new URL('/assets/og-image.png', Astro.site).toString();
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@isogunlabs">
 <meta name="twitter:title" content={ogTitle}>
-<meta name="twitter:description" content={ogDescription}>
+<meta name="twitter:description" content={socialDescription}>
 <meta name="twitter:image" content={ogImage}>
-<meta name="twitter:image:alt" content="Isogun Labs — small, focused apps for the tools you already use">
+<meta name="twitter:image:alt" content={imageAlt}>
 
-{jsonLd && (
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+{graph && (
+  <script type="application/ld+json" set:html={JSON.stringify(graph)} />
 )}

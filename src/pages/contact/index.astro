@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { contact } from '../../data/nav';
+
+const subject = encodeURIComponent('New project enquiry');
+const body = encodeURIComponent('Hi, I would like to talk about a project.\n\nWhat I need:\nWho it is for:\nPages or features:\nSites I like:\nWhen I need it:\n');
+---
+<BaseLayout
+  breadcrumbs={[{ name: 'Start a project', path: '/contact/' }]}
+  jsonLd={{ '@context': 'https://schema.org', '@graph': [{ '@type': 'ContactPage', '@id': 'https://isogunlabs.com/contact/#page', url: 'https://isogunlabs.com/contact/', name: 'Start a project', about: { '@id': 'https://isogunlabs.com/#org' } }] }}
+  title="Start a Project | Isogun Labs"
+  description="Tell Isogun Labs about your website, web app or Atlassian Marketplace project. Book a free 20 minute call, send an email or message us on WhatsApp."
+  path="/contact/"
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>Start a project</h1>
+    <p class="lead">Tell us what you need built. Book a free call, or send a short brief and we will reply by email.</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact-grid">
+      <a class="ct ct-lime reveal" href={contact.booking} target="_blank" rel="noopener">
+        <Icon name="calendar-blank" />
+        <h2>Book a free call</h2>
+        <p>Twenty minutes to talk through the goal, the audience and the next step.</p>
+      </a>
+      <a class="ct reveal" href={`mailto:${contact.projectEmail}?subject=${subject}&body=${body}`}>
+        <Icon name="envelope-simple" />
+        <h2>Send a brief</h2>
+        <p>{contact.projectEmail}</p>
+      </a>
+      <a class="ct reveal" href={contact.whatsapp} target="_blank" rel="noopener">
+        <Icon name="whatsapp-logo" />
+        <h2>WhatsApp</h2>
+        <p>A quick message to get the conversation started.</p>
+      </a>
+    </div>
+
+    <div class="brief reveal">
+      <h2 class="h2">What to include</h2>
+      <ul class="ticks">
+        <li><Icon name="check" /><span>What you want to build and why</span></li>
+        <li><Icon name="check" /><span>Who it is for</span></li>
+        <li><Icon name="check" /><span>The pages or features you already know you need</span></li>
+        <li><Icon name="check" /><span>Websites you like, and what you like about them</span></li>
+        <li><Icon name="check" /><span>When you need it live</span></li>
+        <li><Icon name="check" /><span>Any text, photos or logos you already have</span></li>
+      </ul>
+    </div>
+
+    <p class="work-note">Looking for help with one of our Atlassian apps? Email <a href={`mailto:${contact.supportEmail}`}>{contact.supportEmail}</a> or see <a href="/support/">Support and SLA</a>.</p>
+  </div>
+</section>
+
+</BaseLayout>

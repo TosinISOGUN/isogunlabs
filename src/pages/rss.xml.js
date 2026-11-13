@@ -7,7 +7,7 @@ export async function GET(context) {
 
   return rss({
     title: 'Isogun Labs Blog',
-    description: 'Notes on Jira, status reporting, and building small, focused apps for Atlassian.',
+    description: 'Notes from the Isogun Labs studio on building websites and web apps, working with Jira, and shipping Atlassian Marketplace apps.',
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,
