@@ -54,7 +54,7 @@ const jsonLd = {
 };
 ---
 <BaseLayout
-  title={`${post.data.title} — Isogun Labs`}
+  title={`${post.data.title} | Isogun Labs`}
   description={post.data.description}
   path={`/blog/${post.id}/`}
   jsonLd={jsonLd}
@@ -63,10 +63,10 @@ const jsonLd = {
   modifiedTime={modifiedTime}
 >
 
-<header class="page-hero">
+<header class="page-head">
   <div class="wrap">
-    <div class="kicker"><a href="/blog/" style="color:inherit;">Blog</a></div>
-    <h1>{post.data.title}</h1>
+    <div class="kicker"><a href="/blog/">Blog</a></div>
+    <h1 style="max-width:20ch;font-size:clamp(2.2rem,5vw,4.2rem)">{post.data.title}</h1>
     <p class="post-meta">
       <time datetime={post.data.pubDate.toISOString()}>{dateFmt.format(post.data.pubDate)}</time>
       <span class="dot" aria-hidden="true"></span>
@@ -75,9 +75,9 @@ const jsonLd = {
   </div>
 </header>
 
-<section class="block">
+<section class="section-tight" style="padding-top:0">
   <div class="wrap">
-    <div style="max-width:70ch; margin:0 auto;">
+    <div style="max-width:70ch; margin:0 auto; font-size:1.08rem;">
       <BlogCover variant={post.data.cover} size="lg" />
       <ShareBar url={`https://isogunlabs.com/blog/${post.id}/`} title={post.data.title} />
     </div>

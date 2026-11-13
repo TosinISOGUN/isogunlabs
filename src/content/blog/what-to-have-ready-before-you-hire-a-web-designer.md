@@ -2,7 +2,7 @@
 title: "What to Have Ready Before You Hire Someone to Build Your Website"
 description: "A website project goes faster, and costs less to fix later, when you arrive prepared. A plain checklist for business owners: your pages, your words, your photos, your domain, and the decisions that cause the most delay."
 pubDate: 2026-11-02
-cover: "trust"
+cover: "web"
 draft: true
 ---
 

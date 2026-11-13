@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { ctaLabel, ctaHref, contact } from '../../data/nav';
+
+// Screenshots and summaries come from the case studies on portfolio.isogunlabs.com.
+const projects = [
+  { slug: 'gloria-may-byron', name: 'Gloria May Byron', status: 'Live site', line: 'Website for an independent singer and songwriter, with music, news, awards and twelve languages.', url: 'https://gloriamaybyron.com/', alt: 'Gloria May Byron website homepage: a singer at a studio microphone with her name in large type.' },
+  { slug: 'velora-beauty', name: 'Velora Beauty', status: 'Concept project', line: 'Online beauty shop with a routine builder, shade-aware products and a shopping bag. Velora is not a real brand.', url: 'https://velorabeautyy.vercel.app', alt: 'Velora Beauty concept store homepage with a colourful make-up portrait.' },
+  { slug: 'hearthline-realty', name: 'Hearthline Realty', status: 'Concept project', line: 'Real estate site with home search, a map and showing requests.', url: 'https://hearthlinerealty.vercel.app', alt: 'Hearthline Realty concept site homepage with a house at dusk.' },
+  { slug: 'juniper-ember', name: 'Juniper & Ember', status: 'Concept project', line: 'Restaurant site with a menu, pickup ordering and reservations.', url: 'https://juniperandember.vercel.app/', alt: 'Juniper and Ember concept restaurant homepage with a lively dining room.' },
+  { slug: 'everwell', name: 'Everwell', status: 'Concept project', line: 'Clinic website with clear service pages and an easy contact form.', url: 'https://everwelldental.vercel.app', alt: 'Everwell clinic concept homepage with a calm treatment room.' },
+  { slug: 'weseeu', name: 'weSEEu', status: 'In development', line: 'Therapy and special-needs marketplace with verified provider profiles, accounts and sign-up.', url: 'https://weseeu.vercel.app', alt: 'weSEEu marketplace homepage with the line A place to find the right support.' },
+];
+---
+<BaseLayout
+  title="Work | Isogun Labs"
+  description="Websites and web platforms designed and built by Isogun Labs, plus three apps live on the Atlassian Marketplace."
+  path="/work/"
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>Selected work</h1>
+    <p class="lead">Live sites and concept builds, each designed and coded from scratch. Concept projects are labelled, and none of their content is real.</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="work-grid">
+      {projects.map((p) => (
+        <article class="proj reveal">
+          <a class="shot" href={p.url} target="_blank" rel="noopener" aria-label={`Open ${p.name}`} style="display:block">
+            <img src={`/assets/work/${p.slug}.webp`} alt={p.alt} width="1280" height="800" loading="lazy" decoding="async" />
+          </a>
+          <h3>{p.name}</h3>
+          <p class="meta"><span class="status">{p.status}.</span>{p.line}</p>
+          <div class="links">
+            <a class="link-arrow" href={p.url} target="_blank" rel="noopener">Visit site <Icon name="arrow-up-right" /></a>
+            <a class="link-arrow" href={`https://portfolio.isogunlabs.com/projects/${p.slug}`} target="_blank" rel="noopener">Case study <Icon name="arrow-up-right" /></a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="work-note">More websites and platforms, including booking and marketplace builds, are on <a href="https://portfolio.isogunlabs.com" target="_blank" rel="noopener">portfolio.isogunlabs.com</a>. Our three Atlassian Marketplace apps are on the <a href="/get-started/">Atlassian apps</a> page.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>Want something like this?</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

@@ -2,28 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout
-  title="Support & SLA — Isogun Labs"
+  title="Support and SLA | Isogun Labs"
   description="Support hours and response-time commitment for Isogun Labs apps, including Recap, Field Hygiene for Jira, and Passdown."
   path="/support/"
   ogDescription="Support hours and response-time commitment for Isogun Labs apps."
 >
 
-<header class="page-hero">
+<header class="page-head">
   <div class="wrap">
-    <div class="kicker">Support</div>
-    <h1>Support &amp; <span class="amber">SLA</span></h1>
-    <p>Isogun Labs is an independent studio, not a large vendor with a dedicated support team — this page states plainly what to expect. It applies across every Isogun Labs app: Recap, Field Hygiene for Jira, Passdown, and any future release.</p>
+    <h1>Support and SLA</h1>
+    <p class="lead">Isogun Labs is an independent studio, not a large vendor with a dedicated support team, so this page states plainly what to expect. It applies to every Isogun Labs app: Recap, Field Hygiene for Jira, Passdown and any future release.</p>
   </div>
 </header>
 
-<section class="block reveal">
-  <div class="wrap" style="max-width:760px;">
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap legal">
 
     <h2>How to reach us</h2>
     <p>
       Email <a href="mailto:support@isogunlabs.com">support@isogunlabs.com</a> for any question,
-      bug report, or issue with an Isogun Labs app. This is the same address used for security
-      reports and general product questions — one inbox, read directly by the team building the
+      bug report, or issue with an Isogun Labs app. This is the same address used for security reports and general product questions. It is one inbox, read directly by the team building the
       apps.
     </p>
 
@@ -38,14 +36,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <span class="day off">S</span>
     </div>
     <p>
-      Support is available <strong class="amber">Monday through Friday</strong>, during standard
+      Support is available <strong >Monday through Friday</strong>, during standard
       business hours. We do not currently offer weekend or holiday coverage.
     </p>
 
     <h2>Response-time commitment</h2>
     <p>
       We aim to respond to every support request within <strong>one business day</strong> of
-      receipt. This is a response-time commitment, not a resolution-time guarantee — some issues
+      receipt. This is a response-time commitment, not a resolution-time guarantee. Some issues
       take longer to fully resolve, but you will hear back from us within one business day
       acknowledging the request and outlining next steps.
     </p>
@@ -54,7 +52,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p>
       This commitment covers Isogun Labs' own apps specifically. It does not cover the underlying
       availability of Atlassian Jira or Atlassian Forge itself, which is governed by Atlassian's
-      own platform SLAs — Isogun Labs apps run entirely on Forge and have no separate
+      own platform SLAs. Isogun Labs apps run entirely on Forge and have no separate
       infrastructure of their own to offer an independent uptime guarantee for.
     </p>
 
@@ -65,27 +63,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 </BaseLayout>
 
-<style>
-  .week-strip { display: flex; gap: 8px; margin: 18px 0 14px; }
-  .week-strip .day {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    font-size: .82rem;
-    font-weight: 800;
-    letter-spacing: .02em;
-  }
-  .week-strip .day.on {
-    background: var(--black);
-    color: var(--white);
-  }
-  .week-strip .day.off {
-    background: var(--panel);
-    color: var(--body);
-    border: 1px solid var(--line);
-  }
-  @media (max-width: 480px) {
-    .week-strip .day { width: 36px; height: 36px; font-size: .76rem; }
-  }
-</style>
+

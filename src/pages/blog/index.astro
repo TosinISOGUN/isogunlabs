@@ -15,25 +15,23 @@ const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
 const readingTime = (post: (typeof posts)[number]) =>
   Math.max(1, Math.round((post.body ?? '').trim().split(/\s+/).length / 200));
 
-// Only tabs for categories actually present in the (non-featured) grid —
-// with 5 posts total there's no reason to show an empty tab.
+// Only tabs for categories actually present in the (non-featured) grid, so no tab is ever empty.
 const categoriesInGrid = [...new Set(rest.map((post) => categoryFor(post.data.cover).label))];
 ---
 <BaseLayout
-  title="Blog — Jira & Atlassian Notes | Isogun Labs"
-  description="Practical guides on Jira status reporting, admin housekeeping, and the Atlassian Marketplace, from the team building Recap and other focused Atlassian apps."
+  title="Blog | Isogun Labs"
+  description="Practical writing from Isogun Labs on building websites and web apps, working with Atlassian Jira, and shipping apps to the Atlassian Marketplace."
   path="/blog/"
 >
 
-<header class="page-hero">
+<header class="page-head">
   <div class="wrap">
-    <div class="kicker">Blog</div>
-    <h1>Notes on <span class="amber">Jira status reporting</span> and the Atlassian Marketplace</h1>
-    <p>Practical writing on Jira admin, status reporting, and how we build focused Atlassian apps.</p>
+    <h1>Notes from the studio</h1>
+    <p class="lead">Practical writing on building websites and web apps, working with Jira, and shipping apps to the Atlassian Marketplace.</p>
   </div>
 </header>
 
-<section class="block">
+<section class="section-tight" style="padding-top:0">
   <div class="wrap">
 
     {featured && featuredCategory && (

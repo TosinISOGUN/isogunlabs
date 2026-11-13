@@ -1,10 +1,20 @@
 export const navLinks = [
-  { href: '/#approach', label: 'What we do' },
-  { href: '/#products', label: 'Products' },
-  { href: '/documentation/', label: 'Documentation' },
+  { href: '/services/', label: 'Services' },
+  { href: '/work/', label: 'Work' },
+  { href: '/get-started/', label: 'Atlassian apps' },
   { href: '/blog/', label: 'Blog' },
   { href: '/#about', label: 'About' },
 ];
+
+export const ctaLabel = 'Start a project';
+export const ctaHref = '/contact/';
+
+export const contact = {
+  projectEmail: 'tomisin@isogunlabs.com',
+  supportEmail: 'support@isogunlabs.com',
+  booking: 'https://cal.com/oluwatomisin-isogun-disku5/20min',
+  whatsapp: 'https://wa.me/2348164376172',
+};
 
 export const socialLinks = [
   { href: 'https://www.linkedin.com/company/isogun-labs', label: 'LinkedIn' },
