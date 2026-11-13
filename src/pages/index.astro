@@ -15,14 +15,6 @@ const tech = [
   ['shopify', 'Shopify'], ['jira', 'Jira'], ['atlassian', 'Atlassian'], ['vercel', 'Vercel'], ['github', 'GitHub'],
 ];
 
-const strip = [
-  { src: '/assets/work/gloria-may-byron.webp', alt: 'Homepage of the Gloria May Byron website: a singer at a studio microphone with her name in large type.' },
-  { src: '/assets/work/velora-beauty.webp', alt: 'Homepage of the Velora Beauty concept store: a colourful make-up portrait with the line Beauty that feels like you.' },
-  { src: '/assets/work/hearthline-realty.webp', alt: 'Homepage of the Hearthline Realty concept site: a house at dusk with the line Your next chapter starts at home.' },
-  { src: '/assets/work/juniper-ember.webp', alt: 'Homepage of the Juniper and Ember restaurant concept site: a lively dining room with the line Come hungry.' },
-  { src: '/assets/work/everwell.webp', alt: 'Homepage of the Everwell clinic concept site: a calm treatment room with the line Care that puts you at ease.' },
-];
-
 const projects = [
   { slug: 'gloria-may-byron', name: 'Gloria May Byron', status: 'Live site', line: 'Website for an independent singer and songwriter, in twelve languages.', url: 'https://gloriamaybyron.com/', alt: 'Gloria May Byron website homepage' },
   { slug: 'velora-beauty', name: 'Velora Beauty', status: 'Concept project', line: 'Online beauty shop with a routine builder and a shopping bag.', url: 'https://velorabeautyy.vercel.app', alt: 'Velora Beauty concept store homepage' },
@@ -41,8 +33,21 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Organization',
+      '@type': ['Organization', 'ProfessionalService'],
       '@id': 'https://isogunlabs.com/#org',
+      areaServed: 'Worldwide',
+      serviceType: ['Website design and development', 'Web application development', 'E-commerce and booking systems', 'Atlassian Marketplace app development'],
+      founder: { '@type': 'Person', '@id': 'https://isogunlabs.com/#founder', name: 'Oluwatomisin Isogun', jobTitle: 'Founder and lead developer', url: 'https://portfolio.isogunlabs.com', image: 'https://isogunlabs.com/assets/photos/founder.webp' },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Services',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Websites for businesses and brands', url: 'https://isogunlabs.com/services/#websites' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web apps and MVPs for startups', url: 'https://isogunlabs.com/services/#web-apps' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Online stores and booking', url: 'https://isogunlabs.com/services/#stores-booking' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Atlassian Marketplace apps', url: 'https://isogunlabs.com/services/#marketplace-apps' } },
+        ],
+      },
       name: 'Isogun Labs',
       alternateName: 'Isogun Labs Studio',
       url: 'https://isogunlabs.com/',
@@ -61,6 +66,7 @@ const jsonLd = {
         'https://x.com/isogunlabs',
         'https://www.instagram.com/isogunlabs/',
         'https://www.youtube.com/@isogun_labs',
+        'https://portfolio.isogunlabs.com',
       ],
     },
     {
@@ -109,12 +115,11 @@ const jsonLd = {
 };
 ---
 <BaseLayout
-  title="Isogun Labs | Websites, Web Apps and Atlassian Marketplace Apps"
-  description="Isogun Labs is a tech studio that designs and builds websites, web apps and Atlassian Marketplace apps for startups, businesses and brands."
+  title="Websites, Web Apps and Atlassian Apps | Isogun Labs"
+  description="Isogun Labs is a tech studio that designs and builds websites, web apps and Atlassian Marketplace apps for startups, businesses and brands worldwide."
   path="/"
   ogDescription="A tech studio for startups, businesses and brands: websites, web apps and Atlassian Marketplace apps, designed and built end to end."
   jsonLd={jsonLd}
-  preloadImage="/assets/work/gloria-may-byron.webp"
 >
 
 <section class="hero">
@@ -128,13 +133,12 @@ const jsonLd = {
       </div>
     </div>
   </div>
-  <div class="strip">
-    {strip.map((s, i) => (
-      <a href="/work/" aria-label={`See our work: ${s.alt}`}>
-        <div class="frame"><img src={s.src} alt="" width="1280" height="900" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" /></div>
-      </a>
-    ))}
-  </div>
+  <nav class="hero-links" aria-label="What we build">
+    <a href="/services/#websites"><span class="t">Websites</span><span class="d">For businesses and brands</span><Icon name="arrow-up-right" /></a>
+    <a href="/services/#web-apps"><span class="t">Web apps</span><span class="d">MVPs and platforms</span><Icon name="arrow-up-right" /></a>
+    <a href="/services/#stores-booking"><span class="t">Stores and booking</span><span class="d">Checkout and reservations</span><Icon name="arrow-up-right" /></a>
+    <a href="/services/#marketplace-apps"><span class="t">Marketplace apps</span><span class="d">Jira and JSM, built on Forge</span><Icon name="arrow-up-right" /></a>
+  </nav>
 </section>
 
 <section class="logos" aria-label="Technology we build with">

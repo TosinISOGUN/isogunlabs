@@ -14,8 +14,25 @@ const projects = [
 ];
 ---
 <BaseLayout
-  title="Work | Isogun Labs"
-  description="Websites and web platforms designed and built by Isogun Labs, plus three apps live on the Atlassian Marketplace."
+  breadcrumbs={[{ name: 'Work', path: '/work/' }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': 'https://isogunlabs.com/work/#page',
+        url: 'https://isogunlabs.com/work/',
+        name: 'Selected work',
+        isPartOf: { '@id': 'https://isogunlabs.com/#website' },
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: projects.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.name, url: p.url })),
+        },
+      },
+    ],
+  }}
+  title="Selected Work: Websites and Web Apps | Isogun Labs"
+  description="Websites and web platforms designed and built by Isogun Labs, from an artist site and online stores to booking and marketplace builds, plus three Atlassian apps."
   path="/work/"
 >
 
