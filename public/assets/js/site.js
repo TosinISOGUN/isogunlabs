@@ -1,119 +1,74 @@
 (function () {
-  // Nav shadow/shrink on scroll
-  var nav = document.querySelector('.nav');
-  if (nav) {
-    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 10); };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
-
-  // Mobile hamburger drawer
-  var burger = document.querySelector('.hamburger');
-  var overlay = document.querySelector('.drawer-overlay');
-  var drawer = document.querySelector('.drawer');
-  if (burger && overlay && drawer) {
-    var closeBtn = drawer.querySelector('.d-close');
-    var setOpen = function (open) {
-      burger.classList.toggle('open', open);
-      overlay.classList.toggle('open', open);
-      drawer.classList.toggle('open', open);
-      document.body.classList.toggle('drawer-open', open);
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    };
-    burger.addEventListener('click', function () { setOpen(!drawer.classList.contains('open')); });
-    overlay.addEventListener('click', function () { setOpen(false); });
-    if (closeBtn) closeBtn.addEventListener('click', function () { setOpen(false); });
-    drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
-  }
-
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
 
-  // Typewriter effect for the homepage hero headline.
-  // The full text also lives in the HTML (for SEO / no-JS); we clear and retype it.
-  var h1 = document.getElementById('hero-h1');
-  if (h1 && !reduce) {
-    var tokens = [
-      { t: 'We build ' },
-      { t: 'focused apps', c: 'amber' },
-      { t: ' for the tools your team already uses.' }
-    ];
-    h1.style.minHeight = h1.offsetHeight + 'px'; // reserve space, avoid reflow
-    h1.textContent = '';
-    h1.classList.add('typing');
-    var ti = 0, ci = 0, cur = null;
-    var step = function () {
-      if (ti >= tokens.length) { h1.classList.remove('typing'); return; }
-      var tok = tokens[ti];
-      if (ci === 0) {
-        if (tok.c) { cur = document.createElement('span'); cur.className = tok.c; h1.appendChild(cur); }
-        else { cur = null; }
-      }
-      (cur || h1).appendChild(document.createTextNode(tok.t.charAt(ci)));
-      ci++;
-      if (ci >= tok.t.length) { ti++; ci = 0; }
-      setTimeout(step, 45);
-    };
-    setTimeout(step, 350);
+  // Header gets a hairline once the page has moved. An observer on a sentinel at the top
+  // of the page does this, so there is no scroll listener.
+  var header = document.querySelector('.site-header');
+  if (header && hasIO) {
+    var sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:24px;pointer-events:none';
+    document.body.insertBefore(sentinel, document.body.firstChild);
+    new IntersectionObserver(function (e) {
+      header.classList.toggle('scrolled', !e[0].isIntersecting);
+    }).observe(sentinel);
   }
 
-  // Reveal-on-scroll
+  // A soft highlight follows the pointer or keyboard focus across the nav links and rests on the current page.
+  var links = document.querySelector('.nav-links');
+  var blob = links && links.querySelector('.nav-blob');
+  if (links && blob) {
+    var current = links.querySelector('[aria-current="page"]');
+    var moveTo = function (el) {
+      if (!el) { blob.classList.remove('on'); return; }
+      blob.style.setProperty('--x', el.offsetLeft + 'px');
+      blob.style.setProperty('--w', el.offsetWidth + 'px');
+      blob.classList.add('on');
+    };
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('mouseenter', function () { moveTo(a); });
+      a.addEventListener('focus', function () { moveTo(a); });
+    });
+    links.addEventListener('mouseleave', function () { moveTo(current); });
+    links.addEventListener('focusout', function () { moveTo(current); });
+    moveTo(current);
+    window.addEventListener('resize', function () { moveTo(current); });
+  }
+
+  // Full-screen menu on small screens
+  var openBtn = document.querySelector('.menu-btn');
+  var sheet = document.getElementById('menu-sheet');
+  if (openBtn && sheet) {
+    var closeBtn = sheet.querySelector('.sheet-close');
+    var setOpen = function (open) {
+      sheet.classList.toggle('open', open);
+      document.body.classList.toggle('sheet-open', open);
+      openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) { sheet.removeAttribute('inert'); closeBtn.focus(); }
+      else { sheet.setAttribute('inert', ''); openBtn.focus({ preventScroll: true }); }
+    };
+    sheet.setAttribute('inert', '');
+    openBtn.addEventListener('click', function () { setOpen(true); });
+    closeBtn.addEventListener('click', function () { setOpen(false); });
+    sheet.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet.classList.contains('open')) setOpen(false); });
+    window.matchMedia('(min-width: 980px)').addEventListener('change', function (m) { if (m.matches) setOpen(false); });
+  }
+
+  // Reveal on scroll
   var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-  if (reduce || !('IntersectionObserver' in window)) {
+  if (reduce || !hasIO) {
     reveals.forEach(function (el) { el.classList.add('in'); });
   } else {
-    // threshold:0 (fire on any intersection) rather than a fixed area %:
-    // a fixed 0.1 never fires for elements taller than ~10x the viewport
-    // (a long post on a narrow mobile column), leaving them stuck at
-    // opacity:0. rootMargin trims the viewport bottom so the reveal still
-    // triggers a moment after the element enters, for all element sizes.
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
     reveals.forEach(function (el) { io.observe(el); });
   }
 
-  // Count-up stats. Any element with [data-count] animates its leading number
-  // from 0 when it scrolls into view, preserving prefix/suffix (e.g. "100%").
-  var counters = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
-  if (counters.length) {
-    var runCount = function (el) {
-      var raw = el.getAttribute('data-count-raw') || el.textContent.trim();
-      el.setAttribute('data-count-raw', raw);
-      var m = raw.match(/-?\d[\d,]*\.?\d*/);
-      if (!m) return;
-      var numStr = m[0];
-      var target = parseFloat(numStr.replace(/,/g, ''));
-      var decimals = (numStr.split('.')[1] || '').length;
-      var pre = raw.slice(0, m.index);
-      var post = raw.slice(m.index + numStr.length);
-      if (reduce) { el.textContent = raw; return; }
-      var dur = 1600, start = null;
-      var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
-      var frame = function (ts) {
-        if (start === null) start = ts;
-        var p = Math.min((ts - start) / dur, 1);
-        el.textContent = pre + (target * ease(p)).toFixed(decimals) + post;
-        if (p < 1) requestAnimationFrame(frame);
-        else el.textContent = raw;
-      };
-      el.textContent = pre + (0).toFixed(decimals) + post;
-      requestAnimationFrame(frame);
-    };
-    if (!('IntersectionObserver' in window)) {
-      counters.forEach(runCount);
-    } else {
-      var cio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); } });
-      }, { threshold: 0.4 });
-      counters.forEach(function (el) { cio.observe(el); });
-    }
-  }
-
-  // Auto-transitioning product screenshot sliders (ScreenshotSlider.astro).
-  // Reused across every product showcase — Recap today, future apps later.
-  var sliders = Array.prototype.slice.call(document.querySelectorAll('.shot-slider'));
-  sliders.forEach(function (root) {
+  // Screenshot sliders (Atlassian apps)
+  Array.prototype.slice.call(document.querySelectorAll('.shot-slider')).forEach(function (root) {
     var shots = Array.prototype.slice.call(root.querySelectorAll('.shot'));
     var dots = Array.prototype.slice.call(root.querySelectorAll('.shot-dots .dot'));
     if (shots.length < 2) return;
@@ -122,20 +77,11 @@
     var show = function (n) {
       i = (n + shots.length) % shots.length;
       shots.forEach(function (s, idx) { s.classList.toggle('active', idx === i); });
-      dots.forEach(function (d, idx) {
-        d.classList.toggle('active', idx === i);
-        d.setAttribute('aria-selected', idx === i ? 'true' : 'false');
-      });
+      dots.forEach(function (d, idx) { d.classList.toggle('active', idx === i); d.setAttribute('aria-selected', idx === i ? 'true' : 'false'); });
     };
     var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
-    var start = function () {
-      if (reduce) return;
-      stop();
-      timer = setInterval(function () { show(i + 1); }, interval);
-    };
-    dots.forEach(function (d, idx) {
-      d.addEventListener('click', function () { show(idx); start(); });
-    });
+    var start = function () { if (reduce) return; stop(); timer = setInterval(function () { show(i + 1); }, interval); };
+    dots.forEach(function (d, idx) { d.addEventListener('click', function () { show(idx); start(); }); });
     root.addEventListener('mouseenter', stop);
     root.addEventListener('mouseleave', start);
     root.addEventListener('focusin', stop);
@@ -143,9 +89,7 @@
     start();
   });
 
-  // Blog category filter tabs (blog/index.astro). Client-side only — shows
-  // or hides .blog-card elements in the grid by their data-category
-  // attribute. The featured post above the grid is never filtered.
+  // Blog category filter
   var blogFilters = document.querySelector('.blog-filters');
   if (blogFilters) {
     var filterButtons = Array.prototype.slice.call(blogFilters.querySelectorAll('.blog-filter'));
@@ -155,46 +99,38 @@
         filterButtons.forEach(function (b) { b.classList.toggle('active', b === btn); });
         var filter = btn.getAttribute('data-filter');
         cards.forEach(function (card) {
-          var show = filter === 'all' || card.getAttribute('data-category') === filter;
-          card.style.display = show ? '' : 'none';
+          card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter) ? '' : 'none';
         });
       });
     });
   }
 
-  // Share bar (ShareBar.astro). X/LinkedIn are plain links; Instagram has no
-  // URL-based share intent and the plain "copy link" button both just copy
-  // the post URL and show a short confirmation in place.
-  var shareBars = Array.prototype.slice.call(document.querySelectorAll('.share-bar'));
-  shareBars.forEach(function (bar) {
+  // Share bar: Instagram has no share URL, so it and "copy link" copy the post address.
+  Array.prototype.slice.call(document.querySelectorAll('.share-bar')).forEach(function (bar) {
     var url = bar.getAttribute('data-share-url');
     var toast = bar.querySelector('.share-toast');
-    var toastTimer = null;
-    var copyLink = function (message) {
-      var done = function () {
-        if (!toast) return;
-        toast.textContent = message;
-        toast.classList.add('show');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2400);
-      };
+    var timer = null;
+    var say = function (message) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(timer);
+      timer = setTimeout(function () { toast.classList.remove('show'); }, 2400);
+    };
+    var copy = function (message) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(done, done);
+        navigator.clipboard.writeText(url).then(function () { say(message); }, function () { say(message); });
       } else {
         var ta = document.createElement('textarea');
-        ta.value = url;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
+        ta.value = url; ta.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(ta); ta.select();
         try { document.execCommand('copy'); } catch (e) {}
-        document.body.removeChild(ta);
-        done();
+        document.body.removeChild(ta); say(message);
       }
     };
-    var igBtn = bar.querySelector('[data-share="instagram"]');
-    if (igBtn) igBtn.addEventListener('click', function () { copyLink('Link copied — paste it into your bio or story'); });
-    var copyBtn = bar.querySelector('[data-share="copy"]');
-    if (copyBtn) copyBtn.addEventListener('click', function () { copyLink('Link copied'); });
+    var ig = bar.querySelector('[data-share="instagram"]');
+    if (ig) ig.addEventListener('click', function () { copy('Link copied. Paste it into your bio or story.'); });
+    var cp = bar.querySelector('[data-share="copy"]');
+    if (cp) cp.addEventListener('click', function () { copy('Link copied'); });
   });
 })();

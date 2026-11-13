@@ -1,31 +1,41 @@
 ---
-import { navLinks } from '../data/nav';
+import { navLinks, ctaLabel, ctaHref } from '../data/nav';
+import Icon from './Icon.astro';
 import SocialLinks from './SocialLinks.astro';
 
 const path = Astro.url.pathname;
+const isActive = (href: string) => !href.includes('#') && (path === href || (href !== '/' && path.startsWith(href)));
 ---
-<div class="util">
-  <div class="wrap">
-    <div class="u-left"><a href="mailto:support@isogunlabs.com">support@isogunlabs.com</a></div>
+<header class="site-header">
+  <div class="island">
+    <a class="logo" href="/" aria-label="Isogun Labs, home">
+      <img src="/assets/logo-wordmark.webp" width="150" height="34" alt="Isogun Labs" fetchpriority="high" />
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <span class="nav-blob" aria-hidden="true"></span>
+      {navLinks.map((l) => (
+        <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
+      ))}
+    </nav>
+    <a class="btn btn-lime btn-sm nav-cta" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-sheet">Menu</button>
+  </div>
+</header>
+
+<div class="sheet" id="menu-sheet" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="sheet-top">
+    <a class="logo" href="/" aria-label="Isogun Labs, home">
+      <img src="/assets/logo-wordmark.webp" width="176" height="40" alt="Isogun Labs" />
+    </a>
+    <button class="sheet-close" type="button"><Icon name="x" /> Close</button>
+  </div>
+  <nav aria-label="Menu">
+    {navLinks.map((l) => (
+      <a href={l.href}>{l.label} <Icon name="arrow-up-right" /></a>
+    ))}
+  </nav>
+  <div class="sheet-foot">
+    <a class="btn btn-ink" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
     <SocialLinks />
   </div>
 </div>
-
-<nav class="nav">
-  <div class="wrap">
-    <a class="logo" href="/" aria-label="Isogun Labs home">
-      <b>Isogun Labs</b>
-    </a>
-    <div class="nav-mid">
-      {navLinks.map((l) => (
-        <a href={l.href} class={path === l.href ? 'active' : undefined}>{l.label}</a>
-      ))}
-    </div>
-    <div class="nav-right">
-      <a class="btn btn-blue btn-sm" href="/get-started/">Get Started</a>
-      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</nav>

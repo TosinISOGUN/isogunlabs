@@ -1,0 +1,6 @@
+---
+// Phosphor Icons (MIT), saved under /assets/icons/ui and drawn as a mask so they take the text colour.
+interface Props { name: string; class?: string }
+const { name, class: cls } = Astro.props;
+---
+<span class:list={['i', cls]} style={`--src:url(/assets/icons/ui/${name}.svg)`} aria-hidden="true"></span>

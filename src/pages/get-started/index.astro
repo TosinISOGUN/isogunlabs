@@ -1,23 +1,24 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
 ---
 <BaseLayout
-  title="Get Started - Choose the Right Isogun Labs Atlassian App"
+  title="Atlassian Apps for Jira and JSM | Isogun Labs"
   description="Choose the Isogun Labs Atlassian app that fits your workflow: Recap for Jira reporting, Field Hygiene for custom field cleanup, or Passdown for JSM handoffs."
   path="/get-started/"
+  breadcrumbs={[{ name: 'Atlassian apps', path: '/get-started/' }]}
 >
 
-<header class="page-hero chooser-hero">
+<header class="page-head">
   <div class="wrap">
-    <div class="kicker">Product chooser</div>
-    <h1>Start with the workflow that is slowing your team down.</h1>
-    <p>Three small Atlassian apps, each built for one clear job. Pick the problem you recognize and go straight to the app, docs, or Marketplace listing.</p>
+    <h1>Atlassian apps for Jira and JSM teams</h1>
+    <p class="lead">Three small apps, each built for one clear job. Pick the problem you recognize and go straight to the app, the docs or the Marketplace listing.</p>
   </div>
 </header>
 
-<section class="block reveal chooser-block">
+<section class="section-tight" style="padding-top:0">
   <div class="wrap">
-    <div class="chooser-grid">
+    <div class="chooser">
       <article class="chooser-card">
         <div class="chooser-label">I need better status updates</div>
         <div class="top">
@@ -36,15 +37,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <li>Runs entirely on Atlassian and stores nothing.</li>
         </ul>
         <div class="chooser-actions">
-          <a class="btn btn-blue btn-sm" href="https://marketplace.atlassian.com/2146687861" target="_blank" rel="noopener">Marketplace</a>
-          <a class="btn-text" href="https://recap.isogunlabs.com/">Product page</a>
+          <a class="btn btn-ink btn-sm" href="https://marketplace.atlassian.com/2146687861" target="_blank" rel="noopener">Marketplace</a>
+          <a class="link-arrow" href="https://recap.isogunlabs.com/">Product page</a>
         </div>
       </article>
 
       <article class="chooser-card">
         <div class="chooser-label">I need Jira admin cleanup</div>
         <div class="top">
-          <span class="ic" aria-hidden="true"><img src="/assets/field-hygiene-logo-144.png" alt="" /></span>
+          <span class="ic" aria-hidden="true"><img src="/assets/field-hygiene-logo-144.png" alt="" width="56" height="56" /></span>
           <div>
             <div class="sub">Field Hygiene for Jira Cloud</div>
             <h3>Find custom field sprawl before it becomes debt.</h3>
@@ -57,15 +58,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <li>Read-only by design, with no setup flow.</li>
         </ul>
         <div class="chooser-actions">
-          <a class="btn btn-blue btn-sm" href="https://marketplace.atlassian.com/apps/2905942594" target="_blank" rel="noopener">Marketplace</a>
-          <a class="btn-text" href="https://field-hygiene.isogunlabs.com/">Product page</a>
+          <a class="btn btn-ink btn-sm" href="https://marketplace.atlassian.com/apps/2905942594" target="_blank" rel="noopener">Marketplace</a>
+          <a class="link-arrow" href="https://field-hygiene.isogunlabs.com/">Product page</a>
         </div>
       </article>
 
       <article class="chooser-card">
         <div class="chooser-label">I need cleaner support handoffs</div>
         <div class="top">
-          <span class="ic" aria-hidden="true"><img src="/assets/passdown-logo-144.png" alt="" /></span>
+          <span class="ic" aria-hidden="true"><img src="/assets/passdown-logo-144.png" alt="" width="56" height="56" /></span>
           <div>
             <div class="sub">Passdown for JSM</div>
             <h3>Write shift handoffs automatically.</h3>
@@ -78,23 +79,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <li>Mentions and assigns the incoming person automatically.</li>
         </ul>
         <div class="chooser-actions">
-          <a class="btn btn-blue btn-sm" href="https://marketplace.atlassian.com/apps/3571155481" target="_blank" rel="noopener">Marketplace</a>
-          <a class="btn-text" href="https://passdown.isogunlabs.com/">Product page</a>
+          <a class="btn btn-ink btn-sm" href="https://marketplace.atlassian.com/apps/3571155481" target="_blank" rel="noopener">Marketplace</a>
+          <a class="link-arrow" href="https://passdown.isogunlabs.com/">Product page</a>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="cta reveal">
-  <div class="wrap cta-split">
-    <div class="cta-copy">
-      <h2>Not sure which one fits?</h2>
-      <p>Send us the workflow that feels slow, repetitive, or risky. We will point you to the right app if it already exists, or tell you plainly if it does not.</p>
-    </div>
-    <div class="cta-actions">
-      <a class="btn btn-orange" href="mailto:support@isogunlabs.com">Talk with us</a>
-      <a class="btn btn-ghost-light" href="/documentation/">Read the docs</a>
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>Not sure which one fits?</h2>
+    <p class="lead" style="color:inherit;opacity:.8;max-width:48ch">Send us the workflow that feels slow, repetitive or risky. We will point you to the right app if it exists, or tell you plainly if it does not.</p>
+    <div class="cta-row">
+      <a class="btn btn-ink" href="mailto:support@isogunlabs.com">Email us <Icon name="arrow-right" /></a>
+      <a class="mail" href="/documentation/">Read the docs</a>
     </div>
   </div>
 </section>

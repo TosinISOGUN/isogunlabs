@@ -2,27 +2,27 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 <BaseLayout
-  title="Documentation — Isogun Labs"
+  title="Documentation | Isogun Labs"
   description="Product documentation for Isogun Labs apps. Guides for Recap and for administering your Isogun Labs apps on Atlassian."
   path="/documentation/"
+  breadcrumbs={[{ name: 'Documentation', path: '/documentation/' }]}
   ogDescription="Product documentation for Isogun Labs apps. Guides for Recap and account administration."
 >
 
-<header class="page-hero">
+<header class="page-head">
   <div class="wrap">
-    <div class="kicker">Documentation</div>
-    <h1>Product <span class="amber">documentation</span></h1>
-    <p>Guides for getting the most out of Isogun Labs apps — and for managing them across your Atlassian site.</p>
+    <h1>Product documentation</h1>
+    <p class="lead">Guides for getting the most out of Isogun Labs apps, and for managing them across your Atlassian site.</p>
   </div>
 </header>
 
-<section class="block reveal">
+<section class="section-tight" style="padding-top:0">
   <div class="wrap">
     <div class="doc-grid">
 
       <a class="doc-tile" href="mailto:support@isogunlabs.com">
         <span class="ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#5A6573" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.63.66 1.09 1.31 1.1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.63.66 1.09 1.31 1.1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
         </span>
         <div>
           <div class="t">Administration</div>
@@ -37,16 +37,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </span>
         <div>
           <div class="t">Recap</div>
-          <div class="d">Monthly status reports for Jira — setup &amp; usage</div>
+          <div class="d">Monthly status reports for Jira: setup and usage</div>
         </div>
         <span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
     </div>
 
-    <p style="text-align:center; color:var(--body); margin-top:44px;">
-      Can't find what you need? Email <a href="mailto:support@isogunlabs.com" style="color:var(--orange-600); font-weight:700; text-decoration:none;">support@isogunlabs.com</a> — we answer within 1–2 business days.
-    </p>
+    <p class="lead" style="margin-top:2.4rem">Cannot find what you need? Email <a href="mailto:support@isogunlabs.com" style="font-weight:600">support@isogunlabs.com</a>. We answer within one to two business days.</p>
   </div>
 </section>
 

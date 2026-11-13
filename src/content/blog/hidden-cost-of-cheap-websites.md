@@ -2,7 +2,7 @@
 title: "The Hidden Cost of Cheap Websites"
 description: "A practical look at why low-cost websites often become expensive later: performance debt, poor SEO, weak conversion paths, brittle code, security gaps, and avoidable rebuilds."
 pubDate: 2026-09-24
-cover: "trust"
+cover: "web"
 ---
 
 A cheap website is not always a bad website. Sometimes a small business genuinely needs something simple: a one-page presence, a clean contact form, a few service details, and a way for people to know the business is real. There is nothing wrong with starting lean.

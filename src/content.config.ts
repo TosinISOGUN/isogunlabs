@@ -9,7 +9,7 @@ const blog = defineCollection({
     pubDate: z.date(),
     updatedDate: z.date().optional(),
     draft: z.boolean().optional().default(false),
-    cover: z.enum(['fields', 'report', 'market', 'trust']).optional().default('report'),
+    cover: z.enum(['fields', 'report', 'market', 'trust', 'web']).optional().default('report'),
   }),
 });
 
