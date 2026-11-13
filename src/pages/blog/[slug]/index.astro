@@ -24,6 +24,8 @@ const readNext = posts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 2);
 
+// Keep the page title near 60 characters: the brand suffix is only added when it fits.
+const seoTitle = post.data.title.length + 14 <= 62 ? `${post.data.title} | Isogun Labs` : post.data.title;
 const publishedTime = post.data.pubDate.toISOString();
 const modifiedTime = (post.data.updatedDate ?? post.data.pubDate).toISOString();
 
@@ -45,8 +47,9 @@ const jsonLd = {
   image: 'https://isogunlabs.com/assets/og-image.png',
   datePublished: publishedTime,
   dateModified: modifiedTime,
-  author: publisher,
+  author: { '@type': 'Person', name: 'Oluwatomisin Isogun', url: 'https://portfolio.isogunlabs.com' },
   publisher,
+  isPartOf: { '@type': 'Blog', '@id': 'https://isogunlabs.com/blog/', name: 'Isogun Labs Blog' },
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `https://isogunlabs.com/blog/${post.id}/`,
@@ -54,10 +57,11 @@ const jsonLd = {
 };
 ---
 <BaseLayout
-  title={`${post.data.title} | Isogun Labs`}
+  title={seoTitle}
   description={post.data.description}
   path={`/blog/${post.id}/`}
   jsonLd={jsonLd}
+  breadcrumbs={[{ name: 'Blog', path: '/blog/' }, { name: post.data.title, path: `/blog/${post.id}/` }]}
   type="article"
   publishedTime={publishedTime}
   modifiedTime={modifiedTime}
@@ -84,6 +88,11 @@ const jsonLd = {
     <article class="prose">
       <Content />
     </article>
+
+    <aside class="prose post-cta">
+      <h2>Need a website or app built?</h2>
+      <p>Isogun Labs designs and builds websites, web apps and Atlassian Marketplace apps. See <a href="/services/">what we build</a>, browse <a href="/work/">recent work</a>, or <a href="/contact/">start a project</a>.</p>
+    </aside>
 
     {readNext.length > 0 && (
       <div class="prose read-next">

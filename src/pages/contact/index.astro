@@ -7,6 +7,8 @@ const subject = encodeURIComponent('New project enquiry');
 const body = encodeURIComponent('Hi, I would like to talk about a project.\n\nWhat I need:\nWho it is for:\nPages or features:\nSites I like:\nWhen I need it:\n');
 ---
 <BaseLayout
+  breadcrumbs={[{ name: 'Start a project', path: '/contact/' }]}
+  jsonLd={{ '@context': 'https://schema.org', '@graph': [{ '@type': 'ContactPage', '@id': 'https://isogunlabs.com/contact/#page', url: 'https://isogunlabs.com/contact/', name: 'Start a project', about: { '@id': 'https://isogunlabs.com/#org' } }] }}
   title="Start a Project | Isogun Labs"
   description="Tell Isogun Labs about your website, web app or Atlassian Marketplace project. Book a free 20 minute call, send an email or message us on WhatsApp."
   path="/contact/"

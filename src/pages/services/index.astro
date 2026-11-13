@@ -71,8 +71,24 @@ const services = [
 ];
 ---
 <BaseLayout
-  title="Services | Isogun Labs"
-  description="Website design and development, web apps and MVPs, online stores and booking, and Atlassian Marketplace apps from Isogun Labs, a tech studio for startups, businesses and brands."
+  breadcrumbs={[{ name: 'Services', path: '/services/' }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'CollectionPage', '@id': 'https://isogunlabs.com/services/#page', url: 'https://isogunlabs.com/services/', name: 'Services', isPartOf: { '@id': 'https://isogunlabs.com/#website' } },
+      ...services.map((svc) => ({
+        '@type': 'Service',
+        '@id': `https://isogunlabs.com/services/#${svc.id}`,
+        name: svc.title,
+        description: svc.lead,
+        url: `https://isogunlabs.com/services/#${svc.id}`,
+        provider: { '@id': 'https://isogunlabs.com/#org' },
+        areaServed: 'Worldwide',
+      })),
+    ],
+  }}
+  title="Web Design and Development Services | Isogun Labs"
+  description="Website design and development, web apps and MVPs, online stores and booking, and Atlassian Marketplace apps, built end to end by Isogun Labs."
   path="/services/"
 >
 
@@ -89,11 +105,11 @@ const services = [
       {services.map((s) => <a href={`#${s.id}`}>{s.name}</a>)}
     </nav>
     <div>
-      {services.map((s) => (
+      {services.map((s, idx) => (
         <section class="svc-block reveal" id={s.id}>
           <h2>{s.title}</h2>
           <p class="lead">{s.lead}</p>
-          <div class="svc-media"><img src={s.image} alt={s.alt} width="1600" height="1066" loading="lazy" decoding="async" /></div>
+          <div class="svc-media"><img src={s.image} alt={s.alt} width="1600" height="1066" loading={idx === 0 ? 'eager' : 'lazy'} fetchpriority={idx === 0 ? 'high' : 'auto'} decoding="async" /></div>
           <ul class="ticks">
             {s.items.map((t) => <li><Icon name="check" /><span>{t}</span></li>)}
           </ul>

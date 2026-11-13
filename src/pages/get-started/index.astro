@@ -6,6 +6,7 @@ import Icon from '../../components/Icon.astro';
   title="Atlassian Apps for Jira and JSM | Isogun Labs"
   description="Choose the Isogun Labs Atlassian app that fits your workflow: Recap for Jira reporting, Field Hygiene for custom field cleanup, or Passdown for JSM handoffs."
   path="/get-started/"
+  breadcrumbs={[{ name: 'Atlassian apps', path: '/get-started/' }]}
 >
 
 <header class="page-head">
@@ -44,7 +45,7 @@ import Icon from '../../components/Icon.astro';
       <article class="chooser-card">
         <div class="chooser-label">I need Jira admin cleanup</div>
         <div class="top">
-          <span class="ic" aria-hidden="true"><img src="/assets/field-hygiene-logo-144.png" alt="" /></span>
+          <span class="ic" aria-hidden="true"><img src="/assets/field-hygiene-logo-144.png" alt="" width="56" height="56" /></span>
           <div>
             <div class="sub">Field Hygiene for Jira Cloud</div>
             <h3>Find custom field sprawl before it becomes debt.</h3>
@@ -65,7 +66,7 @@ import Icon from '../../components/Icon.astro';
       <article class="chooser-card">
         <div class="chooser-label">I need cleaner support handoffs</div>
         <div class="top">
-          <span class="ic" aria-hidden="true"><img src="/assets/passdown-logo-144.png" alt="" /></span>
+          <span class="ic" aria-hidden="true"><img src="/assets/passdown-logo-144.png" alt="" width="56" height="56" /></span>
           <div>
             <div class="sub">Passdown for JSM</div>
             <h3>Write shift handoffs automatically.</h3>
