@@ -98,7 +98,7 @@ Forge-only shape, and rewarding the apps that were already headed there. The eco
 it, the platform-support clock punishes not doing it, and the review process is tightening
 around everyone regardless of which side of that line they're on.
 
-For a small studio building one focused thing at a time, that direction happens to line up with
+For a studio building one focused thing at a time, that direction happens to line up with
 how we'd have built anyway. For the bigger, older players carrying a decade of Connect install
 base, it's a genuinely hard year. Either way, if you're the one browsing the Marketplace instead
 of building on it — this is worth two extra clicks before you buy. Check whether the listing

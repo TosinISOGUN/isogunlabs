@@ -193,8 +193,8 @@ body.sheet-open { overflow: hidden; }
 }
 
 /* ---------- work rail ---------- */
-.rail { display: flex; gap: 20px; margin-top: clamp(2.2rem, 5vw, 3.4rem); overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 var(--gutter) 1.4rem; scrollbar-width: thin; scrollbar-color: var(--muted) transparent; }
-@media (min-width: 1280px) { .rail { padding-inline: calc((100vw - var(--wrap)) / 2 + var(--gutter) * .0); } }
+.rail { display: flex; gap: 20px; margin-top: clamp(2.2rem, 5vw, 3.4rem); overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 var(--gutter) 1.4rem; scroll-padding-inline: var(--gutter); scrollbar-width: thin; scrollbar-color: var(--muted) transparent; }
+@media (min-width: 1280px) { .rail { padding-inline: calc((100vw - var(--wrap)) / 2 + var(--gutter) * .0); scroll-padding-inline: calc((100vw - var(--wrap)) / 2 + var(--gutter) * .0); } }
 .proj { flex: 0 0 min(84vw, 560px); scroll-snap-align: start; text-decoration: none; display: block; }
 .proj .shot { aspect-ratio: 16 / 10; border-radius: var(--r); overflow: hidden; background: var(--bg-2); border: 1px solid var(--line); box-shadow: var(--shadow); }
 .proj img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .8s var(--ease); }
