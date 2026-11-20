@@ -1,9 +1,8 @@
 ---
 title: "What to Have Ready Before You Hire Someone to Build Your Website"
 description: "A website project goes faster, and costs less to fix later, when you arrive prepared. A plain checklist for business owners: your pages, your words, your photos, your domain, and the decisions that cause the most delay."
-pubDate: 2026-11-02
+pubDate: 2026-11-20
 cover: "web"
-draft: true
 ---
 
 When a website project runs late, the cause is rarely the design or the code. It is usually something the business owner did not have ready: the text for the About page, photos that are good enough to use, a login for the domain nobody can find, or a decision that three people have to agree on.
