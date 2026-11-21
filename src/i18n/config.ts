@@ -14,6 +14,8 @@ export const localeInfo: Record<Locale, { name: string; region: string; short: s
   pt: { name: 'Português', region: 'Portugal, Brasil', short: 'PT', htmlLang: 'pt', ogLocale: 'pt_PT', flag: '/assets/flags/pt.svg' },
 };
 
+export const caseSlugs = ['gloria-may-byron', 'velora-beauty', 'hearthline-realty', 'juniper-ember', 'everwell', 'weseeu'];
+
 export const industrySlugs = [
   'restaurant-website-design',
   'clinic-website-design',
@@ -32,6 +34,8 @@ export const translatedPaths = new Set<string>([
   '/contact/',
   '/contact/thanks/',
   ...industrySlugs.map((s) => `/services/${s}/`),
+  '/work/',
+  ...caseSlugs.map((s) => `/work/${s}/`),
 ]);
 
 /** Splits "/fr/about/" into { lang: 'fr', path: '/about/' }. Paths without a prefix are English. */

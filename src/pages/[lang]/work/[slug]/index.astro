@@ -1,0 +1,11 @@
+---
+import CasePage from '../../../../components/pages/CasePage.astro';
+import { caseStudies } from '../../../../data/caseStudies';
+import { otherLocales } from '../../../../i18n/config';
+
+export function getStaticPaths() {
+  return otherLocales.flatMap((lang) => caseStudies.map((c) => ({ params: { lang, slug: c.slug } })));
+}
+const { lang, slug } = Astro.params;
+---
+<CasePage lang={lang as any} slug={slug!} />

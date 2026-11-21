@@ -226,7 +226,7 @@ const ctaHref = l(lang, '/contact/');
   </div>
   <div class="rail reveal" tabindex="0" aria-label={h.work.rail}>
     {projects.map((p) => (
-      <a class="proj" href="/work/">
+      <a class="proj" href={l(lang, '/work/')}>
         <div class="shot"><img src={`/assets/work/${p.slug}.webp`} alt={p.name} width="1280" height="800" loading="lazy" decoding="async" /></div>
         <h3>{p.name}</h3>
         <p class="meta"><span class="status">{p.live ? h.work.live : h.work.dev}.</span>{h.work.lines[p.slug]}</p>
@@ -234,7 +234,7 @@ const ctaHref = l(lang, '/contact/');
     ))}
   </div>
   <div class="wrap head-actions">
-    <a class="btn btn-ink" href="/work/">{h.work.all} <Icon name="arrow-right" /></a>
+    <a class="btn btn-ink" href={l(lang, '/work/')}>{h.work.all} <Icon name="arrow-right" /></a>
   </div>
 </section>
 

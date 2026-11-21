@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import { contact } from '../../data/nav';
+import { dict } from '../../i18n';
+import { workFor } from '../../i18n/work';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = dict[lang];
+const { ui, cases: projects } = workFor(lang);
+const path = l(lang, '/work/');
+---
+<BaseLayout
+  breadcrumbs={[{ name: ui.crumb, path }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': `https://isogunlabs.com${path}#page`,
+        url: `https://isogunlabs.com${path}`,
+        name: ui.crumb,
+        inLanguage: lang,
+        isPartOf: { '@id': 'https://isogunlabs.com/#website' },
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: projects.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.name, url: p.url })),
+        },
+      },
+    ],
+  }}
+  title={ui.indexTitle}
+  description={ui.indexDesc}
+  path={path}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{ui.h1}</h1>
+    <p class="lead">{ui.lead}</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="work-grid">
+      {projects.map((p) => (
+        <article class="proj reveal">
+          <a class="shot" href={l(lang, `/work/${p.slug}/`)} aria-label={ui.caseAria.replace('{name}', p.name)} style="display:block">
+            <img src={`/assets/work/${p.slug}.webp`} alt={p.alt} width="1280" height="800" loading="lazy" decoding="async" />
+          </a>
+          <h3><a href={l(lang, `/work/${p.slug}/`)} style="text-decoration:none">{p.name}</a></h3>
+          <p class="meta"><span class="status">{p.status}.</span>{p.line}</p>
+          <div class="links">
+            <a class="link-arrow" href={l(lang, `/work/${p.slug}/`)}>{ui.caseStudy} <Icon name="arrow-right" /></a>
+            <a class="link-arrow" href={p.url} target="_blank" rel="noopener">{ui.visit} <Icon name="arrow-up-right" /></a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="work-note">{ui.note[0]}<a href="https://portfolio.isogunlabs.com" target="_blank" rel="noopener">{ui.note[1]}</a>{ui.note[2]}<a href="/get-started/">{ui.note[3]}</a>{ui.note[4]}</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>{ui.indexCta}</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href={l(lang, '/contact/')}>{t.ui.cta} <Icon name="arrow-right" /></a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
