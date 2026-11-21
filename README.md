@@ -47,7 +47,9 @@ src/
   layouts/BaseLayout.astro   shared <head>, navigation, mobile menu and footer
   components/                Seo, Nav, Footer, Icon, SocialLinks, BlogCard, BlogCover,
                              BlogSidebar, ShareBar, ScreenshotSlider
-  data/nav.ts                navigation links, social profile URLs and the call to action
+  data/nav.ts                navigation links, contact details, the enquiry form endpoint and the call to action
+  data/industries.ts         the copy for each industry landing page
+  data/caseStudies.ts        the copy for each case study
   lib/blogCategory.ts        blog categories, derived from each post's cover value
   content.config.ts          blog content collection and its frontmatter schema
   content/blog/*.md          blog posts
@@ -62,8 +64,11 @@ Routes in `src/pages/`:
 | --- | --- |
 | `/` | Home |
 | `/services/` | Services |
+| `/services/<industry>/` | Landing pages by industry: restaurants, clinics, realtors, gyms, beauty brands, startups, and website redesign |
 | `/work/` | Recent work |
-| `/contact/` | Contact, the single "Start a project" destination |
+| `/work/<project>/` | A case study for each project |
+| `/contact/` | Contact: enquiry form, booking link, WhatsApp and email |
+| `/contact/thanks/` | Thank-you page after the enquiry form (not indexed) |
 | `/get-started/` | Atlassian apps chooser (the address is kept for SEO) |
 | `/documentation/`, `/support/` | App documentation and the support policy |
 | `/blog/`, `/blog/<slug>/` | Blog index and posts |
@@ -87,6 +92,12 @@ cover: web                # fields | report | market | trust | web
 ```
 
 `cover` sets the cover art and the category label on the post's card. To add a new category, extend `BLOG_CATEGORIES` in `src/lib/blogCategory.ts`, the `cover` list in `src/content.config.ts`, and the matching artwork in `BlogCover.astro`.
+
+**An industry or service landing page.** Add an entry to `src/data/industries.ts` and its slug to the list in `scripts/sitemap.mjs`. The page, structured data and footer link are generated from it.
+
+**A case study.** Add an entry to `src/data/caseStudies.ts`, a screenshot at `public/assets/work/<slug>.webp`, and the slug to `scripts/sitemap.mjs`.
+
+**The enquiry form.** It sends to the address in `contact.formEndpoint` in `src/data/nav.ts` (a form service such as Formspree). While that is empty, the form opens the visitor's email app instead. Leads are counted in Google Analytics as `generate_lead`, and clicks on email, phone, WhatsApp and booking links as `contact_click`.
 
 **A new page.** Create `src/pages/<name>/index.astro`, wrap it in `<BaseLayout>`, add it to `src/data/nav.ts` if it belongs in the menu, and add it to the `pages` list in `scripts/sitemap.mjs`.
 

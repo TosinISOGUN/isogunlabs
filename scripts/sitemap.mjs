@@ -11,6 +11,10 @@ const today = new Date().toISOString().slice(0, 10);
 const pages = [
   ['/', '1.0'], ['/services/', '0.9'], ['/work/', '0.9'], ['/contact/', '0.8'],
   ['/get-started/', '0.8'], ['/blog/', '0.8'], ['/documentation/', '0.6'], ['/support/', '0.5'],
+  // Industry and service landing pages (src/data/industries.ts)
+  ...['restaurant-website-design', 'clinic-website-design', 'realtor-website-design', 'gym-website-design', 'beauty-brand-website-design', 'startup-website-design', 'website-redesign'].map((s) => ['/services/' + s + '/', '0.8']),
+  // Case studies (src/data/caseStudies.ts)
+  ...['gloria-may-byron', 'velora-beauty', 'hearthline-realty', 'juniper-ember', 'everwell', 'weseeu'].map((s) => ['/work/' + s + '/', '0.7']),
 ];
 
 const dir = 'src/content/blog';

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import { ctaLabel, ctaHref, contact } from '../../data/nav';
+import { industries } from '../../data/industries';
 
 const services = [
   {
@@ -103,6 +104,7 @@ const services = [
   <div class="wrap svc-layout">
     <nav class="svc-index" aria-label="Services">
       {services.map((s) => <a href={`#${s.id}`}>{s.name}</a>)}
+      <a href="#industries">By industry</a>
     </nav>
     <div>
       {services.map((s, idx) => (
@@ -115,6 +117,19 @@ const services = [
           </ul>
         </section>
       ))}
+
+      <section class="svc-block reveal" id="industries">
+        <h2>Websites for your kind of business</h2>
+        <p class="lead">We build for businesses and brands in the USA, Canada, the UK and Europe. These pages show how we approach each kind of site.</p>
+        <div class="ind-links">
+          {industries.map((i) => (
+            <a class="ind-link" href={`/services/${i.slug}/`}>
+              <span>{i.name}</span>
+              <Icon name="arrow-right" />
+            </a>
+          ))}
+        </div>
+      </section>
 
       <section class="svc-block reveal" id="who">
         <h2>Who we work with</h2>

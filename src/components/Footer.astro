@@ -1,5 +1,6 @@
 ---
 import { contact } from '../data/nav';
+import { industries } from '../data/industries';
 import SocialLinks from './SocialLinks.astro';
 ---
 <footer class="site-footer">
@@ -25,6 +26,10 @@ import SocialLinks from './SocialLinks.astro';
         <a href="/#about">About</a>
         <a href="/blog/">Blog</a>
         <a href="/contact/">Start a project</a>
+      </div>
+      <div class="foot-col">
+        <h4>Websites for</h4>
+        {industries.map((i) => <a href={`/services/${i.slug}/`}>{i.name}</a>)}
       </div>
       <div class="foot-col">
         <h4>Atlassian apps</h4>

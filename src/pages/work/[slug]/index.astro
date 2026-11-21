@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Icon from '../../../components/Icon.astro';
+import { caseStudies, caseStudyBySlug } from '../../../data/caseStudies';
+import { industryBySlug } from '../../../data/industries';
+import { contact } from '../../../data/nav';
+
+export function getStaticPaths() {
+  return caseStudies.map((c) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const c = caseStudyBySlug(slug!);
+const industry = c.industry ? industryBySlug(c.industry) : undefined;
+const more = caseStudies.filter((x) => x.slug !== c.slug).slice(0, 3);
+const url = `https://isogunlabs.com/work/${c.slug}/`;
+---
+<BaseLayout
+  title={`${c.name}: ${c.type} Case Study | Isogun Labs`}
+  description={`${c.line} How Isogun Labs designed and built it.`}
+  path={`/work/${c.slug}/`}
+  breadcrumbs={[{ name: 'Work', path: '/work/' }, { name: c.name, path: `/work/${c.slug}/` }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#page`,
+        url,
+        name: `${c.name}: ${c.type} case study`,
+        description: c.line,
+        isPartOf: { '@id': 'https://isogunlabs.com/#website' },
+        about: { '@type': 'CreativeWork', name: c.name, url: c.url, creator: { '@id': 'https://isogunlabs.com/#org' } },
+      },
+    ],
+  }}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="kicker"><a href="/work/">Work</a> / {c.type}</p>
+    <h1>{c.name}</h1>
+    <p class="lead">{c.line}</p>
+    <div class="ind-cta">
+      <a class="btn btn-ink" href={c.url} target="_blank" rel="noopener">Visit the site <Icon name="arrow-up-right" /></a>
+      <a class="btn btn-ghost-ink" href="/contact/#enquiry">Want something like this?</a>
+    </div>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="case-shot">
+      <img src={`/assets/work/${c.slug}.webp`} alt={c.alt} width="1280" height="800" loading="eager" fetchpriority="high" decoding="async" />
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap case-grid">
+    <dl class="glance reveal">
+      <div><dt>Status</dt><dd>{c.status}</dd></div>
+      <div><dt>Our role</dt><dd>{c.role}</dd></div>
+      {c.glance.map((g) => <div><dt>{g.label}</dt><dd>{g.value}</dd></div>)}
+    </dl>
+    <div class="case-copy">
+      <div class="reveal">
+        <h2>The brief</h2>
+        <p>{c.brief}</p>
+      </div>
+      <div class="reveal">
+        <h2>What we built</h2>
+        <p>{c.built}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight bg-2-band">
+  <div class="wrap">
+    <h2 class="h2 reveal">Decisions that shaped it</h2>
+    <div class="need-grid">
+      {c.decisions.map((d) => (
+        <div class="need reveal">
+          <h3>{d.label}</h3>
+          <p>{d.value}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{industry && (
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="proof-card reveal" style="grid-template-columns:1fr">
+        <div>
+          <p class="kicker">Need something similar?</p>
+          <h2 class="h2">{industry.h1}</h2>
+          <p class="lead">{industry.metaDescription}</p>
+          <p class="proof-links"><a class="link-arrow" href={`/services/${industry.slug}/`}>See how we work with {industry.name.toLowerCase()} <Icon name="arrow-right" /></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<section class="section-tight">
+  <div class="wrap">
+    <p class="kicker">More work</p>
+    <div class="work-grid">
+      {more.map((m) => (
+        <article class="proj">
+          <a class="shot" href={`/work/${m.slug}/`} aria-label={`${m.name} case study`} style="display:block">
+            <img src={`/assets/work/${m.slug}.webp`} alt={m.alt} width="1280" height="800" loading="lazy" decoding="async" />
+          </a>
+          <h3><a href={`/work/${m.slug}/`} style="text-decoration:none">{m.name}</a></h3>
+          <p class="meta">{m.line}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>Have a project in mind?</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href="/contact/#enquiry">Send a brief <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">Book a free call</a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
