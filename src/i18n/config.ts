@@ -35,6 +35,9 @@ export const translatedPaths = new Set<string>([
   '/contact/thanks/',
   ...industrySlugs.map((s) => `/services/${s}/`),
   '/work/',
+  '/get-started/',
+  '/documentation/',
+  '/support/',
   ...caseSlugs.map((s) => `/work/${s}/`),
 ]);
 

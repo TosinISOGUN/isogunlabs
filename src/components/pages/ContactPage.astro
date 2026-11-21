@@ -113,7 +113,7 @@ const [noteBefore] = fill(c.supportNote, { email: '\u0000' }).split('\u0000');
       </ul>
     </div>
 
-    <p class="work-note">{noteBefore}<a href={`mailto:${contact.supportEmail}`}>{contact.supportEmail}</a>{c.supportNote.split('{email}')[1] ? c.supportNote.split('{email}')[1] : ''} <a href="/support/">{c.supportLink}</a>.</p>
+    <p class="work-note">{noteBefore}<a href={`mailto:${contact.supportEmail}`}>{contact.supportEmail}</a>{c.supportNote.split('{email}')[1] ? c.supportNote.split('{email}')[1] : ''} <a href={l(lang, '/support/')}>{c.supportLink}</a>.</p>
   </div>
 </section>
 

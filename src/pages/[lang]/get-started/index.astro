@@ -1,0 +1,10 @@
+---
+import GetStartedPage from '../../../components/pages/GetStartedPage.astro';
+import { otherLocales } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return otherLocales.map((lang) => ({ params: { lang } }));
+}
+const { lang } = Astro.params;
+---
+<GetStartedPage lang={lang as any} />

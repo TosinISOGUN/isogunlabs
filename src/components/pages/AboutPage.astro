@@ -108,7 +108,7 @@ const url = `https://isogunlabs.com${path}`;
         <p class="kicker">{a.atlKicker}</p>
         <h2 class="h2">{a.atlH2}</h2>
         <p class="lead">{a.atlLead}</p>
-        <p class="proof-links"><a class="link-arrow" href="/get-started/">{a.atlLink} <Icon name="arrow-right" /></a></p>
+        <p class="proof-links"><a class="link-arrow" href={l(lang, '/get-started/')}>{a.atlLink} <Icon name="arrow-right" /></a></p>
       </div>
       <ul class="atl-list">
         {apps.map((x) => (

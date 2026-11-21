@@ -1,0 +1,10 @@
+---
+import DocsPage from '../../../components/pages/DocsPage.astro';
+import { otherLocales } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return otherLocales.map((lang) => ({ params: { lang } }));
+}
+const { lang } = Astro.params;
+---
+<DocsPage lang={lang as any} />

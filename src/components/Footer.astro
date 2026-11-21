@@ -42,9 +42,9 @@ const industries = industriesFor(lang);
         <a href="https://recap.isogunlabs.com/">{f.recap}</a>
         <a href="https://field-hygiene.isogunlabs.com/">{f.fieldHygiene}</a>
         <a href="https://passdown.isogunlabs.com/">{f.passdown}</a>
-        <a href="/get-started/">{f.chooser}</a>
-        <a href="/documentation/">{f.docs}</a>
-        <a href="/support/">{f.support}</a>
+        <a href={l(lang, '/get-started/')}>{f.chooser}</a>
+        <a href={l(lang, '/documentation/')}>{f.docs}</a>
+        <a href={l(lang, '/support/')}>{f.support}</a>
       </div>
       <div class="foot-col">
         <h4>{f.contact}</h4>
