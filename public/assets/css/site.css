@@ -621,9 +621,6 @@ html.js .reveal.in { opacity: 1; transform: none; }
 :root { --slant: clamp(26px, 4.2vw, 68px); }
 .slant { position: relative; z-index: 1; margin-block: calc(var(--slant) * -1); padding-block: calc(var(--slant) + clamp(4.5rem, 9vw, 8rem)); clip-path: polygon(0 var(--slant), 100% 0, 100% calc(100% - var(--slant)), 0 100%); }
 .cta.slant { padding-block: calc(var(--slant) + clamp(3rem, 7vw, 6rem)); }
-.slant-b { position: relative; z-index: 1; margin-bottom: calc(var(--slant) * -1); clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--slant)), 0 100%); }
-.slant-b.hero { padding-bottom: calc(var(--slant) + clamp(3rem, 8vh, 5rem)); }
-.logos { padding-top: calc(2.4rem + var(--slant)); }
 .site-footer { padding-top: calc(var(--slant) + clamp(3.5rem, 7vw, 5.5rem)); }
 
 .mobile-band { background: #070806; color: var(--on-black); overflow: hidden; isolation: isolate; }
