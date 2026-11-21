@@ -2,16 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import { ctaLabel, ctaHref, contact } from '../../data/nav';
+import { caseStudies } from '../../data/caseStudies';
 
-// Screenshots and summaries come from the case studies on portfolio.isogunlabs.com.
-const projects = [
-  { slug: 'gloria-may-byron', name: 'Gloria May Byron', status: 'Live site', line: 'Website for an independent singer and songwriter, with music, news, awards and twelve languages.', url: 'https://gloriamaybyron.com/', alt: 'Gloria May Byron website homepage: a singer at a studio microphone with her name in large type.' },
-  { slug: 'velora-beauty', name: 'Velora Beauty', status: 'Live site', line: 'Online beauty shop with a routine builder, shade-aware products and a shopping bag.', url: 'https://velorabeautyy.vercel.app', alt: 'Velora Beauty online store homepage with a colourful make-up portrait.' },
-  { slug: 'hearthline-realty', name: 'Hearthline Realty', status: 'Live site', line: 'Real estate site with home search, a map and showing requests.', url: 'https://hearthlinerealty.vercel.app', alt: 'Hearthline Realty website homepage with a house at dusk.' },
-  { slug: 'juniper-ember', name: 'Juniper & Ember', status: 'Live site', line: 'Restaurant site with a menu, pickup ordering and reservations.', url: 'https://juniperandember.vercel.app/', alt: 'Juniper and Ember restaurant website homepage with a lively dining room.' },
-  { slug: 'everwell', name: 'Everwell', status: 'Live site', line: 'Clinic website with clear service pages and an easy contact form.', url: 'https://everwelldental.vercel.app', alt: 'Everwell clinic website homepage with a calm treatment room.' },
-  { slug: 'weseeu', name: 'weSEEu', status: 'In development', line: 'Therapy and special-needs marketplace with verified provider profiles, accounts and sign-up.', url: 'https://weseeu.vercel.app', alt: 'weSEEu marketplace homepage with the line A place to find the right support.' },
-];
+const projects = caseStudies;
 ---
 <BaseLayout
   breadcrumbs={[{ name: 'Work', path: '/work/' }]}
@@ -31,15 +24,15 @@ const projects = [
       },
     ],
   }}
-  title="Selected Work: Websites and Web Apps | Isogun Labs"
-  description="Websites and web platforms designed and built by Isogun Labs, from an artist site and online stores to booking and marketplace builds, plus three Atlassian apps."
+  title="Web Design Portfolio and Case Studies | Isogun Labs"
+  description="Web design case studies: restaurant, clinic, real estate and beauty store websites, an artist site and a startup platform, designed and built from scratch."
   path="/work/"
 >
 
 <header class="page-head">
   <div class="wrap">
-    <h1>Selected work</h1>
-    <p class="lead">Websites and web platforms, each designed and coded from scratch.</p>
+    <h1>Selected web design and development work</h1>
+    <p class="lead">Websites, online stores and web platforms for restaurants, clinics, real estate, beauty brands, artists and startups, each designed and coded from scratch.</p>
   </div>
 </header>
 
@@ -48,14 +41,14 @@ const projects = [
     <div class="work-grid">
       {projects.map((p) => (
         <article class="proj reveal">
-          <a class="shot" href={p.url} target="_blank" rel="noopener" aria-label={`Open ${p.name}`} style="display:block">
+          <a class="shot" href={`/work/${p.slug}/`} aria-label={`${p.name} case study`} style="display:block">
             <img src={`/assets/work/${p.slug}.webp`} alt={p.alt} width="1280" height="800" loading="lazy" decoding="async" />
           </a>
-          <h3>{p.name}</h3>
+          <h3><a href={`/work/${p.slug}/`} style="text-decoration:none">{p.name}</a></h3>
           <p class="meta"><span class="status">{p.status}.</span>{p.line}</p>
           <div class="links">
+            <a class="link-arrow" href={`/work/${p.slug}/`}>Case study <Icon name="arrow-right" /></a>
             <a class="link-arrow" href={p.url} target="_blank" rel="noopener">Visit site <Icon name="arrow-up-right" /></a>
-            <a class="link-arrow" href={`https://portfolio.isogunlabs.com/projects/${p.slug}`} target="_blank" rel="noopener">Case study <Icon name="arrow-up-right" /></a>
           </div>
         </article>
       ))}

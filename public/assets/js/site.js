@@ -134,3 +134,20 @@
     if (cp) cp.addEventListener('click', function () { copy('Link copied'); });
   });
 })();
+
+/* Count the ways people reach out (email, phone, WhatsApp, booking), so the funnel can be measured in Google Analytics. */
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a || typeof window.gtag !== 'function') return;
+    var href = a.getAttribute('href') || '';
+    var method = a.getAttribute('data-track');
+    if (!method) {
+      if (href.indexOf('mailto:') === 0) method = 'email';
+      else if (href.indexOf('tel:') === 0) method = 'phone';
+      else if (href.indexOf('wa.me') > -1) method = 'whatsapp';
+      else if (href.indexOf('cal.com') > -1) method = 'book_call';
+    }
+    if (method) window.gtag('event', 'contact_click', { method: method, link_url: href, page_path: location.pathname });
+  });
+})();

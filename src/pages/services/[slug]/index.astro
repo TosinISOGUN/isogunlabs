@@ -1,0 +1,193 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Icon from '../../../components/Icon.astro';
+import { industries, industryBySlug, areaServed, process } from '../../../data/industries';
+import { caseStudyBySlug } from '../../../data/caseStudies';
+import { contact } from '../../../data/nav';
+
+export function getStaticPaths() {
+  return industries.map((i) => ({ params: { slug: i.slug } }));
+}
+
+const { slug } = Astro.params;
+const page = industryBySlug(slug!);
+const proof = page.proof ? caseStudyBySlug(page.proof.slug) : undefined;
+const others = industries.filter((i) => i.slug !== page.slug);
+
+// The shared question every visitor from another country has.
+const faq = [
+  ...page.faq,
+  {
+    q: `How much does a ${page.noun} cost?`,
+    a: 'It depends on the number of pages, whether the design is custom, and what the site has to do, such as booking, ordering or a shop. We give you a written quote after a free call, so there are no surprises. Our blog has a plain guide to what drives the price of a business website.',
+  },
+  {
+    q: `How long does it take to build a ${page.noun}?`,
+    a: 'It depends on the pages and features. After the first call we give you a realistic timeline in writing, and you see a working preview along the way.',
+  },
+  {
+    q: 'Do you work with businesses in the USA, Canada, the UK and Europe?',
+    a: 'Yes. We work remotely and in English, with calls at times that suit your time zone, and we build with the cookie, privacy and accessibility basics of those regions in mind.',
+  },
+];
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).filter((p) => page.reading.includes(p.id));
+const url = `https://isogunlabs.com/services/${page.slug}/`;
+---
+<BaseLayout
+  title={page.metaTitle}
+  description={page.metaDescription}
+  path={`/services/${page.slug}/`}
+  breadcrumbs={[{ name: 'Services', path: '/services/' }, { name: page.name, path: `/services/${page.slug}/` }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': `${url}#service`,
+        name: page.h1,
+        serviceType: page.serviceType,
+        description: page.metaDescription,
+        url,
+        provider: { '@id': 'https://isogunlabs.com/#org' },
+        areaServed,
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${url}#faq`,
+        mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      },
+    ],
+  }}
+>
+
+<header class="page-head">
+  <div class="wrap ind-head">
+    <div>
+      <p class="kicker"><a href="/services/">Services</a> / {page.name}</p>
+      <h1>{page.h1}</h1>
+      <p class="lead">{page.lead}</p>
+      <div class="ind-cta">
+        <a class="btn btn-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">Book a free call <Icon name="arrow-right" /></a>
+        <a class="btn btn-ghost-ink" href="/contact/#enquiry">Send a brief</a>
+      </div>
+    </div>
+    {proof && (
+      <a class="ind-proof" href={`/work/${proof.slug}/`} aria-label={`See the ${proof.name} case study`}>
+        <img src={`/assets/work/${proof.slug}.webp`} alt={proof.alt} width="1280" height="800" loading="eager" fetchpriority="high" decoding="async" />
+      </a>
+    )}
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="wrap">
+    <h2 class="h2 h2-wide reveal">{page.needsTitle}</h2>
+    <div class="need-grid">
+      {page.needs.map((n) => (
+        <div class="need reveal">
+          <h3>{n.title}</h3>
+          <p>{n.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section-tight bg-2-band">
+  <div class="wrap ind-build">
+    <div class="reveal">
+      <h2 class="h2">{page.buildTitle}</h2>
+      <p class="lead">Every project is designed and coded from scratch for your business, then handed over so you can run it.</p>
+    </div>
+    <ul class="ticks reveal">
+      {page.build.map((t) => <li><Icon name="check" /><span>{t}</span></li>)}
+    </ul>
+  </div>
+</section>
+
+{proof && (
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="proof-card reveal">
+        <a class="proof-shot" href={`/work/${proof.slug}/`} tabindex="-1" aria-hidden="true">
+          <img src={`/assets/work/${proof.slug}.webp`} alt="" width="1280" height="800" loading="lazy" decoding="async" />
+        </a>
+        <div>
+          <p class="kicker">From our work</p>
+          <h2 class="h2">{proof.name}</h2>
+          <p class="lead">{page.proof!.note}</p>
+          <p class="proof-links">
+            <a class="link-arrow" href={`/work/${proof.slug}/`}>Read the case study <Icon name="arrow-right" /></a>
+            <a class="link-arrow" href={proof.url} target="_blank" rel="noopener">Visit the site <Icon name="arrow-up-right" /></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<section class="section-tight">
+  <div class="wrap">
+    <h2 class="h2 reveal">How a project works</h2>
+    <ol class="steps">
+      {process.map((s) => (
+        <li class="step reveal">
+          <span class="step-n">{s.n}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap faq-wrap">
+    <h2 class="h2 reveal">{page.faqTitle}</h2>
+    <div class="faq reveal">
+      {faq.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+{posts.length > 0 && (
+  <section class="section-tight">
+    <div class="wrap">
+      <p class="kicker">Worth reading</p>
+      <ul class="read-list">
+        {posts.map((p) => (
+          <li><a href={`/blog/${p.id}/`}><span>{p.data.title}</span><Icon name="arrow-right" /></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<section class="section-tight">
+  <div class="wrap">
+    <p class="kicker">More web design services</p>
+    <div class="chips-row">
+      {others.map((o) => <a class="chip-link" href={`/services/${o.slug}/`}>{o.anchor}</a>)}
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>Let us talk about your site</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href="/contact/#enquiry">Send a brief <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">Book a free call</a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

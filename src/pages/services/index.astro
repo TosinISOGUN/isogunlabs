@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import { ctaLabel, ctaHref, contact } from '../../data/nav';
+import { industries } from '../../data/industries';
 
 const services = [
   {
@@ -88,14 +89,14 @@ const services = [
     ],
   }}
   title="Web Design and Development Services | Isogun Labs"
-  description="Website design and development, web apps and MVPs, online stores and booking, and Atlassian Marketplace apps, built end to end by Isogun Labs."
+  description="Web design and development services: websites, web apps and MVPs, ecommerce stores and booking, for businesses in the USA, Canada, UK and Europe."
   path="/services/"
 >
 
 <header class="page-head">
   <div class="wrap">
-    <h1>Websites and software, built end to end</h1>
-    <p class="lead">Design, code and launch from one studio, for startups, businesses and brands. Here is what we build.</p>
+    <h1>Web design and development services, built end to end</h1>
+    <p class="lead">Website design, web app development and online stores from one web design company, for startups, small businesses and brands in the USA, Canada, the UK and Europe.</p>
   </div>
 </header>
 
@@ -103,6 +104,7 @@ const services = [
   <div class="wrap svc-layout">
     <nav class="svc-index" aria-label="Services">
       {services.map((s) => <a href={`#${s.id}`}>{s.name}</a>)}
+      <a href="#industries">By industry</a>
     </nav>
     <div>
       {services.map((s, idx) => (
@@ -115,6 +117,19 @@ const services = [
           </ul>
         </section>
       ))}
+
+      <section class="svc-block reveal" id="industries">
+        <h2>Website design for your kind of business</h2>
+        <p class="lead">We design websites for restaurants, clinics, realtors, gyms, beauty brands and startups in the USA, Canada, the UK and Europe. Each page shows how we approach that kind of site.</p>
+        <div class="ind-links">
+          {industries.map((i) => (
+            <a class="ind-link" href={`/services/${i.slug}/`}>
+              <span>{i.anchor}</span>
+              <Icon name="arrow-right" />
+            </a>
+          ))}
+        </div>
+      </section>
 
       <section class="svc-block reveal" id="who">
         <h2>Who we work with</h2>

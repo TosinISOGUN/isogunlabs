@@ -423,7 +423,7 @@ body.sheet-open { overflow: hidden; }
 /* ---------- footer ---------- */
 .site-footer { background: var(--black); color: var(--on-black); padding: clamp(3.5rem, 7vw, 5.5rem) 0 2rem; }
 .foot-grid { display: grid; gap: 2.6rem; }
-@media (min-width: 900px) { .foot-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; } }
+@media (min-width: 900px) { .foot-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; gap: 2.4rem; } }
 .foot-brand .logo img { height: 46px; }
 .foot-brand p { margin-top: 1.1rem; max-width: 34ch; color: var(--on-black-muted); }
 .partner-row { display: flex; align-items: center; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.6rem; }
@@ -450,3 +450,102 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .post-cta { margin-top: 3rem; padding: 1.6rem 1.8rem; border-radius: var(--r); background: var(--bg-2); }
 .post-cta h2 { margin: 0 0 .6rem; font-size: 1.5rem; }
 .post-cta p { margin: 0; }
+
+/* ============================================================
+   Industry pages, case studies and the enquiry form
+   ============================================================ */
+.ind-head { display: grid; gap: 2.4rem; }
+.ind-head h1 { max-width: 16ch; }
+.ind-cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+.ind-proof { display: block; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--bg-2); aspect-ratio: 16 / 10; }
+.ind-proof img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+@media (min-width: 960px) {
+  .ind-head { grid-template-columns: 1.05fr .95fr; align-items: center; gap: 3.4rem; }
+}
+
+.need-grid { display: grid; gap: 1px; margin-top: 2.2rem; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.need { background: var(--surface); padding: clamp(1.4rem, 2.6vw, 2rem); }
+.need h3 { font-size: 1.3rem; margin-bottom: .55rem; }
+.need p { color: var(--muted); }
+@media (min-width: 700px) { .need-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .need-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.bg-2-band { background: var(--bg-2); }
+.ind-build { display: grid; gap: 2rem; align-items: start; }
+@media (min-width: 900px) { .ind-build { grid-template-columns: .9fr 1.1fr; gap: 4rem; } }
+
+.proof-card { display: grid; gap: 1.8rem; align-items: center; padding: clamp(1.2rem, 3vw, 2rem); border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); }
+.proof-shot { display: block; border-radius: var(--r-s); overflow: hidden; aspect-ratio: 16 / 10; background: var(--bg-2); border: 1px solid var(--line); }
+.proof-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.proof-card .h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+.proof-links { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; margin-top: 1.4rem; }
+@media (min-width: 900px) { .proof-card { grid-template-columns: 1.1fr .9fr; gap: 3rem; } }
+
+.steps { display: grid; gap: 1rem; margin-top: 2.2rem; counter-reset: none; }
+.step { padding: 1.5rem; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); }
+.step-n { display: inline-grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--field); color: var(--field-ink); font: 700 1rem/1 var(--ff-display); margin-bottom: 1rem; }
+.step h3 { font-size: 1.25rem; margin-bottom: .45rem; }
+.step p { color: var(--muted); font-size: .98rem; }
+@media (min-width: 800px) { .steps { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); } }
+
+.faq-wrap { max-width: 860px; }
+.faq { margin-top: 1.8rem; border-top: 1.5px solid var(--ink); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary { display: flex; justify-content: space-between; align-items: center; gap: 1.2rem; padding: 1.2rem 0; font: 600 1.12rem/1.3 var(--ff); cursor: pointer; list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; flex: none; width: 1.8rem; height: 1.8rem; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid currentColor; font-size: 1.1rem; line-height: 1; transition: transform .25s var(--ease); }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { padding: 0 3rem 1.4rem 0; color: var(--muted); max-width: 64ch; }
+
+.read-list { display: grid; border-top: 1px solid var(--line); }
+.read-list a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); text-decoration: none; font: 600 1.15rem/1.3 var(--ff-display); letter-spacing: -.02em; }
+.read-list a:hover { text-decoration: underline; text-underline-offset: .25em; }
+.chips-row { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chip-link { padding: .6rem 1.1rem; border-radius: 999px; border: 1.5px solid var(--ink); font-weight: 600; text-decoration: none; transition: background .2s, color .2s; }
+.chip-link:hover { background: var(--ink); color: var(--bg); }
+
+.ind-links { display: grid; gap: .6rem; margin-top: 1.8rem; }
+.ind-link { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.3rem; border-radius: var(--r-s); border: 1px solid var(--line); background: var(--surface); text-decoration: none; font: 600 1.15rem/1.2 var(--ff-display); letter-spacing: -.02em; transition: transform .25s var(--ease), box-shadow .25s; }
+.ind-link:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+@media (min-width: 700px) { .ind-links { grid-template-columns: repeat(2, 1fr); } }
+
+/* case study */
+.case-shot { border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--bg-2); }
+.case-shot img { width: 100%; height: auto; }
+.case-grid { display: grid; gap: 2.4rem; }
+.glance { display: grid; gap: 0; align-self: start; border-top: 1.5px solid var(--ink); }
+.glance div { display: flex; justify-content: space-between; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--line); }
+.glance dt { color: var(--muted); font-size: .92rem; }
+.glance dd { margin: 0; font-weight: 600; text-align: right; }
+.case-copy { display: grid; gap: 2.2rem; }
+.case-copy h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: .8rem; }
+.case-copy p { color: color-mix(in srgb, var(--ink) 86%, var(--muted)); max-width: 62ch; font-size: 1.08rem; line-height: 1.7; }
+@media (min-width: 900px) { .case-grid { grid-template-columns: .7fr 1.3fr; gap: 4rem; } }
+
+/* enquiry form */
+.enq { display: grid; gap: 2rem; margin-top: clamp(3rem, 6vw, 5rem); padding: clamp(1.4rem, 3.4vw, 2.6rem); border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); scroll-margin-top: calc(var(--nav-h) + 20px); }
+.enq .h2 { font-size: clamp(2rem, 4vw, 3rem); }
+.enq-intro .ticks { margin-top: 1.4rem; }
+.enq-form { display: grid; gap: 1rem; }
+.enq-row { display: grid; gap: 1rem; }
+.f { display: grid; gap: .4rem; }
+.f > span { font-weight: 600; font-size: .92rem; }
+.f b { color: var(--accent-text); }
+.f input, .f select, .f textarea { width: 100%; min-height: 48px; padding: .7rem .9rem; font: inherit; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--r-s); transition: border-color .2s; }
+.f textarea { min-height: 130px; resize: vertical; }
+.f input:hover, .f select:hover, .f textarea:hover { border-color: color-mix(in srgb, var(--ink) 40%, var(--line)); }
+.f input:focus, .f select:focus, .f textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 55%, transparent); }
+.f [aria-invalid="true"] { border-color: #C0392B; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.enq-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.4rem; margin-top: .4rem; }
+.enq-note { color: var(--muted); font-size: .9rem; }
+.enq-status { min-height: 1.4em; font-weight: 600; }
+.enq-status.bad { color: #C0392B; }
+@media (prefers-color-scheme: dark) { .enq-status.bad, .f [aria-invalid="true"] { color: #FF8A7A; } .f [aria-invalid="true"] { border-color: #FF8A7A; } }
+@media (min-width: 700px) { .enq-row { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .enq { grid-template-columns: .8fr 1.2fr; gap: 4rem; } }
+.enq-intro .ticks { grid-template-columns: 1fr; }
+
+/* On the lime band the outline button always uses the dark ink, in light and dark mode (the theme ink is pale in dark mode and disappears on lime). */
+.cta .btn-ghost-ink { border-color: var(--field-ink); color: var(--field-ink); }
+.cta .btn-ghost-ink:hover { background: var(--field-ink); color: var(--field); }

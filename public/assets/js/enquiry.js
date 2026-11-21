@@ -1,0 +1,79 @@
+/* Enquiry form on /contact/.
+   If the form has a data-endpoint (a form-service address set in src/data/nav.ts), the brief is sent there and the
+   visitor goes to the thank-you page. With no endpoint, the form opens the visitor's own email app with the brief
+   filled in, so no enquiry is ever lost while the endpoint is not set up. */
+(function () {
+  var form = document.getElementById('enquiry-form');
+  if (!form) return;
+  var status = document.getElementById('enquiry-status');
+  var button = form.querySelector('button[type="submit"]');
+  var labels = {
+    name: 'Name', email: 'Email', business: 'Business or brand', business_type: 'Type of business', country: 'Based in',
+    project_type: 'Needs', timeline: 'Timeline', budget: 'Budget', message: 'About the project'
+  };
+
+  function say(text, bad) {
+    status.textContent = text;
+    status.className = 'enq-status' + (bad ? ' bad' : text ? ' ok' : '');
+  }
+
+  function track(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  }
+
+  function validate() {
+    var bad = null;
+    ['name', 'email', 'message'].forEach(function (n) {
+      var el = form.elements[n];
+      var value = (el.value || '').trim();
+      var ok = value && (n !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
+      el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      if (!ok && !bad) bad = el;
+    });
+    return bad;
+  }
+
+  function composeMail() {
+    var lines = [];
+    Object.keys(labels).forEach(function (k) {
+      var v = (form.elements[k].value || '').trim();
+      if (v) lines.push(labels[k] + ': ' + v);
+    });
+    var subject = 'New project enquiry from ' + (form.elements.name.value || '').trim();
+    return 'mailto:' + form.dataset.mailto + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n\n'));
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (form.elements._gotcha && form.elements._gotcha.value) return; // a bot filled the hidden field
+    var firstBad = validate();
+    if (firstBad) {
+      say('Please fill in your name, a valid email and a few words about the project.', true);
+      firstBad.focus();
+      return;
+    }
+    var endpoint = form.dataset.endpoint;
+    if (!endpoint) {
+      track('generate_lead', { method: 'enquiry_form_email' });
+      say('Your email app should open with your brief ready to send. If it does not, write to ' + form.dataset.mailto + '.', false);
+      window.location.href = composeMail();
+      return;
+    }
+    button.disabled = true;
+    say('Sending...', false);
+    fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+      .then(function (res) {
+        if (!res.ok) throw new Error('status ' + res.status);
+        track('generate_lead', { method: 'enquiry_form' });
+        window.location.href = form.dataset.thanks || '/contact/thanks/';
+      })
+      .catch(function () {
+        button.disabled = false;
+        say('Sorry, that did not send. Please email ' + form.dataset.mailto + ' instead.', true);
+      });
+  });
+
+  form.addEventListener('input', function (e) {
+    if (e.target.getAttribute && e.target.getAttribute('aria-invalid') === 'true') e.target.setAttribute('aria-invalid', 'false');
+  });
+})();
