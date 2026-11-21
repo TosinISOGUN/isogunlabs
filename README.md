@@ -149,7 +149,7 @@ Stock photographs are from [Pexels](https://www.pexels.com) under the Pexels lic
 | --- | --- | --- |
 | Home hero | Nadezhda Moryak | 9674393 |
 | Mobile-first band | Sound On | 3756879 |
-| Home hero tiles | Pexels (7951886), Pexels (10375895), Tochukwu  Ekeh (32224391), Pexels (8475171); more tiles: Pexels 35184839, 16323580, 12902944, 4473398, 34674788, 36729739, 5934226, 29249664 | |
+| Home hero tiles | Pexels (7951886), Pexels (10375895), Tochukwu  Ekeh (32224391), Pexels (8475171); more tiles: Pexels 35184839, 16323580, 12902944, 4473398, 34674788, 36729739, 5934226, 29249664, 5410081, 3906984, 3861958, 4463587, 16052346, 4473496, 8569471, 6893890 | |
 | Websites (home, services) | SHVETS production | 9052803 |
 | Web apps (services) | Christina Morillo | 1181260 |
 | Online stores (home, services) | Kampus Production | 7289707 |
