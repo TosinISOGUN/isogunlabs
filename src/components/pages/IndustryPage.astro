@@ -1,0 +1,189 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import { areaServed } from '../../data/industries';
+import { caseStudyBySlug } from '../../data/caseStudies';
+import { contact } from '../../data/nav';
+import { dict, fill } from '../../i18n';
+import { industriesFor, industryPage } from '../../i18n/industry-labels';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale; slug: string }
+const { lang, slug } = Astro.props;
+const t = dict[lang];
+const c = t.ind;
+const page = industryPage(lang, slug);
+const proof = page.proof ? caseStudyBySlug(page.proof.slug) : undefined;
+const others = industriesFor(lang).filter((i) => i.slug !== page.slug);
+const path = l(lang, `/services/${page.slug}/`);
+
+const faq = [
+  ...page.faq,
+  { q: fill(c.qCost, { noun: page.noun }), a: c.aCost },
+  { q: fill(c.qTime, { noun: page.noun }), a: c.aTime },
+  { q: c.qRegion, a: c.aRegion },
+];
+
+// The reading list links to English articles, so it only appears on the English pages.
+const posts = lang === 'en' ? (await getCollection('blog', ({ data }) => !data.draft)).filter((p) => page.reading.includes(p.id)) : [];
+const url = `https://isogunlabs.com${path}`;
+---
+<BaseLayout
+  title={page.metaTitle}
+  description={page.metaDescription}
+  path={path}
+  breadcrumbs={[{ name: c.crumb, path: l(lang, '/services/') }, { name: page.name, path }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': `${url}#service`,
+        name: page.h1,
+        serviceType: page.serviceType,
+        description: page.metaDescription,
+        url,
+        inLanguage: lang,
+        provider: { '@id': 'https://isogunlabs.com/#org' },
+        areaServed,
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${url}#faq`,
+        inLanguage: lang,
+        mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      },
+    ],
+  }}
+>
+
+<header class="page-head">
+  <div class="wrap ind-head">
+    <div>
+      <p class="kicker"><a href={l(lang, '/services/')}>{c.crumb}</a> / {page.name}</p>
+      <h1>{page.h1}</h1>
+      <p class="lead">{page.lead}</p>
+      <div class="ind-cta">
+        <a class="btn btn-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">{c.book} <Icon name="arrow-right" /></a>
+        <a class="btn btn-ghost-ink" href={l(lang, '/contact/') + '#enquiry'}>{c.brief}</a>
+      </div>
+    </div>
+    {proof && (
+      <a class="ind-proof" href={l(lang, `/work/${proof.slug}/`)} aria-label={fill(c.seeCase, { name: proof.name })}>
+        <img src={`/assets/work/${proof.slug}.webp`} alt={lang === 'en' ? proof.alt : proof.name} width="1280" height="800" loading="eager" fetchpriority="high" decoding="async" />
+      </a>
+    )}
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="wrap">
+    <h2 class="h2 h2-wide reveal">{page.needsTitle}</h2>
+    <div class="need-grid">
+      {page.needs.map((n) => (
+        <div class="need reveal">
+          <h3>{n.title}</h3>
+          <p>{n.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section-tight bg-2-band">
+  <div class="wrap ind-build">
+    <div class="reveal">
+      <h2 class="h2">{page.buildTitle}</h2>
+      <p class="lead">{c.buildLead}</p>
+    </div>
+    <ul class="ticks reveal">
+      {page.build.map((x) => <li><Icon name="check" /><span>{x}</span></li>)}
+    </ul>
+  </div>
+</section>
+
+{proof && (
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="proof-card reveal">
+        <a class="proof-shot" href={l(lang, `/work/${proof.slug}/`)} tabindex="-1" aria-hidden="true">
+          <img src={`/assets/work/${proof.slug}.webp`} alt="" width="1280" height="800" loading="lazy" decoding="async" />
+        </a>
+        <div>
+          <p class="kicker">{c.fromWork}</p>
+          <h2 class="h2">{proof.name}</h2>
+          <p class="lead">{page.proof!.note}</p>
+          <p class="proof-links">
+            <a class="link-arrow" href={l(lang, `/work/${proof.slug}/`)}>{c.caseStudy} <Icon name="arrow-right" /></a>
+            <a class="link-arrow" href={proof.url} target="_blank" rel="noopener">{c.visit} <Icon name="arrow-up-right" /></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<section class="section-tight">
+  <div class="wrap">
+    <h2 class="h2 reveal">{c.processH2}</h2>
+    <ol class="steps">
+      {c.steps.map((s) => (
+        <li class="step reveal">
+          <span class="step-n">{s.n}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap faq-wrap">
+    <h2 class="h2 reveal">{page.faqTitle}</h2>
+    <div class="faq reveal">
+      {faq.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+{posts.length > 0 && (
+  <section class="section-tight">
+    <div class="wrap">
+      <p class="kicker">{c.reading}</p>
+      <ul class="read-list">
+        {posts.map((p) => (
+          <li><a href={`/blog/${p.id}/`}><span>{p.data.title}</span><Icon name="arrow-right" /></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<section class="section-tight">
+  <div class="wrap">
+    <p class="kicker">{c.more}</p>
+    <div class="chips-row">
+      {others.map((o) => <a class="chip-link" href={l(lang, `/services/${o.slug}/`)}>{o.anchor}</a>)}
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>{c.ctaH2}</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href={l(lang, '/contact/') + '#enquiry'}>{c.brief} <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">{c.book}</a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

@@ -2,6 +2,13 @@
 // (The full landing-page copy is translated separately.)
 import { industries } from '../data/industries';
 import type { Locale } from './config';
+import type { IndustryText } from './industry-types';
+import { industriesFr } from './industries-fr';
+import { industriesEs } from './industries-es';
+import { industriesDe } from './industries-de';
+import { industriesPt } from './industries-pt';
+
+const pages: Record<Exclude<Locale, 'en'>, Record<string, IndustryText>> = { fr: industriesFr, es: industriesEs, de: industriesDe, pt: industriesPt };
 
 type Label = { name: string; anchor: string; menuText: string; tag: string; title: string };
 
@@ -51,4 +58,19 @@ export function industriesFor(lang: Locale) {
     const t = labels[lang][i.slug];
     return { ...i, name: t.name, anchor: t.anchor, menuText: t.menuText, preview: { tag: t.tag, title: t.title } };
   });
+}
+
+/** One industry page with all of its copy in the given language. */
+export function industryPage(lang: Locale, slug: string) {
+  const base = industries.find((i) => i.slug === slug)!;
+  if (lang === 'en') return base;
+  const label = labels[lang][slug];
+  const t = pages[lang][slug];
+  return {
+    ...base,
+    name: label.name, anchor: label.anchor, menuText: label.menuText, preview: { tag: label.tag, title: label.title },
+    noun: t.noun, buildTitle: t.buildTitle, faqTitle: t.faqTitle, metaTitle: t.metaTitle, metaDescription: t.metaDescription,
+    h1: t.h1, lead: t.lead, needsTitle: t.needsTitle, needs: t.needs, build: t.build, faq: t.faq,
+    proof: base.proof ? { ...base.proof, note: t.proofNote } : undefined,
+  };
 }

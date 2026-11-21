@@ -32,7 +32,7 @@ let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sit
 for (const [p, pr] of pages) xml += url(p, p === '/blog/' ? latest : today, pr);
 for (const p of posts) xml += url('/blog/' + p.slug + '/', p.date, '0.7', 'yearly');
 // Translated pages (src/i18n/config.ts: translatedPaths, minus the thank-you page)
-for (const lang of ['fr', 'es', 'de', 'pt']) for (const [p, pr] of [['/', '0.9'], ['/services/', '0.8'], ['/about/', '0.6'], ['/contact/', '0.7']]) xml += url('/' + lang + p, today, pr);
+for (const lang of ['fr', 'es', 'de', 'pt']) for (const [p, pr] of [['/', '0.9'], ['/services/', '0.8'], ['/about/', '0.6'], ['/contact/', '0.7'], ...['restaurant-website-design', 'clinic-website-design', 'realtor-website-design', 'gym-website-design', 'beauty-brand-website-design', 'startup-website-design', 'website-redesign'].map((x) => ['/services/' + x + '/', '0.7'])]) xml += url('/' + lang + p, today, pr);
 xml += '</urlset>\n';
 writeFileSync('public/sitemap.xml', xml);
-console.log('sitemap.xml: ' + pages.length + ' pages + ' + posts.length + ' posts + 16 translated pages');
+console.log('sitemap.xml: ' + pages.length + ' pages + ' + posts.length + ' posts + 44 translated pages');

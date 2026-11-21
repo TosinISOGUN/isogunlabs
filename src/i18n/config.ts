@@ -31,8 +31,7 @@ export const translatedPaths = new Set<string>([
   '/about/',
   '/contact/',
   '/contact/thanks/',
-  // The seven industry pages are still English-only; add them here once they are translated:
-  // ...industrySlugs.map((s) => `/services/${s}/`),
+  ...industrySlugs.map((s) => `/services/${s}/`),
 ]);
 
 /** Splits "/fr/about/" into { lang: 'fr', path: '/about/' }. Paths without a prefix are English. */
