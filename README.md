@@ -47,7 +47,7 @@ src/
   layouts/BaseLayout.astro   shared <head>, navigation, mobile menu and footer
   components/                Seo, Nav, Footer, Icon, SocialLinks, BlogCard, BlogCover,
                              BlogSidebar, ShareBar, ScreenshotSlider
-  data/nav.ts                navigation links, contact details, the enquiry form endpoint and the call to action
+  data/nav.ts                navigation links (the Services dropdown is built from industries.ts), contact details, the enquiry form endpoint and the call to action
   data/industries.ts         the copy for each industry landing page
   data/caseStudies.ts        the copy for each case study
   lib/blogCategory.ts        blog categories, derived from each post's cover value
@@ -66,6 +66,7 @@ Routes in `src/pages/`:
 | `/services/` | Services |
 | `/services/<industry>/` | Landing pages by industry: restaurants, clinics, realtors, gyms, beauty brands, startups, and website redesign |
 | `/work/` | Recent work |
+| `/about/` | About the studio and its founder |
 | `/work/<project>/` | A case study for each project |
 | `/contact/` | Contact: enquiry form, booking link, WhatsApp and email |
 | `/contact/thanks/` | Thank-you page after the enquiry form (not indexed) |
@@ -128,6 +129,27 @@ Icons are Phosphor glyphs in `public/assets/icons/ui/`, drawn with a CSS mask th
 ## Rights
 
 Copyright © Isogun Labs. All rights reserved. The code, design, text and images in this repository are published so you can see the studio's work. They are not licensed for copying, republishing or reuse without written permission. The Atlassian apps, logos and any third-party brand names belong to their owners.
+
+### Photo credits
+
+Stock photographs are from [Pexels](https://www.pexels.com) under the Pexels licence (free to use, no attribution required). Credits are kept here anyway.
+
+| Where | Photographer | Pexels photo |
+| --- | --- | --- |
+| Home hero | Nadezhda Moryak | 9674393 |
+| Websites (home, services) | SHVETS production | 9052803 |
+| Web apps (services) | Christina Morillo | 1181260 |
+| Online stores (home, services) | Kampus Production | 7289707 |
+| Atlassian apps (home, services) | cottonbro studio | 6804093 |
+| Studio team (home, about) | Mikael Blomkvist | 6476257 |
+| Services menu: restaurants | Adrien Olichon | 2387675 |
+| Services menu: clinics | Nadezhda Moryak | 7800666 |
+| Services menu: realtors | MART PRODUCTION | 7414903 |
+| Services menu: gyms | Yan Krukau | 8436610 |
+| Services menu: beauty brands | Vie Studio | 6168343 |
+| Services menu: startups | Ofspace LLC, Culture | 16323454 |
+| Services menu: redesign | Davide Baraldi | 11813187 |
+| Services menu: all services | Tranmautritam | 326514 |
 
 ## Contact
 

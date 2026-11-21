@@ -1,5 +1,6 @@
 ---
 import { navLinks, ctaLabel, ctaHref } from '../data/nav';
+import { industries } from '../data/industries';
 import Icon from './Icon.astro';
 import SocialLinks from './SocialLinks.astro';
 
@@ -13,7 +14,34 @@ const isActive = (href: string) => !href.includes('#') && (path === href || (hre
     </a>
     <nav class="nav-links" aria-label="Main">
       <span class="nav-blob" aria-hidden="true"></span>
-      {navLinks.map((l) => (
+      {navLinks.map((l) => l.menu ? (
+        <div class="nav-item has-menu">
+          <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined} aria-haspopup="true">{l.label}</a>
+          <div class="mega">
+            <div class="mega-list">
+              {industries.map((i) => (
+                <a class="mega-item" href={`/services/${i.slug}/`} data-preview={i.slug} aria-current={path === `/services/${i.slug}/` ? 'page' : undefined}>
+                  <span class="mi-icon"><Icon name={i.icon} /></span>
+                  <span class="mi-text"><b>{i.anchor}</b><small>{i.menuText}</small></span>
+                </a>
+              ))}
+              <a class="mega-item mega-all" href="/services/" data-preview="all-services">
+                <span class="mi-icon"><Icon name="squares-four" /></span>
+                <span class="mi-text"><b>All services</b><small>Web design, web apps and online stores</small></span>
+              </a>
+            </div>
+            <div class="mega-preview" aria-hidden="true">
+              {[...industries.map((i) => ({ slug: i.slug, ...i.preview })), { slug: 'all-services', tag: 'All services', title: 'Web design, web apps and online stores' }].map((p) => (
+                <figure class="mp" data-for={p.slug}>
+                  <img data-src={`/assets/menu/${p.slug}.webp`} alt="" width="960" height="720" decoding="async" />
+                  <span class="mp-tag">{p.tag}</span>
+                  <figcaption>{p.title}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
         <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
       ))}
     </nav>
@@ -31,7 +59,14 @@ const isActive = (href: string) => !href.includes('#') && (path === href || (hre
   </div>
   <nav aria-label="Menu">
     {navLinks.map((l) => (
-      <a href={l.href}>{l.label} <Icon name="arrow-up-right" /></a>
+      <>
+        <a href={l.href}>{l.label} <Icon name="arrow-up-right" /></a>
+        {l.menu && (
+          <div class="sheet-sub">
+            {industries.map((i) => <a href={`/services/${i.slug}/`}>{i.anchor}</a>)}
+          </div>
+        )}
+      </>
     ))}
   </nav>
   <div class="sheet-foot">

@@ -9,6 +9,11 @@ export interface Industry {
   anchor: string;
   /** The thing being designed, used in questions: "restaurant website". */
   noun: string;
+  /** Icon (a file in public/assets/icons/ui) and one line for the Services menu. */
+  icon: string;
+  menuText: string;
+  /** The picture card shown beside the menu while this item is hovered (public/assets/menu/<slug>.webp). */
+  preview: { tag: string; title: string };
   /** Section headings that carry the page's search terms. */
   buildTitle: string;
   faqTitle: string;
@@ -36,6 +41,9 @@ export const industries: Industry[] = [
     slug: 'restaurant-website-design',
     name: 'Restaurants',
     anchor: 'Restaurant website design',
+    icon: 'fork-knife',
+    menuText: 'Menus, online ordering and booking',
+    preview: { tag: 'For restaurants', title: 'Menu, online ordering and table booking' },
     noun: 'restaurant website',
     buildTitle: 'What your restaurant website includes',
     faqTitle: 'Restaurant website design questions',
@@ -75,6 +83,9 @@ export const industries: Industry[] = [
     slug: 'clinic-website-design',
     name: 'Clinics',
     anchor: 'Dental and clinic website design',
+    icon: 'tooth',
+    menuText: 'Treatment pages and appointment requests',
+    preview: { tag: 'For clinics', title: 'Clear treatment pages and easy appointment requests' },
     noun: 'clinic website',
     buildTitle: 'What your clinic website includes',
     faqTitle: 'Dental and clinic website design questions',
@@ -114,6 +125,9 @@ export const industries: Industry[] = [
     slug: 'realtor-website-design',
     name: 'Realtors',
     anchor: 'Real estate and realtor website design',
+    icon: 'house-line',
+    menuText: 'Home search, area guides and valuations',
+    preview: { tag: 'For realtors', title: 'Home search, area guides and valuation requests' },
     noun: 'real estate website',
     buildTitle: 'What your real estate website includes',
     faqTitle: 'Real estate website design questions',
@@ -153,6 +167,9 @@ export const industries: Industry[] = [
     slug: 'gym-website-design',
     name: 'Gyms',
     anchor: 'Gym and fitness website design',
+    icon: 'barbell',
+    menuText: 'Class timetables, memberships and trials',
+    preview: { tag: 'For gyms', title: 'Class timetable, memberships and free trial sign-up' },
     noun: 'gym website',
     buildTitle: 'What your gym website includes',
     faqTitle: 'Gym website design questions',
@@ -191,6 +208,9 @@ export const industries: Industry[] = [
     slug: 'beauty-brand-website-design',
     name: 'Beauty brands',
     anchor: 'Beauty brand website design',
+    icon: 'flower-lotus',
+    menuText: 'Online shops with shade-aware products',
+    preview: { tag: 'For beauty brands', title: 'Shade-aware products and a simple checkout' },
     noun: 'beauty brand website',
     buildTitle: 'What your beauty brand website includes',
     faqTitle: 'Beauty brand website design questions',
@@ -230,6 +250,9 @@ export const industries: Industry[] = [
     slug: 'startup-website-design',
     name: 'Startups',
     anchor: 'MVP development and startup websites',
+    icon: 'rocket-launch',
+    menuText: 'Launch pages, waitlists and first versions',
+    preview: { tag: 'For startups', title: 'A launch page, a waitlist and your first product version' },
     noun: 'startup website or MVP',
     buildTitle: 'What your MVP and startup website include',
     faqTitle: 'MVP development and startup website questions',
@@ -269,6 +292,9 @@ export const industries: Industry[] = [
     slug: 'website-redesign',
     name: 'Website redesign',
     anchor: 'Website redesign services',
+    icon: 'arrows-clockwise',
+    menuText: 'Fix a slow or dated site, keep your rankings',
+    preview: { tag: 'Redesign', title: 'A clearer, faster site that keeps your rankings' },
     noun: 'website redesign',
     buildTitle: 'What a website redesign includes',
     faqTitle: 'Website redesign questions',

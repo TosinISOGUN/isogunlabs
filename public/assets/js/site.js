@@ -27,13 +27,53 @@
       blob.classList.add('on');
     };
     links.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('mouseenter', function () { moveTo(a); });
-      a.addEventListener('focus', function () { moveTo(a); });
+      // A link inside the Services dropdown keeps the highlight on the Services link itself.
+      var target = a.closest('.mega') ? a.closest('.nav-item').querySelector(':scope > a') : a;
+      a.addEventListener('mouseenter', function () { moveTo(target); });
+      a.addEventListener('focus', function () { moveTo(target); });
     });
+    // The pointer can pass from the Services link down into its dropdown without leaving the nav.
+    var megaEl = links.querySelector('.mega');
+    if (megaEl) megaEl.addEventListener('mouseenter', function () { moveTo(megaEl.parentNode.querySelector(':scope > a')); });
     links.addEventListener('mouseleave', function () { moveTo(current); });
     links.addEventListener('focusout', function () { moveTo(current); });
     moveTo(current);
     window.addEventListener('resize', function () { moveTo(current); });
+  }
+
+  // Escape closes the Services dropdown when keyboard focus is inside it.
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var item = document.querySelector('.nav-item.has-menu');
+    if (item && item.contains(document.activeElement)) { document.activeElement.blur(); item.classList.add('closed'); }
+  });
+  var menuItem = document.querySelector('.nav-item.has-menu');
+  if (menuItem) {
+    ['mouseleave', 'focusout'].forEach(function (ev) { menuItem.addEventListener(ev, function () { menuItem.classList.remove('closed'); }); });
+
+    // The picture card beside the list follows the item under the pointer or keyboard focus.
+    // Pictures are fetched only once the menu is first opened, so no page pays for them up front.
+    var cards = Array.prototype.slice.call(menuItem.querySelectorAll('.mp'));
+    var mega = menuItem.querySelector('.mega');
+    var firstSlug = mega.querySelector('.mega-item').getAttribute('data-preview');
+    var show = function (slug) {
+      cards.forEach(function (c) {
+        var on = c.getAttribute('data-for') === slug;
+        c.classList.toggle('on', on);
+        var img = c.querySelector('img');
+        if (on && img && img.getAttribute('data-src')) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }
+      });
+    };
+    if (cards[0]) cards[0].classList.add('on');
+    var servicesLink = menuItem.querySelector(':scope > a');
+    ['mouseenter', 'focus'].forEach(function (ev) { servicesLink.addEventListener(ev, function () { show(firstSlug); }); });
+    var pick = function (e) {
+      var item = e.target.closest && e.target.closest('.mega-item');
+      if (item) show(item.getAttribute('data-preview'));
+    };
+    mega.addEventListener('mouseover', pick);
+    mega.addEventListener('focusin', pick);
+    if (links) links.addEventListener('mouseleave', function () { if (cards[0]) show(firstSlug); });
   }
 
   // Full-screen menu on small screens

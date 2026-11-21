@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogCard from '../components/BlogCard.astro';
 import Icon from '../components/Icon.astro';
-import ScreenshotSlider from '../components/ScreenshotSlider.astro';
 import { getCollection } from 'astro:content';
 import { ctaLabel, ctaHref, contact } from '../data/nav';
 
@@ -23,11 +22,6 @@ const projects = [
   { slug: 'weseeu', name: 'weSEEu', status: 'In development', line: 'Therapy and special-needs marketplace with provider profiles and sign-up.', url: 'https://weseeu.vercel.app', alt: 'weSEEu marketplace homepage' },
 ];
 
-const recapShots = [
-  { src: '/assets/recap-report.png', width: 1522, height: 907, alt: 'Recap in Jira showing a generated monthly status report grouped by epic, ready to copy and paste.' },
-  { src: '/assets/field-hygiene-01-duplicates.png', width: 1104, height: 540, alt: 'Field Hygiene in Jira showing grouped duplicate and near-duplicate custom field names.' },
-  { src: '/assets/passdown-03-handoff.png', width: 915, height: 516, alt: 'Passdown in Jira showing an automated shift-handoff brief posted as a native comment with the incoming person mentioned.' },
-];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -123,22 +117,18 @@ const jsonLd = {
 >
 
 <section class="hero">
-  <div class="wrap">
-    <h1>We build websites and software that ship.</h1>
-    <div class="hero-row">
-      <p class="hero-sub">Isogun Labs is a web design and development company for startups, small businesses and brands in the USA, Canada, the UK and Europe, and a builder of Atlassian Marketplace apps.</p>
-      <div class="hero-actions">
-        <a class="btn btn-ink" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
-        <a class="btn btn-line" href="/work/">See our work</a>
-      </div>
+  <picture>
+    <source media="(max-width: 700px)" srcset="/assets/hero/valley-m.webp">
+    <img class="hero-bg" src="/assets/hero/valley-1400.webp" srcset="/assets/hero/valley-800.webp 800w, /assets/hero/valley-1400.webp 1400w, /assets/hero/valley-2200.webp 2200w" sizes="100vw" alt="" width="2200" height="1238" fetchpriority="high" decoding="async" />
+  </picture>
+  <div class="wrap hero-center">
+    <h1>We build websites and software <em>that ship.</em></h1>
+    <p class="hero-sub">Isogun Labs is a web design and development company for startups, small businesses and brands in the USA, Canada, the UK and Europe.</p>
+    <div class="hero-actions">
+      <a class="btn btn-lime" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
+      <a class="btn btn-glass" href="/work/">See our work</a>
     </div>
   </div>
-  <nav class="hero-links" aria-label="What we build">
-    <a href="/services/#websites"><span class="t">Websites</span><span class="d">For businesses and brands</span><Icon name="arrow-up-right" /></a>
-    <a href="/services/#web-apps"><span class="t">Web apps</span><span class="d">MVPs and platforms</span><Icon name="arrow-up-right" /></a>
-    <a href="/services/#stores-booking"><span class="t">Stores and booking</span><span class="d">Checkout and reservations</span><Icon name="arrow-up-right" /></a>
-    <a href="/services/#marketplace-apps"><span class="t">Marketplace apps</span><span class="d">Jira and JSM, built on Forge</span><Icon name="arrow-up-right" /></a>
-  </nav>
 </section>
 
 <section class="logos" aria-label="Technology we build with">
@@ -160,7 +150,7 @@ const jsonLd = {
     </div>
     <div class="bento">
       <a class="cell cell-photo cell-a reveal" href="/services/#websites">
-        <img src="/assets/photos/desk-sketch.webp" alt="" width="1600" height="1066" loading="lazy" decoding="async" />
+        <img src="/assets/photos/websites.webp" alt="" width="1600" height="1066" loading="lazy" decoding="async" />
         <div class="body">
           <h3>Websites for businesses and brands</h3>
           <p>Fast, mobile-first sites with booking, ordering and contact forms that turn visitors into customers.</p>
@@ -178,7 +168,7 @@ const jsonLd = {
         </div>
       </a>
       <a class="cell cell-card cell-c reveal" href="/services/#stores-booking">
-        <div class="pic"><img src="/assets/photos/shop-laptop.webp" alt="" width="1600" height="1066" loading="lazy" decoding="async" /></div>
+        <div class="pic"><img src="/assets/photos/stores.webp" alt="" width="1600" height="1066" loading="lazy" decoding="async" /></div>
         <div class="body">
           <h3>Online stores and booking</h3>
           <p>Storefronts, carts and checkout, plus booking and ordering flows for service businesses.</p>
@@ -186,7 +176,7 @@ const jsonLd = {
         </div>
       </a>
       <a class="cell cell-photo cell-d reveal" href="/services/#marketplace-apps">
-        <img src="/assets/photos/devs-pair.webp" alt="" width="1600" height="1066" loading="lazy" decoding="async" />
+        <img src="/assets/photos/apps.webp" alt="" width="1600" height="1066" loading="lazy" decoding="async" />
         <div class="body">
           <h3>Atlassian Marketplace apps</h3>
           <p>Apps for Jira and Jira Service Management, built on Forge, from first prototype to approved listing.</p>
@@ -251,9 +241,6 @@ const jsonLd = {
       </ul>
       <div class="apps-foot"><a class="btn btn-lime" href="/get-started/">Choose an app <Icon name="arrow-right" /></a></div>
     </div>
-    <div class="reveal">
-      <ScreenshotSlider shots={recapShots} barLabel="Recap, Field Hygiene and Passdown in Jira" productUrl="/get-started/" productLabel="All apps" intervalMs={3600} />
-    </div>
   </div>
 </section>
 
@@ -275,7 +262,7 @@ const jsonLd = {
 <section class="section bg-2" id="about">
   <div class="wrap about-grid">
     <div class="about-photo reveal">
-      <img src="/assets/photos/team-table.webp" alt="A group of people planning a project around a table with laptops and sketches." width="1600" height="1066" loading="lazy" decoding="async" />
+      <img src="/assets/photos/studio.webp" alt="A creative team around a table with laptops and a screen, planning a project." width="1600" height="1066" loading="lazy" decoding="async" />
     </div>
     <div class="about-copy reveal">
       <h2 class="h2">A studio with a high bar</h2>
@@ -285,6 +272,7 @@ const jsonLd = {
         <img src="/assets/photos/founder.webp" alt="Oluwatomisin Isogun" width="68" height="68" loading="lazy" />
         <div><b>Oluwatomisin Isogun</b><span>Founder and lead developer</span></div>
       </div>
+      <p><a class="link-arrow" href="/about/">More about Isogun Labs <Icon name="arrow-right" /></a></p>
     </div>
   </div>
 </section>

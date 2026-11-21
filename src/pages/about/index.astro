@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { ctaLabel, ctaHref, contact } from '../../data/nav';
+
+
+const principles = [
+  { title: 'You talk to the person building it', text: 'There is no account manager between you and the work, so decisions are quick and nothing gets lost in a hand-off.' },
+  { title: 'A written plan before any design', text: 'The pages, the features and the timeline in writing, with a quote, so you know what you are agreeing to.' },
+  { title: 'A working preview, early and often', text: 'You see the real site as it takes shape and tell us what to change while it is still easy to change.' },
+  { title: 'Built to be handed over', text: 'Clean code, a clear launch and a handover that shows you how to run the site yourself.' },
+];
+
+const apps = [
+  { name: 'Recap for Jira', text: 'Monthly status reports written from your Jira work.', href: 'https://recap.isogunlabs.com/' },
+  { name: 'Field Hygiene for Jira', text: 'Finds and cleans up duplicate custom fields.', href: 'https://field-hygiene.isogunlabs.com/' },
+  { name: 'Passdown for JSM', text: 'Automated shift-handoff briefs for support teams.', href: 'https://passdown.isogunlabs.com/' },
+];
+
+const url = 'https://isogunlabs.com/about/';
+---
+<BaseLayout
+  title="About Isogun Labs | Web Design and Development Company"
+  description="About Isogun Labs, an independent web design and development company led by founder Oluwatomisin Isogun, serving clients in the USA, Canada, UK and Europe."
+  path="/about/"
+  breadcrumbs={[{ name: 'About', path: '/about/' }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'AboutPage',
+        '@id': `${url}#page`,
+        url,
+        name: 'About Isogun Labs',
+        isPartOf: { '@id': 'https://isogunlabs.com/#website' },
+        about: { '@id': 'https://isogunlabs.com/#org' },
+        mainEntity: { '@id': 'https://isogunlabs.com/#org' },
+      },
+    ],
+  }}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>A web design studio with a high bar</h1>
+    <p class="lead">Isogun Labs is an independent web design and development company. We design and build websites, web apps and Atlassian Marketplace apps for startups, small businesses and brands in the USA, Canada, the UK and Europe.</p>
+    <div class="ind-cta">
+      <a class="btn btn-ink" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href="/work/">See our work</a>
+    </div>
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <img src="/assets/photos/studio.webp" alt="A creative team around a table with laptops and a screen, planning a project." width="1600" height="1066" loading="eager" decoding="async" />
+    </div>
+    <div class="about-copy reveal">
+      <h2 class="h2">What we do</h2>
+      <p>We have shipped client websites, web platforms and three apps on the Atlassian Marketplace, and we bring the same care to every project, whatever its size.</p>
+      <p>Most of our websites are for businesses that need customers to find them, trust them and get in touch: restaurants, clinics, realtors, gyms and beauty brands. For founders we also build the first version of the product, from a launch page to a working web app.</p>
+      <p><a class="link-arrow" href="/services/">Everything we build <Icon name="arrow-right" /></a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight bg-2-band">
+  <div class="wrap founder reveal">
+    <img class="founder-photo" src="/assets/photos/founder.webp" alt="Oluwatomisin Isogun, founder and lead developer of Isogun Labs" width="240" height="240" loading="lazy" decoding="async" />
+    <div class="about-copy">
+      <p class="kicker">Founder</p>
+      <h2 class="h2">Oluwatomisin Isogun</h2>
+      <p>Oluwatomisin founded Isogun Labs and leads the design and development of every project. He builds websites and web apps, and he took Recap, Field Hygiene and Passdown from idea to approved Atlassian Marketplace listings.</p>
+      <p>When you work with Isogun Labs, he is the person you talk to and the person building your project.</p>
+      <p class="proof-links">
+        <a class="link-arrow" href="https://portfolio.isogunlabs.com" target="_blank" rel="noopener">Personal portfolio <Icon name="arrow-up-right" /></a>
+        <a class="link-arrow" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">Book a free call <Icon name="arrow-up-right" /></a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <h2 class="h2 h2-wide reveal">How we work</h2>
+    <div class="need-grid need-grid-2">
+      {principles.map((p) => (
+        <div class="need reveal">
+          <h3>{p.title}</h3>
+          <p>{p.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section-tight bg-2-band">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="h2">Where we work</h2>
+      <p class="lead">We work with clients in the USA, Canada, the UK and Europe. We work remotely and in English, with calls at times that suit your time zone, and we build with the cookie, privacy and accessibility basics of those regions in mind.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="atl-band reveal">
+      <div>
+        <p class="kicker">Atlassian Marketplace partner</p>
+        <h2 class="h2">Three apps on the Atlassian Marketplace</h2>
+        <p class="lead">We build and run our own apps for Jira and Jira Service Management, so we know the platform, the review process and the detail that gets an app approved. We can build yours, or help you ship it.</p>
+        <p class="proof-links"><a class="link-arrow" href="/get-started/">See our Atlassian apps <Icon name="arrow-right" /></a></p>
+      </div>
+      <ul class="atl-list">
+        {apps.map((a) => (
+          <li><a href={a.href} target="_blank" rel="noopener"><b>{a.name}</b><span>{a.text}</span><Icon name="arrow-up-right" /></a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>Let us talk about your project</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href="/contact/#enquiry">Send a brief <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">Book a free call</a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
