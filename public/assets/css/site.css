@@ -112,7 +112,7 @@ body.sheet-open { overflow: hidden; }
 .head-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.8rem; }
 
 /* ---------- hero: black field, scattered photo tiles, a huge headline over them (after the NOOO reference) ---------- */
-.hero { --hs: clamp(2.8rem, 8.4vw, 8.6rem); position: relative; display: block; min-height: max(100svh, 62vw, 640px); text-align: left; color: #fff; background: var(--black); overflow: hidden; }
+.hero { --hs: clamp(2.6rem, min(8.4vw, 15vh), 8.6rem); position: relative; display: block; height: max(100svh, 560px); text-align: left; color: #fff; background: var(--black); overflow: hidden; }
 .hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.25) 34%, rgba(0,0,0,0) 56%); }
 .hero-tiles { position: absolute; inset: 0; }
 .ht { position: absolute; height: auto; object-fit: cover; border-radius: 4px; background: #111; }
@@ -127,7 +127,7 @@ body.sheet-open { overflow: hidden; }
 .hero h1 em { font-style: normal; color: var(--accent); }
 html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
 @media (max-width: 700px) {
-  .hero { min-height: max(100svh, 640px); }
+  .hero { height: max(100svh, 600px); }
   .ht-a, .ht-d { display: none; }
   .ht-b { left: auto; right: 0; top: 24vw; width: 56vw; }
   .ht-c { left: 8vw; top: 56vw; bottom: auto; width: 62vw; }
@@ -699,16 +699,5 @@ html:not([lang="en"]) .hero { --hs: clamp(2.5rem, 6.6vw, 6.6rem); }
   .nav-blob { display: none; }
   .island .lang-bar { height: auto; padding: 0; background: transparent; box-shadow: none; }
   .island .nav-cta { min-height: 42px; height: 42px; padding: 0 1.2rem; box-shadow: none; }
-  .island .menu-btn { display: inline-grid; place-items: center; width: 44px; min-height: 44px; padding: 0; margin: 0; background: transparent; font-size: 0; position: relative; }
-  .island .menu-btn::before { content: ''; width: 22px; height: 2px; background: #fff; border-radius: 2px; box-shadow: 0 -7px 0 #fff, 0 7px 0 #fff; }
-  .island .menu-btn:hover { background: transparent; }
-  .island .menu-btn:hover::before { background: var(--accent); box-shadow: 0 -7px 0 var(--accent), 0 7px 0 var(--accent); }
-  .sheet { display: flex; }
-  .lang-sheet { display: block; }
 }
-
-/* The header shows the company name as text; the logo image stays in the footer and the phone menu. */
-.island .logo-text { font-family: var(--ff-display); font-weight: 800; font-size: 1.4rem; letter-spacing: -.04em; line-height: 1; color: #fff; transition: color .2s; }
-.island .logo:hover .logo-text { color: var(--accent); }
-@media (max-width: 979px) { .island .logo-text { font-size: 1.25rem; } }
 .island .logo { text-decoration: none; }
