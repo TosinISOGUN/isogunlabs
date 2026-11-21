@@ -159,7 +159,7 @@ const ctaHref = l(lang, '/contact/');
 <section class="logos" aria-label={h.logos}>
   <div class="logos-track">
     <ul>
-      {tech.map(([slug, name]) => <li style={`--src:url(/assets/tech/${slug}.svg)`} role="img" aria-label={name}></li>)}
+      {tech.map(([slug, name]) => <li style={`--src:url(/assets/tech/${slug}.svg)`}><span>{name}</span></li>)}
     </ul>
     <ul aria-hidden="true">
       {tech.map(([slug]) => <li style={`--src:url(/assets/tech/${slug}.svg)`}></li>)}
