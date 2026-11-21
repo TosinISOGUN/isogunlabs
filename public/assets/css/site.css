@@ -7,6 +7,8 @@
 @font-face { font-family: 'Geist'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/assets/fonts/geist-variable.woff2') format('woff2'); }
 @font-face { font-family: 'Bricolage Grotesque'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('/assets/fonts/bricolage-grotesque-latin.woff2') format('woff2'); }
 
+@font-face { font-family: 'Unbounded'; font-style: normal; font-weight: 200 900; font-display: swap; src: url('/assets/fonts/unbounded-latin.woff2') format('woff2'); }
+
 :root {
   color-scheme: light;
   --bg: #F2F3EE; --bg-2: #E8EAE2; --surface: #FAFAF7;
@@ -64,7 +66,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .site-header.scrolled .island { box-shadow: inset 0 0 0 1px #2f3329, inset 0 1px 0 rgba(255,255,255,.08), 0 22px 50px -16px rgba(0,0,0,.65); }
 .logo { display: inline-flex; align-items: center; flex: none; }
 .logo img { height: 34px; width: auto; transition: transform .5s var(--ease); }
-.island .logo:hover img { transform: scale(1.06) rotate(-1.5deg); }
+.island .logo:hover .wordmark { transform: scale(1.04) rotate(-1deg); }
 .nav-links { position: relative; display: none; align-items: center; gap: .1rem; margin-inline: auto; }
 .nav-links a { position: relative; z-index: 1; padding: .6rem 1.05rem; border-radius: 999px; font-weight: 500; font-size: .96rem; text-decoration: none; color: var(--on-black-muted); transition: color .25s; }
 .nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current="page"] { color: var(--on-black); }
@@ -113,12 +115,12 @@ body.sheet-open { overflow: hidden; }
 
 /* ---------- hero: black field, scattered photo tiles, a huge headline over them (after the NOOO reference) ---------- */
 .hero { --hs: clamp(2.6rem, min(8.4vw, 15vh), 8.6rem); position: relative; display: block; height: max(100svh, 560px); text-align: left; color: #fff; background: var(--black); overflow: hidden; }
-.hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.45) 38%, rgba(0,0,0,0) 62%), linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 16%); }
+.hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 70% 38% at 50% 50%, rgba(0,0,0,.72) 0%, rgba(0,0,0,.4) 55%, rgba(0,0,0,0) 100%), linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 16%); }
 .hero-center { text-shadow: 0 2px 24px rgba(0,0,0,.45); }
 .hero-tiles { position: absolute; inset: 0; }
 .ht { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1vw); height: auto; aspect-ratio: var(--ar); object-fit: cover; border-radius: 4px; background: #111; will-change: transform; filter: blur(1.2px); }
-.hero-center { position: absolute; z-index: 2; left: 0; right: 0; bottom: clamp(1.6rem, 4.5vw, 3.6rem); display: grid; justify-items: start; }
-.hero-sub { max-width: 34ch; font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.88); margin-bottom: clamp(.8rem, 1.6vw, 1.4rem); }
+.hero-center { position: absolute; z-index: 2; left: 0; right: 0; top: 50%; transform: translateY(-50%); display: grid; justify-items: center; text-align: center; }
+.hero-sub { max-width: 34ch; margin-inline: auto; font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.88); margin-top: clamp(.9rem, 1.8vw, 1.6rem); }
 .hero h1 { font-weight: 800; font-size: var(--hs); line-height: .92; letter-spacing: -.05em; }
 .hero h1 span { display: block; }
 .hero h1 em { font-style: normal; color: var(--accent); }
@@ -127,12 +129,11 @@ html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
   .hero { height: max(100svh, 600px); }
   .ht { width: calc(var(--w) * 2.3vw); }
   .ht-wide { display: none; }
-  .hero-center { bottom: 6.5rem; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .ht { animation: tile-in 1s var(--ease) both; animation-delay: var(--d, 0s); }
   .hero h1, .hero-sub { animation: rise .9s var(--ease) both; }
-  .hero h1 { animation-delay: .15s; }
+  .hero h1 { animation-delay: .1s; } .hero-sub { animation-delay: .3s; }
 }
 @keyframes tile-in { from { translate: 0 32px; } }
 @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
@@ -727,3 +728,37 @@ a.pager-num:hover, a.pager-step:hover { background: var(--ink); color: var(--bg)
   .lang-mob .lang-btn { padding: 0 .55rem; }
   .menu-btn { padding: 0 .95rem; }
 }
+
+/* desktop: a frosted glass pill behind the logo while the bar is transparent over the home hero, so photos gliding beneath never swallow it */
+@media (min-width: 980px) {
+  .island .logo { padding: 7px 20px; margin-left: -20px; border-radius: 999px; transition: background .35s var(--ease), box-shadow .35s var(--ease), -webkit-backdrop-filter .35s, backdrop-filter .35s; }
+  body.is-home .site-header:not(.scrolled) .island .logo {
+    background: linear-gradient(135deg, rgba(190,194,204,.22), rgba(130,136,150,.12));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.26), inset 0 1px 0 rgba(255,255,255,.38), 0 10px 30px -12px rgba(0,0,0,.5);
+    -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
+  }
+}
+
+/* Services dropdown on desktop: white panel, matching the language menu */
+.mega::before { background: #fff; box-shadow: 0 30px 70px -20px rgba(0,0,0,.6); }
+.nav-links .mega .mega-item { color: #0D0F0B; }
+.nav-links .mega .mega-item:hover, .nav-links .mega .mega-item:focus-visible { background: #f2f2f2; color: #0D0F0B; }
+.nav-links .mega .mega-item[aria-current="page"] { background: #f2f2f2; }
+.nav-links .mega .mega-item[aria-current="page"] .mi-text b { color: #0D0F0B; }
+.mega .mi-icon { background: var(--black); color: var(--accent); }
+.mega .mi-text small { color: #7a7a7a; }
+.nav-links .mega .mega-all::before { background: #e6e6e6; }
+
+/* the nav wordmark: set in type instead of an image */
+.wordmark { display: inline-block; font: 600 1.42rem/1 'Unbounded', var(--ff-display); letter-spacing: -.035em; color: #fff; white-space: nowrap; transition: transform .5s var(--ease); }
+.wordmark em { font-style: normal; color: var(--accent); }
+.site-header .logo { text-decoration: none; }
+@media (max-width: 979px) { .wordmark { font-size: 1.08rem; } }
+@media (max-width: 380px) { .wordmark { font-size: .95rem; } }
+
+/* page scrollbar: thin, dark track and a soft grey thumb so it sits with the black hero and nav */
+html { scrollbar-width: thin; scrollbar-color: #6e7262 #0D0F0B; }
+
+/* menu sheet: the same typeset wordmark as the nav bar, inside its black pill */
+.sheet-top .logo { padding: 12px 24px; }
+.sheet-top .wordmark { font-size: 1.2rem; }
