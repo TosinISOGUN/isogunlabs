@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogCard from '../components/BlogCard.astro';
 import Icon from '../components/Icon.astro';
-import ScreenshotSlider from '../components/ScreenshotSlider.astro';
 import { getCollection } from 'astro:content';
 import { ctaLabel, ctaHref, contact } from '../data/nav';
 
@@ -23,11 +22,6 @@ const projects = [
   { slug: 'weseeu', name: 'weSEEu', status: 'In development', line: 'Therapy and special-needs marketplace with provider profiles and sign-up.', url: 'https://weseeu.vercel.app', alt: 'weSEEu marketplace homepage' },
 ];
 
-const recapShots = [
-  { src: '/assets/recap-report.png', width: 1522, height: 907, alt: 'Recap in Jira showing a generated monthly status report grouped by epic, ready to copy and paste.' },
-  { src: '/assets/field-hygiene-01-duplicates.png', width: 1104, height: 540, alt: 'Field Hygiene in Jira showing grouped duplicate and near-duplicate custom field names.' },
-  { src: '/assets/passdown-03-handoff.png', width: 915, height: 516, alt: 'Passdown in Jira showing an automated shift-handoff brief posted as a native comment with the incoming person mentioned.' },
-];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -246,9 +240,6 @@ const jsonLd = {
         </li>
       </ul>
       <div class="apps-foot"><a class="btn btn-lime" href="/get-started/">Choose an app <Icon name="arrow-right" /></a></div>
-    </div>
-    <div class="reveal">
-      <ScreenshotSlider shots={recapShots} barLabel="Recap, Field Hygiene and Passdown in Jira" productUrl="/get-started/" productLabel="All apps" intervalMs={3600} />
     </div>
   </div>
 </section>

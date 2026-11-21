@@ -194,7 +194,7 @@ body.sheet-open { overflow: hidden; }
 .apps { background: var(--black); color: var(--on-black); }
 .apps .lead { color: var(--on-black-muted); }
 .apps-grid { display: grid; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
-@media (min-width: 980px) { .apps-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); } }
+@media (min-width: 980px) { .app-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(1.5rem, 3vw, 3rem); } .app { border-bottom: 1px solid var(--line-black); } }
 .app-list { margin-top: 2.2rem; }
 .app { display: grid; grid-template-columns: 52px 1fr; gap: 1rem 1.2rem; align-items: start; padding: 1.4rem 0; border-top: 1px solid var(--line-black); }
 .app:last-child { border-bottom: 1px solid var(--line-black); }
