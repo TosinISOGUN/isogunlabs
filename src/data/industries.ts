@@ -208,7 +208,7 @@ export const industries: Industry[] = [
     slug: 'beauty-brand-website-design',
     name: 'Beauty brands',
     anchor: 'Beauty brand website design',
-    icon: 'sparkle',
+    icon: 'flower-lotus',
     menuText: 'Online shops with shade-aware products',
     preview: { tag: 'For beauty brands', title: 'Shade-aware products and a simple checkout' },
     noun: 'beauty brand website',
