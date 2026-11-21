@@ -545,3 +545,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 @media (min-width: 700px) { .enq-row { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1000px) { .enq { grid-template-columns: .8fr 1.2fr; gap: 4rem; } }
 .enq-intro .ticks { grid-template-columns: 1fr; }
+
+/* On the lime band the outline button always uses the dark ink, in light and dark mode (the theme ink is pale in dark mode and disappears on lime). */
+.cta .btn-ghost-ink { border-color: var(--field-ink); color: var(--field-ink); }
+.cta .btn-ghost-ink:hover { background: var(--field-ink); color: var(--field); }
