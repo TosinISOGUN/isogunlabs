@@ -123,22 +123,19 @@ const jsonLd = {
 >
 
 <section class="hero">
-  <div class="wrap">
-    <h1>We build websites and software that ship.</h1>
-    <div class="hero-row">
-      <p class="hero-sub">Isogun Labs is a web design and development company for startups, small businesses and brands in the USA, Canada, the UK and Europe, and a builder of Atlassian Marketplace apps.</p>
-      <div class="hero-actions">
-        <a class="btn btn-ink" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
-        <a class="btn btn-line" href="/work/">See our work</a>
-      </div>
+  <picture>
+    <source media="(max-width: 700px)" srcset="/assets/hero/valley-m.webp">
+    <img class="hero-bg" src="/assets/hero/valley-1400.webp" srcset="/assets/hero/valley-800.webp 800w, /assets/hero/valley-1400.webp 1400w, /assets/hero/valley-2200.webp 2200w" sizes="100vw" alt="" width="2200" height="1238" fetchpriority="high" decoding="async" />
+  </picture>
+  <div class="wrap hero-center">
+    <p class="hero-pill">Websites, web apps and Atlassian apps</p>
+    <h1>We build websites and software <em>that ship.</em></h1>
+    <p class="hero-sub">Isogun Labs is a web design and development company for startups, small businesses and brands in the USA, Canada, the UK and Europe.</p>
+    <div class="hero-actions">
+      <a class="btn btn-lime" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
+      <a class="btn btn-glass" href="/work/">See our work</a>
     </div>
   </div>
-  <nav class="hero-links" aria-label="What we build">
-    <a href="/services/#websites"><span class="t">Websites</span><span class="d">For businesses and brands</span><Icon name="arrow-up-right" /></a>
-    <a href="/services/#web-apps"><span class="t">Web apps</span><span class="d">MVPs and platforms</span><Icon name="arrow-up-right" /></a>
-    <a href="/services/#stores-booking"><span class="t">Stores and booking</span><span class="d">Checkout and reservations</span><Icon name="arrow-up-right" /></a>
-    <a href="/services/#marketplace-apps"><span class="t">Marketplace apps</span><span class="d">Jira and JSM, built on Forge</span><Icon name="arrow-up-right" /></a>
-  </nav>
 </section>
 
 <section class="logos" aria-label="Technology we build with">

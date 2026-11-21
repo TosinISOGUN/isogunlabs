@@ -136,6 +136,7 @@ Stock photographs are from [Pexels](https://www.pexels.com) under the Pexels lic
 
 | Where | Photographer | Pexels photo |
 | --- | --- | --- |
+| Home hero | Nadezhda Moryak | 9674393 |
 | Websites (home, services) | SHVETS production | 9052803 |
 | Web apps (services) | Christina Morillo | 1181260 |
 | Online stores (home, services) | Kampus Production | 7289707 |
