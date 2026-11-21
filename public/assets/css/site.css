@@ -685,7 +685,7 @@ html:not([lang="en"]) .hero { --hs: clamp(2.5rem, 6.6vw, 6.6rem); }
    ============================================================ */
 @media (min-width: 980px) {
   .island { width: 100%; max-width: none; left: 0; top: 0; transform: none; height: 92px; padding: 0 var(--gutter); gap: 1.6rem; border-radius: 0; background: var(--black); box-shadow: none; overflow: visible; transition: background .3s; }
-  .site-header.scrolled .island { box-shadow: 0 1px 0 #1c1e18; }
+  .site-header.scrolled .island { box-shadow: 0 1px 0 #1c1e18; background: rgba(0,0,0,.85); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
   body.is-home .site-header:not(.scrolled) .island { background: transparent; }
   .island .logo img { height: 54px; }
   .island .nav-links { margin-inline: auto 0; gap: .2rem; }
