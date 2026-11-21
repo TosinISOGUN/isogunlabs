@@ -196,3 +196,24 @@
     if (method) window.gtag('event', 'contact_click', { method: method, link_url: href, page_path: location.pathname });
   });
 })();
+
+/* Recent work: previous and next buttons for the sideways rail (the scrollbar is hidden). */
+(function () {
+  var rail = document.querySelector('.rail');
+  var btns = document.querySelectorAll('.rail-btn');
+  if (!rail || !btns.length) return;
+  function update() {
+    var max = rail.scrollWidth - rail.clientWidth - 2;
+    btns.forEach(function (b) { b.disabled = b.getAttribute('data-rail') === '-1' ? rail.scrollLeft <= 2 : rail.scrollLeft >= max; });
+  }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var card = rail.querySelector('.proj');
+      var step = card ? card.getBoundingClientRect().width + 20 : rail.clientWidth * .8;
+      rail.scrollBy({ left: step * Number(b.getAttribute('data-rail')), behavior: 'smooth' });
+    });
+  });
+  rail.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();

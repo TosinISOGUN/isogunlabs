@@ -191,6 +191,10 @@ const jsonLd = {
   <div class="wrap reveal">
     <h2 class="h2">Recent work</h2>
     <p class="lead">Websites and web platforms, each designed and coded from scratch.</p>
+    <div class="rail-nav" aria-hidden="true">
+      <button type="button" class="rail-btn" data-rail="-1" tabindex="-1" aria-label="Previous project"><Icon name="arrow-right" /></button>
+      <button type="button" class="rail-btn" data-rail="1" tabindex="-1" aria-label="Next project"><Icon name="arrow-right" /></button>
+    </div>
   </div>
   <div class="rail reveal" tabindex="0" aria-label="Recent projects, scroll sideways">
     {projects.map((p) => (
