@@ -665,3 +665,16 @@ html:not([lang="en"]) .hero { --hs: clamp(2.5rem, 6.6vw, 6.6rem); }
 .lang-bar .lang-text small { font-size: .78rem; }
 .lang-bar .lang-check { width: 28px; height: 28px; }
 .lang-bar .lang-check .i { width: .85rem; height: .85rem; }
+
+/* ============================================================
+   Header on desktop: three floating capsules (logo, links, language and action),
+   after the "logo bubble plus link pill" navigation in the inspiration set.
+   ============================================================ */
+@media (min-width: 980px) {
+  .island { width: min(100% - 2 * var(--gutter), 1240px); height: 56px; top: 14px; padding: 0; gap: 14px; background: transparent; box-shadow: none; border-radius: 0; overflow: visible; }
+  .site-header.scrolled .island { box-shadow: none; }
+  .island .logo { height: 56px; padding: 0 24px; border-radius: 999px; background: var(--black); box-shadow: inset 0 0 0 1px #2a2d24, 0 12px 30px -14px rgba(0,0,0,.5); }
+  .island .nav-links { height: 56px; padding: 0 8px; margin-inline: auto; border-radius: 999px; background: var(--black); box-shadow: inset 0 0 0 1px #2a2d24, 0 12px 30px -14px rgba(0,0,0,.5); }
+  .island .lang-bar { height: 56px; display: flex; align-items: center; padding: 0 6px; border-radius: 999px; background: var(--black); box-shadow: inset 0 0 0 1px #2a2d24, 0 12px 30px -14px rgba(0,0,0,.5); }
+  .island .nav-cta { height: 56px; min-height: 56px; padding: 0 1.5rem; box-shadow: 0 12px 30px -14px rgba(0,0,0,.5); }
+}
