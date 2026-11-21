@@ -113,13 +113,10 @@ body.sheet-open { overflow: hidden; }
 
 /* ---------- hero: black field, scattered photo tiles, a huge headline over them (after the NOOO reference) ---------- */
 .hero { --hs: clamp(2.6rem, min(8.4vw, 15vh), 8.6rem); position: relative; display: block; height: max(100svh, 560px); text-align: left; color: #fff; background: var(--black); overflow: hidden; }
-.hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.25) 34%, rgba(0,0,0,0) 56%); }
+.hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.45) 38%, rgba(0,0,0,0) 62%), linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 16%); }
+.hero-center { text-shadow: 0 2px 24px rgba(0,0,0,.45); }
 .hero-tiles { position: absolute; inset: 0; }
-.ht { position: absolute; height: auto; object-fit: cover; border-radius: 4px; background: #111; }
-.ht-a { left: 22vw; top: -3vw; width: 15vw; aspect-ratio: 4 / 5; }
-.ht-b { left: 62vw; top: -2vw; width: 26.5vw; aspect-ratio: 1.45 / 1; }
-.ht-c { left: 32vw; bottom: 3vw; width: 30vw; aspect-ratio: 30 / 38; }
-.ht-d { right: 0; top: 10vw; width: 11.4vw; aspect-ratio: 11.4 / 46; border-radius: 4px 0 0 4px; }
+.ht { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1vw); height: auto; aspect-ratio: var(--ar); object-fit: cover; border-radius: 4px; background: #111; will-change: transform; }
 .hero-center { position: absolute; z-index: 2; left: 0; right: 0; bottom: clamp(1.6rem, 4.5vw, 3.6rem); display: grid; justify-items: start; }
 .hero-sub { max-width: 34ch; font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.88); margin-bottom: clamp(.8rem, 1.6vw, 1.4rem); }
 .hero h1 { font-weight: 800; font-size: var(--hs); line-height: .92; letter-spacing: -.05em; }
@@ -128,13 +125,11 @@ body.sheet-open { overflow: hidden; }
 html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
 @media (max-width: 700px) {
   .hero { height: max(100svh, 600px); }
-  .ht-a, .ht-d { display: none; }
-  .ht-b { left: auto; right: 0; top: 24vw; width: 56vw; }
-  .ht-c { left: 8vw; top: 56vw; bottom: auto; width: 62vw; }
+  .ht { width: calc(var(--w) * 2.3vw); }
+  .ht-wide { display: none; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .ht { animation: tile-in 1s var(--ease) both; }
-  .ht-b { animation-delay: .1s; } .ht-c { animation-delay: .2s; } .ht-d { animation-delay: .3s; }
+  .ht { animation: tile-in 1s var(--ease) both; animation-delay: var(--d, 0s); }
   .hero h1, .hero-sub { animation: rise .9s var(--ease) both; }
   .hero h1 { animation-delay: .15s; }
 }

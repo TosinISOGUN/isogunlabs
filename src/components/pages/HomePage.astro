@@ -130,10 +130,25 @@ const ctaHref = l(lang, '/contact/');
 
 <section class="hero">
   <div class="hero-tiles" aria-hidden="true">
-    <img class="ht ht-a" src="/assets/hero/t-a.webp" alt="" width="520" height="650" decoding="async" fetchpriority="high" />
-    <img class="ht ht-b" src="/assets/hero/t-b.webp" alt="" width="1000" height="690" decoding="async" fetchpriority="high" />
-    <img class="ht ht-c" src="/assets/hero/t-c.webp" alt="" width="900" height="1140" decoding="async" fetchpriority="high" />
-    <img class="ht ht-d" src="/assets/hero/t-d.webp" alt="" width="460" height="1000" decoding="async" fetchpriority="high" />
+    {[
+      // file, width (vw), px width, px height, left %, top %, shown on phones, show first
+      ['t-a', 15, 520, 650, 22, 1, 1],
+      ['t-b', 26, 1000, 690, 62, 2, 1],
+      ['t-c', 28, 900, 1140, 34, 44, 1],
+      ['t-d', 11, 460, 1000, 90, 12, 0],
+      ['m1', 17, 600, 400, 3, 6, 1],
+      ['m2', 13, 600, 400, 48, 4, 0],
+      ['m3', 12, 480, 600, 80, 38, 1],
+      ['m4', 15, 600, 400, 5, 46, 0],
+      ['m5', 13, 600, 400, 68, 60, 1],
+      ['m6', 14, 600, 400, 17, 20, 0],
+      ['m7', 12, 600, 400, 88, 70, 0],
+      ['m8', 10, 480, 600, 52, 30, 0],
+    ].map(([f, w, pw, ph, x, y, ph_show], i) => (
+      <img class={`ht${ph_show ? '' : ' ht-wide'}`} src={`/assets/hero/${f}.webp`} alt="" width={pw} height={ph}
+        style={`--w:${w};--ar:${pw} / ${ph};left:${x}%;top:${y}%;--d:${(i * 0.09).toFixed(2)}s`}
+        decoding="async" loading={i < 4 ? 'eager' : 'lazy'} fetchpriority={i < 4 ? 'high' : 'low'} />
+    ))}
   </div>
   <div class="wrap hero-center">
     <p class="hero-sub">{h.sub}</p>
