@@ -3,7 +3,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import { ctaLabel, ctaHref, contact } from '../../data/nav';
 
-const stack = ['Astro', 'React', 'TypeScript', 'Node.js', 'Tailwind CSS', 'Shopify', 'Vercel', 'GitHub'];
 
 const principles = [
   { title: 'You talk to the person building it', text: 'There is no account manager between you and the work, so decisions are quick and nothing gets lost in a hand-off.' },
@@ -97,16 +96,10 @@ const url = 'https://isogunlabs.com/about/';
 </section>
 
 <section class="section-tight bg-2-band">
-  <div class="wrap ind-build">
+  <div class="wrap">
     <div class="reveal">
       <h2 class="h2">Where we work</h2>
       <p class="lead">We work with clients in the USA, Canada, the UK and Europe. We work remotely and in English, with calls at times that suit your time zone, and we build with the cookie, privacy and accessibility basics of those regions in mind.</p>
-    </div>
-    <div class="reveal">
-      <p class="kicker">What we build with</p>
-      <div class="chips-row">
-        {stack.map((s) => <span class="chip-link" style="pointer-events:none">{s}</span>)}
-      </div>
     </div>
   </div>
 </section>
