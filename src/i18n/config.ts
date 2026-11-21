@@ -50,11 +50,14 @@ export const l = (lang: Locale, path: string) => {
   return (translatedPaths.has(base) ? localePath(lang, base) : base) + (hash ? `#${hash}` : '');
 };
 
-/** The same page in another language: the translated page if there is one, else that language's home page. */
+/** The same page in another language: the translated page if there is one, else its nearest translated parent
+ *  (an industry page falls back to the services overview), else that language's home page. */
 export function switchTarget(currentPath: string, to: Locale) {
   const { path } = splitLocale(currentPath);
   if (to === 'en') return path;
-  return translatedPaths.has(path) ? localePath(to, path) : localePath(to, '/');
+  let p = path;
+  while (p !== '/' && !translatedPaths.has(p)) p = p.slice(0, p.slice(0, -1).lastIndexOf('/') + 1);
+  return localePath(to, translatedPaths.has(p) ? p : '/');
 }
 
 /** hreflang alternates for a page, or none when the page only exists in English. */
