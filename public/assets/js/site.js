@@ -27,9 +27,14 @@
       blob.classList.add('on');
     };
     links.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('mouseenter', function () { moveTo(a); });
-      a.addEventListener('focus', function () { moveTo(a); });
+      // A link inside the Services dropdown keeps the highlight on the Services link itself.
+      var target = a.closest('.mega') ? a.closest('.nav-item').querySelector(':scope > a') : a;
+      a.addEventListener('mouseenter', function () { moveTo(target); });
+      a.addEventListener('focus', function () { moveTo(target); });
     });
+    // The pointer can pass from the Services link down into its dropdown without leaving the nav.
+    var megaEl = links.querySelector('.mega');
+    if (megaEl) megaEl.addEventListener('mouseenter', function () { moveTo(megaEl.parentNode.querySelector(':scope > a')); });
     links.addEventListener('mouseleave', function () { moveTo(current); });
     links.addEventListener('focusout', function () { moveTo(current); });
     moveTo(current);
