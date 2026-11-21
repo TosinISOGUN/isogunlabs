@@ -1,9 +1,8 @@
 ---
 title: "Atlassian Connect End of Support: A Checklist for App Builders"
 description: "Atlassian moved the Connect end-of-support date to 31 January 2027. What has already changed, what Atlassian says happens next, and a checklist for builders who still have a Connect app, based on Atlassian's own documentation."
-pubDate: 2026-11-07
+pubDate: 2026-11-21
 cover: "market"
-draft: true
 ---
 
 If you have an app on Atlassian Connect, the date that matters most to you has moved, and the answer to "how long do I have" now depends on which page you read.
