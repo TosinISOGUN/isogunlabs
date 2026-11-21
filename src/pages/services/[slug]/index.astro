@@ -19,6 +19,14 @@ const others = industries.filter((i) => i.slug !== page.slug);
 const faq = [
   ...page.faq,
   {
+    q: `How much does a ${page.noun} cost?`,
+    a: 'It depends on the number of pages, whether the design is custom, and what the site has to do, such as booking, ordering or a shop. We give you a written quote after a free call, so there are no surprises. Our blog has a plain guide to what drives the price of a business website.',
+  },
+  {
+    q: `How long does it take to build a ${page.noun}?`,
+    a: 'It depends on the pages and features. After the first call we give you a realistic timeline in writing, and you see a working preview along the way.',
+  },
+  {
     q: 'Do you work with businesses in the USA, Canada, the UK and Europe?',
     a: 'Yes. We work remotely and in English, with calls at times that suit your time zone, and we build with the cookie, privacy and accessibility basics of those regions in mind.',
   },
@@ -90,7 +98,7 @@ const url = `https://isogunlabs.com/services/${page.slug}/`;
 <section class="section-tight bg-2-band">
   <div class="wrap ind-build">
     <div class="reveal">
-      <h2 class="h2">What we build for you</h2>
+      <h2 class="h2">{page.buildTitle}</h2>
       <p class="lead">Every project is designed and coded from scratch for your business, then handed over so you can run it.</p>
     </div>
     <ul class="ticks reveal">
@@ -137,7 +145,7 @@ const url = `https://isogunlabs.com/services/${page.slug}/`;
 
 <section class="section-tight">
   <div class="wrap faq-wrap">
-    <h2 class="h2 reveal">Questions we hear</h2>
+    <h2 class="h2 reveal">{page.faqTitle}</h2>
     <div class="faq reveal">
       {faq.map((f) => (
         <details class="faq-item">
@@ -164,9 +172,9 @@ const url = `https://isogunlabs.com/services/${page.slug}/`;
 
 <section class="section-tight">
   <div class="wrap">
-    <p class="kicker">Other websites we build</p>
+    <p class="kicker">More web design services</p>
     <div class="chips-row">
-      {others.map((o) => <a class="chip-link" href={`/services/${o.slug}/`}>{o.name}</a>)}
+      {others.map((o) => <a class="chip-link" href={`/services/${o.slug}/`}>{o.anchor}</a>)}
     </div>
   </div>
 </section>

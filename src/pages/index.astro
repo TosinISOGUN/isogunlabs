@@ -16,7 +16,7 @@ const tech = [
 ];
 
 const projects = [
-  { slug: 'gloria-may-byron', name: 'Gloria May Byron', status: 'Live site', line: 'Website for an independent singer and songwriter, in twelve languages.', url: 'https://gloriamaybyron.com/', alt: 'Gloria May Byron website homepage' },
+  { slug: 'gloria-may-byron', name: 'Gloria May Byron', status: 'Live site', line: 'Website for an independent singer and songwriter, in sixteen languages.', url: 'https://gloriamaybyron.com/', alt: 'Gloria May Byron website homepage' },
   { slug: 'velora-beauty', name: 'Velora Beauty', status: 'Live site', line: 'Online beauty shop with a routine builder and a shopping bag.', url: 'https://velorabeautyy.vercel.app', alt: 'Velora Beauty online store homepage' },
   { slug: 'hearthline-realty', name: 'Hearthline Realty', status: 'Live site', line: 'Real estate site with home search, a map and showing requests.', url: 'https://hearthlinerealty.vercel.app', alt: 'Hearthline Realty website homepage' },
   { slug: 'juniper-ember', name: 'Juniper & Ember', status: 'Live site', line: 'Restaurant site with a menu, pickup ordering and reservations.', url: 'https://juniperandember.vercel.app/', alt: 'Juniper and Ember restaurant website homepage' },
@@ -35,8 +35,8 @@ const jsonLd = {
     {
       '@type': ['Organization', 'ProfessionalService'],
       '@id': 'https://isogunlabs.com/#org',
-      areaServed: 'Worldwide',
-      serviceType: ['Website design and development', 'Web application development', 'E-commerce and booking systems', 'Atlassian Marketplace app development'],
+      areaServed: ['United States', 'Canada', 'United Kingdom', 'Europe'],
+      serviceType: ['Website design and development', 'Restaurant website design', 'Clinic and dental website design', 'Real estate website design', 'Gym website design', 'Beauty brand and e-commerce website design', 'Startup website design and MVP development', 'Website redesign', 'Web application development', 'E-commerce and booking systems', 'Atlassian Marketplace app development'],
       founder: { '@type': 'Person', '@id': 'https://isogunlabs.com/#founder', name: 'Oluwatomisin Isogun', jobTitle: 'Founder and lead developer', url: 'https://portfolio.isogunlabs.com', image: 'https://isogunlabs.com/assets/photos/founder.webp' },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
@@ -53,10 +53,10 @@ const jsonLd = {
       url: 'https://isogunlabs.com/',
       logo: 'https://isogunlabs.com/assets/icons/icon-512.png',
       image: 'https://isogunlabs.com/assets/og-image.png',
-      description: 'Tech studio building websites, web apps and Atlassian Marketplace apps for startups, businesses and brands.',
+      description: 'Web design and development company building websites, web apps and Atlassian Marketplace apps for startups, small businesses and brands in the USA, Canada, the UK and Europe.',
       email: 'support@isogunlabs.com',
       slogan: 'Websites and software that ship.',
-      knowsAbout: ['Website design and development', 'Web applications', 'E-commerce and booking systems', 'Atlassian Forge', 'Jira apps', 'Atlassian Marketplace', 'Shopify apps'],
+      knowsAbout: ['Website design and development', 'Restaurant websites', 'Dental and clinic websites', 'Real estate websites', 'Gym and fitness websites', 'Beauty and e-commerce websites', 'MVP development', 'Website redesign', 'Web applications', 'E-commerce and booking systems', 'Atlassian Forge', 'Jira apps', 'Atlassian Marketplace', 'Shopify apps'],
       contactPoint: [
         { '@type': 'ContactPoint', email: 'tomisin@isogunlabs.com', contactType: 'sales' },
         { '@type': 'ContactPoint', email: 'support@isogunlabs.com', contactType: 'customer support' },
@@ -115,8 +115,8 @@ const jsonLd = {
 };
 ---
 <BaseLayout
-  title="Websites, Web Apps and Atlassian Apps | Isogun Labs"
-  description="Isogun Labs is a tech studio that designs and builds websites, web apps and Atlassian Marketplace apps for startups, businesses and brands worldwide."
+  title="Web Design and Development Company | Isogun Labs"
+  description="Web design and development company for startups, small businesses and brands in the USA, Canada, UK and Europe. Also builds Atlassian Marketplace apps."
   path="/"
   ogDescription="A tech studio for startups, businesses and brands: websites, web apps and Atlassian Marketplace apps, designed and built end to end."
   jsonLd={jsonLd}
@@ -126,7 +126,7 @@ const jsonLd = {
   <div class="wrap">
     <h1>We build websites and software that ship.</h1>
     <div class="hero-row">
-      <p class="hero-sub">Isogun Labs is a tech studio for startups, businesses and brands, and for the Atlassian Marketplace.</p>
+      <p class="hero-sub">Isogun Labs is a web design and development company for startups, small businesses and brands in the USA, Canada, the UK and Europe, and a builder of Atlassian Marketplace apps.</p>
       <div class="hero-actions">
         <a class="btn btn-ink" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
         <a class="btn btn-line" href="/work/">See our work</a>
@@ -155,7 +155,7 @@ const jsonLd = {
 <section class="section" id="services">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="h2">What we build</h2>
+      <h2 class="h2">Web design, web apps and online stores</h2>
       <p class="lead">From a first website to a production app, one studio handles the design, the code and the launch.</p>
     </div>
     <div class="bento">

@@ -5,6 +5,13 @@ export interface Industry {
   slug: string;
   /** Short label for links, chips and the footer. */
   name: string;
+  /** Keyword-bearing link text for the footer and the services page, such as "Restaurant website design". */
+  anchor: string;
+  /** The thing being designed, used in questions: "restaurant website". */
+  noun: string;
+  /** Section headings that carry the page's search terms. */
+  buildTitle: string;
+  faqTitle: string;
   /** Search-facing page title and description. */
   metaTitle: string;
   metaDescription: string;
@@ -28,11 +35,15 @@ export const industries: Industry[] = [
   {
     slug: 'restaurant-website-design',
     name: 'Restaurants',
-    metaTitle: 'Restaurant Website Design | Isogun Labs',
+    anchor: 'Restaurant website design',
+    noun: 'restaurant website',
+    buildTitle: 'What your restaurant website includes',
+    faqTitle: 'Restaurant website design questions',
+    metaTitle: 'Restaurant Website Design Services | Isogun Labs',
     metaDescription:
-      'Restaurant websites with a menu that reads well on a phone, correct hours, and a clear way to book or order. Built for owners in the USA, Canada, the UK and Europe.',
+      'Restaurant web design with online ordering, table booking and a mobile-friendly menu. Custom sites for owners in the USA, Canada, UK and Europe.',
     h1: 'Restaurant website design that gets people to the table',
-    lead: 'Most people check a restaurant on their phone before they walk in. We design restaurant websites for owners in the USA, Canada, the UK and Europe: a menu that is easy to read, hours that are always right, and a clear way to book or order.',
+    lead: 'Most people check a restaurant on their phone before they walk in. We design restaurant websites for restaurants, cafes and bars in the USA, Canada, the UK and Europe: a menu that is easy to read, hours that are always right, and online ordering or table booking that takes a few taps.',
     needsTitle: 'What people look for on a restaurant website',
     needs: [
       { title: 'A menu they can read on a phone', text: 'Real text that loads fast and can be searched, not a photo of a printed menu or a PDF that has to be pinched and zoomed.' },
@@ -63,11 +74,15 @@ export const industries: Industry[] = [
   {
     slug: 'clinic-website-design',
     name: 'Clinics',
-    metaTitle: 'Clinic Website Design | Isogun Labs',
+    anchor: 'Dental and clinic website design',
+    noun: 'clinic website',
+    buildTitle: 'What your clinic website includes',
+    faqTitle: 'Dental and clinic website design questions',
+    metaTitle: 'Dental, Medical and Clinic Website Design | Isogun Labs',
     metaDescription:
-      'Clear, calm websites for clinics and practices: a page for each treatment, plain language and an easy way to book. For dentists, physios and clinics in the USA, Canada, the UK and Europe.',
-    h1: 'Clinic website design that puts patients at ease',
-    lead: 'People choosing a clinic want to know what you treat, where you are and how to book, in plain words. We build websites for dentists, physiotherapists, chiropractors and other practices in the USA, Canada, the UK and Europe, with a calm design that helps a first-time patient take the next step.',
+      'Website design for dentists, physiotherapists and medical clinics: clear treatment pages and online appointment requests. USA, Canada, UK and Europe.',
+    h1: 'Dental and clinic website design that puts patients at ease',
+    lead: 'People choosing a dentist or clinic want to know what you treat, where you are and how to book, in plain words. We build websites for dentists, doctors, physiotherapists, chiropractors and other practices in the USA, Canada, the UK and Europe, with a calm design that helps a first-time patient take the next step.',
     needsTitle: 'What patients look for on a clinic website',
     needs: [
       { title: 'A page for each treatment', text: 'Someone searching for one treatment should land on a page about exactly that, explained in everyday language.' },
@@ -98,11 +113,15 @@ export const industries: Industry[] = [
   {
     slug: 'realtor-website-design',
     name: 'Realtors',
-    metaTitle: 'Realtor and Real Estate Website Design | Isogun Labs',
+    anchor: 'Real estate and realtor website design',
+    noun: 'real estate website',
+    buildTitle: 'What your real estate website includes',
+    faqTitle: 'Real estate website design questions',
+    metaTitle: 'Real Estate and Realtor Website Design | Isogun Labs',
     metaDescription:
-      'Websites for realtors and estate agents: home search, neighbourhood guides, valuation requests and a clear way to get in touch. For agents in the USA, Canada, the UK and Europe.',
-    h1: 'Realtor website design that works as hard as you do',
-    lead: 'Buyers and sellers look an agent up before they ever call. We build websites for realtors and estate agents in the USA, Canada, the UK and Europe: home search that is easy to use, local guides that show you know the area, and a clear first step for sellers and buyers alike.',
+      'Real estate website design for realtors and estate agents: MLS and IDX home search, neighbourhood guides and valuation requests. USA, Canada, UK and Europe.',
+    h1: 'Real estate website design that works as hard as you do',
+    lead: 'Buyers and sellers look an agent up before they ever call. We build real estate websites for realtors, estate agents and small brokerages in the USA, Canada, the UK and Europe: home search that is easy to use, local guides that show you know the area, and a clear first step for sellers and buyers alike.',
     needsTitle: 'What buyers and sellers look for on an agent’s website',
     needs: [
       { title: 'Home search that is quick to use', text: 'Filters for place, price, bedrooms and type, and a map. The search itself usually comes from your MLS or an IDX provider, and the site is designed around it.' },
@@ -133,11 +152,15 @@ export const industries: Industry[] = [
   {
     slug: 'gym-website-design',
     name: 'Gyms',
+    anchor: 'Gym and fitness website design',
+    noun: 'gym website',
+    buildTitle: 'What your gym website includes',
+    faqTitle: 'Gym website design questions',
     metaTitle: 'Gym and Fitness Studio Website Design | Isogun Labs',
     metaDescription:
-      'Websites for gyms and fitness studios: a class timetable that works on a phone, clear memberships and a free-trial button. For owners in the USA, Canada, the UK and Europe.',
+      'Gym website design with a class timetable, membership pages and free-trial sign-up, for gyms and personal trainers in the USA, Canada, UK and Europe.',
     h1: 'Gym website design that turns visitors into trial members',
-    lead: 'A gym website has one job: get the visitor through the door. We build websites for gyms and fitness studios in the USA, Canada, the UK and Europe, with a timetable that is easy to read, memberships that are easy to understand, and a trial or enquiry button that is always in reach.',
+    lead: 'A gym website has one job: get the visitor through the door. We build websites for gyms, fitness studios and personal trainers in the USA, Canada, the UK and Europe, with a timetable that is easy to read, memberships that are easy to understand, and a trial or enquiry button that is always in reach.',
     needsTitle: 'What people look for on a gym website',
     needs: [
       { title: 'A timetable that works on a phone', text: 'Classes by day and time, readable without zooming, with a clear way to book where you take bookings.' },
@@ -167,11 +190,15 @@ export const industries: Industry[] = [
   {
     slug: 'beauty-brand-website-design',
     name: 'Beauty brands',
+    anchor: 'Beauty brand website design',
+    noun: 'beauty brand website',
+    buildTitle: 'What your beauty brand website includes',
+    faqTitle: 'Beauty brand website design questions',
     metaTitle: 'Beauty Brand and Salon Website Design | Isogun Labs',
     metaDescription:
-      'Websites and online shops for beauty brands and salons: photography-led design, shade-aware products and a simple checkout. For brands in the USA, Canada, the UK and Europe.',
+      'Ecommerce website design for beauty brands, skincare labels and salons: shade-aware products and checkout. For the USA, Canada, UK and Europe.',
     h1: 'Beauty brand website design that looks like your brand feels',
-    lead: 'In beauty, the look of the site is part of the product. We design websites and online shops for beauty brands and salons in the USA, Canada, the UK and Europe: photography that leads, products that are easy to choose, and a short path from first look to order.',
+    lead: 'In beauty, the look of the site is part of the product. We design websites and online shops for beauty brands, skincare and cosmetics labels and salons in the USA, Canada, the UK and Europe: photography that leads, products that are easy to choose, and a short path from first look to order.',
     needsTitle: 'What shoppers look for on a beauty website',
     needs: [
       { title: 'Photography that sets the mood', text: 'A first screen that shows the brand’s world in one image, before any text is read.' },
@@ -202,11 +229,15 @@ export const industries: Industry[] = [
   {
     slug: 'startup-website-design',
     name: 'Startups',
-    metaTitle: 'Startup Website and MVP Development | Isogun Labs',
+    anchor: 'MVP development and startup websites',
+    noun: 'startup website or MVP',
+    buildTitle: 'What your MVP and startup website include',
+    faqTitle: 'MVP development and startup website questions',
+    metaTitle: 'MVP Development and Startup Website Design | Isogun Labs',
     metaDescription:
-      'A website and a first version of your product from one studio: React and TypeScript web apps, landing pages and waitlists. For startup founders in the USA, Canada, the UK and Europe.',
-    h1: 'Startup website and MVP development, from one studio',
-    lead: 'Early on, the website and the product have to move together. We build startup websites and first versions of products for founders in the USA, Canada, the UK and Europe: a launch page that explains what you do in seconds, and a web app that real users can sign in to.',
+      'MVP development and startup website design: React and TypeScript web apps, SaaS landing pages and waitlists, for founders in the USA, Canada, UK and Europe.',
+    h1: 'MVP development and startup website design, from one studio',
+    lead: 'Early on, the website and the product have to move together. We build startup websites, SaaS landing pages and MVPs (the first working version of a product) for founders in the USA, Canada, the UK and Europe: a launch page that explains what you do in seconds, and a web app that real users can sign in to.',
     needsTitle: 'What investors and first users look for',
     needs: [
       { title: 'One sentence that says what you do', text: 'A first screen that explains the product and who it is for in a few seconds, with one clear action.' },
@@ -237,9 +268,13 @@ export const industries: Industry[] = [
   {
     slug: 'website-redesign',
     name: 'Website redesign',
-    metaTitle: 'Website Redesign Services | Isogun Labs',
+    anchor: 'Website redesign services',
+    noun: 'website redesign',
+    buildTitle: 'What a website redesign includes',
+    faqTitle: 'Website redesign questions',
+    metaTitle: 'Website Redesign Services for Businesses | Isogun Labs',
     metaDescription:
-      'A website redesign that keeps what works and fixes what does not: faster pages, a clear layout on phones and a proper plan so you do not lose your search rankings.',
+      'Website redesign for slow or dated sites, with redirects that keep your Google rankings. For businesses in the USA, Canada, UK and Europe.',
     h1: 'Website redesign for a site that no longer works for you',
     lead: 'If your website is slow, hard to use on a phone, or not bringing enquiries, a redesign can fix it without throwing away what is already working. We redesign websites for businesses in the USA, Canada, the UK and Europe, with a plan that protects the pages people already find in search.',
     needsTitle: 'Signs it is time for a redesign',
