@@ -63,7 +63,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .island { pointer-events: auto; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: min(100% - 2 * var(--gutter), 1120px); height: 62px; display: flex; align-items: center; gap: 1rem; padding: 0 8px 0 20px; border-radius: 999px; background: var(--black); color: var(--on-black); box-shadow: inset 0 0 0 1px #24271f, inset 0 1px 0 rgba(255,255,255,.07), 0 10px 30px -14px rgba(0,0,0,.45); overflow: hidden; transition: box-shadow .35s var(--ease); }
 .site-header.scrolled .island { box-shadow: inset 0 0 0 1px #2f3329, inset 0 1px 0 rgba(255,255,255,.08), 0 22px 50px -16px rgba(0,0,0,.65); }
 .logo { display: inline-flex; align-items: center; flex: none; }
-.logo img { height: 34px; width: auto; transition: transform .5s var(--ease); }
+.logo img { height: 40px; width: auto; transition: transform .5s var(--ease); }
 .island .logo:hover img { transform: scale(1.06) rotate(-1.5deg); }
 .nav-links { position: relative; display: none; align-items: center; gap: .1rem; margin-inline: auto; }
 .nav-links a { position: relative; z-index: 1; padding: .6rem 1.05rem; border-radius: 999px; font-weight: 500; font-size: .96rem; text-decoration: none; color: var(--on-black-muted); transition: color .25s; }
@@ -684,10 +684,10 @@ html:not([lang="en"]) .hero { --hs: clamp(2.5rem, 6.6vw, 6.6rem); }
    right, then the language, the action and a menu icon. It is see-through over the home hero until you scroll.
    ============================================================ */
 @media (min-width: 980px) {
-  .island { width: 100%; max-width: none; left: 0; top: 0; transform: none; height: 76px; padding: 0 var(--gutter); gap: 1.6rem; border-radius: 0; background: var(--black); box-shadow: none; overflow: visible; transition: background .3s; }
+  .island { width: 100%; max-width: none; left: 0; top: 0; transform: none; height: 92px; padding: 0 var(--gutter); gap: 1.6rem; border-radius: 0; background: var(--black); box-shadow: none; overflow: visible; transition: background .3s; }
   .site-header.scrolled .island { box-shadow: 0 1px 0 #1c1e18; }
   body.is-home .site-header:not(.scrolled) .island { background: transparent; }
-  .island .logo img { height: 36px; }
+  .island .logo img { height: 54px; }
   .island .nav-links { margin-inline: auto 0; gap: .2rem; }
   .island .nav-links a { padding: .55rem .9rem; font-size: .9rem; font-weight: 600; color: #fff; }
   .island .nav-links a:hover, .island .nav-links a:focus-visible { color: var(--accent); }
