@@ -116,7 +116,7 @@ body.sheet-open { overflow: hidden; }
 .hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.45) 38%, rgba(0,0,0,0) 62%), linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 16%); }
 .hero-center { text-shadow: 0 2px 24px rgba(0,0,0,.45); }
 .hero-tiles { position: absolute; inset: 0; }
-.ht { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1vw); height: auto; aspect-ratio: var(--ar); object-fit: cover; border-radius: 4px; background: #111; will-change: transform; }
+.ht { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1vw); height: auto; aspect-ratio: var(--ar); object-fit: cover; border-radius: 4px; background: #111; will-change: transform; filter: blur(2.5px); }
 .hero-center { position: absolute; z-index: 2; left: 0; right: 0; bottom: clamp(1.6rem, 4.5vw, 3.6rem); display: grid; justify-items: start; }
 .hero-sub { max-width: 34ch; font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.88); margin-bottom: clamp(.8rem, 1.6vw, 1.4rem); }
 .hero h1 { font-weight: 800; font-size: var(--hs); line-height: .92; letter-spacing: -.05em; }
