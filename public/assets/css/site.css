@@ -97,6 +97,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .sheet-foot { margin-top: auto; padding-top: 2rem; display: grid; gap: 1.2rem; }
 .sheet-foot .btn { width: 100%; }
 .socials { display: flex; gap: .5rem; }
+.sheet-foot .socials { justify-content: center; }
 .socials a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid currentColor; transition: background .2s, color .2s; }
 .socials a:hover { background: var(--field-ink); color: var(--field); }
 .socials svg { width: 18px; height: 18px; }

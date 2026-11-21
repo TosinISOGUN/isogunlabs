@@ -152,6 +152,10 @@ const ctaHref = l(lang, '/contact/');
       ['m14', 11, 600, 400, 36, 16, 0],
       ['m15', 9, 480, 600, 93, 52, 0],
       ['m16', 9, 480, 600, 70, 22, 0],
+      ['m17', 12, 600, 400, 12, 88, 1],
+      ['m18', 11, 600, 400, 30, 90, 0],
+      ['m19', 8, 480, 600, 1, 58, 1],
+      ['m20', 11, 600, 400, 22, 56, 0],
     ].map(([f, w, pw, ph, x, y, ph_show], i) => (
       <img class={`ht${ph_show ? '' : ' ht-wide'}`} src={`/assets/hero/${f}.webp`} alt="" width={pw} height={ph}
         style={`--w:${w};--ar:${pw} / ${ph};left:${x}%;top:${y}%;--d:${(i * 0.09).toFixed(2)}s`}
