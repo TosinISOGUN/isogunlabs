@@ -1,0 +1,10 @@
+---
+import ServicesPage from '../../../components/pages/ServicesPage.astro';
+import { otherLocales } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return otherLocales.map((lang) => ({ params: { lang } }));
+}
+const { lang } = Astro.params;
+---
+<ServicesPage lang={lang as any} />

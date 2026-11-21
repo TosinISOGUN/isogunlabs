@@ -1,0 +1,28 @@
+---
+import { locales, localeInfo, switchTarget, type Locale } from '../i18n/config';
+import Icon from './Icon.astro';
+
+interface Props { lang: Locale; pathname: string; label: string; variant?: 'bar' | 'sheet' }
+const { lang, pathname, label, variant = 'bar' } = Astro.props;
+const cur = localeInfo[lang];
+---
+<div class={`lang lang-${variant}`} data-lang>
+  <button class="lang-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-label={`${label}: ${cur.name}`}>
+    <Icon name="globe" />
+    <b>{cur.short}</b>
+    <span class="lang-caret" aria-hidden="true"></span>
+  </button>
+  <div class="lang-panel" role="menu" aria-label={label}>
+    {locales.map((code) => {
+      const info = localeInfo[code];
+      const current = code === lang;
+      return (
+        <a class:list={['lang-row', { current }]} role="menuitem" href={switchTarget(pathname, code)} hreflang={info.htmlLang} lang={info.htmlLang} aria-current={current ? 'true' : undefined}>
+          <span class="lang-flag">{info.flag ? <img src={info.flag} alt="" width="48" height="48" loading="lazy" /> : <Icon name="globe" />}</span>
+          <span class="lang-text"><b>{info.name}</b><small>{info.region}</small></span>
+          {current && <span class="lang-check"><Icon name="check" /></span>}
+        </a>
+      );
+    })}
+  </div>
+</div>

@@ -94,7 +94,7 @@
     var tg = sheet.querySelector('.sheet-toggle'), sub = document.getElementById('sheet-services');
     if (tg && sub) tg.addEventListener('click', function () {
       var o = tg.getAttribute('aria-expanded') !== 'true';
-      tg.setAttribute('aria-expanded', o); tg.setAttribute('aria-label', o ? 'Hide services' : 'Show services'); sub.classList.toggle('open', o);
+      tg.setAttribute('aria-expanded', o); tg.setAttribute('aria-label', o ? (tg.dataset.hide || 'Hide services') : (tg.dataset.show || 'Show services')); sub.classList.toggle('open', o);
     });
     sheet.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet.classList.contains('open')) setOpen(false); });
@@ -216,4 +216,23 @@
   rail.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
   update();
+})();
+
+/* Language switcher: opens on click, closes on an outside click or Escape. */
+(function () {
+  var all = document.querySelectorAll('[data-lang]');
+  if (!all.length) return;
+  function close(box) { box.classList.remove('open'); var b = box.querySelector('.lang-btn'); if (b) b.setAttribute('aria-expanded', 'false'); }
+  all.forEach(function (box) {
+    var btn = box.querySelector('.lang-btn');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = !box.classList.contains('open');
+      all.forEach(close);
+      box.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function (e) { all.forEach(function (box) { if (!box.contains(e.target)) close(box); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') all.forEach(close); });
 })();
