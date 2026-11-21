@@ -24,15 +24,18 @@ const posts = readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) => {
   return { slug: f.replace(/\.md$/, ''), draft: get('draft') === 'true', date: (get('updatedDate') || get('pubDate') || today).slice(0, 10) };
 }).filter((p) => !p.draft).sort((a, b) => b.date.localeCompare(a.date));
 
+const blogPages = Math.max(1, Math.ceil((posts.length - 1) / 8));
+const trPosts = ['how-much-does-a-business-website-cost', 'website-redesign-checklist-signs-its-time', 'what-local-businesses-should-put-on-their-first-screen', 'hidden-cost-of-cheap-websites', 'what-to-have-ready-before-you-hire-a-web-designer'];
 const latest = posts[0] ? posts[0].date : today;
 const url = (loc, lastmod, priority, freq = 'monthly') =>
   `  <url>\n    <loc>${origin}${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${priority}</priority>\n  </url>\n`;
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 for (const [p, pr] of pages) xml += url(p, p === '/blog/' ? latest : today, pr);
+for (let n = 2; n <= blogPages; n++) xml += url('/blog/page/' + n + '/', latest, '0.5');
 for (const p of posts) xml += url('/blog/' + p.slug + '/', p.date, '0.7', 'yearly');
 // Translated pages (src/i18n/config.ts: translatedPaths, minus the thank-you page)
-for (const lang of ['fr', 'es', 'de', 'pt']) for (const [p, pr] of [['/', '0.9'], ['/services/', '0.8'], ['/about/', '0.6'], ['/contact/', '0.7'], ['/work/', '0.8'], ['/get-started/', '0.7'], ['/documentation/', '0.4'], ['/support/', '0.4'], ...['gloria-may-byron', 'velora-beauty', 'hearthline-realty', 'juniper-ember', 'everwell', 'weseeu'].map((x) => ['/work/' + x + '/', '0.6']), ...['restaurant-website-design', 'clinic-website-design', 'realtor-website-design', 'gym-website-design', 'beauty-brand-website-design', 'startup-website-design', 'website-redesign'].map((x) => ['/services/' + x + '/', '0.7'])]) xml += url('/' + lang + p, today, pr);
+for (const lang of ['fr', 'es', 'de', 'pt']) for (const [p, pr] of [['/', '0.9'], ['/services/', '0.8'], ['/about/', '0.6'], ['/contact/', '0.7'], ['/work/', '0.8'], ['/get-started/', '0.7'], ['/documentation/', '0.4'], ['/support/', '0.4'], ['/blog/', '0.7'], ...trPosts.map((x) => ['/blog/' + x + '/', '0.6']), ...['gloria-may-byron', 'velora-beauty', 'hearthline-realty', 'juniper-ember', 'everwell', 'weseeu'].map((x) => ['/work/' + x + '/', '0.6']), ...['restaurant-website-design', 'clinic-website-design', 'realtor-website-design', 'gym-website-design', 'beauty-brand-website-design', 'startup-website-design', 'website-redesign'].map((x) => ['/services/' + x + '/', '0.7'])]) xml += url('/' + lang + p, today, pr);
 xml += '</urlset>\n';
 writeFileSync('public/sitemap.xml', xml);
-console.log('sitemap.xml: ' + pages.length + ' pages + ' + posts.length + ' posts + 84 translated pages');
+console.log('sitemap.xml: ' + pages.length + ' pages + ' + posts.length + ' posts + 104 translated pages');

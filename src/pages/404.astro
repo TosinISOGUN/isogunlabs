@@ -5,13 +5,44 @@ import Icon from '../components/Icon.astro';
 <BaseLayout title="Page not found | Isogun Labs" description="The page you are looking for does not exist or has moved." path="/404.html" robots="noindex">
 <section class="cta cta-first" style="min-height:70vh;display:grid;align-content:center">
   <div class="wrap">
-    <p class="kicker" style="color:inherit;opacity:.7">Error 404</p>
-    <h1>This page wandered off</h1>
-    <p class="lead" style="color:inherit;opacity:.8">The page you are looking for does not exist or has moved.</p>
+    <p class="kicker" id="nf-kicker" style="color:inherit;opacity:.7">Error 404</p>
+    <h1 id="nf-title">This page wandered off</h1>
+    <p class="lead" id="nf-text" style="color:inherit;opacity:.8">The page you are looking for does not exist or has moved.</p>
     <div class="cta-row">
-      <a class="btn btn-ink" href="/">Back to the homepage <Icon name="arrow-right" /></a>
-      <a class="mail" href="/work/">See our work</a>
+      <a class="btn btn-ink" id="nf-home" href="/"><span>Back to the homepage</span> <Icon name="arrow-right" /></a>
+      <a class="mail" id="nf-work" href="/work/">See our work</a>
     </div>
   </div>
 </section>
+
+<!-- A static host serves this one file for every missing address, so the language is picked from the address
+     that was requested (/fr/..., /es/...), or from the browser if the address has no language prefix. -->
+<script is:inline>
+  (function () {
+    var T = {
+      fr: ['Erreur 404', 'Cette page s’est égarée', 'La page que vous cherchez n’existe pas ou a été déplacée.', 'Retour à l’accueil', 'Voir nos réalisations'],
+      es: ['Error 404', 'Esta página se ha perdido', 'La página que buscas no existe o se ha movido.', 'Volver al inicio', 'Ver nuestros proyectos'],
+      de: ['Fehler 404', 'Diese Seite ist verloren gegangen', 'Die gesuchte Seite existiert nicht oder wurde verschoben.', 'Zurück zur Startseite', 'Unsere Projekte ansehen'],
+      pt: ['Erro 404', 'Esta página perdeu-se', 'A página que procura não existe ou foi movida.', 'Voltar ao início', 'Ver os nossos projetos']
+    };
+    var m = location.pathname.match(/^\/(fr|es|de|pt)(\/|$)/);
+    var lang = m ? m[1] : null;
+    if (!lang) {
+      var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').slice(0, 2).toLowerCase();
+      if (T[nav]) lang = nav;
+    }
+    if (!lang) return;
+    var t = T[lang];
+    document.documentElement.lang = lang;
+    document.title = t[1] + ' | Isogun Labs';
+    document.getElementById('nf-kicker').textContent = t[0];
+    document.getElementById('nf-title').textContent = t[1];
+    document.getElementById('nf-text').textContent = t[2];
+    document.querySelector('#nf-home span').textContent = t[3];
+    document.getElementById('nf-home').setAttribute('href', '/' + lang + '/');
+    var w = document.getElementById('nf-work');
+    w.textContent = t[4];
+    w.setAttribute('href', '/' + lang + '/work/');
+  })();
+</script>
 </BaseLayout>

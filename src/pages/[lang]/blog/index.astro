@@ -1,0 +1,13 @@
+---
+import BlogIndexPage from '../../../components/pages/BlogIndexPage.astro';
+import { postsFor } from '../../../lib/blogPosts';
+import { otherLocales } from '../../../i18n/config';
+
+export async function getStaticPaths() {
+  const out = [];
+  for (const lang of otherLocales) if ((await postsFor(lang)).length) out.push({ params: { lang } });
+  return out;
+}
+const { lang } = Astro.params;
+---
+<BlogIndexPage lang={lang as any} page={1} />

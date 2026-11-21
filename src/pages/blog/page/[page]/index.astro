@@ -1,0 +1,11 @@
+---
+import BlogIndexPage from '../../../../components/pages/BlogIndexPage.astro';
+import { postsFor, pageCount } from '../../../../lib/blogPosts';
+
+export async function getStaticPaths() {
+  const total = pageCount((await postsFor('en')).length);
+  return Array.from({ length: Math.max(0, total - 1) }, (_, i) => ({ params: { page: String(i + 2) } }));
+}
+const { page } = Astro.params;
+---
+<BlogIndexPage lang="en" page={Number(page)} />

@@ -174,9 +174,9 @@
       }
     };
     var ig = bar.querySelector('[data-share="instagram"]');
-    if (ig) ig.addEventListener('click', function () { copy('Link copied. Paste it into your bio or story.'); });
+    if (ig) ig.addEventListener('click', function () { copy(bar.getAttribute('data-msg-ig') || 'Link copied. Paste it into your bio or story.'); });
     var cp = bar.querySelector('[data-share="copy"]');
-    if (cp) cp.addEventListener('click', function () { copy('Link copied'); });
+    if (cp) cp.addEventListener('click', function () { copy(bar.getAttribute('data-msg-copy') || 'Link copied'); });
   });
 })();
 

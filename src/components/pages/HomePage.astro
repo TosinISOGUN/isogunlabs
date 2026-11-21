@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../BlogCard.astro';
 import Icon from '../Icon.astro';
-import { getCollection } from 'astro:content';
+import { postsFor } from '../../lib/blogPosts';
 import { contact } from '../../data/nav';
 import { dict } from '../../i18n';
 import { industriesFor } from '../../i18n/industry-labels';
@@ -14,9 +14,7 @@ const t = dict[lang];
 const h = t.home;
 const ui = t.ui;
 
-const latestPosts = lang === 'en'
-  ? (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3)
-  : [];
+const latestPosts = lang === 'en' ? (await postsFor('en')).slice(0, 3) : [];
 
 const tech = [
   ['astro', 'Astro'], ['react', 'React'], ['typescript', 'TypeScript'], ['nodedotjs', 'Node.js'], ['tailwindcss', 'Tailwind CSS'],
@@ -314,7 +312,7 @@ const ctaHref = l(lang, '/contact/');
         <p class="lead">{h.writing.lead}</p>
       </div>
       <div class="blog-grid reveal">
-        {latestPosts.map((post) => <BlogCard post={post} />)}
+        {latestPosts.map((post) => <BlogCard post={post} lang="en" />)}
       </div>
       <div class="head-actions"><a class="btn btn-ink" href="/blog/">{h.writing.all} <Icon name="arrow-right" /></a></div>
     </div>

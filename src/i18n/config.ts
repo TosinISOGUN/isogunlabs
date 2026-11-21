@@ -16,6 +16,15 @@ export const localeInfo: Record<Locale, { name: string; region: string; short: s
 
 export const caseSlugs = ['gloria-may-byron', 'velora-beauty', 'hearthline-realty', 'juniper-ember', 'everwell', 'weseeu'];
 
+/** Posts that exist in every language (src/content/blog-tr/<lang>/<slug>.md). */
+export const blogSlugs = [
+  'how-much-does-a-business-website-cost',
+  'website-redesign-checklist-signs-its-time',
+  'what-local-businesses-should-put-on-their-first-screen',
+  'hidden-cost-of-cheap-websites',
+  'what-to-have-ready-before-you-hire-a-web-designer',
+];
+
 export const industrySlugs = [
   'restaurant-website-design',
   'clinic-website-design',
@@ -36,6 +45,8 @@ export const translatedPaths = new Set<string>([
   ...industrySlugs.map((s) => `/services/${s}/`),
   '/work/',
   '/get-started/',
+  '/blog/',
+  ...blogSlugs.map((s) => `/blog/${s}/`),
   '/documentation/',
   '/support/',
   ...caseSlugs.map((s) => `/work/${s}/`),

@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../BlogCard.astro';
+import BlogCover from '../BlogCover.astro';
+import BlogSidebar from '../BlogSidebar.astro';
+import { categoryFor } from '../../lib/blogCategory';
+import { postsFor, PAGE_SIZE, pageCount } from '../../lib/blogPosts';
+import { blogUi } from '../../i18n/blog-ui';
+import { localePath, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale; page: number }
+const { lang, page } = Astro.props;
+const ui = blogUi[lang];
+const posts = await postsFor(lang);
+const [featured, ...rest] = posts;
+const pages = pageCount(posts.length);
+const slice = rest.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+const dateFmt = new Intl.DateTimeFormat(ui.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' });
+const readingTime = (body: string) => Math.max(1, Math.round(body.trim().split(/\s+/).length / 200));
+const labelOf = (cover: string) => ui.categories[cover as keyof typeof ui.categories] ?? categoryFor(cover as any).label;
+
+// Category tabs only filter the cards on the page you are on, so they are shown only when everything fits on one page.
+const categoriesInGrid = pages === 1 ? [...new Set(slice.map((p) => labelOf(p.data.cover)))] : [];
+
+const pageUrl = (n: number) => localePath(lang, n === 1 ? '/blog/' : `/blog/page/${n}/`);
+const path = pageUrl(page);
+const title = page === 1 ? ui.indexTitle : `${ui.crumb}: ${ui.pageTitle.replace('{n}', String(page))} | Isogun Labs`;
+const numbers = Array.from({ length: pages }, (_, i) => i + 1);
+---
+<BaseLayout
+  title={title}
+  description={ui.indexDesc}
+  path={path}
+  breadcrumbs={[{ name: ui.crumb, path: localePath(lang, '/blog/') }]}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{ui.h1}</h1>
+    <p class="lead">{ui.lead}</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+
+    {page === 1 && featured && (
+      <a class="blog-featured" href={localePath(lang, `/blog/${featured.slug}/`)}>
+        <BlogCover variant={featured.data.cover} size="sm" />
+        <div class="blog-featured-body">
+          <h2>{featured.data.title}</h2>
+          <p>{featured.data.description}</p>
+          <div class="blog-card-meta">
+            <span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 10h18M8 2v4M16 2v4"></path></svg>
+              <time datetime={featured.data.pubDate.toISOString()}>{dateFmt.format(featured.data.pubDate)}</time>
+            </span>
+            <span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+              {readingTime(featured.body)} {ui.minRead}
+            </span>
+          </div>
+        </div>
+      </a>
+    )}
+
+    {categoriesInGrid.length > 1 && (
+      <div class="blog-filters" role="tablist" aria-label={ui.filterAria}>
+        <button type="button" class="blog-filter active" data-filter="all">{ui.all}</button>
+        {categoriesInGrid.map((label) => (
+          <button type="button" class="blog-filter" data-filter={label}>{label}</button>
+        ))}
+      </div>
+    )}
+
+    <div class="blog-layout">
+      <div>
+        <div class="blog-grid">
+          {slice.map((post) => <BlogCard post={post} lang={lang} />)}
+        </div>
+        {pages > 1 && (
+          <nav class="pager" aria-label={ui.pagerNav}>
+            {page > 1 ? <a class="pager-step" rel="prev" href={pageUrl(page - 1)}>&larr; {ui.newer}</a> : <span class="pager-step is-off" aria-hidden="true">&larr; {ui.newer}</span>}
+            <span class="pager-nums">
+              {numbers.map((n) => n === page
+                ? <span class="pager-num is-current" aria-current="page" aria-label={ui.pageLabel.replace('{n}', String(n))}>{n}</span>
+                : <a class="pager-num" href={pageUrl(n)} aria-label={ui.pageLabel.replace('{n}', String(n))}>{n}</a>)}
+            </span>
+            {page < pages ? <a class="pager-step" rel="next" href={pageUrl(page + 1)}>{ui.older} &rarr;</a> : <span class="pager-step is-off" aria-hidden="true">{ui.older} &rarr;</span>}
+          </nav>
+        )}
+      </div>
+      <BlogSidebar lang={lang} />
+    </div>
+
+  </div>
+</section>
+
+</BaseLayout>

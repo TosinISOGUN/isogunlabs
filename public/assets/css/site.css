@@ -701,3 +701,14 @@ html:not([lang="en"]) .hero { --hs: clamp(2.5rem, 6.6vw, 6.6rem); }
   .island .nav-cta { min-height: 42px; height: 42px; padding: 0 1.2rem; box-shadow: none; }
 }
 .island .logo { text-decoration: none; }
+
+/* Blog pagination */
+.pager { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(2rem, 4vw, 3rem); }
+.pager-nums { display: flex; flex-wrap: wrap; gap: .4rem; }
+.pager-num, .pager-step { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 999px; font-weight: 600; font-size: .95rem; text-decoration: none; color: var(--ink); border: 1.5px solid var(--line); background: transparent; transition: background .2s, color .2s, border-color .2s; }
+.pager-num { min-width: 46px; padding: 0 .4rem; }
+.pager-step { padding: 0 1.2rem; }
+a.pager-num:hover, a.pager-step:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.pager-num.is-current { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.pager-step.is-off { opacity: .35; }
+@media (max-width: 560px) { .pager { justify-content: center; } .pager-nums { order: -1; width: 100%; justify-content: center; } }

@@ -84,7 +84,8 @@ The site is in English (at the root) and in French, Spanish, German and Portugue
 - Page copy lives in `src/i18n/<lang>.ts` (home, services, about, contact, thank-you), `industries-<lang>.ts`, `work-<lang>.ts` and `more-<lang>.ts` (Atlassian products, documentation, support). English is the first file in each set.
 - Pages are shared components in `src/components/pages/`; `src/pages/[lang]/` renders them for each language.
 - `src/i18n/config.ts` lists the pages that exist in every language. A page that is not listed stays English-only, and the language switcher sends visitors to the nearest translated page.
-- The blog and the 404 page are English only.
+- The blog index is paginated (8 posts a page after the featured one). Five business posts are translated, as Markdown files in `src/content/blog-tr/<lang>/<slug>.md` (list them in `blogSlugs` in `config.ts`). The Atlassian posts stay English.
+- The 404 page picks its language from the address that was requested (`/fr/...`) or from the browser; its header and footer stay English.
 - After adding or changing a translated page, run `npm run sitemap` and commit the result.
 
 ## Adding content

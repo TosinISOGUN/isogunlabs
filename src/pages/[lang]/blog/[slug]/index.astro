@@ -1,0 +1,13 @@
+---
+import BlogPostPage from '../../../../components/pages/BlogPostPage.astro';
+import { postsFor } from '../../../../lib/blogPosts';
+import { otherLocales } from '../../../../i18n/config';
+
+export async function getStaticPaths() {
+  const out = [];
+  for (const lang of otherLocales) for (const p of await postsFor(lang)) out.push({ params: { lang, slug: p.slug } });
+  return out;
+}
+const { lang, slug } = Astro.params;
+---
+<BlogPostPage lang={lang as any} slug={slug!} />
