@@ -614,3 +614,41 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .mp::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.35) 34%, transparent 62%); }
 .mp-tag { position: absolute; z-index: 1; top: 14px; left: 14px; padding: .3rem .8rem; border-radius: 999px; background: rgba(255,255,255,.16); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: #fff; font-size: .78rem; font-weight: 600; }
 .mp figcaption { position: absolute; z-index: 1; left: 16px; right: 16px; bottom: 16px; color: #fff; font: 700 1.2rem/1.15 var(--ff-display); letter-spacing: -.02em; }
+
+/* ============================================================
+   Slanted section edges, and the mobile-first band
+   ============================================================ */
+:root { --slant: clamp(26px, 4.2vw, 68px); }
+.slant { position: relative; z-index: 1; margin-block: calc(var(--slant) * -1); padding-block: calc(var(--slant) + clamp(4.5rem, 9vw, 8rem)); clip-path: polygon(0 var(--slant), 100% 0, 100% calc(100% - var(--slant)), 0 100%); }
+.cta.slant { padding-block: calc(var(--slant) + clamp(3rem, 7vw, 6rem)); }
+.slant-b { position: relative; z-index: 1; margin-bottom: calc(var(--slant) * -1); clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--slant)), 0 100%); }
+.slant-b.hero { padding-bottom: calc(var(--slant) + clamp(3rem, 8vh, 5rem)); }
+.logos { padding-top: calc(2.4rem + var(--slant)); }
+.site-footer { padding-top: calc(var(--slant) + clamp(3.5rem, 7vw, 5.5rem)); }
+
+.mobile-band { background: #070806; color: var(--on-black); overflow: hidden; isolation: isolate; }
+.mb-bg { position: absolute; inset: -12% 0; z-index: -2; width: 100%; height: 124%; object-fit: cover; opacity: .55; }
+.mobile-band::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(7,8,6,.82) 0%, rgba(7,8,6,.45) 45%, rgba(7,8,6,.88) 100%); }
+.mb-inner { display: grid; gap: clamp(2.4rem, 5vw, 4rem); }
+.mb-copy { max-width: 760px; }
+.mb-copy .kicker { color: var(--accent); }
+.mb-copy .lead { color: rgba(255,255,255,.82); }
+.mb-points { border-top-color: rgba(255,255,255,.2); color: #fff; margin-bottom: 0; }
+.mb-points .i { color: var(--accent); }
+.phones { display: flex; justify-content: center; align-items: flex-end; gap: clamp(.6rem, 2.4vw, 2.2rem); }
+.phone { flex: 0 1 clamp(100px, 24vw, 270px); aspect-ratio: 520 / 1126; border-radius: clamp(16px, 3.4vw, 38px); padding: clamp(3px, .6vw, 7px); background: linear-gradient(145deg, #d9dbd5, #6d706a 45%, #c9cbc4); box-shadow: 0 30px 70px -20px rgba(0,0,0,.8); }
+.phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: clamp(13px, 2.9vw, 32px); background: #000; }
+.ph-c { flex-basis: clamp(116px, 28vw, 310px); margin-bottom: clamp(1rem, 4vw, 3rem); }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .mb-bg { animation: mb-drift linear both; animation-timeline: view(); }
+    .ph-l { animation: ph-up-slow linear both; animation-timeline: view(); }
+    .ph-c { animation: ph-up-mid linear both; animation-timeline: view(); }
+    .ph-r { animation: ph-up-fast linear both; animation-timeline: view(); }
+  }
+}
+@keyframes mb-drift { from { transform: translateY(-9%); } to { transform: translateY(9%); } }
+@keyframes ph-up-slow { from { transform: translateY(70px); } to { transform: translateY(-20px); } }
+@keyframes ph-up-mid { from { transform: translateY(120px); } to { transform: translateY(-40px); } }
+@keyframes ph-up-fast { from { transform: translateY(170px); } to { transform: translateY(-10px); } }
+@media (min-width: 980px) { .mb-inner { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; } }
