@@ -546,8 +546,21 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .nav-item.has-menu > a::after { content: ''; display: inline-block; width: .42em; height: .42em; margin-inline-start: .45em; border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor; transform: translateY(-.14em) rotate(45deg); transition: transform .25s var(--ease); }
 .nav-item.has-menu:hover > a::after, .nav-item.has-menu:focus-within > a::after { transform: translateY(-.02em) rotate(225deg); }
 
-.sheet-sub { display: grid; padding: .3rem 0 .6rem 1rem; border-bottom: 1.5px solid color-mix(in srgb, var(--field-ink) 22%, transparent); }
-.sheet nav .sheet-sub a { border-bottom: 0; padding: .3rem 0; font-family: var(--ff); font-weight: 600; font-size: 1.1rem; letter-spacing: 0; opacity: .85; }
+.sheet-row { display: flex; align-items: stretch; border-bottom: 1.5px solid color-mix(in srgb, var(--field-ink) 22%, transparent); }
+.sheet nav .sheet-row a { flex: 1; border-bottom: 0; }
+.sheet-toggle { flex: none; width: 56px; display: grid; place-items: center; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.sheet-toggle span { width: 14px; height: 14px; border-right: 2.5px solid currentColor; border-bottom: 2.5px solid currentColor; transform: translateY(-3px) rotate(45deg); transition: transform .3s var(--ease); }
+.sheet-toggle[aria-expanded="true"] span { transform: translateY(3px) rotate(225deg); }
+.sheet-sub { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .35s var(--ease), visibility 0s .35s; }
+.sheet-sub.open { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .35s var(--ease); }
+.sheet-sub-in { overflow: hidden; display: grid; gap: .35rem; }
+.sheet-sub.open .sheet-sub-in { padding: .8rem 0 1rem; border-bottom: 1.5px solid color-mix(in srgb, var(--field-ink) 22%, transparent); }
+.sheet nav .sheet-sub-in a { justify-content: flex-start; gap: .9rem; padding: .55rem .7rem; border: 0; border-radius: 16px; background: color-mix(in srgb, var(--field-ink) 7%, transparent); font-family: var(--ff); letter-spacing: 0; line-height: 1.2; }
+.sheet nav .sheet-sub-in .mi-icon { background: var(--black); }
+.sheet nav .sheet-sub-in .mi-text b { font-size: 1rem; font-weight: 700; }
+.sheet nav .sheet-sub-in .mi-text small { color: color-mix(in srgb, var(--field-ink) 72%, transparent); }
+.sheet nav .sheet-sub-in .sheet-all { justify-content: space-between; background: transparent; font-weight: 700; font-size: 1rem; }
+.sheet nav .sheet-sub-in .sheet-all .i { width: .9em; height: .9em; }
 
 /* About page */
 .founder { display: grid; gap: 1.8rem; align-items: start; }

@@ -58,15 +58,26 @@ const isActive = (href: string) => !href.includes('#') && (path === href || (hre
     <button class="sheet-close" type="button"><Icon name="x" /> Close</button>
   </div>
   <nav aria-label="Menu">
-    {navLinks.map((l) => (
-      <>
-        <a href={l.href}>{l.label} <Icon name="arrow-up-right" /></a>
-        {l.menu && (
-          <div class="sheet-sub">
-            {industries.map((i) => <a href={`/services/${i.slug}/`}>{i.anchor}</a>)}
+    {navLinks.map((l) => l.menu ? (
+      <div class="sheet-group">
+        <div class="sheet-row">
+          <a href={l.href}>{l.label}</a>
+          <button class="sheet-toggle" type="button" aria-expanded="false" aria-controls="sheet-services" aria-label="Show services"><span aria-hidden="true"></span></button>
+        </div>
+        <div class="sheet-sub" id="sheet-services">
+          <div class="sheet-sub-in">
+            {industries.map((i) => (
+              <a href={`/services/${i.slug}/`}>
+                <span class="mi-icon"><Icon name={i.icon} /></span>
+                <span class="mi-text"><b>{i.anchor}</b><small>{i.menuText}</small></span>
+              </a>
+            ))}
+            <a class="sheet-all" href="/services/">All services <Icon name="arrow-right" /></a>
           </div>
-        )}
-      </>
+        </div>
+      </div>
+    ) : (
+      <a href={l.href}>{l.label} <Icon name="arrow-up-right" /></a>
     ))}
   </nav>
   <div class="sheet-foot">

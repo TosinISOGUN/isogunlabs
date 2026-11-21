@@ -91,6 +91,11 @@
     sheet.setAttribute('inert', '');
     openBtn.addEventListener('click', function () { setOpen(true); });
     closeBtn.addEventListener('click', function () { setOpen(false); });
+    var tg = sheet.querySelector('.sheet-toggle'), sub = document.getElementById('sheet-services');
+    if (tg && sub) tg.addEventListener('click', function () {
+      var o = tg.getAttribute('aria-expanded') !== 'true';
+      tg.setAttribute('aria-expanded', o); tg.setAttribute('aria-label', o ? 'Hide services' : 'Show services'); sub.classList.toggle('open', o);
+    });
     sheet.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet.classList.contains('open')) setOpen(false); });
     window.matchMedia('(min-width: 980px)').addEventListener('change', function (m) { if (m.matches) setOpen(false); });
