@@ -118,7 +118,7 @@ body.sheet-open { overflow: hidden; }
 .hero-tiles { position: absolute; inset: 0; }
 .ht { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1vw); height: auto; aspect-ratio: var(--ar); object-fit: cover; border-radius: 4px; background: #111; will-change: transform; filter: blur(1.2px); }
 .hero-center { position: absolute; z-index: 2; left: 0; right: 0; top: 50%; transform: translateY(-50%); display: grid; justify-items: center; text-align: center; }
-.hero-sub { max-width: 34ch; margin-inline: auto; font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.88); margin-bottom: clamp(.8rem, 1.6vw, 1.4rem); }
+.hero-sub { max-width: 34ch; margin-inline: auto; font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.88); margin-top: clamp(.9rem, 1.8vw, 1.6rem); }
 .hero h1 { font-weight: 800; font-size: var(--hs); line-height: .92; letter-spacing: -.05em; }
 .hero h1 span { display: block; }
 .hero h1 em { font-style: normal; color: var(--accent); }
@@ -131,7 +131,7 @@ html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
 @media (prefers-reduced-motion: no-preference) {
   .ht { animation: tile-in 1s var(--ease) both; animation-delay: var(--d, 0s); }
   .hero h1, .hero-sub { animation: rise .9s var(--ease) both; }
-  .hero h1 { animation-delay: .15s; }
+  .hero h1 { animation-delay: .1s; } .hero-sub { animation-delay: .3s; }
 }
 @keyframes tile-in { from { translate: 0 32px; } }
 @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
@@ -736,3 +736,13 @@ a.pager-num:hover, a.pager-step:hover { background: var(--ink); color: var(--bg)
     -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
   }
 }
+
+/* Services dropdown on desktop: white panel, matching the language menu */
+.mega::before { background: #fff; box-shadow: 0 30px 70px -20px rgba(0,0,0,.6); }
+.nav-links .mega .mega-item { color: #0D0F0B; }
+.nav-links .mega .mega-item:hover, .nav-links .mega .mega-item:focus-visible { background: #f2f2f2; color: #0D0F0B; }
+.nav-links .mega .mega-item[aria-current="page"] { background: #f2f2f2; }
+.nav-links .mega .mega-item[aria-current="page"] .mi-text b { color: #0D0F0B; }
+.mega .mi-icon { background: var(--black); color: var(--accent); }
+.mega .mi-text small { color: #7a7a7a; }
+.nav-links .mega .mega-all::before { background: #e6e6e6; }
