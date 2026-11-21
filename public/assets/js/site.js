@@ -244,15 +244,19 @@
   if (!tiles.length || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
   var W = 0, H = 0, last = 0, raf = 0, run = false;
   var items = [];
-  function measure() { W = hero.clientWidth; H = hero.clientHeight; }
+  function measure() {
+    W = hero.clientWidth; H = hero.clientHeight;
+    var sz = items.map(function (it) { return [it.el.offsetWidth, it.el.offsetHeight]; });
+    items.forEach(function (it, i) { it.w = sz[i][0]; it.h = sz[i][1]; });
+  }
   function start() {
     measure();
-    tiles.forEach(function (el) {
-      if (el.offsetParent === null) return; // hidden at this width
-      var ang = Math.random() * Math.PI * 2, sp = 16 + Math.random() * 20;
-      var it = { el: el, x: el.offsetLeft, y: el.offsetTop, hx: el.offsetLeft, hy: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight, sp: sp, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp };
+    var vis = tiles.filter(function (el) { return el.offsetParent !== null; });
+    var rects = vis.map(function (el) { return [el.offsetLeft, el.offsetTop, el.offsetWidth, el.offsetHeight]; }); // read everything first
+    vis.forEach(function (el, i) {
+      var r = rects[i], ang = Math.random() * Math.PI * 2, sp = 16 + Math.random() * 20;
+      items.push({ el: el, x: r[0], y: r[1], hx: r[0], hy: r[1], w: r[2], h: r[3], sp: sp, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp });
       el.style.left = '0'; el.style.top = '0';
-      items.push(it);
     });
     items.forEach(place);
     play();
@@ -262,7 +266,6 @@
     if (!run) return;
     var dt = Math.min((t - last) / 1000, 0.05); last = t;
     items.forEach(function (it) {
-      it.w = it.el.offsetWidth; it.h = it.el.offsetHeight;
       // a tile roams around its own spot (so the screen stays evenly filled) and may slide up to 45% out of frame before easing back
       var minX = Math.max(-it.w * 0.45, it.hx - W * 0.3), maxX = Math.min(W - it.w * 0.55, it.hx + W * 0.3);
       var minY = Math.max(-it.h * 0.45, it.hy - H * 0.22), maxY = Math.min(H - it.h * 0.55, it.hy + H * 0.22);
