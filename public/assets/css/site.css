@@ -113,12 +113,12 @@ body.sheet-open { overflow: hidden; }
 
 /* ---------- hero: black field, scattered photo tiles, a huge headline over them (after the NOOO reference) ---------- */
 .hero { --hs: clamp(2.6rem, min(8.4vw, 15vh), 8.6rem); position: relative; display: block; height: max(100svh, 560px); text-align: left; color: #fff; background: var(--black); overflow: hidden; }
-.hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.45) 38%, rgba(0,0,0,0) 62%), linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 16%); }
+.hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 70% 38% at 50% 50%, rgba(0,0,0,.72) 0%, rgba(0,0,0,.4) 55%, rgba(0,0,0,0) 100%), linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 16%); }
 .hero-center { text-shadow: 0 2px 24px rgba(0,0,0,.45); }
 .hero-tiles { position: absolute; inset: 0; }
 .ht { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1vw); height: auto; aspect-ratio: var(--ar); object-fit: cover; border-radius: 4px; background: #111; will-change: transform; filter: blur(1.2px); }
-.hero-center { position: absolute; z-index: 2; left: 0; right: 0; bottom: clamp(1.6rem, 4.5vw, 3.6rem); display: grid; justify-items: start; }
-.hero-sub { max-width: 34ch; font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.88); margin-bottom: clamp(.8rem, 1.6vw, 1.4rem); }
+.hero-center { position: absolute; z-index: 2; left: 0; right: 0; top: 50%; transform: translateY(-50%); display: grid; justify-items: center; text-align: center; }
+.hero-sub { max-width: 34ch; margin-inline: auto; font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.88); margin-bottom: clamp(.8rem, 1.6vw, 1.4rem); }
 .hero h1 { font-weight: 800; font-size: var(--hs); line-height: .92; letter-spacing: -.05em; }
 .hero h1 span { display: block; }
 .hero h1 em { font-style: normal; color: var(--accent); }
@@ -127,7 +127,6 @@ html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
   .hero { height: max(100svh, 600px); }
   .ht { width: calc(var(--w) * 2.3vw); }
   .ht-wide { display: none; }
-  .hero-center { bottom: 6.5rem; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .ht { animation: tile-in 1s var(--ease) both; animation-delay: var(--d, 0s); }
