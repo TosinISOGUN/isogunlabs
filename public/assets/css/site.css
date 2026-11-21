@@ -7,6 +7,8 @@
 @font-face { font-family: 'Geist'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/assets/fonts/geist-variable.woff2') format('woff2'); }
 @font-face { font-family: 'Bricolage Grotesque'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('/assets/fonts/bricolage-grotesque-latin.woff2') format('woff2'); }
 
+@font-face { font-family: 'Unbounded'; font-style: normal; font-weight: 200 900; font-display: swap; src: url('/assets/fonts/unbounded-latin.woff2') format('woff2'); }
+
 :root {
   color-scheme: light;
   --bg: #F2F3EE; --bg-2: #E8EAE2; --surface: #FAFAF7;
@@ -64,7 +66,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .site-header.scrolled .island { box-shadow: inset 0 0 0 1px #2f3329, inset 0 1px 0 rgba(255,255,255,.08), 0 22px 50px -16px rgba(0,0,0,.65); }
 .logo { display: inline-flex; align-items: center; flex: none; }
 .logo img { height: 34px; width: auto; transition: transform .5s var(--ease); }
-.island .logo:hover img { transform: scale(1.06) rotate(-1.5deg); }
+.island .logo:hover .wordmark { transform: scale(1.04) rotate(-1deg); }
 .nav-links { position: relative; display: none; align-items: center; gap: .1rem; margin-inline: auto; }
 .nav-links a { position: relative; z-index: 1; padding: .6rem 1.05rem; border-radius: 999px; font-weight: 500; font-size: .96rem; text-decoration: none; color: var(--on-black-muted); transition: color .25s; }
 .nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current="page"] { color: var(--on-black); }
@@ -746,3 +748,10 @@ a.pager-num:hover, a.pager-step:hover { background: var(--ink); color: var(--bg)
 .mega .mi-icon { background: var(--black); color: var(--accent); }
 .mega .mi-text small { color: #7a7a7a; }
 .nav-links .mega .mega-all::before { background: #e6e6e6; }
+
+/* the nav wordmark: set in type instead of an image */
+.wordmark { display: inline-block; font: 600 1.42rem/1 'Unbounded', var(--ff-display); letter-spacing: -.035em; color: #fff; white-space: nowrap; transition: transform .5s var(--ease); }
+.wordmark em { font-style: normal; color: var(--accent); }
+.site-header .logo { text-decoration: none; }
+@media (max-width: 979px) { .wordmark { font-size: 1.08rem; } }
+@media (max-width: 380px) { .wordmark { font-size: .95rem; } }
