@@ -1,9 +1,8 @@
 ---
 title: "A Shift Handoff Checklist for Support Teams"
 description: "Most handoff problems are not about effort, they are about what gets left out. A practical checklist of what a good shift handoff contains, how to keep it short, and how to make sure it actually gets read."
-pubDate: 2026-10-28
+pubDate: 2026-11-21
 cover: "market"
-draft: true
 ---
 
 Every support team that runs in shifts has the same quiet failure. The person finishing knows exactly what is going on, the person starting does not, and the gap between them is one rushed message at the end of a long day.
