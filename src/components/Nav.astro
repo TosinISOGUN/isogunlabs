@@ -18,8 +18,27 @@ const isActive = (href: string) => !href.includes('#') && (path === href || (hre
         <div class="nav-item has-menu">
           <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined} aria-haspopup="true">{l.label}</a>
           <div class="mega">
-            {industries.map((i) => <a href={`/services/${i.slug}/`} aria-current={path === `/services/${i.slug}/` ? 'page' : undefined}>{i.anchor}</a>)}
-            <a class="mega-all" href="/services/">All services <Icon name="arrow-right" /></a>
+            <div class="mega-list">
+              {industries.map((i) => (
+                <a class="mega-item" href={`/services/${i.slug}/`} data-preview={i.slug} aria-current={path === `/services/${i.slug}/` ? 'page' : undefined}>
+                  <span class="mi-icon"><Icon name={i.icon} /></span>
+                  <span class="mi-text"><b>{i.anchor}</b><small>{i.menuText}</small></span>
+                </a>
+              ))}
+              <a class="mega-item mega-all" href="/services/" data-preview="all-services">
+                <span class="mi-icon"><Icon name="squares-four" /></span>
+                <span class="mi-text"><b>All services</b><small>Web design, web apps and online stores</small></span>
+              </a>
+            </div>
+            <div class="mega-preview" aria-hidden="true">
+              {[...industries.map((i) => ({ slug: i.slug, ...i.preview })), { slug: 'all-services', tag: 'All services', title: 'Web design, web apps and online stores' }].map((p) => (
+                <figure class="mp" data-for={p.slug}>
+                  <img data-src={`/assets/menu/${p.slug}.webp`} alt="" width="960" height="720" decoding="async" />
+                  <span class="mp-tag">{p.tag}</span>
+                  <figcaption>{p.title}</figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </div>
       ) : (

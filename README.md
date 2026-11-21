@@ -130,6 +130,26 @@ Icons are Phosphor glyphs in `public/assets/icons/ui/`, drawn with a CSS mask th
 
 Copyright © Isogun Labs. All rights reserved. The code, design, text and images in this repository are published so you can see the studio's work. They are not licensed for copying, republishing or reuse without written permission. The Atlassian apps, logos and any third-party brand names belong to their owners.
 
+### Photo credits
+
+Stock photographs are from [Pexels](https://www.pexels.com) under the Pexels licence (free to use, no attribution required). Credits are kept here anyway.
+
+| Where | Photographer | Pexels photo |
+| --- | --- | --- |
+| Websites (home, services) | SHVETS production | 9052803 |
+| Web apps (services) | Christina Morillo | 1181260 |
+| Online stores (home, services) | Kampus Production | 7289707 |
+| Atlassian apps (home, services) | cottonbro studio | 6804093 |
+| Studio team (home, about) | Mikael Blomkvist | 6476257 |
+| Services menu: restaurants | Adrien Olichon | 2387675 |
+| Services menu: clinics | Nadezhda Moryak | 7800666 |
+| Services menu: realtors | MART PRODUCTION | 7414903 |
+| Services menu: gyms | Yan Krukau | 8436610 |
+| Services menu: beauty brands | Vie Studio | 6168343 |
+| Services menu: startups | Ofspace LLC, Culture | 16323454 |
+| Services menu: redesign | Davide Baraldi | 11813187 |
+| Services menu: all services | Tranmautritam | 326514 |
+
 ## Contact
 
 [tomisin@isogunlabs.com](mailto:tomisin@isogunlabs.com), or [start a project](https://isogunlabs.com/contact/).
