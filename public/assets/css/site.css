@@ -758,3 +758,7 @@ a.pager-num:hover, a.pager-step:hover { background: var(--ink); color: var(--bg)
 
 /* page scrollbar: thin, dark track and a soft grey thumb so it sits with the black hero and nav */
 html { scrollbar-width: thin; scrollbar-color: #6e7262 #0D0F0B; }
+
+/* menu sheet: the same typeset wordmark as the nav bar, inside its black pill */
+.sheet-top .logo { padding: 12px 24px; }
+.sheet-top .wordmark { font-size: 1.2rem; }

@@ -63,7 +63,7 @@ const home = l(lang, '/');
 <div class="sheet" id="menu-sheet" role="dialog" aria-modal="true" aria-label={ui.menu}>
   <div class="sheet-top">
     <a class="logo" href={home} aria-label={ui.homeLabel}>
-      <img src="/assets/logo-wordmark.webp" width="176" height="40" alt="Isogun Labs" />
+      <span class="wordmark">Isogun <em>Labs</em></span>
     </a>
     <button class="sheet-close" type="button"><Icon name="x" /> {ui.close}</button>
   </div>
@@ -91,7 +91,6 @@ const home = l(lang, '/');
     ))}
   </nav>
   <div class="sheet-foot">
-    <LangSwitcher lang={lang} pathname={pathname} label={ui.language} variant="sheet" />
     <a class="btn btn-ink" href={l(lang, ctaHref)}>{ui.cta} <Icon name="arrow-right" /></a>
     <SocialLinks />
   </div>
