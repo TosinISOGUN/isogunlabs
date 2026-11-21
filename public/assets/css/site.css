@@ -315,6 +315,11 @@ body.sheet-open { overflow: hidden; }
 .prose table { width: 100%; border-collapse: collapse; font-size: .96rem; display: block; overflow-x: auto; }
 .prose th, .prose td { padding: .6rem .8rem; border-bottom: 1px solid var(--line); text-align: left; }
 .read-next { margin-top: 4rem; }
+/* The cards sit inside .prose, whose article styles (large h2, bold links, paragraph margins) would otherwise leak in. */
+.prose .blog-card { font-size: 1rem; line-height: 1.5; font-weight: 400; }
+.prose .blog-card-title-overlay { font-size: 1.15rem; line-height: 1.2; margin: 0; color: #fff; }
+.prose .blog-card-footer p { margin: 0; }
+@media (min-width: 700px) { .read-next .blog-grid { grid-template-columns: repeat(2, 1fr); } }
 .share-bar { display: flex; align-items: center; gap: 1rem; margin: 1.4rem 0 .4rem; flex-wrap: wrap; position: relative; }
 .share-label { font-size: .9rem; color: var(--muted); font-weight: 600; }
 .share-btns { display: flex; gap: .5rem; }
