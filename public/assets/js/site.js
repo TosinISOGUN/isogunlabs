@@ -250,7 +250,7 @@
     tiles.forEach(function (el) {
       if (el.offsetParent === null) return; // hidden at this width
       var ang = Math.random() * Math.PI * 2, sp = 16 + Math.random() * 20;
-      var it = { el: el, x: el.offsetLeft, y: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight, sp: sp, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp };
+      var it = { el: el, x: el.offsetLeft, y: el.offsetTop, hx: el.offsetLeft, hy: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight, sp: sp, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp };
       el.style.left = '0'; el.style.top = '0';
       items.push(it);
     });
@@ -263,8 +263,9 @@
     var dt = Math.min((t - last) / 1000, 0.05); last = t;
     items.forEach(function (it) {
       it.w = it.el.offsetWidth; it.h = it.el.offsetHeight;
-      // a tile may slide up to 45% out of the frame, then it is eased back in
-      var minX = -it.w * 0.45, maxX = W - it.w * 0.55, minY = -it.h * 0.45, maxY = H - it.h * 0.55;
+      // a tile roams around its own spot (so the screen stays evenly filled) and may slide up to 45% out of frame before easing back
+      var minX = Math.max(-it.w * 0.45, it.hx - W * 0.3), maxX = Math.min(W - it.w * 0.55, it.hx + W * 0.3);
+      var minY = Math.max(-it.h * 0.45, it.hy - H * 0.22), maxY = Math.min(H - it.h * 0.55, it.hy + H * 0.22);
       var k = Math.min(1, 2.2 * dt);
       if (it.x < minX) it.vx += (Math.abs(it.sp) * 0.9 - it.vx) * k; else if (it.x > maxX) it.vx += (-Math.abs(it.sp) * 0.9 - it.vx) * k;
       if (it.y < minY) it.vy += (Math.abs(it.sp) * 0.9 - it.vy) * k; else if (it.y > maxY) it.vy += (-Math.abs(it.sp) * 0.9 - it.vy) * k;

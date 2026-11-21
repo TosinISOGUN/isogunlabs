@@ -55,6 +55,7 @@ const home = l(lang, '/');
     </nav>
     <LangSwitcher lang={lang} pathname={pathname} label={ui.language} />
     <a class="btn btn-lime btn-sm nav-cta" href={l(lang, ctaHref)}>{ui.cta} <Icon name="arrow-right" /></a>
+    <LangSwitcher lang={lang} pathname={pathname} label={ui.language} variant="mob" />
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-sheet">{ui.menu}</button>
   </div>
 </header>

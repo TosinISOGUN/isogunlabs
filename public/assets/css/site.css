@@ -657,7 +657,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .lang-text small { color: #7a7a7a; font-size: .95rem; line-height: 1.25; }
 .lang-check { margin-left: auto; flex: none; width: 40px; height: 40px; border-radius: 50%; background: #0D0F0B; color: #fff; display: grid; place-items: center; }
 .lang-check .i { width: 1.1rem; height: 1.1rem; }
-@media (max-width: 979px) { .lang-bar { display: none; } }
+@media (max-width: 979px) { .lang-bar { display: none; } .lang-bar.lang-mob { display: block; } }
+@media (min-width: 980px) { .lang-mob { display: none !important; } }
 .lang-sheet .lang-btn { width: 100%; justify-content: flex-start; height: 52px; border: 1.5px solid currentColor; color: var(--field-ink); padding: 0 1.1rem; }
 .lang-sheet .lang-btn:hover, .lang-sheet.open .lang-btn { background: rgba(13,15,11,.08); }
 .lang-sheet .lang-caret { margin-left: auto; }
@@ -708,3 +709,21 @@ a.pager-num:hover, a.pager-step:hover { background: var(--ink); color: var(--bg)
 .pager-num.is-current { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .pager-step.is-off { opacity: .35; }
 @media (max-width: 560px) { .pager { justify-content: center; } .pager-nums { order: -1; width: 100%; justify-content: center; } }
+
+/* phone: the language switcher sits in the pill beside the Menu button, so the logo is a little smaller */
+@media (max-width: 979px) {
+  .island { overflow: visible; }
+  .island .logo img { height: 29px; }
+  .lang-mob { margin-inline-start: auto; }
+  .lang-mob + .menu-btn { margin-inline-start: .3rem; }
+  .lang-mob .lang-btn { height: 44px; padding: 0 .7rem; gap: .35rem; background: #1f2219; }
+  .lang-mob .lang-btn .i { width: 1.1rem; height: 1.1rem; }
+  .lang-mob .lang-caret { display: none; }
+  .lang-mob .lang-panel { right: -52px; }
+}
+@media (max-width: 380px) {
+  .island { gap: .5rem; padding-left: 14px; }
+  .island .logo img { height: 25px; }
+  .lang-mob .lang-btn { padding: 0 .55rem; }
+  .menu-btn { padding: 0 .95rem; }
+}

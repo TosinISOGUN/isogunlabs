@@ -2,11 +2,11 @@
 import { locales, localeInfo, switchTarget, type Locale } from '../i18n/config';
 import Icon from './Icon.astro';
 
-interface Props { lang: Locale; pathname: string; label: string; variant?: 'bar' | 'sheet' }
+interface Props { lang: Locale; pathname: string; label: string; variant?: 'bar' | 'sheet' | 'mob' }
 const { lang, pathname, label, variant = 'bar' } = Astro.props;
 const cur = localeInfo[lang];
 ---
-<div class={`lang lang-${variant}`} data-lang>
+<div class={`lang lang-${variant === 'mob' ? 'bar lang-mob' : variant}`} data-lang>
   <button class="lang-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-label={`${label}: ${cur.name}`}>
     <Icon name="globe" />
     <b>{cur.short}</b>
