@@ -1,8 +1,25 @@
 # Isogun Labs website
 
-The source of [isogunlabs.com](https://isogunlabs.com), the website of Isogun Labs: a studio that designs and builds websites, web apps and Atlassian Marketplace apps.
+[![Isogun Labs: we build websites and software that ship](public/assets/og-image.png)](https://isogunlabs.com)
 
-The site covers the studio's services, recent work, its Atlassian apps (Recap for Jira, Field Hygiene for Jira and Passdown for JSM), documentation, support, and a blog.
+This is the source code of **[isogunlabs.com](https://isogunlabs.com)**, the website of Isogun Labs, a studio that designs and builds websites, web apps and Atlassian Marketplace apps.
+
+[Visit the site](https://isogunlabs.com) · [Services](https://isogunlabs.com/services/) · [Recent work](https://isogunlabs.com/work/) · [Blog](https://isogunlabs.com/blog/) · [Start a project](https://isogunlabs.com/contact/)
+
+## What Isogun Labs does
+
+- **Websites and web apps** for startups, businesses and brands, each designed and coded from scratch.
+- **Atlassian Marketplace apps**, including Recap for Jira, Field Hygiene for Jira and Passdown for JSM.
+
+The site you can see here is itself an example of the work: a fast, static site with its own design system, a blog, structured data for search engines, and an automated deploy.
+
+© Isogun Labs. All rights reserved. This code is public so you can see how the studio builds, and it is not licensed for reuse (see [Rights](#rights)).
+
+---
+
+# For maintainers
+
+Everything below is for working on the site.
 
 ## Built with
 
@@ -94,6 +111,12 @@ A second job, `notify-indexnow`, runs after each deploy. It reads every URL in `
 One stylesheet, `public/assets/css/site.css`. The accent is a lime taken from the logo, set on neutral green-greys. The header, footer and Atlassian band stay on the logo's own black because the logo file is a wordmark on black. Display type is Bricolage Grotesque and text is Geist.
 
 Icons are Phosphor glyphs in `public/assets/icons/ui/`, drawn with a CSS mask through `src/components/Icon.astro`. Technology logos in `public/assets/tech/` come from Simple Icons. Stock photos in `public/assets/photos/` are from Pexels (free licence), and the work screenshots in `public/assets/work/` come from the case studies at [portfolio.isogunlabs.com](https://portfolio.isogunlabs.com).
+
+---
+
+## Rights
+
+Copyright © Isogun Labs. All rights reserved. The code, design, text and images in this repository are published so you can see the studio's work. They are not licensed for copying, republishing or reuse without written permission. The Atlassian apps, logos and any third-party brand names belong to their owners.
 
 ## Contact
 
