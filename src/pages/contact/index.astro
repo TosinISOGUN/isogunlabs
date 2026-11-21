@@ -50,7 +50,7 @@ const body = encodeURIComponent('Hi, I would like to talk about a project.\n\nWh
           <li><Icon name="check" /><span>Clients in the USA, Canada, the UK and Europe</span></li>
         </ul>
       </div>
-      <form class="enq-form" id="enquiry-form" method="post" novalidate data-endpoint={contact.formEndpoint} data-mailto={contact.projectEmail} data-thanks="/contact/thanks/">
+      <form class="enq-form" id="enquiry-form" method="post" action={contact.formEndpoint || undefined} novalidate data-endpoint={contact.formEndpoint} data-mailto={contact.projectEmail} data-thanks="/contact/thanks/">
         <div class="enq-row">
           <label class="f"><span>Your name <b aria-hidden="true">*</b></span><input name="name" type="text" autocomplete="name" required></label>
           <label class="f"><span>Email <b aria-hidden="true">*</b></span><input name="email" type="email" autocomplete="email" required></label>

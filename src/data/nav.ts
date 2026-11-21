@@ -16,7 +16,7 @@ export const contact = {
   whatsapp: 'https://wa.me/2348164376172',
   // Where the enquiry form sends its messages. Paste a form-service address here, for example a Formspree
   // form URL (https://formspree.io/f/xxxxxxxx). While it is empty, the form opens the visitor's email app instead.
-  formEndpoint: '',
+  formEndpoint: 'https://formspree.io/f/mjywerob',
 };
 
 export const socialLinks = [
