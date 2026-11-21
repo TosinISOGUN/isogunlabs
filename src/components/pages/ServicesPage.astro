@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import { contact } from '../../data/nav';
+import { dict } from '../../i18n';
+import { industriesFor } from '../../i18n/industry-labels';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = dict[lang];
+const s = t.services;
+const industries = industriesFor(lang);
+const images = ['/assets/photos/websites.webp', '/assets/photos/web-apps.webp', '/assets/photos/stores.webp', '/assets/photos/apps.webp'];
+const services = s.svc.map((x, i) => ({ ...x, image: images[i] }));
+const path = l(lang, '/services/');
+---
+<BaseLayout
+  breadcrumbs={[{ name: t.ui.nav.services, path }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'CollectionPage', '@id': `https://isogunlabs.com${path}#page`, url: `https://isogunlabs.com${path}`, name: t.ui.nav.services, inLanguage: lang, isPartOf: { '@id': 'https://isogunlabs.com/#website' } },
+      ...services.map((svc) => ({
+        '@type': 'Service',
+        '@id': `https://isogunlabs.com${path}#${svc.id}`,
+        name: svc.title,
+        description: svc.lead,
+        url: `https://isogunlabs.com${path}#${svc.id}`,
+        provider: { '@id': 'https://isogunlabs.com/#org' },
+        areaServed: 'Worldwide',
+      })),
+    ],
+  }}
+  title={s.title}
+  description={s.description}
+  path={path}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{s.h1}</h1>
+    <p class="lead">{s.lead}</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap svc-layout">
+    <nav class="svc-index" aria-label={s.navLabel}>
+      {services.map((x) => <a href={`#${x.id}`}>{x.name}</a>)}
+      <a href="#industries">{s.byIndustry}</a>
+    </nav>
+    <div>
+      {services.map((x, idx) => (
+        <section class="svc-block reveal" id={x.id}>
+          <h2>{x.title}</h2>
+          <p class="lead">{x.lead}</p>
+          <div class="svc-media"><img src={x.image} alt={x.alt} width="1600" height="1066" loading={idx === 0 ? 'eager' : 'lazy'} fetchpriority={idx === 0 ? 'high' : 'auto'} decoding="async" /></div>
+          <ul class="ticks">
+            {x.items.map((it) => <li><Icon name="check" /><span>{it}</span></li>)}
+          </ul>
+        </section>
+      ))}
+
+      <section class="svc-block reveal" id="industries">
+        <h2>{s.industriesH2}</h2>
+        <p class="lead">{s.industriesLead}</p>
+        <div class="ind-links">
+          {industries.map((i) => (
+            <a class="ind-link" href={l(lang, `/services/${i.slug}/`)}>
+              <span>{i.anchor}</span>
+              <Icon name="arrow-right" />
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="svc-block reveal" id="who">
+        <h2>{s.whoH2}</h2>
+        <div class="who">
+          {s.who.map((w) => <div><h3>{w.h}</h3><p>{w.p}</p></div>)}
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>{s.ctaH2}</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href={l(lang, '/contact/')}>{t.ui.cta} <Icon name="arrow-right" /></a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

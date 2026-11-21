@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import { contact } from '../../data/nav';
+import { dict, fill } from '../../i18n';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = dict[lang];
+const c = t.contact;
+const f = c.f;
+const subject = encodeURIComponent(c.mailSubject);
+const body = encodeURIComponent(c.mailBody);
+const path = l(lang, '/contact/');
+const [noteBefore] = fill(c.supportNote, { email: '\u0000' }).split('\u0000');
+---
+<BaseLayout
+  breadcrumbs={[{ name: c.crumb, path }]}
+  jsonLd={{ '@context': 'https://schema.org', '@graph': [{ '@type': 'ContactPage', '@id': `https://isogunlabs.com${path}#page`, url: `https://isogunlabs.com${path}`, name: c.crumb, inLanguage: lang, about: { '@id': 'https://isogunlabs.com/#org' } }] }}
+  title={c.title}
+  description={c.description}
+  path={path}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{c.h1}</h1>
+    <p class="lead">{c.lead}</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact-grid">
+      <a class="ct ct-lime reveal" href={contact.booking} target="_blank" rel="noopener">
+        <Icon name="calendar-blank" />
+        <h2>{c.call.h}</h2>
+        <p>{c.call.p}</p>
+      </a>
+      <a class="ct reveal" href={`mailto:${contact.projectEmail}?subject=${subject}&body=${body}`}>
+        <Icon name="envelope-simple" />
+        <h2>{c.mail.h}</h2>
+        <p>{contact.projectEmail}</p>
+      </a>
+      <a class="ct reveal" href={contact.whatsapp} target="_blank" rel="noopener">
+        <Icon name="whatsapp-logo" />
+        <h2>{c.wa.h}</h2>
+        <p>{c.wa.p}</p>
+      </a>
+    </div>
+    <section class="enq reveal" id="enquiry" aria-labelledby="enq-title">
+      <div class="enq-intro">
+        <h2 class="h2" id="enq-title">{c.enqH2}</h2>
+        <p class="lead">{c.enqLead}</p>
+        <ul class="ticks">
+          {c.ticks.map((x) => <li><Icon name="check" /><span>{x}</span></li>)}
+        </ul>
+      </div>
+      <form class="enq-form" id="enquiry-form" method="post" action={contact.formEndpoint || undefined} novalidate data-endpoint={contact.formEndpoint} data-mailto={contact.projectEmail} data-thanks={l(lang, '/contact/thanks/')} data-m-invalid={c.msgInvalid} data-m-sending={c.msgSending} data-m-fail={c.msgFail} data-m-mail={c.msgMail}>
+        <div class="enq-row">
+          <label class="f"><span>{f.name} <b aria-hidden="true">*</b></span><input name="name" type="text" autocomplete="name" required></label>
+          <label class="f"><span>{f.email} <b aria-hidden="true">*</b></span><input name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <div class="enq-row">
+          <label class="f"><span>{f.business}</span><input name="business" type="text" autocomplete="organization"></label>
+          <label class="f"><span>{f.type}</span>
+            <select name="business_type">
+              <option value="">{f.choose}</option>
+              {c.types.map(([v, label]) => <option value={v}>{label}</option>)}
+            </select>
+          </label>
+        </div>
+        <div class="enq-row">
+          <label class="f"><span>{f.country}</span>
+            <select name="country">
+              <option value="">{f.choose}</option>
+              {c.countries.map(([v, label]) => <option value={v}>{label}</option>)}
+            </select>
+          </label>
+          <label class="f"><span>{f.need}</span>
+            <select name="project_type">
+              <option value="">{f.choose}</option>
+              {c.needs.map(([v, label]) => <option value={v}>{label}</option>)}
+            </select>
+          </label>
+        </div>
+        <div class="enq-row">
+          <label class="f"><span>{f.when}</span>
+            <select name="timeline">
+              <option value="">{f.choose}</option>
+              {c.timelines.map(([v, label]) => <option value={v}>{label}</option>)}
+            </select>
+          </label>
+          <label class="f"><span>{f.budget}</span><input name="budget" type="text" placeholder={f.budgetPh}></label>
+        </div>
+        <label class="f"><span>{f.about} <b aria-hidden="true">*</b></span><textarea name="message" rows="5" required placeholder={f.aboutPh}></textarea></label>
+        <p class="hp" aria-hidden="true"><label>{f.honey} <input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></p>
+        <input type="hidden" name="_subject" value="New project enquiry from isogunlabs.com">
+        <input type="hidden" name="language" value={lang}>
+        <div class="enq-actions">
+          <button class="btn btn-ink" type="submit">{f.send} <Icon name="arrow-right" /></button>
+          <p class="enq-note">{f.note}</p>
+        </div>
+        <p class="enq-status" id="enquiry-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <div class="brief reveal">
+      <h2 class="h2">{c.includeH2}</h2>
+      <ul class="ticks">
+        {c.include.map((x) => <li><Icon name="check" /><span>{x}</span></li>)}
+      </ul>
+    </div>
+
+    <p class="work-note">{noteBefore}<a href={`mailto:${contact.supportEmail}`}>{contact.supportEmail}</a>{c.supportNote.split('{email}')[1] ? c.supportNote.split('{email}')[1] : ''} <a href={l(lang, '/support/')}>{c.supportLink}</a>.</p>
+  </div>
+</section>
+
+<script is:inline src="/assets/js/enquiry.js" defer></script>
+
+</BaseLayout>

@@ -48,19 +48,19 @@
     if (form.elements._gotcha && form.elements._gotcha.value) return; // a bot filled the hidden field
     var firstBad = validate();
     if (firstBad) {
-      say('Please fill in your name, a valid email and a few words about the project.', true);
+      say(form.dataset.mInvalid || 'Please fill in your name, a valid email and a few words about the project.', true);
       firstBad.focus();
       return;
     }
     var endpoint = form.dataset.endpoint;
     if (!endpoint) {
       track('generate_lead', { method: 'enquiry_form_email' });
-      say('Your email app should open with your brief ready to send. If it does not, write to ' + form.dataset.mailto + '.', false);
+      say((form.dataset.mMail || 'Your email app should open with your brief ready to send. If it does not, write to {email}.').replace('{email}', form.dataset.mailto), false);
       window.location.href = composeMail();
       return;
     }
     button.disabled = true;
-    say('Sending...', false);
+    say(form.dataset.mSending || 'Sending...', false);
     fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
       .then(function (res) {
         if (!res.ok) throw new Error('status ' + res.status);
@@ -69,7 +69,7 @@
       })
       .catch(function () {
         button.disabled = false;
-        say('Sorry, that did not send. Please email ' + form.dataset.mailto + ' instead.', true);
+        say((form.dataset.mFail || 'Sorry, that did not send. Please email {email} instead.').replace('{email}', form.dataset.mailto), true);
       });
   });
 

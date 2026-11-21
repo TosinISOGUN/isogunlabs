@@ -77,6 +77,17 @@ Routes in `src/pages/`:
 
 `public/` holds the stylesheet, scripts, fonts, icons, images, `robots.txt`, `sitemap.xml`, `site.webmanifest`, `CNAME`, and the Bing and IndexNow verification files.
 
+## Languages
+
+The site is in English (at the root) and in French, Spanish, German and Portuguese (under `/fr/`, `/es/`, `/de/` and `/pt/`).
+
+- Page copy lives in `src/i18n/<lang>.ts` (home, services, about, contact, thank-you), `industries-<lang>.ts`, `work-<lang>.ts` and `more-<lang>.ts` (Atlassian products, documentation, support). English is the first file in each set.
+- Pages are shared components in `src/components/pages/`; `src/pages/[lang]/` renders them for each language.
+- `src/i18n/config.ts` lists the pages that exist in every language. A page that is not listed stays English-only, and the language switcher sends visitors to the nearest translated page.
+- The blog index is paginated (8 posts a page after the featured one). Five business posts are translated, as Markdown files in `src/content/blog-tr/<lang>/<slug>.md` (list them in `blogSlugs` in `config.ts`). The Atlassian posts stay English.
+- The 404 page picks its language from the address that was requested (`/fr/...`) or from the browser; its header and footer stay English.
+- After adding or changing a translated page, run `npm run sitemap` and commit the result.
+
 ## Adding content
 
 **A new blog post.** Add a Markdown file to `src/content/blog/` with this frontmatter:
@@ -137,6 +148,8 @@ Stock photographs are from [Pexels](https://www.pexels.com) under the Pexels lic
 | Where | Photographer | Pexels photo |
 | --- | --- | --- |
 | Home hero | Nadezhda Moryak | 9674393 |
+| Mobile-first band | Sound On | 3756879 |
+| Home hero tiles | Pexels (7951886), Pexels (10375895), Tochukwu  Ekeh (32224391), Pexels (8475171); more tiles: Pexels 35184839, 16323580, 12902944, 4473398, 34674788, 36729739, 5934226, 29249664 | |
 | Websites (home, services) | SHVETS production | 9052803 |
 | Web apps (services) | Christina Morillo | 1181260 |
 | Online stores (home, services) | Kampus Production | 7289707 |

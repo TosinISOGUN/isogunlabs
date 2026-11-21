@@ -1,0 +1,16 @@
+---
+import BlogIndexPage from '../../../../../components/pages/BlogIndexPage.astro';
+import { postsFor, pageCount } from '../../../../../lib/blogPosts';
+import { otherLocales } from '../../../../../i18n/config';
+
+export async function getStaticPaths() {
+  const out = [];
+  for (const lang of otherLocales) {
+    const total = pageCount((await postsFor(lang)).length);
+    for (let n = 2; n <= total; n++) out.push({ params: { lang, page: String(n) } });
+  }
+  return out;
+}
+const { lang, page } = Astro.params;
+---
+<BlogIndexPage lang={lang as any} page={Number(page)} />

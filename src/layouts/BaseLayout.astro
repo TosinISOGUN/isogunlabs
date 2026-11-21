@@ -2,6 +2,8 @@
 import Seo from '../components/Seo.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { pageLang } from '../i18n';
+import { localeInfo } from '../i18n/config';
 
 interface Props {
   title: string;
@@ -18,14 +20,15 @@ interface Props {
   modifiedTime?: string;
 }
 
+const { lang, t } = pageLang(Astro.url.pathname);
 const { title, description, path, robots, breadcrumbs, ogTitle, ogDescription, jsonLd, preloadImage, type, publishedTime, modifiedTime } = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={localeInfo[lang].htmlLang}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <meta name="author" content="Isogun Labs">
 <meta name="theme-color" content="#000000">
 
@@ -71,9 +74,9 @@ const { title, description, path, robots, breadcrumbs, ogTitle, ogDescription, j
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css?v=3">
 </head>
-<body>
+<body class={/^\/((fr|es|de|pt)\/)?$/.test(Astro.url.pathname) ? 'is-home' : undefined}>
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">{t.ui.skip}</a>
 
 <Nav />
 
@@ -83,6 +86,6 @@ const { title, description, path, robots, breadcrumbs, ogTitle, ogDescription, j
 
 <Footer />
 
-<script src="/assets/js/site.js?v=3" defer></script>
+<script src="/assets/js/site.js?v=4" defer></script>
 </body>
 </html>

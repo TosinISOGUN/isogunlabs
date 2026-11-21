@@ -1,0 +1,347 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../BlogCard.astro';
+import Icon from '../Icon.astro';
+import { postsFor } from '../../lib/blogPosts';
+import { contact } from '../../data/nav';
+import { dict } from '../../i18n';
+import { industriesFor } from '../../i18n/industry-labels';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = dict[lang];
+const h = t.home;
+const ui = t.ui;
+
+const latestPosts = lang === 'en' ? (await postsFor('en')).slice(0, 3) : [];
+
+const tech = [
+  ['astro', 'Astro'], ['react', 'React'], ['typescript', 'TypeScript'], ['nodedotjs', 'Node.js'], ['tailwindcss', 'Tailwind CSS'],
+  ['shopify', 'Shopify'], ['jira', 'Jira'], ['atlassian', 'Atlassian'], ['vercel', 'Vercel'], ['github', 'GitHub'],
+];
+
+const projects = [
+  { slug: 'gloria-may-byron', name: 'Gloria May Byron', live: true },
+  { slug: 'velora-beauty', name: 'Velora Beauty', live: true },
+  { slug: 'hearthline-realty', name: 'Hearthline Realty', live: true },
+  { slug: 'juniper-ember', name: 'Juniper & Ember', live: true },
+  { slug: 'weseeu', name: 'weSEEu', live: false },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['Organization', 'ProfessionalService'],
+      '@id': 'https://isogunlabs.com/#org',
+      areaServed: ['United States', 'Canada', 'United Kingdom', 'Europe'],
+      serviceType: ['Website design and development', 'Restaurant website design', 'Clinic and dental website design', 'Real estate website design', 'Gym website design', 'Beauty brand and e-commerce website design', 'Startup website design and MVP development', 'Website redesign', 'Web application development', 'E-commerce and booking systems', 'Atlassian Marketplace app development'],
+      founder: { '@type': 'Person', '@id': 'https://isogunlabs.com/#founder', name: 'Oluwatomisin Isogun', jobTitle: 'Founder and lead developer', url: 'https://portfolio.isogunlabs.com', image: 'https://isogunlabs.com/assets/photos/founder.webp' },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Services',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Websites for businesses and brands', url: 'https://isogunlabs.com/services/#websites' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web apps and MVPs for startups', url: 'https://isogunlabs.com/services/#web-apps' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Online stores and booking', url: 'https://isogunlabs.com/services/#stores-booking' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Atlassian Marketplace apps', url: 'https://isogunlabs.com/services/#marketplace-apps' } },
+        ],
+      },
+      name: 'Isogun Labs',
+      alternateName: 'Isogun Labs Studio',
+      url: 'https://isogunlabs.com/',
+      logo: 'https://isogunlabs.com/assets/icons/icon-512.png',
+      image: 'https://isogunlabs.com/assets/og-image.png',
+      description: 'Web design and development company building websites, web apps and Atlassian Marketplace apps for startups, small businesses and brands in the USA, Canada, the UK and Europe.',
+      email: 'support@isogunlabs.com',
+      slogan: 'Websites and software that ship.',
+      knowsAbout: ['Website design and development', 'Restaurant websites', 'Dental and clinic websites', 'Real estate websites', 'Gym and fitness websites', 'Beauty and e-commerce websites', 'MVP development', 'Website redesign', 'Web applications', 'E-commerce and booking systems', 'Atlassian Forge', 'Jira apps', 'Atlassian Marketplace', 'Shopify apps'],
+      contactPoint: [
+        { '@type': 'ContactPoint', email: 'tomisin@isogunlabs.com', contactType: 'sales' },
+        { '@type': 'ContactPoint', email: 'support@isogunlabs.com', contactType: 'customer support' },
+      ],
+      sameAs: [
+        'https://www.linkedin.com/company/isogun-labs',
+        'https://x.com/isogunlabs',
+        'https://www.instagram.com/isogunlabs/',
+        'https://www.youtube.com/@isogun_labs',
+        'https://portfolio.isogunlabs.com',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://isogunlabs.com/#website',
+      url: 'https://isogunlabs.com/',
+      name: 'Isogun Labs',
+      description: 'Tech studio building websites, web apps and Atlassian Marketplace apps for startups, businesses and brands.',
+      publisher: { '@id': 'https://isogunlabs.com/#org' },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Recap - Monthly Status Reports for Jira',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Atlassian Jira Cloud',
+      url: 'https://recap.isogunlabs.com/',
+      installUrl: 'https://marketplace.atlassian.com/2146687861',
+      downloadUrl: 'https://marketplace.atlassian.com/2146687861',
+      description: 'Recap turns your completed Jira work from the last 30 days into a written monthly status report in one click, grouped by epic and ready to paste into a status update or performance review. Runs entirely on Atlassian and stores nothing.',
+      publisher: { '@id': 'https://isogunlabs.com/#org' },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Field Hygiene for Jira',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Atlassian Jira Cloud',
+      url: 'https://field-hygiene.isogunlabs.com/',
+      installUrl: 'https://marketplace.atlassian.com/apps/2905942594',
+      downloadUrl: 'https://marketplace.atlassian.com/apps/2905942594',
+      description: 'Field Hygiene finds duplicate and near-duplicate custom fields, unused fields, and missing descriptions, plus a live read on how close a Jira site is to Atlassian field-count limits. All on one page, with zero setup.',
+      publisher: { '@id': 'https://isogunlabs.com/#org' },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Passdown - Automated Shift Handoffs for JSM',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Atlassian Jira Service Management Cloud',
+      url: 'https://passdown.isogunlabs.com/',
+      installUrl: 'https://marketplace.atlassian.com/apps/3571155481',
+      downloadUrl: 'https://marketplace.atlassian.com/apps/3571155481',
+      description: 'Passdown reads what happened during a support shift and writes a plain-language handoff brief automatically at the shift boundary. It posts the brief as a comment, mentions and assigns the incoming person, and can summarize any single ticket on demand.',
+      publisher: { '@id': 'https://isogunlabs.com/#org' },
+    },
+  ],
+};
+
+const pageJsonLd = lang === 'en' ? jsonLd : {
+  '@context': 'https://schema.org',
+  '@graph': [{ '@type': 'WebPage', '@id': 'https://isogunlabs.com/' + lang + '/#page', url: 'https://isogunlabs.com/' + lang + '/', name: h.title, description: h.description, inLanguage: lang, isPartOf: { '@id': 'https://isogunlabs.com/#website' }, about: { '@id': 'https://isogunlabs.com/#org' } }],
+};
+const ctaHref = l(lang, '/contact/');
+---
+<BaseLayout
+  title={h.title}
+  description={h.description}
+  path={l(lang, '/')}
+  ogDescription={h.ogDescription}
+  jsonLd={pageJsonLd}
+>
+
+<section class="hero">
+  <div class="hero-tiles" aria-hidden="true">
+    {[
+      // file, width (vw), px width, px height, left %, top %, shown on phones, show first
+      ['t-a', 15, 520, 650, 22, 1, 1],
+      ['t-b', 26, 1000, 690, 62, 2, 1],
+      ['t-c', 28, 900, 1140, 34, 44, 1],
+      ['t-d', 11, 460, 1000, 90, 12, 0],
+      ['m1', 17, 600, 400, 3, 6, 1],
+      ['m2', 13, 600, 400, 48, 4, 0],
+      ['m3', 12, 480, 600, 80, 38, 1],
+      ['m4', 15, 600, 400, 5, 46, 0],
+      ['m5', 13, 600, 400, 68, 60, 1],
+      ['m6', 14, 600, 400, 17, 20, 0],
+      ['m7', 12, 600, 400, 88, 70, 0],
+      ['m8', 10, 480, 600, 52, 30, 0],
+    ].map(([f, w, pw, ph, x, y, ph_show], i) => (
+      <img class={`ht${ph_show ? '' : ' ht-wide'}`} src={`/assets/hero/${f}.webp`} alt="" width={pw} height={ph}
+        style={`--w:${w};--ar:${pw} / ${ph};left:${x}%;top:${y}%;--d:${(i * 0.09).toFixed(2)}s`}
+        decoding="async" loading={i < 4 ? 'eager' : 'lazy'} fetchpriority={i < 4 ? 'high' : 'low'} />
+    ))}
+  </div>
+  <div class="wrap hero-center">
+    <p class="hero-sub">{h.sub}</p>
+    <h1><span>{h.h1.split("|")[0]}</span> <span>{h.h1.split("|")[1]} <em>{h.h1em}</em></span></h1>
+  </div>
+</section>
+
+<section class="logos" aria-label={h.logos}>
+  <div class="logos-track">
+    <ul>
+      {tech.map(([slug, name]) => <li style={`--src:url(/assets/tech/${slug}.svg)`} role="img" aria-label={name}></li>)}
+    </ul>
+    <ul aria-hidden="true">
+      {tech.map(([slug]) => <li style={`--src:url(/assets/tech/${slug}.svg)`}></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="h2">{h.servicesH2}</h2>
+      <p class="lead">{h.servicesLead}</p>
+    </div>
+    <div class="bento">
+      <a class="cell cell-photo cell-a reveal" href={l(lang, '/services/#websites')}>
+        <img src="/assets/photos/websites.webp" alt="" width="1600" height="1066" loading="lazy" decoding="async" />
+        <div class="body">
+          <h3>{h.websites.h3}</h3>
+          <p>{h.websites.p}</p>
+          <span class="link-arrow more">{h.websites.link} <Icon name="arrow-up-right" /></span>
+        </div>
+      </a>
+      <a class="cell cell-lime cell-b reveal" href={l(lang, '/services/#web-apps')}>
+        <div class="body">
+          <h3>{h.webapps.h3}</h3>
+          <p>{h.webapps.p}</p>
+          <ul class="tick-list">
+            {h.webapps.ticks.map((x) => <li><Icon name="check" /> {x}</li>)}
+          </ul>
+          <span class="link-arrow more">{h.webapps.link} <Icon name="arrow-up-right" /></span>
+        </div>
+      </a>
+      <a class="cell cell-card cell-c reveal" href={l(lang, '/services/#stores-booking')}>
+        <div class="pic"><img src="/assets/photos/stores.webp" alt="" width="1600" height="1066" loading="lazy" decoding="async" /></div>
+        <div class="body">
+          <h3>{h.stores.h3}</h3>
+          <p>{h.stores.p}</p>
+          <span class="link-arrow more">{h.stores.link} <Icon name="arrow-up-right" /></span>
+        </div>
+      </a>
+      <a class="cell cell-photo cell-d reveal" href={l(lang, '/services/#marketplace-apps')}>
+        <img src="/assets/photos/apps.webp" alt="" width="1600" height="1066" loading="lazy" decoding="async" />
+        <div class="body">
+          <h3>{h.marketplace.h3}</h3>
+          <p>{h.marketplace.p}</p>
+          <span class="link-arrow more">{h.marketplace.link} <Icon name="arrow-up-right" /></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="slant mobile-band" id="mobile-first" aria-labelledby="mobile-h">
+  <div class="wrap mb-inner">
+    <div class="mb-copy reveal">
+      <p class="kicker">{h.mobile.kicker}</p>
+      <h2 class="h2" id="mobile-h">{h.mobile.h2}</h2>
+      <p class="lead">{h.mobile.lead}</p>
+      <ul class="tick-list mb-points">
+        {h.mobile.points.map((x) => <li><Icon name="check" /> {x}</li>)}
+      </ul>
+    </div>
+    <div class="mb-photo">
+      <img src="/assets/photos/mobile-hand.webp" srcset="/assets/photos/mobile-hand-600.webp 600w, /assets/photos/mobile-hand.webp 900w" sizes="(min-width: 980px) 40vw, 90vw" alt={h.mobile.alt} width="900" height="1100" loading="lazy" decoding="async" />
+    </div>
+  </div>
+</section>
+
+<section class="section bg-2" id="work">
+  <div class="wrap reveal">
+    <h2 class="h2">{h.work.h2}</h2>
+    <p class="lead">{h.work.lead}</p>
+    <div class="rail-nav" aria-hidden="true">
+      <button type="button" class="rail-btn" data-rail="-1" tabindex="-1" aria-label={h.work.prev}><Icon name="arrow-right" /></button>
+      <button type="button" class="rail-btn" data-rail="1" tabindex="-1" aria-label={h.work.next}><Icon name="arrow-right" /></button>
+    </div>
+  </div>
+  <div class="rail reveal" tabindex="0" aria-label={h.work.rail}>
+    {projects.map((p) => (
+      <a class="proj" href={l(lang, '/work/')}>
+        <div class="shot"><img src={`/assets/work/${p.slug}.webp`} alt={p.name} width="1280" height="800" loading="lazy" decoding="async" /></div>
+        <h3>{p.name}</h3>
+        <p class="meta"><span class="status">{p.live ? h.work.live : h.work.dev}.</span>{h.work.lines[p.slug]}</p>
+      </a>
+    ))}
+  </div>
+  <div class="wrap head-actions">
+    <a class="btn btn-ink" href={l(lang, '/work/')}>{h.work.all} <Icon name="arrow-right" /></a>
+  </div>
+</section>
+
+<section class="section apps slant" id="atlassian">
+  <div class="wrap apps-grid">
+    <div class="reveal">
+      <h2 class="h2 h2-wide">{h.apps.h2}</h2>
+      <p class="lead">{h.apps.lead}</p>
+      <ul class="app-list">
+        <li class="app">
+          <span class="app-ic" aria-hidden="true">
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><rect width="512" height="512" fill="#FFF3E2"/><path d="M146,96 H330 L366,132 V396 H146 Z" fill="#C2610C"/><path d="M330,96 L366,132 H330 Z" fill="#7C3A08"/><rect x="174" y="186" width="164" height="18" rx="9" fill="#FDE7C7"/><rect x="174" y="228" width="164" height="18" rx="9" fill="#E8C39E"/><rect x="174" y="270" width="100" height="18" rx="9" fill="#E8C39E"/><circle cx="360" cy="390" r="52" fill="#15803D" stroke="#FFF" stroke-width="10"/><polyline points="336,392 354,410 388,368" fill="none" stroke="#FFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <div>
+            <h3>Recap</h3>
+            <p>{h.apps.recap}</p>
+            <div class="links"><a href="https://marketplace.atlassian.com/2146687861" target="_blank" rel="noopener">{h.apps.marketplace}</a><a href="https://recap.isogunlabs.com/">{h.apps.docs}</a></div>
+          </div>
+        </li>
+        <li class="app">
+          <span class="app-ic" aria-hidden="true"><img src="/assets/field-hygiene-logo-144.png" alt="" width="52" height="52" loading="lazy" /></span>
+          <div>
+            <h3>Field Hygiene</h3>
+            <p>{h.apps.fh}</p>
+            <div class="links"><a href="https://marketplace.atlassian.com/apps/2905942594" target="_blank" rel="noopener">{h.apps.marketplace}</a><a href="https://field-hygiene.isogunlabs.com/">{h.apps.docs}</a></div>
+          </div>
+        </li>
+        <li class="app">
+          <span class="app-ic" aria-hidden="true"><img src="/assets/passdown-logo-144.png" alt="" width="52" height="52" loading="lazy" /></span>
+          <div>
+            <h3>Passdown</h3>
+            <p>{h.apps.pd}</p>
+            <div class="links"><a href="https://marketplace.atlassian.com/apps/3571155481" target="_blank" rel="noopener">{h.apps.marketplace}</a><a href="https://passdown.isogunlabs.com/">{h.apps.docs}</a></div>
+          </div>
+        </li>
+      </ul>
+      <div class="apps-foot"><a class="btn btn-lime" href={l(lang, '/get-started/')}>{h.apps.choose} <Icon name="arrow-right" /></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="wrap process-grid">
+    <div class="sticky reveal">
+      <h2 class="h2">{h.process.h2}</h2>
+      <p class="lead">{h.process.lead}</p>
+    </div>
+    <ol class="verbs reveal">
+      {h.process.steps.map((s) => <li><h3>{s.h}</h3><p>{s.p}</p></li>)}
+    </ol>
+  </div>
+</section>
+
+<section class="section bg-2" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <img src="/assets/photos/studio.webp" alt={h.about.studioAlt} width="1600" height="1066" loading="lazy" decoding="async" />
+    </div>
+    <div class="about-copy reveal">
+      <h2 class="h2">{h.about.h2}</h2>
+      <p>{h.about.p1}</p>
+      <p>{h.about.p2}</p>
+      <div class="person">
+        <img src="/assets/photos/founder.webp" alt="Oluwatomisin Isogun" width="68" height="68" loading="lazy" />
+        <div><b>Oluwatomisin Isogun</b><span>{h.about.role}</span></div>
+      </div>
+      <p><a class="link-arrow" href={l(lang, '/about/')}>{h.about.link} <Icon name="arrow-right" /></a></p>
+    </div>
+  </div>
+</section>
+
+{latestPosts.length > 0 && (
+  <section class="section" id="writing">
+    <div class="wrap">
+      <div class="reveal">
+        <h2 class="h2">{h.writing.h2}</h2>
+        <p class="lead">{h.writing.lead}</p>
+      </div>
+      <div class="blog-grid reveal">
+        {latestPosts.map((post) => <BlogCard post={post} lang="en" />)}
+      </div>
+      <div class="head-actions"><a class="btn btn-ink" href="/blog/">{h.writing.all} <Icon name="arrow-right" /></a></div>
+    </div>
+  </section>
+)}
+
+<section class="cta slant">
+  <div class="wrap reveal">
+    <h2>{h.ctaH2}</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href={ctaHref}>{ui.cta} <Icon name="arrow-right" /></a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

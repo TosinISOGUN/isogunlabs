@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import { ctaHref, contact } from '../../data/nav';
+import { dict } from '../../i18n';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = dict[lang];
+const a = t.about;
+const ui = t.ui;
+const hrefs = ['https://recap.isogunlabs.com/', 'https://field-hygiene.isogunlabs.com/', 'https://passdown.isogunlabs.com/'];
+const apps = a.apps.map((x, i) => ({ ...x, href: hrefs[i] }));
+const path = l(lang, '/about/');
+const url = `https://isogunlabs.com${path}`;
+---
+<BaseLayout
+  title={a.title}
+  description={a.description}
+  path={path}
+  breadcrumbs={[{ name: a.crumb, path }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'AboutPage',
+        '@id': `${url}#page`,
+        url,
+        name: a.title,
+        inLanguage: lang,
+        isPartOf: { '@id': 'https://isogunlabs.com/#website' },
+        about: { '@id': 'https://isogunlabs.com/#org' },
+        mainEntity: { '@id': 'https://isogunlabs.com/#org' },
+      },
+    ],
+  }}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{a.h1}</h1>
+    <p class="lead">{a.lead}</p>
+    <div class="ind-cta">
+      <a class="btn btn-ink" href={l(lang, ctaHref)}>{ui.cta} <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={l(lang, '/work/')}>{ui.seeWork}</a>
+    </div>
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <img src="/assets/photos/studio.webp" alt={a.photoAlt} width="1600" height="1066" loading="eager" decoding="async" />
+    </div>
+    <div class="about-copy reveal">
+      <h2 class="h2">{a.whatH2}</h2>
+      <p>{a.what1}</p>
+      <p>{a.what2}</p>
+      <p><a class="link-arrow" href={l(lang, '/services/')}>{a.whatLink} <Icon name="arrow-right" /></a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight bg-2-band">
+  <div class="wrap founder reveal">
+    <img class="founder-photo" src="/assets/photos/founder.webp" alt={a.founderAlt} width="240" height="240" loading="lazy" decoding="async" />
+    <div class="about-copy">
+      <p class="kicker">{a.founderKicker}</p>
+      <h2 class="h2">Oluwatomisin Isogun</h2>
+      <p>{a.founder1}</p>
+      <p>{a.founder2}</p>
+      <p class="proof-links">
+        <a class="link-arrow" href="https://portfolio.isogunlabs.com" target="_blank" rel="noopener">{a.portfolio} <Icon name="arrow-up-right" /></a>
+        <a class="link-arrow" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">{ui.bookCall} <Icon name="arrow-up-right" /></a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <h2 class="h2 h2-wide reveal">{a.howH2}</h2>
+    <div class="need-grid need-grid-2">
+      {a.principles.map((p) => (
+        <div class="need reveal">
+          <h3>{p.title}</h3>
+          <p>{p.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section-tight bg-2-band">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="h2">{a.whereH2}</h2>
+      <p class="lead">{a.whereLead}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="atl-band reveal">
+      <div>
+        <p class="kicker">{a.atlKicker}</p>
+        <h2 class="h2">{a.atlH2}</h2>
+        <p class="lead">{a.atlLead}</p>
+        <p class="proof-links"><a class="link-arrow" href={l(lang, '/get-started/')}>{a.atlLink} <Icon name="arrow-right" /></a></p>
+      </div>
+      <ul class="atl-list">
+        {apps.map((x) => (
+          <li><a href={x.href} target="_blank" rel="noopener"><b>{x.name}</b><span>{x.text}</span><Icon name="arrow-up-right" /></a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>{a.ctaH2}</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href={l(lang, '/contact/') + '#enquiry'}>{ui.sendBrief} <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">{ui.bookCall}</a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

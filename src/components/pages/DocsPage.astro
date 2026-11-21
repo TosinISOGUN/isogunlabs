@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { moreFor } from '../../i18n/more';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const m = moreFor(lang).docs;
+const path = l(lang, '/documentation/');
+const icons = [
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.63.66 1.09 1.31 1.1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>',
+  '<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M146,96 H330 L366,132 V396 H146 Z" fill="#C2610C"/><path d="M330,96 L366,132 H330 Z" fill="#7C3A08"/><rect x="174" y="186" width="164" height="18" rx="9" fill="#FDE7C7"/><rect x="174" y="228" width="164" height="18" rx="9" fill="#E8C39E"/><rect x="174" y="270" width="100" height="18" rx="9" fill="#E8C39E"/><circle cx="360" cy="390" r="52" fill="#15803D" stroke="#FFF" stroke-width="10"/><polyline points="336,392 354,410 388,368" fill="none" stroke="#FFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+];
+const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const hrefs = ['mailto:support@isogunlabs.com', 'https://recap.isogunlabs.com/docs.html'];
+---
+<BaseLayout
+  title={m.title}
+  description={m.description}
+  path={path}
+  breadcrumbs={[{ name: m.crumb, path }]}
+  ogDescription={m.ogDescription}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{m.h1}</h1>
+    <p class="lead">{m.lead}</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="doc-grid">
+      {m.tiles.map((t, i) => (
+        <a class="doc-tile" href={hrefs[i]}>
+          <span class="ic" aria-hidden="true" set:html={icons[i]}></span>
+          <div>
+            <div class="t">{t.t}</div>
+            <div class="d">{t.d}</div>
+          </div>
+          <span class="arr" aria-hidden="true" set:html={arrow}></span>
+        </a>
+      ))}
+    </div>
+
+    <p class="lead" style="margin-top:2.4rem">{m.helpBefore}<a href="mailto:support@isogunlabs.com" style="font-weight:600">support@isogunlabs.com</a>{m.helpAfter}</p>
+  </div>
+</section>
+
+</BaseLayout>

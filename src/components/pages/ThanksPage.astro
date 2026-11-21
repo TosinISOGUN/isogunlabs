@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import { contact } from '../../data/nav';
+import { dict } from '../../i18n';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = dict[lang];
+const k = t.thanks;
+---
+<BaseLayout
+  title={k.title}
+  description={k.description}
+  path={l(lang, '/contact/thanks/')}
+  robots="noindex, follow"
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{k.h1}</h1>
+    <p class="lead">{k.lead}</p>
+    <div class="ind-cta">
+      <a class="btn btn-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">{t.ui.bookCall} <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={l(lang, '/work/')}>{t.ui.seeWork}</a>
+    </div>
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="wrap">
+    <h2 class="h2">{k.nextH2}</h2>
+    <ol class="steps">
+      {k.steps.map((s, i) => <li class="step"><span class="step-n">{i + 1}</span><h3>{s.h}</h3><p>{s.p}</p></li>)}
+    </ol>
+  </div>
+</section>
+
+<script is:inline>
+  if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'enquiry_form' });
+</script>
+
+</BaseLayout>

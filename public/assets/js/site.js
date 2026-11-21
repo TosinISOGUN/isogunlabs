@@ -94,7 +94,7 @@
     var tg = sheet.querySelector('.sheet-toggle'), sub = document.getElementById('sheet-services');
     if (tg && sub) tg.addEventListener('click', function () {
       var o = tg.getAttribute('aria-expanded') !== 'true';
-      tg.setAttribute('aria-expanded', o); tg.setAttribute('aria-label', o ? 'Hide services' : 'Show services'); sub.classList.toggle('open', o);
+      tg.setAttribute('aria-expanded', o); tg.setAttribute('aria-label', o ? (tg.dataset.hide || 'Hide services') : (tg.dataset.show || 'Show services')); sub.classList.toggle('open', o);
     });
     sheet.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet.classList.contains('open')) setOpen(false); });
@@ -174,9 +174,9 @@
       }
     };
     var ig = bar.querySelector('[data-share="instagram"]');
-    if (ig) ig.addEventListener('click', function () { copy('Link copied. Paste it into your bio or story.'); });
+    if (ig) ig.addEventListener('click', function () { copy(bar.getAttribute('data-msg-ig') || 'Link copied. Paste it into your bio or story.'); });
     var cp = bar.querySelector('[data-share="copy"]');
-    if (cp) cp.addEventListener('click', function () { copy('Link copied'); });
+    if (cp) cp.addEventListener('click', function () { copy(bar.getAttribute('data-msg-copy') || 'Link copied'); });
   });
 })();
 
@@ -216,4 +216,67 @@
   rail.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
   update();
+})();
+
+/* Language switcher: opens on click, closes on an outside click or Escape. */
+(function () {
+  var all = document.querySelectorAll('[data-lang]');
+  if (!all.length) return;
+  function close(box) { box.classList.remove('open'); var b = box.querySelector('.lang-btn'); if (b) b.setAttribute('aria-expanded', 'false'); }
+  all.forEach(function (box) {
+    var btn = box.querySelector('.lang-btn');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = !box.classList.contains('open');
+      all.forEach(close);
+      box.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function (e) { all.forEach(function (box) { if (!box.contains(e.target)) close(box); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') all.forEach(close); });
+})();
+
+/* hero photo tiles: each one drifts on its own heading, eases off the edges and glides back in */
+(function () {
+  var hero = document.querySelector('.hero');
+  var tiles = hero ? [].slice.call(hero.querySelectorAll('.ht')) : [];
+  if (!tiles.length || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  var W = 0, H = 0, last = 0, raf = 0, run = false;
+  var items = [];
+  function measure() { W = hero.clientWidth; H = hero.clientHeight; }
+  function start() {
+    measure();
+    tiles.forEach(function (el) {
+      if (el.offsetParent === null) return; // hidden at this width
+      var ang = Math.random() * Math.PI * 2, sp = 16 + Math.random() * 20;
+      var it = { el: el, x: el.offsetLeft, y: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight, sp: sp, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp };
+      el.style.left = '0'; el.style.top = '0';
+      items.push(it);
+    });
+    items.forEach(place);
+    play();
+  }
+  function place(it) { it.el.style.transform = 'translate3d(' + it.x.toFixed(1) + 'px,' + it.y.toFixed(1) + 'px,0)'; }
+  function step(t) {
+    if (!run) return;
+    var dt = Math.min((t - last) / 1000, 0.05); last = t;
+    items.forEach(function (it) {
+      it.w = it.el.offsetWidth; it.h = it.el.offsetHeight;
+      // a tile may slide up to 45% out of the frame, then it is eased back in
+      var minX = -it.w * 0.45, maxX = W - it.w * 0.55, minY = -it.h * 0.45, maxY = H - it.h * 0.55;
+      var k = Math.min(1, 2.2 * dt);
+      if (it.x < minX) it.vx += (Math.abs(it.sp) * 0.9 - it.vx) * k; else if (it.x > maxX) it.vx += (-Math.abs(it.sp) * 0.9 - it.vx) * k;
+      if (it.y < minY) it.vy += (Math.abs(it.sp) * 0.9 - it.vy) * k; else if (it.y > maxY) it.vy += (-Math.abs(it.sp) * 0.9 - it.vy) * k;
+      it.x += it.vx * dt; it.y += it.vy * dt;
+      place(it);
+    });
+    raf = requestAnimationFrame(step);
+  }
+  function play() { if (run) return; run = true; last = performance.now(); raf = requestAnimationFrame(step); }
+  function pause() { run = false; cancelAnimationFrame(raf); }
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { e[0].isIntersecting ? play() : pause(); }).observe(hero);
+  document.addEventListener('visibilitychange', function () { document.hidden ? pause() : play(); });
+  window.addEventListener('resize', measure);
+  start();
 })();

@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { moreFor } from '../../i18n/more';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const m = moreFor(lang).support;
+const path = l(lang, '/support/');
+const off = [0, 6];
+---
+<BaseLayout
+  title={m.title}
+  description={m.description}
+  path={path}
+  breadcrumbs={[{ name: m.crumb, path }]}
+  ogDescription={m.ogDescription}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{m.h1}</h1>
+    <p class="lead">{m.lead}</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap legal">
+
+    <h2>{m.reachH}</h2>
+    <p>{m.reachBefore}<a href="mailto:support@isogunlabs.com">support@isogunlabs.com</a>{m.reachAfter}</p>
+
+    <h2>{m.hoursH}</h2>
+    <div class="week-strip" role="img" aria-label={m.weekAria}>
+      {m.days.map((d, i) => <span class={`day ${off.includes(i) ? 'off' : 'on'}`}>{d}</span>)}
+    </div>
+    <p set:html={m.hoursHtml}></p>
+
+    <h2>{m.responseH}</h2>
+    <p set:html={m.responseHtml}></p>
+
+    <h2>{m.scopeH}</h2>
+    <p>{m.scopeP}</p>
+
+    <p style="margin-top:32px;">{m.secBefore}<a href="https://field-hygiene.isogunlabs.com/security.html">{m.secLink1}</a>{m.secMid}<a href="https://recap.isogunlabs.com/">{m.secLink2}</a>{m.secAfter}</p>
+
+  </div>
+</section>
+
+</BaseLayout>

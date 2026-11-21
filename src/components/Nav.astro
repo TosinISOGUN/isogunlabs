@@ -1,37 +1,45 @@
 ---
-import { navLinks, ctaLabel, ctaHref } from '../data/nav';
-import { industries } from '../data/industries';
+import { navLinks, ctaHref } from '../data/nav';
+import { industriesFor } from '../i18n/industry-labels';
+import { pageLang } from '../i18n';
+import { l } from '../i18n/config';
 import Icon from './Icon.astro';
 import SocialLinks from './SocialLinks.astro';
+import LangSwitcher from './LangSwitcher.astro';
 
-const path = Astro.url.pathname;
+const pathname = Astro.url.pathname;
+const { lang, path, t } = pageLang(pathname);
+const ui = t.ui;
+const industries = industriesFor(lang);
+const labelOf: Record<string, string> = { '/services/': ui.nav.services, '/work/': ui.nav.work, '/about/': ui.nav.about, '/blog/': ui.nav.blog, '/get-started/': ui.nav.products };
 const isActive = (href: string) => !href.includes('#') && (path === href || (href !== '/' && path.startsWith(href)));
+const home = l(lang, '/');
 ---
 <header class="site-header">
   <div class="island">
-    <a class="logo" href="/" aria-label="Isogun Labs, home">
-      <img src="/assets/logo-wordmark.webp" width="150" height="34" alt="Isogun Labs" fetchpriority="high" />
+    <a class="logo" href={home} aria-label={ui.homeLabel}>
+      <img src="/assets/logo-wordmark-clear.webp" width="150" height="34" alt="Isogun Labs" fetchpriority="high" />
     </a>
     <nav class="nav-links" aria-label="Main">
       <span class="nav-blob" aria-hidden="true"></span>
-      {navLinks.map((l) => l.menu ? (
+      {navLinks.map((n) => n.menu ? (
         <div class="nav-item has-menu">
-          <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined} aria-haspopup="true">{l.label}</a>
+          <a href={l(lang, n.href)} aria-current={isActive(n.href) ? 'page' : undefined} aria-haspopup="true">{labelOf[n.href]}</a>
           <div class="mega">
             <div class="mega-list">
               {industries.map((i) => (
-                <a class="mega-item" href={`/services/${i.slug}/`} data-preview={i.slug} aria-current={path === `/services/${i.slug}/` ? 'page' : undefined}>
+                <a class="mega-item" href={l(lang, `/services/${i.slug}/`)} data-preview={i.slug} aria-current={path === `/services/${i.slug}/` ? 'page' : undefined}>
                   <span class="mi-icon"><Icon name={i.icon} /></span>
                   <span class="mi-text"><b>{i.anchor}</b><small>{i.menuText}</small></span>
                 </a>
               ))}
-              <a class="mega-item mega-all" href="/services/" data-preview="all-services">
+              <a class="mega-item mega-all" href={l(lang, '/services/')} data-preview="all-services">
                 <span class="mi-icon"><Icon name="squares-four" /></span>
-                <span class="mi-text"><b>All services</b><small>Web design, web apps and online stores</small></span>
+                <span class="mi-text"><b>{ui.allServices}</b><small>{ui.allServicesSub}</small></span>
               </a>
             </div>
             <div class="mega-preview" aria-hidden="true">
-              {[...industries.map((i) => ({ slug: i.slug, ...i.preview })), { slug: 'all-services', tag: 'All services', title: 'Web design, web apps and online stores' }].map((p) => (
+              {[...industries.map((i) => ({ slug: i.slug, ...i.preview })), { slug: 'all-services', tag: ui.allServicesTag, title: ui.allServicesSub }].map((p) => (
                 <figure class="mp" data-for={p.slug}>
                   <img data-src={`/assets/menu/${p.slug}.webp`} alt="" width="960" height="720" decoding="async" />
                   <span class="mp-tag">{p.tag}</span>
@@ -42,46 +50,48 @@ const isActive = (href: string) => !href.includes('#') && (path === href || (hre
           </div>
         </div>
       ) : (
-        <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
+        <a href={l(lang, n.href)} aria-current={isActive(n.href) ? 'page' : undefined}>{labelOf[n.href]}</a>
       ))}
     </nav>
-    <a class="btn btn-lime btn-sm nav-cta" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-sheet">Menu</button>
+    <LangSwitcher lang={lang} pathname={pathname} label={ui.language} />
+    <a class="btn btn-lime btn-sm nav-cta" href={l(lang, ctaHref)}>{ui.cta} <Icon name="arrow-right" /></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-sheet">{ui.menu}</button>
   </div>
 </header>
 
-<div class="sheet" id="menu-sheet" role="dialog" aria-modal="true" aria-label="Menu">
+<div class="sheet" id="menu-sheet" role="dialog" aria-modal="true" aria-label={ui.menu}>
   <div class="sheet-top">
-    <a class="logo" href="/" aria-label="Isogun Labs, home">
+    <a class="logo" href={home} aria-label={ui.homeLabel}>
       <img src="/assets/logo-wordmark.webp" width="176" height="40" alt="Isogun Labs" />
     </a>
-    <button class="sheet-close" type="button"><Icon name="x" /> Close</button>
+    <button class="sheet-close" type="button"><Icon name="x" /> {ui.close}</button>
   </div>
-  <nav aria-label="Menu">
-    {navLinks.map((l) => l.menu ? (
+  <nav aria-label={ui.menu}>
+    {navLinks.map((n) => n.menu ? (
       <div class="sheet-group">
         <div class="sheet-row">
-          <a href={l.href}>{l.label}</a>
-          <button class="sheet-toggle" type="button" aria-expanded="false" aria-controls="sheet-services" aria-label="Show services"><span aria-hidden="true"></span></button>
+          <a href={l(lang, n.href)}>{labelOf[n.href]}</a>
+          <button class="sheet-toggle" type="button" aria-expanded="false" aria-controls="sheet-services" aria-label={ui.showServices} data-show={ui.showServices} data-hide={ui.hideServices}><span aria-hidden="true"></span></button>
         </div>
         <div class="sheet-sub" id="sheet-services">
           <div class="sheet-sub-in">
             {industries.map((i) => (
-              <a href={`/services/${i.slug}/`}>
+              <a href={l(lang, `/services/${i.slug}/`)}>
                 <span class="mi-icon"><Icon name={i.icon} /></span>
                 <span class="mi-text"><b>{i.anchor}</b><small>{i.menuText}</small></span>
               </a>
             ))}
-            <a class="sheet-all" href="/services/">All services <Icon name="arrow-right" /></a>
+            <a class="sheet-all" href={l(lang, '/services/')}>{ui.allServices} <Icon name="arrow-right" /></a>
           </div>
         </div>
       </div>
     ) : (
-      <a href={l.href}>{l.label} <Icon name="arrow-up-right" /></a>
+      <a href={l(lang, n.href)}>{labelOf[n.href]} <Icon name="arrow-up-right" /></a>
     ))}
   </nav>
   <div class="sheet-foot">
-    <a class="btn btn-ink" href={ctaHref}>{ctaLabel} <Icon name="arrow-right" /></a>
+    <LangSwitcher lang={lang} pathname={pathname} label={ui.language} variant="sheet" />
+    <a class="btn btn-ink" href={l(lang, ctaHref)}>{ui.cta} <Icon name="arrow-right" /></a>
     <SocialLinks />
   </div>
 </div>

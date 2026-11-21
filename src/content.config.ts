@@ -13,4 +13,10 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+// Translated posts live in src/content/blog-tr/<lang>/<slug>.md, with the same front matter as the English post.
+const blogTr = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog-tr' }),
+  schema: blog.schema as any,
+});
+
+export const collections = { blog, blogTr };

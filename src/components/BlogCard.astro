@@ -1,21 +1,22 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import BlogCover from './BlogCover.astro';
 import { categoryFor } from '../lib/blogCategory';
+import { blogUi } from '../i18n/blog-ui';
+import { localePath, type Locale } from '../i18n/config';
+import type { Post } from '../lib/blogPosts';
 
-interface Props {
-  post: CollectionEntry<'blog'>;
-}
-const { post } = Astro.props;
-
-const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-const readingTime = Math.max(1, Math.round((post.body ?? '').trim().split(/\s+/).length / 200));
+interface Props { post: Post; lang?: Locale }
+const { post, lang = 'en' } = Astro.props;
+const ui = blogUi[lang];
+const dateFmt = new Intl.DateTimeFormat(ui.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' });
+const readingTime = Math.max(1, Math.round(post.body.trim().split(/\s+/).length / 200));
 const category = categoryFor(post.data.cover);
+const label = ui.categories[post.data.cover as keyof typeof ui.categories] ?? category.label;
 ---
-<a class="blog-card" href={`/blog/${post.id}/`} data-category={category.label}>
+<a class="blog-card" href={localePath(lang, `/blog/${post.slug}/`)} data-category={label}>
   <div class="blog-card-cover">
     <BlogCover variant={post.data.cover} size="sm" />
-    <span class="blog-card-category">{category.label}</span>
+    <span class="blog-card-category">{label}</span>
     <h2 class="blog-card-title-overlay">{post.data.title}</h2>
   </div>
   <div class="blog-card-footer">
@@ -26,7 +27,7 @@ const category = categoryFor(post.data.cover);
       </span>
       <span>
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
-        {readingTime} min read
+        {readingTime} {ui.minRead}
       </span>
     </div>
     <p>{post.data.description}</p>

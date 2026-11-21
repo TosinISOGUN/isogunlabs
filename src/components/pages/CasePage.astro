@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import { contact } from '../../data/nav';
+import { dict, fill } from '../../i18n';
+import { workFor } from '../../i18n/work';
+import { industryPage } from '../../i18n/industry-labels';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale; slug: string }
+const { lang, slug } = Astro.props;
+const t = dict[lang];
+const { ui, cases } = workFor(lang);
+const c = cases.find((x) => x.slug === slug)!;
+const industry = c.industry ? industryPage(lang, c.industry) : undefined;
+const more = cases.filter((x) => x.slug !== c.slug).slice(0, 3);
+const path = l(lang, `/work/${c.slug}/`);
+const url = `https://isogunlabs.com${path}`;
+---
+<BaseLayout
+  title={fill(ui.caseTitle, { name: c.name, type: c.type })}
+  description={fill(ui.caseDesc, { line: c.line })}
+  path={path}
+  breadcrumbs={[{ name: ui.crumb, path: l(lang, '/work/') }, { name: c.name, path }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#page`,
+        url,
+        name: fill(ui.caseTitle, { name: c.name, type: c.type }).replace(' | Isogun Labs', ''),
+        description: c.line,
+        inLanguage: lang,
+        isPartOf: { '@id': 'https://isogunlabs.com/#website' },
+        about: { '@type': 'CreativeWork', name: c.name, url: c.url, creator: { '@id': 'https://isogunlabs.com/#org' } },
+      },
+    ],
+  }}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="kicker"><a href={l(lang, '/work/')}>{ui.crumb}</a> / {c.type}</p>
+    <h1>{c.name}</h1>
+    <p class="lead">{c.line}</p>
+    <div class="ind-cta">
+      <a class="btn btn-ink" href={c.url} target="_blank" rel="noopener">{ui.visitSite} <Icon name="arrow-up-right" /></a>
+      <a class="btn btn-ghost-ink" href={l(lang, '/contact/') + '#enquiry'}>{ui.wantLike}</a>
+    </div>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="case-shot">
+      <img src={`/assets/work/${c.slug}.webp`} alt={c.alt} width="1280" height="800" loading="eager" fetchpriority="high" decoding="async" />
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap case-grid">
+    <dl class="glance reveal">
+      <div><dt>{ui.statusLabel}</dt><dd>{c.status}</dd></div>
+      <div><dt>{ui.roleLabel}</dt><dd>{c.role}</dd></div>
+      {c.glance.map((g) => <div><dt>{g.label}</dt><dd>{g.value}</dd></div>)}
+    </dl>
+    <div class="case-copy">
+      <div class="reveal">
+        <h2>{ui.briefH}</h2>
+        <p>{c.brief}</p>
+      </div>
+      <div class="reveal">
+        <h2>{ui.builtH}</h2>
+        <p>{c.built}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight bg-2-band">
+  <div class="wrap">
+    <h2 class="h2 reveal">{ui.decisionsH}</h2>
+    <div class="need-grid">
+      {c.decisions.map((d) => (
+        <div class="need reveal">
+          <h3>{d.label}</h3>
+          <p>{d.value}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{industry && (
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="proof-card reveal" style="grid-template-columns:1fr">
+        <div>
+          <p class="kicker">{ui.similar}</p>
+          <h2 class="h2">{industry.h1}</h2>
+          <p class="lead">{industry.metaDescription}</p>
+          <p class="proof-links"><a class="link-arrow" href={l(lang, `/services/${industry.slug}/`)}>{fill(ui.seeHow, { name: industry.name.toLowerCase() })} <Icon name="arrow-right" /></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<section class="section-tight">
+  <div class="wrap">
+    <p class="kicker">{ui.moreWork}</p>
+    <div class="work-grid">
+      {more.map((m) => (
+        <article class="proj">
+          <a class="shot" href={l(lang, `/work/${m.slug}/`)} aria-label={fill(ui.caseAria, { name: m.name })} style="display:block">
+            <img src={`/assets/work/${m.slug}.webp`} alt={m.alt} width="1280" height="800" loading="lazy" decoding="async" />
+          </a>
+          <h3><a href={l(lang, `/work/${m.slug}/`)} style="text-decoration:none">{m.name}</a></h3>
+          <p class="meta">{m.line}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>{ui.ctaH2}</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href={l(lang, '/contact/') + '#enquiry'}>{t.ui.sendBrief} <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">{t.ui.bookCall}</a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

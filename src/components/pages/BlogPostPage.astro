@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCover from '../BlogCover.astro';
+import BlogCard from '../BlogCard.astro';
+import ShareBar from '../ShareBar.astro';
+import { render } from 'astro:content';
+import { postsFor } from '../../lib/blogPosts';
+import { blogUi } from '../../i18n/blog-ui';
+import { l, localePath, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale; slug: string }
+const { lang, slug } = Astro.props;
+const ui = blogUi[lang];
+const posts = await postsFor(lang);
+const post = posts.find((p) => p.slug === slug)!;
+const { Content } = await render(post.entry);
+
+const dateFmt = new Intl.DateTimeFormat(ui.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' });
+const readingTime = Math.max(1, Math.round(post.body.trim().split(/\s+/).length / 200));
+const readNext = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
+
+// Keep the page title near 60 characters: the brand suffix is only added when it fits.
+const seoTitle = post.data.title.length + 14 <= 62 ? `${post.data.title} | Isogun Labs` : post.data.title;
+const publishedTime = post.data.pubDate.toISOString();
+const modifiedTime = (post.data.updatedDate ?? post.data.pubDate).toISOString();
+const path = localePath(lang, `/blog/${post.slug}/`);
+
+const publisher = {
+  '@type': 'Organization',
+  name: 'Isogun Labs',
+  url: 'https://isogunlabs.com/',
+  logo: { '@type': 'ImageObject', url: 'https://isogunlabs.com/assets/icons/icon-512.png' },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  inLanguage: lang,
+  image: 'https://isogunlabs.com/assets/og-image.png',
+  datePublished: publishedTime,
+  dateModified: modifiedTime,
+  author: { '@type': 'Person', name: 'Oluwatomisin Isogun', url: 'https://portfolio.isogunlabs.com' },
+  publisher,
+  isPartOf: { '@type': 'Blog', '@id': `https://isogunlabs.com${localePath(lang, '/blog/')}`, name: 'Isogun Labs Blog' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://isogunlabs.com${path}` },
+};
+const c = ui.cta;
+---
+<BaseLayout
+  title={seoTitle}
+  description={post.data.description}
+  path={path}
+  jsonLd={jsonLd}
+  breadcrumbs={[{ name: ui.crumb, path: localePath(lang, '/blog/') }, { name: post.data.title, path }]}
+  type="article"
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="kicker"><a href={localePath(lang, '/blog/')}>{ui.crumb}</a></div>
+    <h1 style="max-width:20ch;font-size:clamp(2.2rem,5vw,4.2rem)">{post.data.title}</h1>
+    <p class="post-meta">
+      <time datetime={post.data.pubDate.toISOString()}>{dateFmt.format(post.data.pubDate)}</time>
+      <span class="dot" aria-hidden="true"></span>
+      <span>{readingTime} {ui.minRead}</span>
+    </p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+    <div style="max-width:70ch; margin:0 auto; font-size:1.08rem;">
+      <BlogCover variant={post.data.cover} size="lg" />
+      <ShareBar url={`https://isogunlabs.com${path}`} title={post.data.title} lang={lang} />
+    </div>
+    <article class="prose">
+      <Content />
+    </article>
+
+    <aside class="prose post-cta">
+      <h2>{c.h2}</h2>
+      <p>{c.before}<a href={l(lang, '/services/')}>{c.l1}</a>{c.m1}<a href={l(lang, '/work/')}>{c.l2}</a>{c.m2}<a href={l(lang, '/contact/')}>{c.l3}</a>{c.end}</p>
+    </aside>
+
+    {readNext.length > 0 && (
+      <div class="prose read-next">
+        <div class="kicker">{ui.readNext}</div>
+        <div class="blog-grid">
+          {readNext.map((p) => <BlogCard post={p} lang={lang} />)}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+</BaseLayout>

@@ -1,0 +1,10 @@
+---
+import IndustryPage from '../../../../components/pages/IndustryPage.astro';
+import { industrySlugs, otherLocales } from '../../../../i18n/config';
+
+export function getStaticPaths() {
+  return otherLocales.flatMap((lang) => industrySlugs.map((slug) => ({ params: { lang, slug } })));
+}
+const { lang, slug } = Astro.params;
+---
+<IndustryPage lang={lang as any} slug={slug!} />

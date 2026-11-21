@@ -1,0 +1,10 @@
+---
+import WorkPage from '../../../components/pages/WorkPage.astro';
+import { otherLocales } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return otherLocales.map((lang) => ({ params: { lang } }));
+}
+const { lang } = Astro.params;
+---
+<WorkPage lang={lang as any} />

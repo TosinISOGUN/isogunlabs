@@ -1,15 +1,20 @@
 ---
 // No newsletter capture on purpose: a real one needs an email service and stored addresses.
-// This uses a plain mailto link instead.
+// This uses a plain link to the contact page instead.
+import { blogUi } from '../i18n/blog-ui';
+import { l, type Locale } from '../i18n/config';
+interface Props { lang?: Locale }
+const { lang = 'en' } = Astro.props;
+const s = blogUi[lang].sidebar;
 ---
 <aside class="blog-sidebar">
   <div class="blog-sidebar-card">
-    <h3>Got a question?</h3>
-    <p>We read every email ourselves. There is no support queue and no bot. Ask us anything about websites, Jira admin, our apps or what we are building next.</p>
-    <a class="link-arrow" href="/contact/">Start a project</a>
+    <h3>{s.qH}</h3>
+    <p>{s.qP}</p>
+    <a class="link-arrow" href={l(lang, '/contact/')}>{s.qLink}</a>
   </div>
   <div class="blog-sidebar-card">
-    <h3>What we write about</h3>
-    <p>Practical notes on building websites and web apps, Jira admin, status reporting and shipping focused apps on Atlassian Forge. No filler, no listicles.</p>
+    <h3>{s.whatH}</h3>
+    <p>{s.whatP}</p>
   </div>
 </aside>
