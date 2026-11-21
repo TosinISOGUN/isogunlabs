@@ -36,6 +36,17 @@
     window.addEventListener('resize', function () { moveTo(current); });
   }
 
+  // Escape closes the Services dropdown when keyboard focus is inside it.
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var item = document.querySelector('.nav-item.has-menu');
+    if (item && item.contains(document.activeElement)) { document.activeElement.blur(); item.classList.add('closed'); }
+  });
+  var menuItem = document.querySelector('.nav-item.has-menu');
+  if (menuItem) {
+    ['mouseleave', 'focusout'].forEach(function (ev) { menuItem.addEventListener(ev, function () { menuItem.classList.remove('closed'); }); });
+  }
+
   // Full-screen menu on small screens
   var openBtn = document.querySelector('.menu-btn');
   var sheet = document.getElementById('menu-sheet');

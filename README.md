@@ -47,7 +47,7 @@ src/
   layouts/BaseLayout.astro   shared <head>, navigation, mobile menu and footer
   components/                Seo, Nav, Footer, Icon, SocialLinks, BlogCard, BlogCover,
                              BlogSidebar, ShareBar, ScreenshotSlider
-  data/nav.ts                navigation links, contact details, the enquiry form endpoint and the call to action
+  data/nav.ts                navigation links (the Services dropdown is built from industries.ts), contact details, the enquiry form endpoint and the call to action
   data/industries.ts         the copy for each industry landing page
   data/caseStudies.ts        the copy for each case study
   lib/blogCategory.ts        blog categories, derived from each post's cover value
@@ -66,6 +66,7 @@ Routes in `src/pages/`:
 | `/services/` | Services |
 | `/services/<industry>/` | Landing pages by industry: restaurants, clinics, realtors, gyms, beauty brands, startups, and website redesign |
 | `/work/` | Recent work |
+| `/about/` | About the studio and its founder |
 | `/work/<project>/` | A case study for each project |
 | `/contact/` | Contact: enquiry form, booking link, WhatsApp and email |
 | `/contact/thanks/` | Thank-you page after the enquiry form (not indexed) |

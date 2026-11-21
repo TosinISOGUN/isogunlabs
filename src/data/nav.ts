@@ -1,9 +1,9 @@
-export const navLinks = [
-  { href: '/services/', label: 'Services' },
+export const navLinks: { href: string; label: string; menu?: boolean }[] = [
+  { href: '/services/', label: 'Services', menu: true },
   { href: '/work/', label: 'Work' },
-  { href: '/get-started/', label: 'Atlassian apps' },
+  { href: '/about/', label: 'About' },
   { href: '/blog/', label: 'Blog' },
-  { href: '/#about', label: 'About' },
+  { href: '/get-started/', label: 'Products' },
 ];
 
 export const ctaLabel = 'Start a project';

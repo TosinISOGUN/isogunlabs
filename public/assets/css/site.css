@@ -549,3 +549,42 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* On the lime band the outline button always uses the dark ink, in light and dark mode (the theme ink is pale in dark mode and disappears on lime). */
 .cta .btn-ghost-ink { border-color: var(--field-ink); color: var(--field-ink); }
 .cta .btn-ghost-ink:hover { background: var(--field-ink); color: var(--field); }
+
+
+/* ============================================================
+   Navigation: Services dropdown, phone sub-list, About page
+   ============================================================ */
+/* display: contents keeps each link a direct child of .nav-links for the sliding highlight's measurements */
+.nav-item { display: contents; }
+.nav-item.has-menu > a::after { content: ''; display: inline-block; width: .42em; height: .42em; margin-inline-start: .45em; border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor; transform: translateY(-.14em) rotate(45deg); transition: transform .25s var(--ease); }
+.nav-item.has-menu:hover > a::after, .nav-item.has-menu:focus-within > a::after { transform: translateY(-.02em) rotate(225deg); }
+.mega { position: absolute; z-index: 5; top: 100%; left: -6px; min-width: 300px; padding: 14px 8px 8px; opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .2s, transform .25s var(--ease), visibility 0s linear .25s; }
+.mega::before { content: ''; position: absolute; inset: 14px 0 0 0; z-index: -1; border-radius: 22px; background: var(--black); box-shadow: inset 0 0 0 1px #2f3329, 0 26px 60px -18px rgba(0,0,0,.75); }
+.nav-item.has-menu:hover .mega, .nav-item.has-menu:focus-within .mega { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.nav-item.has-menu.closed .mega { opacity: 0; visibility: hidden; }
+.nav-links .mega a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .62rem .9rem; border-radius: 14px; font-size: .95rem; color: var(--on-black); white-space: nowrap; }
+.nav-links .mega a:hover, .nav-links .mega a:focus-visible { background: #20241A; color: var(--accent); }
+.nav-links .mega a[aria-current="page"] { color: var(--accent); }
+.nav-links .mega .mega-all { margin-top: .3rem; border-top: 1px solid #272a22; border-radius: 0 0 14px 14px; padding-top: .8rem; color: var(--on-black-muted); font-weight: 600; }
+.nav-links .mega .i { width: .9em; height: .9em; }
+
+.sheet-sub { display: grid; padding: .3rem 0 .6rem 1rem; border-bottom: 1.5px solid color-mix(in srgb, var(--field-ink) 22%, transparent); }
+.sheet nav .sheet-sub a { border-bottom: 0; padding: .3rem 0; font-family: var(--ff); font-weight: 600; font-size: 1.1rem; letter-spacing: 0; opacity: .85; }
+
+/* About page */
+.founder { display: grid; gap: 1.8rem; align-items: start; }
+.founder-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: top; box-shadow: var(--shadow); }
+@media (min-width: 800px) { .founder { grid-template-columns: 140px 1fr; gap: 3rem; } }
+.atl-band { display: grid; gap: 2rem; align-items: center; padding: clamp(1.4rem, 3.4vw, 2.6rem); border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); }
+.atl-list { display: grid; gap: .6rem; }
+.atl-list a { display: grid; grid-template-columns: 1fr auto; gap: .2rem 1rem; align-items: center; padding: 1rem 1.2rem; border-radius: var(--r-s); border: 1px solid var(--line); background: var(--bg); text-decoration: none; transition: transform .25s var(--ease), box-shadow .25s; }
+.atl-list a:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.atl-list b { font-family: var(--ff-display); font-size: 1.15rem; letter-spacing: -.02em; }
+.atl-list span { grid-column: 1; color: var(--muted); font-size: .95rem; }
+.atl-list .i { grid-column: 2; grid-row: 1 / span 2; }
+@media (min-width: 900px) { .atl-band { grid-template-columns: 1.1fr .9fr; gap: 3rem; } }
+
+/* The header pill clips its contents on phones; on desktop the Services dropdown must be able to hang below it. */
+@media (min-width: 980px) { .island { overflow: visible; } }
+/* A grid of four items sits in two columns, so no cell is left empty. */
+@media (min-width: 700px) { .need-grid.need-grid-2 { grid-template-columns: repeat(2, 1fr); } }
