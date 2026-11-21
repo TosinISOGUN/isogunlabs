@@ -111,17 +111,34 @@ body.sheet-open { overflow: hidden; }
 .kicker { font: 600 .8rem/1 var(--ff); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem; }
 .head-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.8rem; }
 
-/* ---------- hero: flat black, one huge headline, a fan of photo cards over its lower edge ---------- */
-.hero { --hs: clamp(2.9rem, 9.2vw, 9.2rem); --cw: calc(var(--hs) * 1.3); position: relative; display: grid; place-items: center; min-height: max(100svh, 680px); padding: calc(var(--nav-h) + 1rem) 0 clamp(2.5rem, 6vh, 4rem); text-align: center; color: #fff; background: var(--black); overflow: hidden; }
-.hero-center { display: grid; justify-items: center; }
-.hero h1 { font-weight: 800; font-size: var(--hs); line-height: .96; letter-spacing: -.05em; }
+/* ---------- hero: black field, scattered photo tiles, a huge headline over them (after the NOOO reference) ---------- */
+.hero { --hs: clamp(2.8rem, 8.4vw, 8.6rem); position: relative; display: block; min-height: max(100svh, 62vw, 640px); text-align: left; color: #fff; background: var(--black); overflow: hidden; }
+.hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.25) 34%, rgba(0,0,0,0) 56%); }
+.hero-tiles { position: absolute; inset: 0; }
+.ht { position: absolute; height: auto; object-fit: cover; border-radius: 4px; background: #111; }
+.ht-a { left: 22vw; top: -3vw; width: 15vw; aspect-ratio: 4 / 5; }
+.ht-b { left: 62vw; top: -2vw; width: 26.5vw; aspect-ratio: 1.45 / 1; }
+.ht-c { left: 32vw; bottom: 3vw; width: 30vw; aspect-ratio: 30 / 38; }
+.ht-d { right: 0; top: 10vw; width: 11.4vw; aspect-ratio: 11.4 / 46; border-radius: 4px 0 0 4px; }
+.hero-center { position: absolute; z-index: 2; left: 0; right: 0; bottom: clamp(1.6rem, 4.5vw, 3.6rem); display: grid; justify-items: start; }
+.hero-sub { max-width: 34ch; font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.88); margin-bottom: clamp(.8rem, 1.6vw, 1.4rem); }
+.hero h1 { font-weight: 800; font-size: var(--hs); line-height: .92; letter-spacing: -.05em; }
 .hero h1 span { display: block; }
 .hero h1 em { font-style: normal; color: var(--accent); }
-.hero-sub { margin-top: clamp(1.4rem, 3vw, 2.2rem); max-width: 30ch; font-size: clamp(.98rem, 1.25vw, 1.15rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.85); }
-@media (prefers-reduced-motion: no-preference) {
-  .hero h1, .hero-sub { animation: rise .9s var(--ease) both; }
-  .hero-sub { animation-delay: .25s; }
+html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
+@media (max-width: 700px) {
+  .hero { min-height: max(100svh, 640px); }
+  .ht-a, .ht-d { display: none; }
+  .ht-b { left: auto; right: 0; top: 24vw; width: 56vw; }
+  .ht-c { left: 8vw; top: 56vw; bottom: auto; width: 62vw; }
 }
+@media (prefers-reduced-motion: no-preference) {
+  .ht { animation: tile-in 1s var(--ease) both; }
+  .ht-b { animation-delay: .1s; } .ht-c { animation-delay: .2s; } .ht-d { animation-delay: .3s; }
+  .hero h1, .hero-sub { animation: rise .9s var(--ease) both; }
+  .hero h1 { animation-delay: .15s; }
+}
+@keyframes tile-in { from { opacity: 0; translate: 0 32px; } }
 @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 
 /* tech logos */
@@ -667,14 +684,31 @@ html:not([lang="en"]) .hero { --hs: clamp(2.5rem, 6.6vw, 6.6rem); }
 .lang-bar .lang-check .i { width: .85rem; height: .85rem; }
 
 /* ============================================================
-   Header on desktop: three floating capsules (logo, links, language and action),
-   after the "logo bubble plus link pill" navigation in the inspiration set.
+   Header on desktop, after the NOOO reference: a plain bar with the logo at the left, small links at the
+   right, then the language, the action and a menu icon. It is see-through over the home hero until you scroll.
    ============================================================ */
 @media (min-width: 980px) {
-  .island { width: min(100% - 2 * var(--gutter), 1240px); height: 56px; top: 14px; padding: 0; gap: 14px; background: transparent; box-shadow: none; border-radius: 0; overflow: visible; }
-  .site-header.scrolled .island { box-shadow: none; }
-  .island .logo { height: 56px; padding: 0 24px; border-radius: 999px; background: var(--black); box-shadow: inset 0 0 0 1px #2a2d24, 0 12px 30px -14px rgba(0,0,0,.5); }
-  .island .nav-links { height: 56px; padding: 0 8px; margin-inline: auto; border-radius: 999px; background: var(--black); box-shadow: inset 0 0 0 1px #2a2d24, 0 12px 30px -14px rgba(0,0,0,.5); }
-  .island .lang-bar { height: 56px; display: flex; align-items: center; padding: 0 6px; border-radius: 999px; background: var(--black); box-shadow: inset 0 0 0 1px #2a2d24, 0 12px 30px -14px rgba(0,0,0,.5); }
-  .island .nav-cta { height: 56px; min-height: 56px; padding: 0 1.5rem; box-shadow: 0 12px 30px -14px rgba(0,0,0,.5); }
+  .island { width: 100%; max-width: none; left: 0; top: 0; transform: none; height: 76px; padding: 0 var(--gutter); gap: 1.6rem; border-radius: 0; background: var(--black); box-shadow: none; overflow: visible; transition: background .3s; }
+  .site-header.scrolled .island { box-shadow: 0 1px 0 #1c1e18; }
+  body.is-home .site-header:not(.scrolled) .island { background: transparent; }
+  .island .logo img { height: 36px; }
+  .island .nav-links { margin-inline: auto 0; gap: .2rem; }
+  .island .nav-links a { padding: .55rem .9rem; font-size: .9rem; font-weight: 600; color: #fff; }
+  .island .nav-links a:hover, .island .nav-links a:focus-visible { color: var(--accent); }
+  .island .nav-links a[aria-current="page"] { color: var(--accent); }
+  .nav-blob { display: none; }
+  .island .lang-bar { height: auto; padding: 0; background: transparent; box-shadow: none; }
+  .island .nav-cta { min-height: 42px; height: 42px; padding: 0 1.2rem; box-shadow: none; }
+  .island .menu-btn { display: inline-grid; place-items: center; width: 44px; min-height: 44px; padding: 0; margin: 0; background: transparent; font-size: 0; position: relative; }
+  .island .menu-btn::before { content: ''; width: 22px; height: 2px; background: #fff; border-radius: 2px; box-shadow: 0 -7px 0 #fff, 0 7px 0 #fff; }
+  .island .menu-btn:hover { background: transparent; }
+  .island .menu-btn:hover::before { background: var(--accent); box-shadow: 0 -7px 0 var(--accent), 0 7px 0 var(--accent); }
+  .sheet { display: flex; }
+  .lang-sheet { display: block; }
 }
+
+/* The header shows the company name as text; the logo image stays in the footer and the phone menu. */
+.island .logo-text { font-family: var(--ff-display); font-weight: 800; font-size: 1.4rem; letter-spacing: -.04em; line-height: 1; color: #fff; transition: color .2s; }
+.island .logo:hover .logo-text { color: var(--accent); }
+@media (max-width: 979px) { .island .logo-text { font-size: 1.25rem; } }
+.island .logo { text-decoration: none; }

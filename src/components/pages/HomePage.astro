@@ -131,9 +131,15 @@ const ctaHref = l(lang, '/contact/');
 >
 
 <section class="hero">
+  <div class="hero-tiles" aria-hidden="true">
+    <img class="ht ht-a" src="/assets/hero/t-a.webp" alt="" width="520" height="650" decoding="async" fetchpriority="high" />
+    <img class="ht ht-b" src="/assets/hero/t-b.webp" alt="" width="1000" height="690" decoding="async" fetchpriority="high" />
+    <img class="ht ht-c" src="/assets/hero/t-c.webp" alt="" width="900" height="1140" decoding="async" fetchpriority="high" />
+    <img class="ht ht-d" src="/assets/hero/t-d.webp" alt="" width="460" height="1000" decoding="async" fetchpriority="high" />
+  </div>
   <div class="wrap hero-center">
-    <h1><span>{h.h1.split("|")[0]}</span> <span>{h.h1.split("|")[1]} <em>{h.h1em}</em></span></h1>
     <p class="hero-sub">{h.sub}</p>
+    <h1><span>{h.h1.split("|")[0]}</span> <span>{h.h1.split("|")[1]} <em>{h.h1em}</em></span></h1>
   </div>
 </section>
 
