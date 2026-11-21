@@ -127,6 +127,7 @@ html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
   .hero { height: max(100svh, 600px); }
   .ht { width: calc(var(--w) * 2.3vw); }
   .ht-wide { display: none; }
+  .hero-center { bottom: 6.5rem; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .ht { animation: tile-in 1s var(--ease) both; animation-delay: var(--d, 0s); }
