@@ -652,3 +652,16 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .lang-sheet.open .lang-panel { max-height: 520px; padding: 10px; margin-top: .6rem; }
 @media (min-width: 980px) { .lang-sheet { display: none; } }
 html:not([lang="en"]) .hero { --hs: clamp(2.5rem, 6.6vw, 6.6rem); }
+
+/* Language menu on desktop: smaller, and it pops open when the pointer reaches the button */
+.lang-bar .lang-panel { top: calc(100% + 10px); width: 268px; padding: 8px; border-radius: 22px; transform-origin: 85% 0; transform: translateY(-6px) scale(.92); transition: opacity .18s, transform .3s cubic-bezier(.34, 1.56, .64, 1), visibility 0s linear .3s; }
+.lang-bar .lang-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+.lang-bar.open .lang-panel { transform: none; }
+@media (hover: hover) { .lang-bar:hover .lang-panel, .lang-bar:focus-within .lang-panel { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; } .lang-bar:hover .lang-btn { background: rgba(255,255,255,.1); } .lang-bar:hover .lang-caret { transform: translateY(-.02em) rotate(225deg); } }
+.lang-bar .lang-row { gap: .75rem; padding: .5rem .65rem; border-radius: 16px; }
+.lang-bar .lang-flag { width: 38px; height: 38px; }
+.lang-bar .lang-flag .i { width: 1.1rem; height: 1.1rem; }
+.lang-bar .lang-text b { font-size: .98rem; }
+.lang-bar .lang-text small { font-size: .78rem; }
+.lang-bar .lang-check { width: 28px; height: 28px; }
+.lang-bar .lang-check .i { width: .85rem; height: .85rem; }

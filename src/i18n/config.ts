@@ -10,7 +10,7 @@ export const localeInfo: Record<Locale, { name: string; region: string; short: s
   en: { name: 'English', region: 'Global', short: 'EN', htmlLang: 'en', ogLocale: 'en_US', flag: null },
   fr: { name: 'Français', region: 'France, Canada, Belgique', short: 'FR', htmlLang: 'fr', ogLocale: 'fr_FR', flag: '/assets/flags/fr.svg' },
   es: { name: 'Español', region: 'España, Latinoamérica', short: 'ES', htmlLang: 'es', ogLocale: 'es_ES', flag: '/assets/flags/es.svg' },
-  de: { name: 'Deutsch', region: 'Deutschland, Österreich, Schweiz', short: 'DE', htmlLang: 'de', ogLocale: 'de_DE', flag: '/assets/flags/de.svg' },
+  de: { name: 'Deutsch', region: 'Deutschland, Österreich', short: 'DE', htmlLang: 'de', ogLocale: 'de_DE', flag: '/assets/flags/de.svg' },
   pt: { name: 'Português', region: 'Portugal, Brasil', short: 'PT', htmlLang: 'pt', ogLocale: 'pt_PT', flag: '/assets/flags/pt.svg' },
 };
 
