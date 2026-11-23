@@ -61,9 +61,23 @@
     }
     button.disabled = true;
     say(form.dataset.mSending || 'Sending...', false);
-    fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-      .then(function (res) {
-        if (!res.ok) throw new Error('status ' + res.status);
+    var backup = form.dataset.backup;
+    var jobs = [
+      fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (res) { return res.ok; }, function () { return false; })
+    ];
+    if (backup) {
+      var payload = {};
+      Object.keys(labels).forEach(function (k) { payload[k] = form.elements[k].value; });
+      jobs.push(
+        fetch(backup, { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json' } })
+          .then(function (res) { return res.ok; }, function () { return false; })
+      );
+    }
+    // Sent if either route took it, so one service being down never loses an enquiry.
+    Promise.all(jobs)
+      .then(function (results) {
+        if (!results.some(Boolean)) throw new Error('all routes failed');
         track('generate_lead', { method: 'enquiry_form' });
         window.location.href = form.dataset.thanks || '/contact/thanks/';
       })

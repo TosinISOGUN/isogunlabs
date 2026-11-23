@@ -1,0 +1,11 @@
+name = "isogunlabs-enquiry"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# Who gets the email. Comma separated for more than one.
+NOTIFY_TO = "tomisin@isogunlabs.com"
+# Must be on the domain verified in Resend (send.isogunlabs.com).
+MAIL_FROM = "Isogun Labs <enquiries@send.isogunlabs.com>"
+# Sites allowed to call the Worker.
+ALLOWED_ORIGINS = "https://isogunlabs.com,https://www.isogunlabs.com"
