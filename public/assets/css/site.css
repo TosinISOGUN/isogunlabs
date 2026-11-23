@@ -118,8 +118,8 @@ body.sheet-open { overflow: hidden; }
 .hero { --hs: clamp(2.6rem, min(8.4vw, 15vh), 8.6rem); position: relative; display: block; height: max(100svh, 560px); text-align: left; color: #fff; background: var(--black); overflow: hidden; }
 .hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 70% 38% at 50% 50%, rgba(0,0,0,.72) 0%, rgba(0,0,0,.4) 55%, rgba(0,0,0,0) 100%), linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 16%); }
 .hero-center { text-shadow: 0 2px 24px rgba(0,0,0,.45); }
-.hero-tiles { position: absolute; inset: 0; }
-.ht { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1vw); height: auto; aspect-ratio: var(--ar); object-fit: cover; border-radius: 4px; background: #111; will-change: transform; filter: blur(1.2px); }
+.hero-tiles { position: absolute; inset: 0; pointer-events: none; user-select: none; -webkit-user-select: none; }
+.ht { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1vw); height: auto; aspect-ratio: var(--ar); object-fit: cover; border-radius: 4px; background: #111; will-change: transform; filter: blur(1.2px); pointer-events: none; -webkit-user-drag: none; user-select: none; }
 .hero-center { position: absolute; z-index: 2; left: 0; right: 0; top: 50%; transform: translateY(-50%); display: grid; justify-items: center; text-align: center; }
 .hero-sub { max-width: 34ch; margin-inline: auto; font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.45; font-weight: 500; color: rgba(255,255,255,.88); margin-top: clamp(.9rem, 1.8vw, 1.6rem); }
 .hero h1 { font-weight: 800; font-size: var(--hs); line-height: .92; letter-spacing: -.05em; }
@@ -130,6 +130,12 @@ html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
   .hero { height: max(100svh, 600px); }
   .ht { width: calc(var(--w) * 2.3vw); }
   .ht-wide { display: none; }
+  /* phones: the English headline is two clean lines ("We build" / "websites that ship."), sized to the widest line so it never wraps to a third. 3.7rem at the top end matches the desktop size at 700px, so there is no jump at the breakpoint */
+  .hero h1 { font-size: clamp(2rem, 10.9vw, 3.7rem); }
+  @media (max-width: 340px) { html[lang="en"] .hero h1 { font-size: 10.4vw; } }
+  html:not([lang="en"]) .hero h1 { font-size: clamp(2.4rem, 11.5vw, 3.3rem); }
+  .hero h1 span { text-wrap: balance; }
+  .hero-sub { font-size: 1.05rem; max-width: 30ch; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .ht { animation: tile-in 1s var(--ease) both; animation-delay: var(--d, 0s); }
@@ -241,6 +247,8 @@ html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
 .about-photo { border-radius: var(--r); overflow: hidden; aspect-ratio: 4 / 3.4; }
 .about-photo img { width: 100%; height: 100%; object-fit: cover; }
 .about-copy p { margin-top: 1.1rem; color: var(--muted); font-size: 1.1rem; max-width: 52ch; }
+.people { margin-top: 2rem; display: grid; gap: 1.1rem; }
+.people .person { margin-top: 0; }
 .person { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
 .person img { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; object-position: top; }
 .person b { display: block; font-family: var(--ff-display); font-size: 1.2rem; letter-spacing: -.02em; }
@@ -423,7 +431,9 @@ html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
 .foot-brand p { margin-top: 1.1rem; max-width: 34ch; color: var(--on-black-muted); }
 .partner-row { display: flex; align-items: center; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.6rem; }
 .partner-badge { height: 40px; width: auto; }
-.badge-chip img { height: 24px; width: auto; border-radius: 4px; }
+/* the badge's lettering is dark on a see-through background, so it sits on a white tile to stay readable on the black footer */
+.badge-chip { display: inline-flex; }
+.badge-chip img { box-sizing: content-box; height: 68px; width: auto; padding: 6px 10px; background: #fff; border-radius: 10px; }
 .foot-brand .socials { margin-top: 1.6rem; color: var(--on-black); }
 .foot-brand .socials a:hover { background: var(--field); color: var(--field-ink); border-color: var(--field); }
 .foot-col h4 { font: 600 .8rem/1 var(--ff); letter-spacing: .14em; text-transform: uppercase; color: var(--on-black-muted); margin-bottom: 1.1rem; }
@@ -573,6 +583,19 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .founder { display: grid; gap: 1.8rem; align-items: start; }
 .founder-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: top; box-shadow: var(--shadow); }
 @media (min-width: 800px) { .founder { grid-template-columns: 140px 1fr; gap: 3rem; } }
+/* the team: a row under the founder, each person laid out like the founder block */
+.team { margin-top: 3.5rem; padding-top: 3.5rem; border-top: 1px solid var(--line); }
+.team-grid { display: grid; gap: 2.6rem; margin-top: 2.2rem; }
+.team-card { display: grid; gap: 1.2rem; align-items: start; }
+.team-card h3 { font: 700 1.35rem/1.2 var(--ff); letter-spacing: -.02em; margin-bottom: .6rem; }
+.team-card .kicker { margin-bottom: .7rem; }
+.mail-link { font-weight: 600; color: var(--ink); text-underline-offset: .25em; }
+.team-card p:has(> .mail-link) { margin-top: .5rem; }
+.team-card p:not(.kicker) { color: var(--muted); }
+@media (min-width: 800px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+  .team-card { grid-template-columns: 120px 1fr; gap: 1.6rem; }
+}
 .atl-band { display: grid; gap: 2rem; align-items: center; padding: clamp(1.4rem, 3.4vw, 2.6rem); border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); }
 .atl-list { display: grid; gap: .6rem; }
 .atl-list a { display: grid; grid-template-columns: 1fr auto; gap: .2rem 1rem; align-items: center; padding: 1rem 1.2rem; border-radius: var(--r-s); border: 1px solid var(--line); background: var(--bg); text-decoration: none; transition: transform .25s var(--ease), box-shadow .25s; }

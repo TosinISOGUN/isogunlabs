@@ -14,6 +14,16 @@ const hrefs = ['https://recap.isogunlabs.com/', 'https://field-hygiene.isogunlab
 const apps = a.apps.map((x, i) => ({ ...x, href: hrefs[i] }));
 const path = l(lang, '/about/');
 const url = `https://isogunlabs.com${path}`;
+const teamSlugs = ['helen', 'olaoluwa'];
+const people = a.team.map((m, i) => ({
+  '@type': 'Person',
+  '@id': `https://isogunlabs.com/#${teamSlugs[i]}`,
+  url,
+  name: m.name,
+  jobTitle: m.role,
+  image: `https://isogunlabs.com/assets/photos/team-${teamSlugs[i]}.webp`,
+  worksFor: { '@id': 'https://isogunlabs.com/#org' },
+}));
 ---
 <BaseLayout
   title={a.title}
@@ -33,6 +43,7 @@ const url = `https://isogunlabs.com${path}`;
         about: { '@id': 'https://isogunlabs.com/#org' },
         mainEntity: { '@id': 'https://isogunlabs.com/#org' },
       },
+      ...people,
     ],
   }}
 >
@@ -70,10 +81,27 @@ const url = `https://isogunlabs.com${path}`;
       <h2 class="h2">Oluwatomisin Isogun</h2>
       <p>{a.founder1}</p>
       <p>{a.founder2}</p>
+      <p><a class="mail-link" href={`mailto:${contact.founderEmail}`}>{contact.founderEmail}</a></p>
       <p class="proof-links">
-        <a class="link-arrow" href="https://portfolio.isogunlabs.com" target="_blank" rel="noopener">{a.portfolio} <Icon name="arrow-up-right" /></a>
         <a class="link-arrow" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">{ui.bookCall} <Icon name="arrow-up-right" /></a>
       </p>
+    </div>
+  </div>
+  <div class="wrap team reveal">
+    <p class="kicker">{a.teamKicker}</p>
+    <h2 class="h2">{a.teamH2}</h2>
+    <div class="team-grid">
+      {a.team.map((m, i) => (
+        <article class="team-card">
+          <img class="founder-photo" src={`/assets/photos/team-${teamSlugs[i]}.webp`} alt={m.alt} width="320" height="320" loading="lazy" decoding="async" />
+          <div>
+            <p class="kicker">{m.role}</p>
+            <h3>{m.name}</h3>
+            <p>{m.bio}</p>
+            {contact.teamEmails[i] && <p><a class="mail-link" href={`mailto:${contact.teamEmails[i]}`}>{contact.teamEmails[i]}</a></p>}
+          </div>
+        </article>
+      ))}
     </div>
   </div>
 </section>
