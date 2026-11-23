@@ -185,7 +185,7 @@ export const en = {
 
   about: {
     title: 'About Isogun Labs | Web Design and Development Company',
-    description: 'About Isogun Labs, an independent web design and development company led by founder Oluwatomisin Isogun, serving clients in the USA, Canada, UK and Europe.',
+    description: 'Meet the team at Isogun Labs, an independent web design and development company led by founder and CTO Oluwatomisin Isogun, serving the USA, Canada, UK and Europe.',
     crumb: 'About',
     h1: 'A web design studio with a high bar',
     lead: 'Isogun Labs is an independent web design and development company. We design and build websites, web apps and Atlassian Marketplace apps for startups, small businesses and brands in the USA, Canada, the UK and Europe.',

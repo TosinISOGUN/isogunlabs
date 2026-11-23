@@ -184,7 +184,7 @@ export const fr: Dict = {
 
   about: {
     title: 'À propos d’Isogun Labs | Agence de création de sites web',
-    description: 'À propos d’Isogun Labs, agence indépendante de création de sites web et de développement dirigée par son fondateur Oluwatomisin Isogun, au service de clients aux États-Unis, au Canada, au Royaume-Uni et en Europe.',
+    description: 'L’équipe d’Isogun Labs, agence indépendante de création de sites web et de développement dirigée par son fondateur et CTO Oluwatomisin Isogun, au service de clients aux États-Unis, au Canada, au Royaume-Uni et en Europe.',
     crumb: 'À propos',
     h1: 'Un studio web qui place la barre haut',
     lead: 'Isogun Labs est une agence indépendante de création de sites web et de développement. Nous concevons et construisons des sites web, des applications web et des applications Atlassian Marketplace pour les startups, les petites entreprises et les marques aux États-Unis, au Canada, au Royaume-Uni et en Europe.',

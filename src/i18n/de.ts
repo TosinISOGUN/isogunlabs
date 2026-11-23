@@ -184,7 +184,7 @@ export const de: Dict = {
 
   about: {
     title: 'Über Isogun Labs | Webdesign- und Entwicklungsagentur',
-    description: 'Über Isogun Labs, eine unabhängige Webdesign- und Entwicklungsagentur unter der Leitung von Gründer Oluwatomisin Isogun, mit Kunden in den USA, Kanada, Großbritannien und Europa.',
+    description: 'Das Team von Isogun Labs, einer unabhängigen Webdesign- und Entwicklungsagentur unter der Leitung von Gründer und CTO Oluwatomisin Isogun, mit Kunden in den USA, Kanada, Großbritannien und Europa.',
     crumb: 'Über uns',
     h1: 'Ein Webdesign-Studio mit hohem Anspruch',
     lead: 'Isogun Labs ist eine unabhängige Webdesign- und Entwicklungsagentur. Wir gestalten und bauen Websites, Web-Apps und Atlassian-Marketplace-Apps für Startups, kleine Unternehmen und Marken in den USA, Kanada, Großbritannien und Europa.',

@@ -184,7 +184,7 @@ export const pt: Dict = {
 
   about: {
     title: 'Sobre a Isogun Labs | Empresa de design e desenvolvimento web',
-    description: 'Sobre a Isogun Labs, uma empresa independente de design e desenvolvimento web liderada pelo fundador Oluwatomisin Isogun, com clientes nos EUA, no Canadá, no Reino Unido e na Europa.',
+    description: 'Conheça a equipa da Isogun Labs, uma empresa independente de design e desenvolvimento web liderada pelo fundador e CTO Oluwatomisin Isogun, com clientes nos EUA, no Canadá, no Reino Unido e na Europa.',
     crumb: 'Sobre',
     h1: 'Um estúdio web com fasquia alta',
     lead: 'A Isogun Labs é uma empresa independente de design e desenvolvimento web. Desenhamos e construímos sites, aplicações web e aplicações do Atlassian Marketplace para startups, pequenas empresas e marcas nos EUA, no Canadá, no Reino Unido e na Europa.',

@@ -17,7 +17,8 @@ const url = `https://isogunlabs.com${path}`;
 const teamSlugs = ['helen', 'olaoluwa'];
 const people = a.team.map((m, i) => ({
   '@type': 'Person',
-  '@id': `${url}#${teamSlugs[i]}`,
+  '@id': `https://isogunlabs.com/#${teamSlugs[i]}`,
+  url,
   name: m.name,
   jobTitle: m.role,
   image: `https://isogunlabs.com/assets/photos/team-${teamSlugs[i]}.webp`,
