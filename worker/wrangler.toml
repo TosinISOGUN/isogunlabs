@@ -2,6 +2,10 @@ name = "isogunlabs-enquiry"
 main = "index.js"
 compatibility_date = "2025-01-01"
 
+# Keeps the Worker's logs (shown in the Cloudflare dashboard under the Worker's Logs tab).
+[observability]
+enabled = true
+
 [vars]
 # Who gets the email. Comma separated for more than one.
 NOTIFY_TO = "tomisin@isogunlabs.com"
