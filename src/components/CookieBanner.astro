@@ -1,0 +1,23 @@
+---
+// The cookie choice card. It stays hidden until /assets/js/consent.js finds that the visitor has not chosen yet
+// (or chose more than a year ago). Google Analytics only loads after "Accept".
+import { pageLang } from '../i18n';
+import Icon from './Icon.astro';
+
+const { t } = pageLang(Astro.url.pathname);
+const c = t.ui.footer.cookie;
+---
+<div class="cookie" id="cookie-banner" role="dialog" aria-modal="false" aria-labelledby="cookie-title" aria-describedby="cookie-text" hidden>
+  <div class="cookie-head">
+    <span class="cookie-icon" aria-hidden="true">
+      <svg viewBox="0 0 256 256" width="24" height="24" fill="currentColor"><path d="M164.49,163.51a12,12,0,1,1-17,0A12,12,0,0,1,164.49,163.51Zm-81-8a12,12,0,1,0,17,0A12,12,0,0,0,83.51,155.51Zm9-39a12,12,0,1,0-17,0A12,12,0,0,0,92.49,116.49Zm48-1a12,12,0,1,0,0,17A12,12,0,0,0,140.49,115.51ZM232,128A104,104,0,1,1,128,24a8,8,0,0,1,8,8,40,40,0,0,0,40,40,8,8,0,0,1,8,8,40,40,0,0,0,40,40A8,8,0,0,1,232,128Zm-16.31,7.39A56.13,56.13,0,0,1,168.5,87.5,56.13,56.13,0,0,1,120.61,40.31,88,88,0,1,0,215.69,135.39Z"/></svg>
+    </span>
+    <h2 id="cookie-title">{c.title}</h2>
+    <button type="button" class="cookie-x" data-consent="denied" aria-label={c.close}><Icon name="x" /></button>
+  </div>
+  <p id="cookie-text">{c.text}</p>
+  <div class="cookie-actions">
+    <button type="button" class="cookie-decline" data-consent="denied">{c.decline}</button>
+    <button type="button" class="cookie-accept" data-consent="granted">{c.accept}</button>
+  </div>
+</div>

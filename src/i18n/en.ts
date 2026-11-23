@@ -33,6 +33,9 @@ export const en = {
       bookCall: 'Book a call',
       appSupport: 'App support',
       rights: '© 2026 Isogun Labs. All rights reserved.',
+      privacy: 'Privacy and cookies',
+      cookieSettings: 'Cookie settings',
+      cookie: { title: 'Cookie Preferences', text: 'We use cookies to enhance your browsing experience and analyze site traffic. Your data helps us build a better product.', accept: 'Accept', decline: 'Decline', close: 'Close and decline' },
     },
   },
 
