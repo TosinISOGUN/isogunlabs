@@ -17,6 +17,9 @@ export const contact = {
   // Where the enquiry form sends its messages. Paste a form-service address here, for example a Formspree
   // form URL (https://formspree.io/f/xxxxxxxx). While it is empty, the form opens the visitor's email app instead.
   formEndpoint: 'https://formspree.io/f/mjywerob',
+  // Backup route: the address of the Worker in /worker (it emails through Resend and pings Telegram).
+  // Leave empty until it is deployed. The form then sends to Formspree only.
+  backupEndpoint: 'https://isogunlabs-enquiry.isogunlabs.workers.dev',
 };
 
 export const socialLinks = [
