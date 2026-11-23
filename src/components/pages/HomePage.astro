@@ -37,7 +37,7 @@ const jsonLd = {
       '@id': 'https://isogunlabs.com/#org',
       areaServed: ['United States', 'Canada', 'United Kingdom', 'Europe'],
       serviceType: ['Website design and development', 'Restaurant website design', 'Clinic and dental website design', 'Real estate website design', 'Gym website design', 'Beauty brand and e-commerce website design', 'Startup website design and MVP development', 'Website redesign', 'Web application development', 'E-commerce and booking systems', 'Atlassian Marketplace app development'],
-      founder: { '@type': 'Person', '@id': 'https://isogunlabs.com/#founder', name: 'Oluwatomisin Isogun', jobTitle: 'Founder and lead developer', url: 'https://portfolio.isogunlabs.com', image: 'https://isogunlabs.com/assets/photos/founder.webp' },
+      founder: { '@type': 'Person', '@id': 'https://isogunlabs.com/#founder', name: 'Oluwatomisin Isogun', jobTitle: 'Founder and CTO', url: 'https://portfolio.isogunlabs.com', image: 'https://isogunlabs.com/assets/photos/founder.webp' },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Services',
@@ -58,7 +58,7 @@ const jsonLd = {
       slogan: 'Websites and software that ship.',
       knowsAbout: ['Website design and development', 'Restaurant websites', 'Dental and clinic websites', 'Real estate websites', 'Gym and fitness websites', 'Beauty and e-commerce websites', 'MVP development', 'Website redesign', 'Web applications', 'E-commerce and booking systems', 'Atlassian Forge', 'Jira apps', 'Atlassian Marketplace', 'Shopify apps'],
       contactPoint: [
-        { '@type': 'ContactPoint', email: 'tomisin@isogunlabs.com', contactType: 'sales' },
+        { '@type': 'ContactPoint', email: 'support@isogunlabs.com', contactType: 'sales' },
         { '@type': 'ContactPoint', email: 'support@isogunlabs.com', contactType: 'customer support' },
       ],
       sameAs: [
@@ -157,7 +157,7 @@ const ctaHref = l(lang, '/contact/');
       ['m19', 8, 480, 600, 1, 58, 1],
       ['m20', 11, 600, 400, 22, 56, 0],
     ].map(([f, w, pw, ph, x, y, ph_show], i) => (
-      <img class={`ht${ph_show ? '' : ' ht-wide'}`} src={`/assets/hero/${f}.webp`} alt="" width={pw} height={ph}
+      <img class={`ht${ph_show ? '' : ' ht-wide'}`} src={`/assets/hero/${f}.webp`} alt="" width={pw} height={ph} draggable="false"
         style={`--w:${w};--ar:${pw} / ${ph};left:${x}%;top:${y}%;--d:${(i * 0.09).toFixed(2)}s`}
         decoding="async" loading={i < 4 ? 'eager' : 'lazy'} fetchpriority={i < 4 ? 'high' : 'low'} />
     ))}
@@ -322,9 +322,17 @@ const ctaHref = l(lang, '/contact/');
       <h2 class="h2">{h.about.h2}</h2>
       <p>{h.about.p1}</p>
       <p>{h.about.p2}</p>
-      <div class="person">
-        <img src="/assets/photos/founder.webp" alt="Oluwatomisin Isogun" width="68" height="68" loading="lazy" />
-        <div><b>Oluwatomisin Isogun</b><span>{h.about.role}</span></div>
+      <div class="people">
+        <div class="person">
+          <img src="/assets/photos/founder.webp" alt="Oluwatomisin Isogun" width="68" height="68" loading="lazy" />
+          <div><b>Oluwatomisin Isogun</b><span>{h.about.role}</span></div>
+        </div>
+        {t.about.team.map((m, i) => (
+          <div class="person">
+            <img src={`/assets/photos/team-${['helen', 'olaoluwa'][i]}.webp`} alt={m.name} width="68" height="68" loading="lazy" />
+            <div><b>{m.name}</b><span>{m.role}</span></div>
+          </div>
+        ))}
       </div>
       <p><a class="link-arrow" href={l(lang, '/about/')}>{h.about.link} <Icon name="arrow-right" /></a></p>
     </div>

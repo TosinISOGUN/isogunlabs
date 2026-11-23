@@ -10,8 +10,13 @@ export const ctaLabel = 'Start a project';
 export const ctaHref = '/contact/';
 
 export const contact = {
-  projectEmail: 'tomisin@isogunlabs.com',
+  // The shared address for project enquiries and app support alike (read by Oluwatomisin and Helen).
+  projectEmail: 'support@isogunlabs.com',
   supportEmail: 'support@isogunlabs.com',
+  // Shown on the About page cards. teamEmails follows the order of the team in the translations (Helen, Olaoluwa);
+  // an empty string hides the address until the mailbox exists.
+  founderEmail: 'tomisin@isogunlabs.com',
+  teamEmails: ['', ''],
   booking: 'https://cal.com/oluwatomisin-isogun-disku5/20min',
   whatsapp: 'https://wa.me/2348164376172',
   // Where the enquiry form sends its messages. Paste a form-service address here, for example a Formspree
