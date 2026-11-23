@@ -60,6 +60,8 @@
       return;
     }
     button.disabled = true;
+    button.classList.add('is-loading'); // the arrow turns into a spinner until the visitor lands on the thank-you page
+    button.setAttribute('aria-busy', 'true');
     say(form.dataset.mSending || 'Sending...', false);
     var backup = form.dataset.backup;
     var jobs = [
@@ -83,8 +85,15 @@
       })
       .catch(function () {
         button.disabled = false;
+        button.classList.remove('is-loading');
+        button.removeAttribute('aria-busy');
         say((form.dataset.mFail || 'Sorry, that did not send. Please email {email} instead.').replace('{email}', form.dataset.mailto), true);
       });
+  });
+
+  // coming back with the browser's Back button must not leave the button stuck in its loading state
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) { button.disabled = false; button.classList.remove('is-loading'); button.removeAttribute('aria-busy'); }
   });
 
   form.addEventListener('input', function (e) {

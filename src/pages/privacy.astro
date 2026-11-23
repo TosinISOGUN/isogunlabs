@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { contact } from '../data/nav';
+
+const path = '/privacy/';
+const title = 'Privacy and Cookies | Isogun Labs';
+const description = 'How Isogun Labs handles your information: the enquiry form, analytics cookies, the services we use, and your rights.';
+const updated = '23 November 2026';
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  breadcrumbs={[{ name: 'Privacy and cookies', path }]}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>Privacy and cookies</h1>
+    <p class="lead">The short version of what we collect, why, and the choices you have.</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap legal">
+    <p class="updated">Last updated {updated}</p>
+
+    <h2>Who we are</h2>
+    <p>Isogun Labs runs this website. For any question or request about your information, write to <a href={`mailto:${contact.supportEmail}`}>{contact.supportEmail}</a>. We do not sell your information.</p>
+
+    <h2>What we collect</h2>
+    <ul>
+      <li><strong>Enquiries.</strong> If you use the contact form, we receive the details you enter, such as your name, email and project. We use them only to reply to you, and we delete them when you ask.</li>
+      <li><strong>Analytics.</strong> Google Analytics, which sets cookies, tells us which pages are useful: pages viewed, approximate location and device. You can switch it off at any time with Decline in the cookie box, or in Cookie settings.</li>
+      <li><strong>Hosting.</strong> Like any website, the host receives your IP address when a page loads.</li>
+    </ul>
+    <p><button type="button" class="btn btn-ink btn-sm" data-cookie-settings>Cookie settings</button></p>
+
+    <h2>Who else handles it</h2>
+    <p>Formspree, Resend, Telegram, Cloudflare and Zoho Mail help us receive and answer enquiries. Google provides analytics, and GitHub hosts the site. Each has its own privacy notice, and some are based outside your country, including in the United States.</p>
+
+    <h2>Your rights</h2>
+    <p>You can ask us to show, correct or delete what we hold about you, and you can withdraw your consent at any time. Email <a href={`mailto:${contact.supportEmail}`}>{contact.supportEmail}</a>. You can also complain to your local data protection authority.</p>
+  </div>
+</section>
+
+</BaseLayout>

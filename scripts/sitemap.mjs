@@ -9,7 +9,7 @@ const today = new Date().toISOString().slice(0, 10);
 
 // Static pages: [path, priority]. Add new top-level pages here.
 const pages = [
-  ['/', '1.0'], ['/services/', '0.9'], ['/work/', '0.9'], ['/contact/', '0.8'], ['/about/', '0.7'],
+  ['/', '1.0'], ['/privacy/', '0.3'], ['/services/', '0.9'], ['/work/', '0.9'], ['/contact/', '0.8'], ['/about/', '0.7'],
   ['/get-started/', '0.8'], ['/blog/', '0.8'], ['/documentation/', '0.6'], ['/support/', '0.5'],
   // Industry and service landing pages (src/data/industries.ts)
   ...['restaurant-website-design', 'clinic-website-design', 'realtor-website-design', 'gym-website-design', 'beauty-brand-website-design', 'startup-website-design', 'website-redesign'].map((s) => ['/services/' + s + '/', '0.8']),

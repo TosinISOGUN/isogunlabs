@@ -32,6 +32,9 @@ export const es: Dict = {
       bookCall: 'Reservar una llamada',
       appSupport: 'Soporte de las aplicaciones',
       rights: '© 2026 Isogun Labs. Todos los derechos reservados.',
+      privacy: 'Privacidad y cookies (en inglés)',
+      cookieSettings: 'Configuración de cookies',
+      cookie: { title: 'Preferencias de cookies', text: 'Usamos cookies para mejorar tu experiencia de navegación y analizar el tráfico del sitio. Tus datos nos ayudan a crear un mejor producto.', accept: 'Aceptar', decline: 'Rechazar', close: 'Cerrar y rechazar' },
     },
   },
 

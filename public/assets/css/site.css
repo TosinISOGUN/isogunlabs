@@ -416,6 +416,47 @@ html:not([lang="en"]) .hero { --hs: clamp(2.4rem, 6.4vw, 6.6rem); }
 .legal h2 { font-size: 1.7rem; margin: 2.4rem 0 .8rem; }
 .legal p { margin-bottom: 1rem; color: color-mix(in srgb, var(--ink) 86%, var(--muted)); }
 .legal a { font-weight: 600; }
+.legal ul { margin: 0 0 1rem 1.2rem; list-style: disc; color: color-mix(in srgb, var(--ink) 86%, var(--muted)); }
+.legal li { margin-bottom: .5rem; }
+.legal h3 { font-size: 1.15rem; margin: 1.6rem 0 .5rem; }
+.legal .table-wrap { overflow-x: auto; margin: 0 0 1.4rem; border: 1px solid var(--line); border-radius: var(--r); }
+.legal table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.legal th, .legal td { text-align: left; padding: .8rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.legal th { font-weight: 600; background: var(--bg-2); white-space: nowrap; }
+.legal tr:last-child td { border-bottom: 0; }
+.legal .updated { color: var(--muted); font-size: .95rem; }
+
+/* cookie choice card (consent.js shows it when there is no choice yet): compact, centred at the bottom, Bricolage Grotesque throughout. */
+.cookie { position: fixed; z-index: 90; left: 0; right: 0; bottom: 24px; margin-inline: auto; width: min(370px, calc(100% - 32px)); padding: 22px 22px 22px; background: linear-gradient(180deg, #fff 0%, #f7f7f7 100%); color: #0d0f0b; border-radius: 26px; box-shadow: 0 22px 50px -20px rgba(0,0,0,.45), 0 0 0 1px rgba(13,15,11,.05); font-family: 'Bricolage Grotesque', var(--ff); }
+.cookie[hidden] { display: none; }
+.cookie-head { display: flex; align-items: center; gap: 12px; }
+.cookie-icon { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 11px; background: #efefef; color: #1a1a1a; }
+.cookie-icon svg { width: 20px; height: 20px; }
+.cookie h2 { margin: 0; font: 600 16.5px/1.2 'Bricolage Grotesque', var(--ff); letter-spacing: -.01em; }
+.cookie-x { position: absolute; top: 15px; right: 15px; width: 32px; height: 32px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: #8a8a8a; font-size: 14px; cursor: pointer; transition: background .2s, color .2s; }
+.cookie-x:hover { background: #efefef; color: #0d0f0b; }
+.cookie p { margin: 16px 0 18px; color: #6b6b6b; font: 400 14.5px/22.5px 'Bricolage Grotesque', var(--ff); letter-spacing: -.002em; }
+.cookie-actions { display: flex; align-items: center; gap: 10px; margin-right: -8px; }
+.cookie-actions button { cursor: pointer; font-family: 'Bricolage Grotesque', var(--ff); height: 44px; border: 0; transition: background .2s, color .2s; }
+.cookie-decline { flex: none; width: 104px; background: transparent; color: #5f625a; font-size: 14.5px; font-weight: 500; border-radius: 999px; }
+.cookie-decline:hover { color: #0d0f0b; background: #efefef; }
+.cookie-accept { flex: 1; background: #000; color: #fff; font-size: 15.5px; font-weight: 700; border-radius: 999px; }
+.cookie-accept:hover { background: #1c1f17; }
+@media (max-width: 520px) {
+  .cookie { left: 12px; right: 12px; bottom: 12px; width: auto; padding: 20px; border-radius: 24px; }
+  .cookie-x { top: 13px; right: 13px; }
+  .cookie p { margin: 14px 0 16px; font-size: 14px; line-height: 21px; }
+  .cookie-actions { margin-right: 0; }
+  .cookie-actions button { height: 42px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cookie:not([hidden]) { animation: cookie-in .45s var(--ease) both; }
+  @keyframes cookie-in { from { opacity: 0; transform: translateY(18px); } }
+}
+.foot-legal { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; }
+.foot-legal a, .link-btn { color: inherit; text-decoration: underline; text-underline-offset: .2em; }
+.link-btn { padding: 0; border: 0; background: none; font: inherit; cursor: pointer; }
+.foot-legal a:hover, .link-btn:hover { color: #fff; }
 
 /* ---------- final call to action ---------- */
 .cta { background: var(--field); color: var(--field-ink); padding: clamp(4rem, 9vw, 7.5rem) 0; }
@@ -544,6 +585,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .enq-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.4rem; margin-top: .4rem; }
 .enq-note { color: var(--muted); font-size: .9rem; }
+/* submit button while the enquiry is sending: the arrow gives way to a spinner of the same size, so the button does not change width */
+.btn.is-loading { cursor: progress; }
+.btn.is-loading:disabled { opacity: 1; }
+.btn.is-loading > .i { display: none; }
+.btn.is-loading::after { content: ''; flex: none; width: 1.1em; height: 1.1em; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: btn-spin .7s linear infinite; }
+@keyframes btn-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .btn.is-loading::after { animation-duration: 2.4s; } }
 .enq-status { min-height: 1.4em; font-weight: 600; }
 .enq-status.bad { color: #C0392B; }
 @media (min-width: 700px) { .enq-row { grid-template-columns: 1fr 1fr; } }

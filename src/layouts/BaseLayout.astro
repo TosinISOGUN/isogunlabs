@@ -2,6 +2,8 @@
 import Seo from '../components/Seo.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import splash from '../data/pwa-splash.json';
 import { pageLang } from '../i18n';
 import { localeInfo } from '../i18n/config';
 
@@ -50,30 +52,29 @@ const { title, description, path, robots, breadcrumbs, ogTitle, ogDescription, j
 <link rel="icon" href="/assets/icons/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="/assets/icons/favicon-96.png" sizes="96x96" type="image/png">
 <link rel="icon" href="/assets/icons/favicon-192.png" sizes="192x192" type="image/png">
-<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png?v=2">
 <link rel="manifest" href="/site.webmanifest">
 
-<!-- Google Analytics 4, loaded when the page is idle so it does not block the first paint -->
+<!-- Installed app (home-screen) look. Android builds its launch screen from the manifest; iPhone and iPad need one
+     image per screen size. The images come from scripts/build-pwa-assets.mjs. -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Isogun Labs">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+{splash.map((s) => (
+  <link rel="apple-touch-startup-image" href={`/assets/splash/splash-${s.w * s.dpr}x${s.h * s.dpr}.png`} media={`(device-width: ${s.w}px) and (device-height: ${s.h}px) and (-webkit-device-pixel-ratio: ${s.dpr}) and (orientation: portrait)`} />
+))}
+
+<!-- Google Analytics 4 is NOT loaded here. /assets/js/consent.js loads it only after the visitor accepts.
+     Until then gtag() is a harmless no-op, so the event calls in the page scripts never fail and nothing is recorded. -->
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){window.dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-P9H728QMW5');
-  (function () {
-    var load = function () {
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P9H728QMW5';
-      document.head.appendChild(s);
-    };
-    var idle = function () { (window.requestIdleCallback || function (f) { setTimeout(f, 1500); })(load); };
-    if (document.readyState === 'complete') idle(); else window.addEventListener('load', idle);
-  })();
+  function gtag(){ if (window.__gaOn) window.dataLayer.push(arguments); }
 </script>
 
 <script is:inline>document.documentElement.classList.add('js');</script>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=8">
+<link rel="stylesheet" href="/assets/css/site.css?v=14">
 </head>
 <body class={/^\/((fr|es|de|pt)\/)?$/.test(Astro.url.pathname) ? 'is-home' : undefined}>
 
@@ -86,7 +87,9 @@ const { title, description, path, robots, breadcrumbs, ogTitle, ogDescription, j
 </main>
 
 <Footer />
+<CookieBanner />
 
 <script src="/assets/js/site.js?v=6" defer></script>
+<script src="/assets/js/consent.js?v=2" defer></script>
 </body>
 </html>
