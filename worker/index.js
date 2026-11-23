@@ -58,6 +58,7 @@ async function sendEmail(env, d, lines) {
       text: lines.map(([k, v]) => `${k}: ${v}`).join('\n\n'),
     }),
   });
+  if (!res.ok) console.error(`resend failed: HTTP ${res.status}`);
   return res.ok;
 }
 
@@ -69,8 +70,15 @@ async function sendTelegram(env, lines) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text }),
   });
+  if (!res.ok) console.error(`telegram failed: HTTP ${res.status}`);
   return res.ok;
 }
+
+// Log only the channel and the kind of error, never the enquiry or a URL (the Telegram URL holds the bot token).
+const failed = (channel) => (err) => {
+  console.error(`${channel} threw: ${(err && err.name) || 'error'}`);
+  return false;
+};
 
 export default {
   async fetch(request, env) {
@@ -100,10 +108,11 @@ export default {
       .map((k) => [FIELDS[k], d[k]]);
 
     const [mail, tg] = await Promise.all([
-      sendEmail(env, d, lines).catch(() => false),
-      sendTelegram(env, lines).catch(() => false),
+      sendEmail(env, d, lines).catch(failed('resend')),
+      sendTelegram(env, lines).catch(failed('telegram')),
     ]);
 
+    if (!mail || !tg) console.warn(`enquiry delivery: mail=${mail} telegram=${tg}`);
     return mail || tg ? reply(request, env, 200, { ok: true, mail, telegram: tg }) : reply(request, env, 502, { ok: false });
   },
 };
