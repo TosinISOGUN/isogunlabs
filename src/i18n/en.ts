@@ -204,7 +204,7 @@ export const en = {
     teamKicker: 'The team',
     teamH2: 'Who you will work with',
     team: [
-      { name: 'Olayinka Helen Isogun', role: 'Client Success Manager', alt: 'Olayinka Helen Isogun, Client Success Manager at Isogun Labs', bio: 'Olayinka is your point of contact at Isogun Labs. From the first call to launch day, Olayinka keeps your project on track, keeps you updated on its progress and answers your questions about the studio and how we work.' },
+      { name: 'Olayinka Hellen Isogun', role: 'Client Success Manager', alt: 'Olayinka Hellen Isogun, Client Success Manager at Isogun Labs', bio: 'Olayinka is your point of contact at Isogun Labs. From the first call to launch day, Olayinka keeps your project on track, keeps you updated on its progress and answers your questions about the studio and how we work.' },
       { name: 'Olaoluwa Mercy Isogun', role: 'Content and Social Media Manager', alt: 'Olaoluwa Mercy Isogun, Content and Social Media Manager at Isogun Labs', bio: 'Olaoluwa looks after the Isogun Labs presence online: the social media accounts, the content we post, and how easily the right people find the studio.' },
     ],
     howH2: 'How we work',

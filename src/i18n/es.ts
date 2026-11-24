@@ -203,7 +203,7 @@ export const es: Dict = {
     teamKicker: 'El equipo',
     teamH2: 'Con quién trabajarás',
     team: [
-      { name: 'Olayinka Helen Isogun', role: 'Responsable de éxito del cliente', alt: 'Olayinka Helen Isogun, responsable de éxito del cliente en Isogun Labs', bio: 'Olayinka es tu punto de contacto en Isogun Labs. Desde la primera llamada hasta el día del lanzamiento, Olayinka cuida de que tu proyecto avance, te mantiene al tanto de su progreso y responde a tus preguntas sobre el estudio y nuestra forma de trabajar.' },
+      { name: 'Olayinka Hellen Isogun', role: 'Responsable de éxito del cliente', alt: 'Olayinka Hellen Isogun, responsable de éxito del cliente en Isogun Labs', bio: 'Olayinka es tu punto de contacto en Isogun Labs. Desde la primera llamada hasta el día del lanzamiento, Olayinka cuida de que tu proyecto avance, te mantiene al tanto de su progreso y responde a tus preguntas sobre el estudio y nuestra forma de trabajar.' },
       { name: 'Olaoluwa Mercy Isogun', role: 'Responsable de contenido y redes sociales', alt: 'Olaoluwa Mercy Isogun, responsable de contenido y redes sociales en Isogun Labs', bio: 'Olaoluwa se ocupa de la presencia en línea de Isogun Labs: las cuentas de redes sociales, el contenido que publicamos y la facilidad con la que las personas adecuadas encuentran el estudio.' },
     ],
     howH2: 'Cómo trabajamos',

@@ -15,7 +15,7 @@ const apps = a.apps.map((x, i) => ({ ...x, href: hrefs[i] }));
 const path = l(lang, '/about/');
 const url = `https://isogunlabs.com${path}`;
 const teamSlugs = ['helen', 'olaoluwa'];
-const shortNames = [['Olayinka Isogun', 'Helen Isogun'], 'Olaoluwa Isogun']; // first name + surname, and the names used before the full names, so searches for any of them still match
+const shortNames = [['Olayinka Isogun', 'Hellen Isogun', 'Helen Isogun'], 'Olaoluwa Isogun']; // first name + surname, and the names used before the full names, so searches for any of them still match
 const people = a.team.map((m, i) => ({
   '@type': 'Person',
   '@id': `https://isogunlabs.com/#${teamSlugs[i]}`,
