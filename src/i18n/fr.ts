@@ -199,12 +199,12 @@ export const fr: Dict = {
     founderKicker: 'Fondateur et CTO',
     founderAlt: 'Oluwatomisin Isogun, fondateur et CTO d’Isogun Labs',
     founder1: 'Oluwatomisin a fondé Isogun Labs et, en tant que CTO, dirige la conception et le développement de chaque projet. Il construit des sites web et des applications web, et il a mené Recap, Field Hygiene et Passdown de l’idée à des fiches approuvées sur l’Atlassian Marketplace.',
-    founder2: 'Isogun Labs est désormais une petite équipe. Helen, notre responsable de la réussite client, est votre point de contact du premier appel au lancement, et Olaoluwa gère nos réseaux sociaux et nos contenus.',
+    founder2: 'Isogun Labs est désormais une petite équipe. Olayinka, notre responsable de la réussite client, est votre point de contact du premier appel au lancement, et Olaoluwa gère nos réseaux sociaux et nos contenus.',
     teamKicker: 'L’équipe',
     teamH2: 'Avec qui vous travaillerez',
     team: [
-      { name: 'Helen Isogun', role: 'Responsable de la réussite client', alt: 'Helen Isogun, responsable de la réussite client chez Isogun Labs', bio: 'Helen est votre point de contact chez Isogun Labs. Du premier appel au jour du lancement, Helen veille à ce que votre projet avance, vous tient informé de son avancement et répond à vos questions sur le studio et sur notre façon de travailler.' },
-      { name: 'Olaoluwa Isogun', role: 'Responsable du contenu et des réseaux sociaux', alt: 'Olaoluwa Isogun, responsable du contenu et des réseaux sociaux chez Isogun Labs', bio: 'Olaoluwa s’occupe de la présence en ligne d’Isogun Labs : les comptes de réseaux sociaux, les contenus que nous publions et la facilité avec laquelle les bonnes personnes trouvent le studio.' },
+      { name: 'Olayinka Helen Isogun', role: 'Responsable de la réussite client', alt: 'Olayinka Helen Isogun, responsable de la réussite client chez Isogun Labs', bio: 'Olayinka est votre point de contact chez Isogun Labs. Du premier appel au jour du lancement, Olayinka veille à ce que votre projet avance, vous tient informé de son avancement et répond à vos questions sur le studio et sur notre façon de travailler.' },
+      { name: 'Olaoluwa Mercy Isogun', role: 'Responsable du contenu et des réseaux sociaux', alt: 'Olaoluwa Mercy Isogun, responsable du contenu et des réseaux sociaux chez Isogun Labs', bio: 'Olaoluwa s’occupe de la présence en ligne d’Isogun Labs : les comptes de réseaux sociaux, les contenus que nous publions et la facilité avec laquelle les bonnes personnes trouvent le studio.' },
     ],
     howH2: 'Notre façon de travailler',
     principles: [
