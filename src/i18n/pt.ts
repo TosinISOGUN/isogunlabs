@@ -199,12 +199,12 @@ export const pt: Dict = {
     founderKicker: 'Fundador e CTO',
     founderAlt: 'Oluwatomisin Isogun, fundador e CTO da Isogun Labs',
     founder1: 'O Oluwatomisin fundou a Isogun Labs e, como CTO, dirige o design e o desenvolvimento de cada projeto. Constrói sites e aplicações web, e levou o Recap, o Field Hygiene e o Passdown da ideia a listagens aprovadas no Atlassian Marketplace.',
-    founder2: 'A Isogun Labs é agora uma equipa pequena. Helen, responsável pelo sucesso do cliente, é o seu ponto de contacto da primeira chamada ao lançamento, e Olaoluwa trata das nossas redes sociais e conteúdos.',
+    founder2: 'A Isogun Labs é agora uma equipa pequena. Olayinka, responsável pelo sucesso do cliente, é o seu ponto de contacto da primeira chamada ao lançamento, e Olaoluwa trata das nossas redes sociais e conteúdos.',
     teamKicker: 'A equipa',
     teamH2: 'Com quem vai trabalhar',
     team: [
-      { name: 'Helen Isogun', role: 'Responsável pelo sucesso do cliente', alt: 'Helen Isogun, responsável pelo sucesso do cliente na Isogun Labs', bio: 'Helen é o seu ponto de contacto na Isogun Labs. Da primeira chamada ao dia do lançamento, Helen faz com que o seu projeto avance, dá-lhe notícias do progresso e responde às suas perguntas sobre o estúdio e a nossa forma de trabalhar.' },
-      { name: 'Olaoluwa Isogun', role: 'Responsável por conteúdo e redes sociais', alt: 'Olaoluwa Isogun, responsável por conteúdo e redes sociais na Isogun Labs', bio: 'Olaoluwa trata da presença online da Isogun Labs: as contas de redes sociais, os conteúdos que publicamos e a facilidade com que as pessoas certas encontram o estúdio.' },
+      { name: 'Olayinka Helen Isogun', role: 'Responsável pelo sucesso do cliente', alt: 'Olayinka Helen Isogun, responsável pelo sucesso do cliente na Isogun Labs', bio: 'Olayinka é o seu ponto de contacto na Isogun Labs. Da primeira chamada ao dia do lançamento, Olayinka faz com que o seu projeto avance, dá-lhe notícias do progresso e responde às suas perguntas sobre o estúdio e a nossa forma de trabalhar.' },
+      { name: 'Olaoluwa Mercy Isogun', role: 'Responsável por conteúdo e redes sociais', alt: 'Olaoluwa Mercy Isogun, responsável por conteúdo e redes sociais na Isogun Labs', bio: 'Olaoluwa trata da presença online da Isogun Labs: as contas de redes sociais, os conteúdos que publicamos e a facilidade com que as pessoas certas encontram o estúdio.' },
     ],
     howH2: 'Como trabalhamos',
     principles: [

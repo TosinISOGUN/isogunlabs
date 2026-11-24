@@ -200,12 +200,12 @@ export const en = {
     founderKicker: 'Founder and CTO',
     founderAlt: 'Oluwatomisin Isogun, founder and CTO of Isogun Labs',
     founder1: 'Oluwatomisin founded Isogun Labs and, as CTO, leads the design and development of every project. He builds websites and web apps, and he took Recap, Field Hygiene and Passdown from idea to approved Atlassian Marketplace listings.',
-    founder2: 'Isogun Labs is now a small team. Helen, our Client Success Manager, is your point of contact from the first call to launch, and Olaoluwa runs our social media and content.',
+    founder2: 'Isogun Labs is now a small team. Olayinka, our Client Success Manager, is your point of contact from the first call to launch, and Olaoluwa runs our social media and content.',
     teamKicker: 'The team',
     teamH2: 'Who you will work with',
     team: [
-      { name: 'Helen Isogun', role: 'Client Success Manager', alt: 'Helen Isogun, Client Success Manager at Isogun Labs', bio: 'Helen is your point of contact at Isogun Labs. From the first call to launch day, Helen keeps your project on track, keeps you updated on its progress and answers your questions about the studio and how we work.' },
-      { name: 'Olaoluwa Isogun', role: 'Content and Social Media Manager', alt: 'Olaoluwa Isogun, Content and Social Media Manager at Isogun Labs', bio: 'Olaoluwa looks after the Isogun Labs presence online: the social media accounts, the content we post, and how easily the right people find the studio.' },
+      { name: 'Olayinka Helen Isogun', role: 'Client Success Manager', alt: 'Olayinka Helen Isogun, Client Success Manager at Isogun Labs', bio: 'Olayinka is your point of contact at Isogun Labs. From the first call to launch day, Olayinka keeps your project on track, keeps you updated on its progress and answers your questions about the studio and how we work.' },
+      { name: 'Olaoluwa Mercy Isogun', role: 'Content and Social Media Manager', alt: 'Olaoluwa Mercy Isogun, Content and Social Media Manager at Isogun Labs', bio: 'Olaoluwa looks after the Isogun Labs presence online: the social media accounts, the content we post, and how easily the right people find the studio.' },
     ],
     howH2: 'How we work',
     principles: [

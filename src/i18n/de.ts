@@ -199,12 +199,12 @@ export const de: Dict = {
     founderKicker: 'Gründer und CTO',
     founderAlt: 'Oluwatomisin Isogun, Gründer und CTO von Isogun Labs',
     founder1: 'Oluwatomisin hat Isogun Labs gegründet und leitet als CTO Design und Entwicklung jedes Projekts. Er baut Websites und Web-Apps und hat Recap, Field Hygiene und Passdown von der Idee bis zu genehmigten Einträgen im Atlassian Marketplace gebracht.',
-    founder2: 'Isogun Labs ist heute ein kleines Team. Helen, Client Success Manager bei Isogun Labs, ist Ihre Anlaufstelle vom ersten Gespräch bis zum Launch, und Olaoluwa betreut unsere Social-Media-Kanäle und Inhalte.',
+    founder2: 'Isogun Labs ist heute ein kleines Team. Olayinka, Client Success Manager bei Isogun Labs, ist Ihre Anlaufstelle vom ersten Gespräch bis zum Launch, und Olaoluwa betreut unsere Social-Media-Kanäle und Inhalte.',
     teamKicker: 'Das Team',
     teamH2: 'Mit wem Sie arbeiten',
     team: [
-      { name: 'Helen Isogun', role: 'Client Success Manager', alt: 'Helen Isogun, Client Success Manager bei Isogun Labs', bio: 'Helen ist Ihre Ansprechperson bei Isogun Labs. Vom ersten Gespräch bis zum Launch sorgt Helen dafür, dass Ihr Projekt vorankommt, hält Sie über den Fortschritt auf dem Laufenden und beantwortet Ihre Fragen zum Studio und zu unserer Arbeitsweise.' },
-      { name: 'Olaoluwa Isogun', role: 'Content and Social Media Manager', alt: 'Olaoluwa Isogun, Content and Social Media Manager bei Isogun Labs', bio: 'Olaoluwa kümmert sich um den Online-Auftritt von Isogun Labs: die Social-Media-Konten, die Inhalte, die wir veröffentlichen, und darum, dass die richtigen Menschen das Studio leicht finden.' },
+      { name: 'Olayinka Helen Isogun', role: 'Client Success Manager', alt: 'Olayinka Helen Isogun, Client Success Manager bei Isogun Labs', bio: 'Olayinka ist Ihre Ansprechperson bei Isogun Labs. Vom ersten Gespräch bis zum Launch sorgt Olayinka dafür, dass Ihr Projekt vorankommt, hält Sie über den Fortschritt auf dem Laufenden und beantwortet Ihre Fragen zum Studio und zu unserer Arbeitsweise.' },
+      { name: 'Olaoluwa Mercy Isogun', role: 'Content and Social Media Manager', alt: 'Olaoluwa Mercy Isogun, Content and Social Media Manager bei Isogun Labs', bio: 'Olaoluwa kümmert sich um den Online-Auftritt von Isogun Labs: die Social-Media-Konten, die Inhalte, die wir veröffentlichen, und darum, dass die richtigen Menschen das Studio leicht finden.' },
     ],
     howH2: 'Wie wir arbeiten',
     principles: [
