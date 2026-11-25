@@ -106,6 +106,38 @@ const page = await browser.newPage();
 await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1 });
 const tmp = path.join(process.env.TEMP || '.', 'og-card.html');
 let n = 0;
+
+// The testimonial page is noindex, so the walk above skips it. It gets its own hand-made card:
+// the link is sent to clients privately, and this is the preview they see in WhatsApp or email.
+{
+  const star = '<svg viewBox="0 0 24 24" width="86" height="86"><path fill="#BDEB4A" d="M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.6 6 20.9l1.3-6.7-5-4.7 6.8-.8z"/></svg>';
+  const html = `<!doctype html><meta charset="utf-8"><style>${fonts}
+*{box-sizing:border-box;margin:0}
+body{width:1200px;height:630px;background:#0D0F0B;color:#F1F3EC;font-family:'Geist',sans-serif;position:relative;overflow:hidden}
+.glow{position:absolute;right:-160px;top:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(189,235,74,.28),rgba(189,235,74,0) 65%)}
+.q{position:absolute;right:70px;top:-10px;font-family:'Brico',sans-serif;font-weight:800;font-size:520px;line-height:1;color:#BDEB4A;opacity:.95}
+.logo{position:absolute;left:64px;top:56px;background:#000;border:2px solid #272A22;border-radius:20px;padding:12px 22px;display:flex}
+.logo img{height:46px}
+.stars{position:absolute;left:58px;top:196px;display:flex;gap:6px}
+h1{position:absolute;left:64px;top:306px;width:760px;font-family:'Brico',sans-serif;font-weight:800;font-size:104px;line-height:.98;letter-spacing:-.035em}
+h1 em{font-style:normal;color:#BDEB4A}
+p{position:absolute;left:64px;top:520px;width:700px;font-size:28px;line-height:1.35;color:#A0A596}
+.url{position:absolute;right:64px;bottom:46px;font-size:26px;font-weight:600;color:#BDEB4A}
+</style>
+<div class="glow"></div><div class="q">&ldquo;</div>
+<div class="logo"><img src="${logo}"></div>
+<div class="stars">${star.repeat(5)}</div>
+<h1>How did <em>we do?</em></h1>
+<p>Two minutes, in your own words.</p>
+<div class="url">isogunlabs.com</div>`;
+  fs.writeFileSync(path.join(process.env.TEMP || '.', 'og-card.html'), html);
+  await page.goto(pathToFileURL(path.join(process.env.TEMP || '.', 'og-card.html')).href, { waitUntil: 'load' });
+  await page.evaluate(() => document.fonts.ready);
+  const buf = await page.screenshot({ type: 'png' });
+  await sharp(buf).png({ compressionLevel: 9, palette: true, quality: 90 }).toFile(path.join(outDir, 'testimonial.png'));
+  n++;
+}
+
 for (const j of jobs) {
   const c = card(j);
   fs.writeFileSync(tmp, c.html);
