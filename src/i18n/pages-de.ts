@@ -46,7 +46,7 @@ export const pagesDe: PagesText = {
       { q: 'Mit wem spreche ich?', a: 'Sie haben vom ersten Gespräch bis zum Launch einen festen Ansprechpartner. Sie arbeitet eng mit der Person zusammen, die Ihr Projekt baut, und gibt Ihr Feedback weiter.' },
       { q: 'Was, wenn ich Änderungen möchte?', a: 'Änderungen gehören zum Prozess. Sie sehen früh eine funktionierende Vorschau, und Ihr schriftlicher Plan nennt, wie viele Änderungsrunden enthalten sind.' },
       { q: 'Wem gehört die fertige Website?', a: 'Ihnen. Wir übergeben sauberen Code, Ihre Zugangsdaten und eine Einweisung, damit Sie nie festgelegt sind.' },
-      { q: 'Arbeiten Sie mit Kunden im Ausland?', a: 'Ja. Wir arbeiten remote und auf Englisch mit Kunden in den USA, Kanada, Großbritannien und Europa, mit Gesprächen zu Zeiten, die zu Ihrer Zeitzone passen.' },
+      { q: 'Arbeiten Sie mit Kunden im Ausland?', a: 'Ja. Wir arbeiten remote und auf Englisch mit Kunden in den USA, Kanada, Großbritannien, Europa und Nigeria, mit Gesprächen zu Zeiten, die zu Ihrer Zeitzone passen.' },
     ],
     ctaH2: 'Bereit zu starten?',
   },
