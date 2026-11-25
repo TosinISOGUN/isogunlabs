@@ -79,7 +79,7 @@ const [noteBefore] = fill(c.supportNote, { email: '\u0000' }).split('\u0000');
             </select>
           </label>
           <label class="f"><span>{f.need}</span>
-            <select name="project_type">
+            <select name="project_type" id="enq-need">
               <option value="">{f.choose}</option>
               {c.needs.map(([v, label]) => <option value={v}>{label}</option>)}
             </select>
@@ -118,5 +118,14 @@ const [noteBefore] = fill(c.supportNote, { email: '\u0000' }).split('\u0000');
 </section>
 
 <script is:inline src="/assets/js/enquiry.js" defer></script>
+<script is:inline>
+  // ?need=care preselects the care plan option (linked from the Care plans page)
+  try {
+    if (new URLSearchParams(location.search).get('need') === 'care') {
+      var s = document.getElementById('enq-need');
+      if (s) s.value = 'Care plan for my existing site';
+    }
+  } catch (e) {}
+</script>
 
 </BaseLayout>

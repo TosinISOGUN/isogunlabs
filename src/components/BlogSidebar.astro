@@ -1,6 +1,5 @@
 ---
-// No newsletter capture on purpose: a real one needs an email service and stored addresses.
-// This uses a plain link to the contact page instead.
+// The English sidebar also links to the free checklist page (/checklist/), which collects an email through the Worker.
 import { blogUi } from '../i18n/blog-ui';
 import { l, type Locale } from '../i18n/config';
 interface Props { lang?: Locale }
@@ -13,6 +12,13 @@ const s = blogUi[lang].sidebar;
     <p>{s.qP}</p>
     <a class="link-arrow" href={l(lang, '/contact/')}>{s.qLink}</a>
   </div>
+  {lang === 'en' && (
+    <div class="blog-sidebar-card">
+      <h3>Free checklist</h3>
+      <p>What to have ready before you hire a web designer, plus five questions to ask every studio.</p>
+      <a class="link-arrow" href="/checklist/">Get the checklist</a>
+    </div>
+  )}
   <div class="blog-sidebar-card">
     <h3>{s.whatH}</h3>
     <p>{s.whatP}</p>

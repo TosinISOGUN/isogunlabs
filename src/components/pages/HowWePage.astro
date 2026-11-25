@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import { contact } from '../../data/nav';
+import { dict } from '../../i18n';
+import { pagesFor } from '../../i18n/pages';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = dict[lang];
+const p = pagesFor(lang);
+const h = p.how;
+const path = l(lang, '/how-we-work/');
+const url = `https://isogunlabs.com${path}`;
+---
+<BaseLayout
+  title={h.title}
+  description={h.description}
+  path={path}
+  breadcrumbs={[{ name: h.crumb, path }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'WebPage', '@id': `${url}#page`, url, name: h.title, inLanguage: lang, isPartOf: { '@id': 'https://isogunlabs.com/#website' }, about: { '@id': 'https://isogunlabs.com/#org' } },
+      { '@type': 'HowTo', name: h.h1, step: h.steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.h, text: s.p })) },
+      { '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: h.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+    ],
+  }}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{h.h1}</h1>
+    <p class="lead">{h.lead}</p>
+    <div class="ind-cta">
+      <a class="btn btn-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">{t.ui.bookCall} <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={l(lang, '/pricing/')}>{p.links.pricing}</a>
+    </div>
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="wrap">
+    <h2 class="h2 reveal">{h.stepsH2}</h2>
+    <ol class="steps steps-long">
+      {h.steps.map((s, i) => (
+        <li class="step reveal">
+          <span class="step-n">{i + 1}</span>
+          <h3>{s.h}</h3>
+          <p>{s.p}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="section-tight bg-2-band">
+  <div class="wrap ind-build">
+    <div class="reveal">
+      <h2 class="h2">{h.needH2}</h2>
+      <p class="lead">{h.needLead}</p>
+      <p class="proof-links"><a class="link-arrow" href={l(lang, '/checklist/')}>{h.checklistLink} <Icon name="arrow-right" /></a></p>
+    </div>
+    <ul class="ticks reveal">
+      {h.needs.map((x) => <li><Icon name="check" /><span>{x}</span></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap two-col">
+    <div class="reveal">
+      <h2 class="h2">{h.contactH2}</h2>
+      <p class="lead">{h.contactP}</p>
+    </div>
+    <div class="reveal">
+      <h2 class="h2">{h.afterH2}</h2>
+      <p class="lead">{h.afterP}</p>
+      <p class="proof-links"><a class="link-arrow" href={l(lang, '/care-plans/')}>{h.afterLink} <Icon name="arrow-right" /></a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap faq-wrap">
+    <h2 class="h2 reveal">{h.faqH2}</h2>
+    <div class="faq reveal">
+      {h.faq.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>{h.ctaH2}</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href={l(lang, '/contact/') + '#enquiry'}>{t.ui.sendBrief} <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">{t.ui.bookCall}</a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

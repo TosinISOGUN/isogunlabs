@@ -1,0 +1,10 @@
+---
+import HowWePage from '../../../components/pages/HowWePage.astro';
+import { otherLocales } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return otherLocales.map((lang) => ({ params: { lang } }));
+}
+const { lang } = Astro.params;
+---
+<HowWePage lang={lang as any} />

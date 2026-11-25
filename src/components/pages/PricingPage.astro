@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import { contact } from '../../data/nav';
+import { dict } from '../../i18n';
+import { pagesFor } from '../../i18n/pages';
+import { l, type Locale } from '../../i18n/config';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = dict[lang];
+const p = pagesFor(lang);
+const c = p.common;
+const h = p.pricing;
+const path = l(lang, '/pricing/');
+const url = `https://isogunlabs.com${path}`;
+---
+<BaseLayout
+  title={h.title}
+  description={h.description}
+  path={path}
+  breadcrumbs={[{ name: h.crumb, path }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'WebPage', '@id': `${url}#page`, url, name: h.title, inLanguage: lang, isPartOf: { '@id': 'https://isogunlabs.com/#website' }, about: { '@id': 'https://isogunlabs.com/#org' } },
+      { '@type': 'FAQPage', '@id': `${url}#faq`, mainEntity: h.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+    ],
+  }}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{h.h1}</h1>
+    <p class="lead">{h.lead}</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="pkg-grid">
+      {h.packages.map((k) => (
+        <article class="pkg reveal">
+          <p class="pkg-tag">{k.tag}</p>
+          <h2>{k.name}</h2>
+          <p class="pkg-for"><b>{c.bestFor}:</b> {k.forWho}</p>
+          <ul class="pkg-list">
+            {k.items.map((x) => <li><Icon name="check" /><span>{x}</span></li>)}
+          </ul>
+          <p class="pkg-q">{c.quote}</p>
+          <a class="btn btn-ink" href={l(lang, '/contact/') + '#enquiry'}>{c.getQuote} <Icon name="arrow-right" /></a>
+        </article>
+      ))}
+    </div>
+    <p class="pkg-note">{c.note}</p>
+  </div>
+</section>
+
+<section class="section-tight bg-2-band">
+  <div class="wrap">
+    <h2 class="h2 h2-wide reveal">{h.whyH2}</h2>
+    <p class="lead reveal">{h.whyLead}</p>
+    <div class="need-grid">
+      {h.factors.map((f) => (
+        <div class="need reveal">
+          <h3>{f.t}</h3>
+          <p>{f.p}</p>
+        </div>
+      ))}
+    </div>
+    <p class="proof-links"><a class="link-arrow" href={l(lang, '/blog/how-much-does-a-business-website-cost/')}>{h.guideLink} <Icon name="arrow-right" /></a></p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap ind-build">
+    <div class="reveal"><h2 class="h2">{h.includedH2}</h2></div>
+    <ul class="ticks reveal">
+      {h.included.map((x) => <li><Icon name="check" /><span>{x}</span></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap faq-wrap">
+    <h2 class="h2 reveal">{h.faqH2}</h2>
+    <div class="faq reveal">
+      {h.faq.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>{h.ctaH2}</h2>
+    <div class="cta-row">
+      <a class="btn btn-ink" href={l(lang, '/contact/') + '#enquiry'}>{t.ui.sendBrief} <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">{t.ui.bookCall}</a>
+      <a class="mail" href={`mailto:${contact.projectEmail}`}>{contact.projectEmail}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

@@ -1,0 +1,10 @@
+---
+import CarePage from '../../../components/pages/CarePage.astro';
+import { otherLocales } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return otherLocales.map((lang) => ({ params: { lang } }));
+}
+const { lang } = Astro.params;
+---
+<CarePage lang={lang as any} />

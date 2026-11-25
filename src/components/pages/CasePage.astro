@@ -6,6 +6,9 @@ import { dict, fill } from '../../i18n';
 import { workFor } from '../../i18n/work';
 import { industryPage } from '../../i18n/industry-labels';
 import { l, type Locale } from '../../i18n/config';
+import { caseStudyBySlug } from '../../data/caseStudies';
+import { testimonials } from '../../data/testimonials';
+import Testimonials from '../Testimonials.astro';
 
 interface Props { lang: Locale; slug: string }
 const { lang, slug } = Astro.props;
@@ -14,6 +17,9 @@ const { ui, cases } = workFor(lang);
 const c = cases.find((x) => x.slug === slug)!;
 const industry = c.industry ? industryPage(lang, c.industry) : undefined;
 const more = cases.filter((x) => x.slug !== c.slug).slice(0, 3);
+// The longer write-up is English only, so the translated pages keep the shorter version.
+const story = lang === 'en' ? caseStudyBySlug(slug).story : undefined;
+const quotes = testimonials.filter((q) => q.caseSlug === slug);
 const path = l(lang, `/work/${c.slug}/`);
 const url = `https://isogunlabs.com${path}`;
 ---
@@ -79,19 +85,66 @@ const url = `https://isogunlabs.com${path}`;
   </div>
 </section>
 
-<section class="section-tight bg-2-band">
-  <div class="wrap">
-    <h2 class="h2 reveal">{ui.decisionsH}</h2>
-    <div class="need-grid">
-      {c.decisions.map((d) => (
-        <div class="need reveal">
-          <h3>{d.label}</h3>
-          <p>{d.value}</p>
+{story ? (
+  <>
+    <section class="section-tight">
+      <div class="wrap two-col">
+        <div class="reveal">
+          <h2 class="h2">The challenge</h2>
+          <p class="lead">{story.problem}</p>
         </div>
-      ))}
+        <div class="reveal">
+          <h2 class="h2">The result</h2>
+          <p class="lead">{story.outcome}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight bg-2-band">
+      <div class="wrap">
+        <h2 class="h2 reveal">How we approached it</h2>
+        <div class="need-grid">
+          {story.approach.map((d) => (
+            <div class="need reveal">
+              <h3>{d.h}</h3>
+              <p>{d.p}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="wrap">
+        <h2 class="h2 reveal">A closer look</h2>
+        <div class="story-shots">
+          {story.screens.map((s) => (
+            <figure class="story-shot reveal">
+              <img src={`/assets/work/${c.slug}/${s.n}.webp`} alt={s.alt} width="1280" height="800" loading="lazy" decoding="async" />
+              <figcaption>{s.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  </>
+) : (
+  <section class="section-tight bg-2-band">
+    <div class="wrap">
+      <h2 class="h2 reveal">{ui.decisionsH}</h2>
+      <div class="need-grid">
+        {c.decisions.map((d) => (
+          <div class="need reveal">
+            <h3>{d.label}</h3>
+            <p>{d.value}</p>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+)}
+
+<Testimonials items={quotes} lang={lang} compact />
 
 {industry && (
   <section class="section-tight">

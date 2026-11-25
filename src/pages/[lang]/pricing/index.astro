@@ -1,0 +1,10 @@
+---
+import PricingPage from '../../../components/pages/PricingPage.astro';
+import { otherLocales } from '../../../i18n/config';
+
+export function getStaticPaths() {
+  return otherLocales.map((lang) => ({ params: { lang } }));
+}
+const { lang } = Astro.params;
+---
+<PricingPage lang={lang as any} />

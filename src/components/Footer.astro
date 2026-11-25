@@ -2,11 +2,13 @@
 import { contact } from '../data/nav';
 import { industriesFor } from '../i18n/industry-labels';
 import { pageLang } from '../i18n';
+import { pagesFor } from '../i18n/pages';
 import { l } from '../i18n/config';
 import SocialLinks from './SocialLinks.astro';
 
 const { lang, t } = pageLang(Astro.url.pathname);
 const f = t.ui.footer;
+const pl = pagesFor(lang).links;
 const industries = industriesFor(lang);
 ---
 <footer class="site-footer">
@@ -31,6 +33,10 @@ const industries = industriesFor(lang);
         <a href={l(lang, '/work/')}>{t.ui.nav.work}</a>
         <a href={l(lang, '/about/')}>{t.ui.nav.about}</a>
         <a href={l(lang, '/blog/')}>{t.ui.nav.blog}</a>
+        <a href={l(lang, '/how-we-work/')}>{pl.how}</a>
+        <a href={l(lang, '/pricing/')}>{pl.pricing}</a>
+        <a href={l(lang, '/care-plans/')}>{pl.care}</a>
+        <a href={l(lang, '/checklist/')}>{pl.checklist}</a>
         <a href={l(lang, '/contact/')}>{t.ui.cta}</a>
       </div>
       <div class="foot-col">
@@ -54,9 +60,10 @@ const industries = industriesFor(lang);
       </div>
     </div>
     <div class="foot-bottom">
-      <span>{f.rights}</span>
+      <span>{f.rights} <span class="foot-loc">Ibadan, Oyo State, Nigeria, 200132</span></span>
       <span class="foot-legal">
         <a href="/privacy/">{f.privacy}</a>
+        <a href="/terms/">{pl.terms}</a>
         <button type="button" class="link-btn" data-cookie-settings>{f.cookieSettings}</button>
       </span>
     </div>

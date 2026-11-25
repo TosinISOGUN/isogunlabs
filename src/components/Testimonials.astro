@@ -1,0 +1,31 @@
+---
+// Client quotes. Renders nothing while there are none (see src/data/testimonials.ts).
+import type { Testimonial } from '../data/testimonials';
+import type { Locale } from '../i18n/config';
+
+interface Props { items: Testimonial[]; lang?: Locale; compact?: boolean }
+const { items, lang = 'en', compact = false } = Astro.props;
+const heading: Record<Locale, string> = {
+  en: 'What clients say',
+  fr: 'Ce que disent nos clients',
+  es: 'Lo que dicen nuestros clientes',
+  de: 'Was Kunden sagen',
+  pt: 'O que dizem os clientes',
+};
+---
+{items.length > 0 && (
+  <section class={compact ? 'section-tight' : 'section bg-2'} id="testimonials">
+    <div class="wrap">
+      <h2 class="h2 reveal">{heading[lang]}</h2>
+      <div class={`testi-grid${items.length === 1 ? ' testi-one' : ''}`}>
+        {items.map((t) => (
+          <figure class="testi reveal">
+            {t.rating ? <p class="testi-stars" aria-label={`${t.rating} out of 5 stars`}>{'★'.repeat(t.rating)}<span>{'★'.repeat(5 - t.rating)}</span></p> : null}
+            <blockquote>{t.quote}</blockquote>
+            <figcaption><b>{t.name}</b>{t.role ? <span>{t.role}</span> : null}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
