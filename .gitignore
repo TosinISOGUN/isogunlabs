@@ -13,3 +13,6 @@ Thumbs.db
 
 # Working prompts: kept locally, never published
 prompts/
+
+# Original photos and other source files: kept locally, never published
+assets-source/
