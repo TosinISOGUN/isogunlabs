@@ -41,11 +41,11 @@ export const en = {
 
   home: {
     title: 'Web Design and Development Company | Isogun Labs',
-    description: 'Web design and development company for startups, small businesses and brands in the USA, Canada, UK and Europe. Also builds Atlassian Marketplace apps.',
+    description: 'Web design and development company for startups, small businesses and brands in the USA, Canada, UK, Europe and Nigeria. Also builds Atlassian Marketplace apps.',
     ogDescription: 'A tech studio for startups, businesses and brands: websites, web apps and Atlassian Marketplace apps, designed and built end to end.',
     h1: 'We build|websites',
     h1em: 'that ship.',
-    sub: 'Web design and development for brands in the USA, Canada, the UK and Europe.',
+    sub: 'Web design and development for brands in the USA, Canada, the UK, Europe and Nigeria.',
     logos: 'Technology we build with',
     servicesH2: 'Web design, web apps and online stores',
     servicesLead: 'From a first website to a production app, one studio handles the design, the code and the launch.',
@@ -116,9 +116,9 @@ export const en = {
 
   services: {
     title: 'Web Design and Development Services | Isogun Labs',
-    description: 'Web design and development services: websites, web apps and MVPs, ecommerce stores and booking, for businesses in the USA, Canada, UK and Europe.',
+    description: 'Web design and development services: websites, web apps and MVPs, ecommerce stores and booking, for businesses in the USA, Canada, UK, Europe and Nigeria.',
     h1: 'Web design and development services, built end to end',
-    lead: 'Website design, web app development and online stores from one web design company, for startups, small businesses and brands in the USA, Canada, the UK and Europe.',
+    lead: 'Website design, web app development and online stores from one web design company, for startups, small businesses and brands in the USA, Canada, the UK, Europe and Nigeria.',
     navLabel: 'Services',
     byIndustry: 'By industry',
     svc: [
@@ -148,7 +148,7 @@ export const en = {
       },
     ],
     industriesH2: 'Website design for your kind of business',
-    industriesLead: 'We design websites for restaurants, clinics, realtors, gyms, beauty brands and startups in the USA, Canada, the UK and Europe. Each page shows how we approach that kind of site.',
+    industriesLead: 'We design websites for restaurants, clinics, realtors, gyms, beauty brands and startups in the USA, Canada, the UK, Europe and Nigeria. Each page shows how we approach that kind of site.',
     whoH2: 'Who we work with',
     who: [
       { h: 'Startups', p: 'A first version that is ready to show investors and users, and a codebase that does not need a rewrite after launch.' },
@@ -176,7 +176,7 @@ export const en = {
     aCost: 'It depends on the number of pages, whether the design is custom, and what the site has to do, such as booking, ordering or a shop. We give you a written quote after a free call, so there are no surprises. Our blog has a plain guide to what drives the price of a business website.',
     qTime: 'How long does it take to build a {noun}?',
     aTime: 'It depends on the pages and features. After the first call we give you a realistic timeline in writing, and you see a working preview along the way.',
-    qRegion: 'Do you work with businesses in the USA, Canada, the UK and Europe?',
+    qRegion: 'Do you work with businesses in the USA, Canada, the UK, Europe and Nigeria?',
     aRegion: 'Yes. We work remotely and in English, with calls at times that suit your time zone, and we build with the cookie, privacy and accessibility basics of those regions in mind.',
     steps: [
       { n: '1', title: 'A free call', text: 'Twenty minutes on the goal, the audience and what you already have. You leave knowing whether we are the right fit.' },
@@ -188,10 +188,10 @@ export const en = {
 
   about: {
     title: 'About Isogun Labs | Web Design and Development Company',
-    description: 'Meet the team at Isogun Labs, an independent web design and development company led by founder and CTO Oluwatomisin Isogun, serving the USA, Canada, UK and Europe.',
+    description: 'Meet the team at Isogun Labs, an independent web design and development company led by founder and CTO Oluwatomisin Isogun, serving the USA, Canada, UK, Europe and Nigeria.',
     crumb: 'About',
     h1: 'A web design studio with a high bar',
-    lead: 'Isogun Labs is an independent web design and development company. We design and build websites, web apps and Atlassian Marketplace apps for startups, small businesses and brands in the USA, Canada, the UK and Europe.',
+    lead: 'Isogun Labs is an independent web design and development company. We design and build websites, web apps and Atlassian Marketplace apps for startups, small businesses and brands in the USA, Canada, the UK, Europe and Nigeria.',
     photoAlt: 'A creative team around a table with laptops and a screen, planning a project.',
     whatH2: 'What we do',
     what1: 'We have shipped client websites, web platforms and three apps on the Atlassian Marketplace, and we bring the same care to every project, whatever its size.',
@@ -215,7 +215,7 @@ export const en = {
       { title: 'Built to be handed over', text: 'Clean code, a clear launch and a handover that shows you how to run the site yourself.' },
     ],
     whereH2: 'Where we work',
-    whereLead: 'We work with clients in the USA, Canada, the UK and Europe. We work remotely and in English, with calls at times that suit your time zone, and we build with the cookie, privacy and accessibility basics of those regions in mind.',
+    whereLead: 'We work with clients in the USA, Canada, the UK, Europe and Nigeria. We work remotely and in English, with calls at times that suit your time zone, and we build with the cookie, privacy and accessibility basics of those regions in mind.',
     atlKicker: 'Atlassian Marketplace partner',
     atlH2: 'Three apps on the Atlassian Marketplace',
     atlLead: 'We build and run our own apps for Jira and Jira Service Management, so we know the platform, the review process and the detail that gets an app approved. We can build yours, or help you ship it.',
@@ -239,7 +239,7 @@ export const en = {
     wa: { h: 'WhatsApp', p: 'A quick message to get the conversation started.' },
     enqH2: 'Send a brief',
     enqLead: 'Tell us a little about the project. The more you share, the more useful our first reply will be.',
-    ticks: ['Free, and no obligation', 'We reply by email, in English', 'Clients in the USA, Canada, the UK and Europe'],
+    ticks: ['Free, and no obligation', 'We reply by email, in English', 'Clients in the USA, Canada, the UK, Europe and Nigeria'],
     f: {
       name: 'Your name', email: 'Email', business: 'Business or brand', type: 'Type of business', country: 'Where are you based?', need: 'What do you need?',
       when: 'When do you want it live?', budget: 'Budget, if you have one in mind', budgetPh: 'For example, $3,000 or a range', about: 'About the project',
@@ -248,7 +248,7 @@ export const en = {
     },
     // [value sent to us (always English), label shown]
     types: [['Restaurant or cafe', 'Restaurant or cafe'], ['Clinic or practice', 'Clinic or practice'], ['Real estate', 'Real estate'], ['Gym or fitness studio', 'Gym or fitness studio'], ['Beauty brand or salon', 'Beauty brand or salon'], ['Startup', 'Startup'], ['Other', 'Other']],
-    countries: [['United States', 'United States'], ['Canada', 'Canada'], ['United Kingdom', 'United Kingdom'], ['Europe', 'Europe'], ['Somewhere else', 'Somewhere else']],
+    countries: [['United States', 'United States'], ['Canada', 'Canada'], ['United Kingdom', 'United Kingdom'], ['Europe', 'Europe'], ['Nigeria', 'Nigeria'], ['Somewhere else', 'Somewhere else']],
     needs: [['A new website', 'A new website'], ['A website redesign', 'A website redesign'], ['An online store', 'An online store'], ['A web app or MVP', 'A web app or MVP'], ['An Atlassian Marketplace app', 'An Atlassian Marketplace app'], ['Care plan for my existing site', 'Care plan for my existing site'], ['Not sure yet', 'Not sure yet']],
     timelines: [['As soon as possible', 'As soon as possible'], ['In 1 to 2 months', 'In 1 to 2 months'], ['In 3 months or more', 'In 3 months or more'], ['Just exploring', 'Just exploring']],
     includeH2: 'What to include',

@@ -46,7 +46,7 @@ export const pagesPt: PagesText = {
       { q: 'Com quem vou falar?', a: 'Tem um único interlocutor desde a primeira chamada até ao lançamento. Ela trabalha de perto com a pessoa que constrói o seu projeto e transmite-lhe o seu feedback.' },
       { q: 'E se eu quiser alterações?', a: 'As alterações fazem parte do processo. Vê uma pré-visualização funcional logo no início, e o seu plano escrito indica quantas rondas de alterações estão incluídas.' },
       { q: 'De quem é o site terminado?', a: 'É seu. Entregamos código limpo, os seus acessos e uma demonstração, para que nunca fique preso.' },
-      { q: 'Trabalham com clientes no estrangeiro?', a: 'Sim. Trabalhamos à distância e em inglês com clientes nos Estados Unidos, Canadá, Reino Unido e Europa, com chamadas em horários que se ajustam ao seu fuso horário.' },
+      { q: 'Trabalham com clientes no estrangeiro?', a: 'Sim. Trabalhamos à distância e em inglês com clientes nos Estados Unidos, Canadá, Reino Unido, Europa e Nigéria, com chamadas em horários que se ajustam ao seu fuso horário.' },
     ],
     ctaH2: 'Pronto para começar?',
   },

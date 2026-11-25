@@ -40,11 +40,11 @@ export const de: Dict = {
 
   home: {
     title: 'Webdesign und Webentwicklung | Isogun Labs',
-    description: 'Webdesign- und Entwicklungsagentur für Startups, kleine Unternehmen und Marken in Deutschland, Europa, den USA, Kanada und Großbritannien. Entwickelt auch Atlassian-Marketplace-Apps.',
+    description: 'Webdesign- und Entwicklungsagentur für Startups, kleine Unternehmen und Marken in Deutschland, Europa, den USA, Kanada, Großbritannien und Nigeria. Entwickelt auch Atlassian-Marketplace-Apps.',
     ogDescription: 'Ein Tech-Studio für Startups, Unternehmen und Marken: Websites, Web-Apps und Atlassian-Marketplace-Apps, von der Idee bis zum Launch gestaltet und gebaut.',
     h1: 'Wir bauen|Websites,',
     h1em: 'die live gehen.',
-    sub: 'Webdesign und Webentwicklung für Marken in Deutschland, Europa, den USA, Kanada und Großbritannien.',
+    sub: 'Webdesign und Webentwicklung für Marken in Deutschland, Europa, den USA, Kanada, Großbritannien und Nigeria.',
     logos: 'Technologien, mit denen wir arbeiten',
     servicesH2: 'Webdesign, Web-Apps und Onlineshops',
     servicesLead: 'Von der ersten Website bis zur Produktiv-App: Ein Studio übernimmt Design, Code und Launch.',
@@ -115,9 +115,9 @@ export const de: Dict = {
 
   services: {
     title: 'Webdesign und Webentwicklung: Leistungen | Isogun Labs',
-    description: 'Webdesign und Webentwicklung: Websites, Web-Apps und MVPs, E-Commerce-Shops und Buchungssysteme für Unternehmen in Deutschland, Europa, den USA, Kanada und Großbritannien.',
+    description: 'Webdesign und Webentwicklung: Websites, Web-Apps und MVPs, E-Commerce-Shops und Buchungssysteme für Unternehmen in Deutschland, Europa, den USA, Kanada, Großbritannien und Nigeria.',
     h1: 'Webdesign und Webentwicklung aus einer Hand',
-    lead: 'Webdesign, Web-App-Entwicklung und Onlineshops von einer Agentur, für Startups, kleine Unternehmen und Marken in den USA, Kanada, Großbritannien und Europa.',
+    lead: 'Webdesign, Web-App-Entwicklung und Onlineshops von einer Agentur, für Startups, kleine Unternehmen und Marken in den USA, Kanada, Großbritannien, Europa und Nigeria.',
     navLabel: 'Leistungen',
     byIndustry: 'Nach Branche',
     svc: [
@@ -147,7 +147,7 @@ export const de: Dict = {
       },
     ],
     industriesH2: 'Webdesign für Ihre Art von Unternehmen',
-    industriesLead: 'Wir gestalten Websites für Restaurants, Praxen, Immobilienmakler, Fitnessstudios, Beauty-Marken und Startups in den USA, Kanada, Großbritannien und Europa. Jede Seite zeigt, wie wir an diese Art von Website herangehen.',
+    industriesLead: 'Wir gestalten Websites für Restaurants, Praxen, Immobilienmakler, Fitnessstudios, Beauty-Marken und Startups in den USA, Kanada, Großbritannien, Europa und Nigeria. Jede Seite zeigt, wie wir an diese Art von Website herangehen.',
     whoH2: 'Mit wem wir arbeiten',
     who: [
       { h: 'Startups', p: 'Eine erste Version, die Sie Investoren und Nutzern zeigen können, und eine Codebasis, die nach dem Launch nicht neu geschrieben werden muss.' },
@@ -175,7 +175,7 @@ export const de: Dict = {
     aCost: 'Das hängt von der Seitenzahl ab, davon, ob das Design individuell ist, und davon, was die Website leisten muss, etwa Buchung, Bestellung oder ein Shop. Nach einem kostenlosen Gespräch erhalten Sie ein schriftliches Angebot, damit es keine Überraschungen gibt. In unserem Blog finden Sie einen verständlichen Leitfaden dazu, was den Preis einer Unternehmenswebsite bestimmt (auf Englisch).',
     qTime: 'Wie lange dauert es, {noun} zu bauen?',
     aTime: 'Das hängt von den Seiten und Funktionen ab. Nach dem ersten Gespräch erhalten Sie einen realistischen Zeitplan schriftlich, und Sie sehen unterwegs eine funktionierende Vorschau.',
-    qRegion: 'Arbeiten Sie mit Unternehmen in den USA, Kanada, Großbritannien und Europa?',
+    qRegion: 'Arbeiten Sie mit Unternehmen in den USA, Kanada, Großbritannien, Europa und Nigeria?',
     aRegion: 'Ja. Wir arbeiten remote und auf Englisch, mit Gesprächen zu Zeiten, die zu Ihrer Zeitzone passen, und wir berücksichtigen beim Bauen die Grundlagen zu Cookies, Datenschutz und Barrierefreiheit dieser Regionen.',
     steps: [
       { n: '1', title: 'Ein kostenloses Gespräch', text: 'Zwanzig Minuten zu Ziel, Zielgruppe und dem, was Sie schon haben. Danach wissen Sie, ob wir der richtige Partner sind.' },
@@ -187,10 +187,10 @@ export const de: Dict = {
 
   about: {
     title: 'Über Isogun Labs | Webdesign- und Entwicklungsagentur',
-    description: 'Das Team von Isogun Labs, einer unabhängigen Webdesign- und Entwicklungsagentur unter der Leitung von Gründer und CTO Oluwatomisin Isogun, mit Kunden in den USA, Kanada, Großbritannien und Europa.',
+    description: 'Das Team von Isogun Labs, einer unabhängigen Webdesign- und Entwicklungsagentur unter der Leitung von Gründer und CTO Oluwatomisin Isogun, mit Kunden in den USA, Kanada, Großbritannien, Europa und Nigeria.',
     crumb: 'Über uns',
     h1: 'Ein Webdesign-Studio mit hohem Anspruch',
-    lead: 'Isogun Labs ist eine unabhängige Webdesign- und Entwicklungsagentur. Wir gestalten und bauen Websites, Web-Apps und Atlassian-Marketplace-Apps für Startups, kleine Unternehmen und Marken in den USA, Kanada, Großbritannien und Europa.',
+    lead: 'Isogun Labs ist eine unabhängige Webdesign- und Entwicklungsagentur. Wir gestalten und bauen Websites, Web-Apps und Atlassian-Marketplace-Apps für Startups, kleine Unternehmen und Marken in den USA, Kanada, Großbritannien, Europa und Nigeria.',
     photoAlt: 'Ein kreatives Team um einen Tisch mit Laptops und einem Bildschirm bei der Projektplanung.',
     whatH2: 'Was wir tun',
     what1: 'Wir haben Kunden-Websites, Webplattformen und drei Apps im Atlassian Marketplace veröffentlicht und bringen jedem Projekt die gleiche Sorgfalt entgegen, egal wie groß es ist.',
@@ -214,7 +214,7 @@ export const de: Dict = {
       { title: 'Gebaut, um übergeben zu werden', text: 'Sauberer Code, ein klarer Launch und eine Übergabe, die Ihnen zeigt, wie Sie die Website selbst betreiben.' },
     ],
     whereH2: 'Wo wir arbeiten',
-    whereLead: 'Wir arbeiten mit Kunden in den USA, Kanada, Großbritannien und Europa. Wir arbeiten remote und auf Englisch, mit Gesprächen zu Zeiten, die zu Ihrer Zeitzone passen, und wir berücksichtigen beim Bauen die Grundlagen zu Cookies, Datenschutz und Barrierefreiheit dieser Regionen.',
+    whereLead: 'Wir arbeiten mit Kunden in den USA, Kanada, Großbritannien, Europa und Nigeria. Wir arbeiten remote und auf Englisch, mit Gesprächen zu Zeiten, die zu Ihrer Zeitzone passen, und wir berücksichtigen beim Bauen die Grundlagen zu Cookies, Datenschutz und Barrierefreiheit dieser Regionen.',
     atlKicker: 'Partner im Atlassian Marketplace',
     atlH2: 'Drei Apps im Atlassian Marketplace',
     atlLead: 'Wir entwickeln und betreiben eigene Apps für Jira und Jira Service Management. Deshalb kennen wir die Plattform, den Prüfprozess und die Details, die eine App durch die Prüfung bringen. Wir bauen Ihre App oder helfen Ihnen beim Launch.',
@@ -238,7 +238,7 @@ export const de: Dict = {
     wa: { h: 'WhatsApp', p: 'Eine kurze Nachricht, um das Gespräch zu beginnen.' },
     enqH2: 'Briefing senden',
     enqLead: 'Erzählen Sie uns ein wenig über das Projekt. Je mehr Sie teilen, desto hilfreicher ist unsere erste Antwort.',
-    ticks: ['Kostenlos und unverbindlich', 'Wir antworten per E-Mail, auf Englisch', 'Kunden in den USA, Kanada, Großbritannien und Europa'],
+    ticks: ['Kostenlos und unverbindlich', 'Wir antworten per E-Mail, auf Englisch', 'Kunden in den USA, Kanada, Großbritannien, Europa und Nigeria'],
     f: {
       name: 'Ihr Name', email: 'E-Mail', business: 'Unternehmen oder Marke', type: 'Art des Unternehmens', country: 'Wo sind Sie ansässig?', need: 'Was brauchen Sie?',
       when: 'Wann soll es live gehen?', budget: 'Budget, falls Sie eines im Kopf haben', budgetPh: 'Zum Beispiel 3.000 € oder eine Spanne', about: 'Zum Projekt',
@@ -246,7 +246,7 @@ export const de: Dict = {
       send: 'Briefing senden', note: 'Wir verwenden Ihre Angaben nur, um auf diese Anfrage zu antworten.',
     },
     types: [['Restaurant or cafe', 'Restaurant oder Café'], ['Clinic or practice', 'Praxis oder Klinik'], ['Real estate', 'Immobilien'], ['Gym or fitness studio', 'Fitnessstudio'], ['Beauty brand or salon', 'Beauty-Marke oder Salon'], ['Startup', 'Startup'], ['Other', 'Sonstiges']],
-    countries: [['United States', 'USA'], ['Canada', 'Kanada'], ['United Kingdom', 'Großbritannien'], ['Europe', 'Europa'], ['Somewhere else', 'Anderswo']],
+    countries: [['United States', 'USA'], ['Canada', 'Kanada'], ['United Kingdom', 'Großbritannien'], ['Europe', 'Europa'], ['Nigeria', 'Nigeria'], ['Somewhere else', 'Anderswo']],
     needs: [['A new website', 'Eine neue Website'], ['A website redesign', 'Ein Website-Relaunch'], ['An online store', 'Ein Onlineshop'], ['A web app or MVP', 'Eine Web-App oder ein MVP'], ['An Atlassian Marketplace app', 'Eine Atlassian-Marketplace-App'], ['Care plan for my existing site', 'Ein Pflegeplan für meine Website'], ['Not sure yet', 'Noch unsicher']],
     timelines: [['As soon as possible', 'So bald wie möglich'], ['In 1 to 2 months', 'In 1 bis 2 Monaten'], ['In 3 months or more', 'In 3 Monaten oder später'], ['Just exploring', 'Ich informiere mich nur']],
     includeH2: 'Was Sie angeben sollten',

@@ -46,7 +46,7 @@ export const pagesEn = {
       { q: 'Who will I talk to?', a: 'You have one point of contact from the first call to launch. She works closely with the person building your project and passes on your feedback.' },
       { q: 'What if I want changes?', a: 'Changes are part of the process. You see a working preview early, and your written plan states how many rounds of changes are included.' },
       { q: 'Who owns the finished site?', a: 'You do. We hand over clean code, your logins and a walkthrough, so you are never locked in.' },
-      { q: 'Do you work with clients abroad?', a: 'Yes. We work remotely and in English with clients in the USA, Canada, the UK and Europe, with calls at times that suit your time zone.' },
+      { q: 'Do you work with clients abroad?', a: 'Yes. We work remotely and in English with clients in the USA, Canada, the UK, Europe and Nigeria, with calls at times that suit your time zone.' },
     ],
     ctaH2: 'Ready to start?',
   },

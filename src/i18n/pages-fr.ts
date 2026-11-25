@@ -46,7 +46,7 @@ export const pagesFr: PagesText = {
       { q: 'Avec qui vais-je échanger ?', a: 'Vous avez un seul interlocuteur du premier appel au lancement. Elle travaille en étroite collaboration avec la personne qui construit votre projet et lui transmet vos retours.' },
       { q: 'Et si je veux des modifications ?', a: 'Les modifications font partie du processus. Vous voyez un aperçu en ligne dès le début, et votre plan écrit précise combien de séries de modifications sont incluses.' },
       { q: 'À qui appartient le site terminé ?', a: 'À vous. Nous vous remettons un code propre, vos accès et une démonstration, pour que vous ne soyez jamais enfermé.' },
-      { q: 'Travaillez-vous avec des clients à l’étranger ?', a: 'Oui. Nous travaillons à distance et en anglais avec des clients aux États-Unis, au Canada, au Royaume-Uni et en Europe, avec des appels à des horaires adaptés à votre fuseau.' },
+      { q: 'Travaillez-vous avec des clients à l’étranger ?', a: 'Oui. Nous travaillons à distance et en anglais avec des clients aux États-Unis, au Canada, au Royaume-Uni, en Europe et au Nigeria, avec des appels à des horaires adaptés à votre fuseau.' },
     ],
     ctaH2: 'Prêt à démarrer ?',
   },

@@ -150,7 +150,7 @@ You should hold us to the same standard. Here is how we approach the points abov
 - **A working preview, early and often:** you see the real site as it takes shape and can ask for changes while they are still easy to make.
 - **Built to be handed over:** clean code, a clear launch, and a handover that shows you how to run the site yourself.
 - **One point of contact:** our Client Success Manager guides you from the first call to launch and works closely with the person building your project.
-- **Remote and in English:** we work with clients in the USA, Canada, the UK and Europe, with calls at times that suit your time zone.
+- **Remote and in English:** we work with clients in the USA, Canada, the UK, Europe and Nigeria, with calls at times that suit your time zone.
 
 You can see our [selected work](/work/) and what we offer on our [services page](/services/). If you would like to run your project past us, send a short brief through the [contact page](/contact/) or book a free call.
 

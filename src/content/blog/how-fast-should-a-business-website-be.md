@@ -97,7 +97,7 @@ Sometimes a site is slow because of small things, and a few changes will help: s
 
 ## How Isogun Labs approaches speed
 
-We treat speed as part of the build, not an extra. We size and compress images, keep scripts to what each page needs, and test on real phones before a site goes live. We also work with clients in the USA, Canada, the UK and Europe, so a site has to feel quick well beyond the office it was designed in.
+We treat speed as part of the build, not an extra. We size and compress images, keep scripts to what each page needs, and test on real phones before a site goes live. We also work with clients in the USA, Canada, the UK, Europe and Nigeria, so a site has to feel quick well beyond the office it was designed in.
 
 You can see what we build in our [selected work](/work/) and read about our [services](/services/). If you would like us to look at your site, send a short brief through the [contact page](/contact/#enquiry) or book a free call.
 
