@@ -1,4 +1,5 @@
 ---
+import fs from 'node:fs';
 import { alternatesFor, localeInfo, splitLocale } from '../i18n/config';
 interface Crumb { name: string; path: string }
 interface Props {
@@ -46,8 +47,12 @@ const origin = 'https://isogunlabs.com';
 const { lang } = splitLocale(path);
 const alternates = robots.includes('noindex') ? [] : alternatesFor(path);
 const canonical = new URL(path, Astro.site).toString();
-const ogImage = new URL('/assets/og-image.png', Astro.site).toString();
-const imageAlt = 'Isogun Labs, a tech studio for websites, web apps and Atlassian Marketplace apps';
+// Each page can have its own share card at public/assets/og/<path with dashes>.png (made by
+// scripts/build-og-images.mjs). Translated pages reuse the English card. No card means the default image.
+const cardKey = splitLocale(path).path.replace(/^\/+|\/+$/g, '').replace(/\//g, '-');
+const hasCard = !!cardKey && fs.existsSync(`${process.cwd()}/public/assets/og/${cardKey}.png`);
+const ogImage = new URL(hasCard ? `/assets/og/${cardKey}.png` : '/assets/og-image.png', Astro.site).toString();
+const imageAlt = hasCard ? `${ogTitle.replace(/\s*\|\s*Isogun Labs\s*$/i, '')}, Isogun Labs` : 'Isogun Labs, a tech studio for websites, web apps and Atlassian Marketplace apps';
 
 // Structured data: whatever the page passes in, plus a breadcrumb trail for inner pages.
 const nodes: object[] = [];
