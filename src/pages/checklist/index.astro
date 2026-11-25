@@ -1,0 +1,71 @@
+---
+// Free checklist (lead magnet). The visitor enters an email, the Worker notifies Telegram and email, and the download appears.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { contact } from '../../data/nav';
+
+const path = '/checklist/';
+const title = 'Free Website Brief Checklist | Isogun Labs';
+const description = 'A free two-page checklist of what to have ready before you hire a web designer, plus five questions to ask every studio. Download it in a minute.';
+const inside = [
+  'Eight things to sort out before you contact anyone',
+  'Five questions to ask every web design studio',
+  'A one-sentence brief template you can copy',
+  'Written for business owners, with no jargon',
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  breadcrumbs={[{ name: 'Free checklist', path }]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@graph': [{ '@type': 'WebPage', '@id': 'https://isogunlabs.com/checklist/#page', url: 'https://isogunlabs.com/checklist/', name: title, inLanguage: 'en', isPartOf: { '@id': 'https://isogunlabs.com/#website' }, about: { '@id': 'https://isogunlabs.com/#org' } }],
+  }}
+>
+
+<header class="page-head">
+  <div class="wrap lm-head">
+    <div>
+      <p class="kicker">Free download</p>
+      <h1>The website brief checklist</h1>
+      <p class="lead">Website projects run late for one reason more than any other: something was not ready. This two-page checklist covers what to have in hand before you hire anyone.</p>
+      <ul class="ticks lm-inside">
+        {inside.map((x) => <li><Icon name="check" /><span>{x}</span></li>)}
+      </ul>
+
+      <form class="lm-form" id="lm-form" novalidate data-endpoint={contact.backupEndpoint} data-mailto={contact.supportEmail}>
+        <div class="lm-fields">
+          <label class="f"><span>Your first name (optional)</span><input name="name" type="text" autocomplete="given-name"></label>
+          <label class="f"><span>Your email <b aria-hidden="true">*</b></span><input name="email" type="email" autocomplete="email" required placeholder="you@business.com"></label>
+        </div>
+        <label class="tm-check"><input type="checkbox" name="tips"><span>Also send me occasional website tips. I can unsubscribe at any time.</span></label>
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></p>
+        <div class="enq-actions">
+          <button class="btn btn-ink" type="submit">Get the free checklist <Icon name="arrow-right" /></button>
+          <p class="enq-note">We use your email only to send you this, and the tips if you ticked the box. See our <a href="/privacy/">privacy page</a>.</p>
+        </div>
+        <p class="enq-status" id="lm-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="lm-done" id="lm-done" hidden tabindex="-1">
+        <p class="kicker">All set</p>
+        <h2 class="h2" id="lm-done-h2">Your checklist is ready</h2>
+        <p class="lead">Download it, print it and tick things off. If you would like a hand turning it into a brief, we are happy to help.</p>
+        <p class="ind-cta">
+          <a class="btn btn-ink" href="/assets/downloads/website-brief-checklist.pdf" download data-track="checklist_download">Download the PDF <Icon name="arrow-right" /></a>
+          <a class="btn btn-ghost-ink" href={contact.booking} target="_blank" rel="noopener" data-track="book_call">Book a free call</a>
+        </p>
+      </div>
+    </div>
+
+    <figure class="lm-preview" aria-hidden="true">
+      <img src="/assets/downloads/checklist-preview.webp" alt="" width="720" height="1019" loading="eager" decoding="async" />
+    </figure>
+  </div>
+</header>
+
+<script src="/assets/js/checklist.js?v=1" defer></script>
+
+</BaseLayout>

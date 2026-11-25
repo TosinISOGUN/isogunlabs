@@ -18,7 +18,7 @@ export const contact = {
   founderEmail: 'tomisin@isogunlabs.com',
   teamEmails: ['', ''],
   booking: 'https://cal.com/oluwatomisin-isogun-disku5/20min',
-  whatsapp: 'https://wa.me/2348164376172',
+  whatsapp: 'https://wa.me/2348153357775',
   // Where the enquiry form sends its messages. Paste a form-service address here, for example a Formspree
   // form URL (https://formspree.io/f/xxxxxxxx). While it is empty, the form opens the visitor's email app instead.
   formEndpoint: 'https://formspree.io/f/mjywerob',

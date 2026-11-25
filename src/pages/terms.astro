@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { contact } from '../data/nav';
+
+const path = '/terms/';
+const title = 'Terms of Service | Isogun Labs';
+const description = 'The plain terms for working with Isogun Labs: the written plan, payment, changes, who owns the finished work, and how we handle problems.';
+const updated = '25 November 2026';
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  breadcrumbs={[{ name: 'Terms of service', path }]}
+>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>Terms of service</h1>
+    <p class="lead">The plain version of how we work together. Your written plan for a project always comes first.</p>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap legal">
+    <p class="updated">Last updated {updated}</p>
+
+    <h2>About these terms</h2>
+    <p>These terms apply when Isogun Labs, based in Ibadan, Oyo State, Nigeria, builds a website, web app or other software for you. Every project also has a written plan and quote. If the plan and these terms differ, the plan wins.</p>
+
+    <h2>The written plan</h2>
+    <p>Before work starts, we give you a written plan that lists the pages and features, the timeline, the price and what is not included. Work outside the plan is quoted before we do it.</p>
+
+    <h2>Payment</h2>
+    <p>The amounts and the dates they fall due are set out in your written plan. Running costs paid to other providers, such as a domain name or hosting, are listed in the plan and are not part of our fee.</p>
+
+    <h2>Changes</h2>
+    <p>You see a working preview early and can ask for changes. The plan says how many rounds of changes are included. Further changes are quoted separately.</p>
+
+    <h2>What we need from you</h2>
+    <p>Text, photos, logins and decisions arrive on time and from one person who has the final say. If they are late, the timeline moves by the same amount.</p>
+
+    <h2>Who owns the finished work</h2>
+    <p>Once the project is paid in full, you own the finished website and the code we wrote for it. Your domain stays registered in your name. Third-party tools, fonts, images and licences keep their own terms. We may show the finished work in our portfolio unless you ask us not to.</p>
+
+    <h2>After launch</h2>
+    <p>We fix mistakes in our own work for the period stated in your plan. Ongoing updates and support are available through an optional care plan.</p>
+
+    <h2>If something goes wrong</h2>
+    <p>We are not responsible for outages or changes at other providers, such as hosting, payment or email services. Nothing in these terms limits any right you have by law. If you are unhappy, tell us first at <a href={`mailto:${contact.supportEmail}`}>{contact.supportEmail}</a> and we will work with you to put it right.</p>
+
+    <h2>Governing law</h2>
+    <p>These terms are governed by the laws of the Federal Republic of Nigeria, unless your written plan says otherwise.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about these terms: <a href={`mailto:${contact.supportEmail}`}>{contact.supportEmail}</a>. See also our <a href="/privacy/">privacy and cookies</a> page.</p>
+  </div>
+</section>
+
+</BaseLayout>

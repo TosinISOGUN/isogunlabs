@@ -4,6 +4,9 @@ import BlogCard from '../BlogCard.astro';
 import Icon from '../Icon.astro';
 import { postsFor } from '../../lib/blogPosts';
 import { contact } from '../../data/nav';
+import { testimonials } from '../../data/testimonials';
+import { pagesFor } from '../../i18n/pages';
+import Testimonials from '../Testimonials.astro';
 import { dict } from '../../i18n';
 import { industriesFor } from '../../i18n/industry-labels';
 import { l, type Locale } from '../../i18n/config';
@@ -310,12 +313,15 @@ const ctaHref = l(lang, '/contact/');
     <div class="sticky reveal">
       <h2 class="h2">{h.process.h2}</h2>
       <p class="lead">{h.process.lead}</p>
+      <p class="proof-links"><a class="link-arrow" href={l(lang, '/how-we-work/')}>{pagesFor(lang).links.how} <Icon name="arrow-right" /></a> <a class="link-arrow" href={l(lang, '/pricing/')}>{pagesFor(lang).links.pricing} <Icon name="arrow-right" /></a></p>
     </div>
     <ol class="verbs reveal">
       {h.process.steps.map((s) => <li><h3>{s.h}</h3><p>{s.p}</p></li>)}
     </ol>
   </div>
 </section>
+
+<Testimonials items={testimonials} lang={lang} />
 
 <section class="section bg-2" id="about">
   <div class="wrap about-grid">

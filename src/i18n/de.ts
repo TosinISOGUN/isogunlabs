@@ -247,7 +247,7 @@ export const de: Dict = {
     },
     types: [['Restaurant or cafe', 'Restaurant oder Café'], ['Clinic or practice', 'Praxis oder Klinik'], ['Real estate', 'Immobilien'], ['Gym or fitness studio', 'Fitnessstudio'], ['Beauty brand or salon', 'Beauty-Marke oder Salon'], ['Startup', 'Startup'], ['Other', 'Sonstiges']],
     countries: [['United States', 'USA'], ['Canada', 'Kanada'], ['United Kingdom', 'Großbritannien'], ['Europe', 'Europa'], ['Somewhere else', 'Anderswo']],
-    needs: [['A new website', 'Eine neue Website'], ['A website redesign', 'Ein Website-Relaunch'], ['An online store', 'Ein Onlineshop'], ['A web app or MVP', 'Eine Web-App oder ein MVP'], ['An Atlassian Marketplace app', 'Eine Atlassian-Marketplace-App'], ['Not sure yet', 'Noch unsicher']],
+    needs: [['A new website', 'Eine neue Website'], ['A website redesign', 'Ein Website-Relaunch'], ['An online store', 'Ein Onlineshop'], ['A web app or MVP', 'Eine Web-App oder ein MVP'], ['An Atlassian Marketplace app', 'Eine Atlassian-Marketplace-App'], ['Care plan for my existing site', 'Ein Pflegeplan für meine Website'], ['Not sure yet', 'Noch unsicher']],
     timelines: [['As soon as possible', 'So bald wie möglich'], ['In 1 to 2 months', 'In 1 bis 2 Monaten'], ['In 3 months or more', 'In 3 Monaten oder später'], ['Just exploring', 'Ich informiere mich nur']],
     includeH2: 'Was Sie angeben sollten',
     include: ['Was Sie bauen möchten und warum', 'Für wen es ist', 'Die Seiten oder Funktionen, die Sie bereits kennen', 'Websites, die Ihnen gefallen, und was Ihnen daran gefällt', 'Wann es live sein soll', 'Texte, Fotos oder Logos, die Sie schon haben'],

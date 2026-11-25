@@ -1,0 +1,137 @@
+---
+// A focused page to send to past clients so they can leave a review. Not in the sitemap and set to noindex.
+// Submissions go to the Worker (Telegram + email). Personalise the link: /testimonial/?name=Gloria&project=Website
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { contact } from '../../data/nav';
+
+const path = '/testimonial/';
+const stars = [5, 4, 3, 2, 1];
+const starPath = 'M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.6 6 20.9l1.3-6.7-5-4.7 6.8-.8z';
+const prompts = [
+  'What problem did we help you solve?',
+  'What was it like working with us?',
+  'What would you tell a friend thinking of hiring us?',
+];
+---
+<BaseLayout
+  title="Share your experience | Isogun Labs"
+  description="Tell us how your project with Isogun Labs went. It takes about two minutes."
+  path={path}
+  robots="noindex, nofollow"
+  bare
+>
+
+<div class="tm">
+  <header class="tm-top">
+    <a class="logo" href="/" aria-label="Isogun Labs home"><span class="wordmark">Isogun <em>Labs</em></span></a>
+  </header>
+
+  <div class="tm-grid">
+    <section class="tm-intro">
+      <p class="tm-kicker" id="tm-kicker">A quick favour</p>
+      <h1 id="tm-h1">How did we do?</h1>
+      <p class="tm-lead">Your honest words help the next business decide who to trust with their website. It takes about two minutes, and it means a lot to a small team like ours.</p>
+
+      <figure class="tm-card" aria-hidden="true">
+        <span class="tm-card-q">“</span>
+        <div class="tm-card-stars" id="tm-prev-stars">★★★★★</div>
+        <blockquote id="tm-prev-quote">Your words will appear here as you type, just like they could on our website.</blockquote>
+        <figcaption><b id="tm-prev-name">Your name</b><span id="tm-prev-role">Your role or business</span></figcaption>
+      </figure>
+
+      <ul class="tm-points">
+        <li>We only publish with your permission.</li>
+        <li>Short or long is fine. Say it your way.</li>
+        <li>You can ask us to change or remove it at any time.</li>
+      </ul>
+    </section>
+
+    <section class="tm-panel">
+      <form class="tm-form" id="tm-form" novalidate data-endpoint={contact.backupEndpoint} data-mailto={contact.supportEmail}>
+        <fieldset class="tm-rate">
+          <legend>How would you rate working with us?</legend>
+          <div class="tm-stars">
+            {stars.map((n) => (
+              <>
+                <input type="radio" name="rating" id={`r${n}`} value={String(n)} />
+                <label for={`r${n}`} title={`${n} out of 5`}>
+                  <span class="sr-only">{n} out of 5</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d={starPath} /></svg>
+                </label>
+              </>
+            ))}
+          </div>
+          <p class="tm-rate-label" id="tm-rate-label" aria-live="polite">Tap a star</p>
+        </fieldset>
+
+        <div class="f">
+          <label for="tm-message"><span>Your words <b aria-hidden="true">*</b></span></label>
+          <textarea id="tm-message" name="message" rows="6" required placeholder="Write as much or as little as you like."></textarea>
+          <div class="tm-chips" aria-label="Need a prompt? Tap one to start your answer.">
+            {prompts.map((p) => <button type="button" class="tm-chip" data-prompt={p}>{p}</button>)}
+          </div>
+        </div>
+
+        <div class="tm-row">
+          <label class="f"><span>Your name <b aria-hidden="true">*</b></span><input id="tm-name" name="name" type="text" autocomplete="name" required></label>
+          <label class="f"><span>Your role or business</span><input id="tm-role" name="role" type="text" autocomplete="organization-title" placeholder="For example: Singer and songwriter"></label>
+        </div>
+        <div class="tm-row">
+          <label class="f"><span>What did we make for you?</span>
+            <select id="tm-project" name="project">
+              <option value="">Choose one</option>
+              <option>A website</option>
+              <option>A web app</option>
+              <option>An Atlassian app</option>
+              <option>A redesign</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label class="f"><span>Your website (optional)</span><input name="website" type="url" autocomplete="url" placeholder="https://"></label>
+        </div>
+        <div class="tm-row">
+          <label class="f"><span>How should we show your name?</span>
+            <select id="tm-display" name="display">
+              <option value="Name and role">Name and role</option>
+              <option value="First name only">First name only</option>
+              <option value="Anonymous">Keep me anonymous</option>
+            </select>
+          </label>
+          <label class="f"><span>Your email (optional)</span><input name="email" type="email" autocomplete="email" placeholder="Only so we can say thank you"></label>
+        </div>
+
+        <label class="tm-check">
+          <input type="checkbox" name="permission" id="tm-permission" required>
+          <span>I am happy for Isogun Labs to publish my words on isogunlabs.com and on social media. <b aria-hidden="true">*</b></span>
+        </label>
+
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="enq-actions">
+          <button class="btn btn-lime tm-send" type="submit">Send my review <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <p class="enq-status" id="tm-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="tm-thanks" id="tm-thanks" hidden tabindex="-1">
+        <div class="tm-confetti" id="tm-confetti" aria-hidden="true"></div>
+        <svg class="tm-tick" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" /><path d="M14 27l8 8 16-17" /></svg>
+        <h2 id="tm-thanks-h2">Thank you!</h2>
+        <p class="tm-thanks-lead">Your words mean a great deal to a small team like ours. We read every one.</p>
+        <ol class="tm-next">
+          <li><span><b>We read it.</b> And we may write back to say thank you.</span></li>
+          <li><span><b>With your permission,</b> we may feature it on our website and social pages.</span></li>
+          <li><span><b>Changed your mind?</b> Email <a href={`mailto:${contact.supportEmail}`}>{contact.supportEmail}</a> and we will change or remove it.</span></li>
+        </ol>
+        <p class="tm-thanks-actions">
+          <a class="btn btn-lime" href="/">Visit isogunlabs.com</a>
+          <a class="btn btn-ghost-ink" href="/work/">See our work</a>
+        </p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="/assets/js/testimonial.js?v=1" defer></script>
+
+</BaseLayout>

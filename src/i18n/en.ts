@@ -249,7 +249,7 @@ export const en = {
     // [value sent to us (always English), label shown]
     types: [['Restaurant or cafe', 'Restaurant or cafe'], ['Clinic or practice', 'Clinic or practice'], ['Real estate', 'Real estate'], ['Gym or fitness studio', 'Gym or fitness studio'], ['Beauty brand or salon', 'Beauty brand or salon'], ['Startup', 'Startup'], ['Other', 'Other']],
     countries: [['United States', 'United States'], ['Canada', 'Canada'], ['United Kingdom', 'United Kingdom'], ['Europe', 'Europe'], ['Somewhere else', 'Somewhere else']],
-    needs: [['A new website', 'A new website'], ['A website redesign', 'A website redesign'], ['An online store', 'An online store'], ['A web app or MVP', 'A web app or MVP'], ['An Atlassian Marketplace app', 'An Atlassian Marketplace app'], ['Not sure yet', 'Not sure yet']],
+    needs: [['A new website', 'A new website'], ['A website redesign', 'A website redesign'], ['An online store', 'An online store'], ['A web app or MVP', 'A web app or MVP'], ['An Atlassian Marketplace app', 'An Atlassian Marketplace app'], ['Care plan for my existing site', 'Care plan for my existing site'], ['Not sure yet', 'Not sure yet']],
     timelines: [['As soon as possible', 'As soon as possible'], ['In 1 to 2 months', 'In 1 to 2 months'], ['In 3 months or more', 'In 3 months or more'], ['Just exploring', 'Just exploring']],
     includeH2: 'What to include',
     include: ['What you want to build and why', 'Who it is for', 'The pages or features you already know you need', 'Websites you like, and what you like about them', 'When you need it live', 'Any text, photos or logos you already have'],

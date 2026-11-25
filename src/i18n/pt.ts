@@ -247,7 +247,7 @@ export const pt: Dict = {
     },
     types: [['Restaurant or cafe', 'Restaurante ou café'], ['Clinic or practice', 'Clínica ou consultório'], ['Real estate', 'Imobiliário'], ['Gym or fitness studio', 'Ginásio ou estúdio de fitness'], ['Beauty brand or salon', 'Marca de beleza ou salão'], ['Startup', 'Startup'], ['Other', 'Outro']],
     countries: [['United States', 'Estados Unidos'], ['Canada', 'Canadá'], ['United Kingdom', 'Reino Unido'], ['Europe', 'Europa'], ['Somewhere else', 'Noutro local']],
-    needs: [['A new website', 'Um site novo'], ['A website redesign', 'Uma remodelação de site'], ['An online store', 'Uma loja online'], ['A web app or MVP', 'Uma aplicação web ou MVP'], ['An Atlassian Marketplace app', 'Uma aplicação do Atlassian Marketplace'], ['Not sure yet', 'Ainda não sei']],
+    needs: [['A new website', 'Um site novo'], ['A website redesign', 'Uma remodelação de site'], ['An online store', 'Uma loja online'], ['A web app or MVP', 'Uma aplicação web ou MVP'], ['An Atlassian Marketplace app', 'Uma aplicação do Atlassian Marketplace'], ['Care plan for my existing site', 'Um plano de manutenção para o meu site'], ['Not sure yet', 'Ainda não sei']],
     timelines: [['As soon as possible', 'O mais depressa possível'], ['In 1 to 2 months', 'Em 1 a 2 meses'], ['In 3 months or more', 'Em 3 meses ou mais'], ['Just exploring', 'Estou só a explorar']],
     includeH2: 'O que incluir',
     include: ['O que quer construir e porquê', 'Para quem é', 'As páginas ou funcionalidades de que já sabe que precisa', 'Sites de que gosta e o que lhe agrada neles', 'Quando precisa que esteja online', 'Textos, fotografias ou logótipos que já tenha'],
